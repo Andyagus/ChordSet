@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Interfaces
 {
-    public abstract class Subject
+    public class Subject
     {
         private List<Observer> _observers = new List<Observer>();
 
@@ -20,6 +20,7 @@ namespace Interfaces
 
         public void Notify(System.Object entity)
         {
+            if (_observers == null) return;
             foreach (var observer in _observers)
             {
                 observer.OnNotify(entity);

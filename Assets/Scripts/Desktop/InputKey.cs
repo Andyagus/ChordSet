@@ -1,3 +1,5 @@
+using System;
+using Enums;
 using Interfaces;
 using UnityEngine;
 
@@ -20,6 +22,35 @@ namespace Desktop
         {
             get => _keyCode;
             set => _keyCode = value;
+        }
+
+        public EKeyState keyState;
+        private EKeyState _prevState;
+
+        private void Awake()
+        {
+            onKeyChanged = new Subject();
+            _prevState = keyState;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(_keyCode))
+            {
+                keyState = EKeyState.KEY_PRESSED;
+            }
+
+            if (Input.GetKeyUp(_keyCode))
+            {
+                keyState = EKeyState.KEY_UNPRESSED;
+            }
+
+            if (_prevState != keyState)
+            {
+                onKeyChanged.Notify(this);
+                Debug.Log($"{keyState} state on the {_keyName} key");
+                _prevState = keyState;
+            }
         }
     }
 }
