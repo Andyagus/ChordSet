@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using AR_Keyboard;
 using AR_Keyboard.State;
 using Desktop;
 using Interfaces;
@@ -14,10 +16,12 @@ public class ARKeyboard : MonoBehaviour, IObserver
     
     //convenience list for instantiation
     public List<ARKeyboardState> states;
+    public List<ARKey> arKeys;
     
     private void Awake()
     {
         _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
+        arKeys = GetComponentsInChildren<ARKey>().ToList<ARKey>();
         _state = Instantiate(states[0], this.transform, true);
         _state.Entry(this);
     }
