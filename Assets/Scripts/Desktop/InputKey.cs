@@ -48,7 +48,6 @@ namespace Desktop
             if (_prevState != keyState)
             {
                 onKeyChanged.Notify(this);
-                Debug.Log($"{keyState} state on the {_keyName} key");
                 _prevState = keyState;
             }
         }
