@@ -43,6 +43,7 @@ public class ARKeyboard : MonoBehaviour, IObserver
         var state = _state.HandleInput(inputKey, this);
         if (state != null)
         {
+            _state.Exit(this);
             Destroy(_state.gameObject);
             _state = state;
             _state.transform.SetParent(this.transform);

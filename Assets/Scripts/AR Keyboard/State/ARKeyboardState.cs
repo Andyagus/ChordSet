@@ -10,5 +10,6 @@ namespace AR_Keyboard.State
         {
             return null;
         }
+        public virtual void Exit(ARKeyboard keyboard){}
     }
 }

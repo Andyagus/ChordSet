@@ -14,4 +14,13 @@ public class KeyShortcutManager : MonoBehaviour
             shortcut.transform.position = key.transform.position + offset; 
         }
     }
+
+    //this needs work
+    public static void RemoveShortcut(ARKey key)
+    {
+        if (key.shortcuts[1] != null)
+        {
+            //need to have access to the instance...... can not be static  
+        }  
+    }
 }

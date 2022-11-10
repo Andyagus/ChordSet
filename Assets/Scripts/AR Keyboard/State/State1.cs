@@ -45,4 +45,18 @@ public class State1 : ARKeyboardState
         }
         return base.HandleInput(input, keyboard);
     }
+
+    public override void Exit(ARKeyboard keyboard)
+    {
+        
+        
+        foreach (var primaryKey in keyboard.ARPrimaryKeys)
+        {
+            if (primaryKey.KeyName == "C")
+            {
+                KeyShortcutManager.RemoveShortcut(primaryKey);
+                // KeyShortcutManager(key)
+            }
+        }
+    }
 }
