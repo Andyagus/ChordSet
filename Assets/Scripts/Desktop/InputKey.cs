@@ -9,8 +9,8 @@ namespace Desktop
     {
         [SerializeField] private string _keyName;
         public Subject onKeyChanged;
-        
-        string IKey.KeyName
+
+        public string KeyName
         {
             get => _keyName;
             set => _keyName = value;
@@ -24,7 +24,7 @@ namespace Desktop
             set => _keyCode = value;
         }
 
-        public EKeyState keyState;
+        [SerializeField] public EKeyState keyState; 
         private EKeyState _prevState;
 
         private void Awake()
@@ -45,11 +45,9 @@ namespace Desktop
                 keyState = EKeyState.KEY_UNPRESSED;
             }
 
-            if (_prevState != keyState)
-            {
-                onKeyChanged.Notify(this);
-                _prevState = keyState;
-            }
+            if (_prevState == keyState) return;
+            onKeyChanged.Notify(this);
+            _prevState = keyState;
         }
     }
 }

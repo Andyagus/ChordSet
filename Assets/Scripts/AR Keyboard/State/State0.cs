@@ -1,3 +1,4 @@
+using Desktop;
 using UnityEngine;
 
 namespace AR_Keyboard.State
@@ -9,9 +10,11 @@ namespace AR_Keyboard.State
             Debug.Log("State 0 Entry Method Called");
         }
 
-        public override ARKeyboardState HandleInput(ARKeyboard keyboard)
+        public override ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard)
         {
-            return base.HandleInput(keyboard);
+            Debug.Log(input.KeyName + ": " + input.keyState);
+
+            return null;
         }
     }
 }

@@ -1,3 +1,4 @@
+using Desktop;
 using UnityEngine;
 
 namespace AR_Keyboard.State
@@ -5,7 +6,7 @@ namespace AR_Keyboard.State
     public class ARKeyboardState : MonoBehaviour
     {
         public virtual void Entry(ARKeyboard keyboard){}
-        public virtual ARKeyboardState HandleInput(ARKeyboard keyboard)
+        public virtual ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard)
         {
             return null;
         }

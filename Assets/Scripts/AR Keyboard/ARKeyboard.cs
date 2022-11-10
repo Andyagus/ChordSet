@@ -30,6 +30,8 @@ public class ARKeyboard : MonoBehaviour, IObserver
     public void OnNotify(object entity)
     {
         var inputKey = (InputKey)entity; 
-        Debug.Log("Update state machine with: " + inputKey);
+        // Debug.Log("Update state machine with: " + inputKey);
+
+        _state.HandleInput(inputKey, this);
     }
 }
