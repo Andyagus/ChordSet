@@ -7,8 +7,8 @@ namespace Effects
     {
         public static void ChangeKeyColor(ARKey key, Color color)
         {
-            var keyRenderer = key.GetComponent<MeshRenderer>();
-            keyRenderer.material.color = color;
+            var keyMaterial= key.GetComponent<MeshRenderer>().material;
+            keyMaterial.color = color;
         }
     }
 }

@@ -16,12 +16,15 @@ public class ARKeyboard : MonoBehaviour, IObserver
     
     //convenience list for instantiation
     public List<ARKeyboardState> states;
-    public List<ARKey> arKeys;
     
+    public List<ARKey> ARPrimaryKeys;
+    public List<ARKey> ARModifierKeys;
+
     private void Awake()
     {
         _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
-        arKeys = GetComponentsInChildren<ARKey>().ToList<ARKey>();
+        ARPrimaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
+        ARModifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
         _state = Instantiate(states[0], this.transform, true);
         _state.Entry(this);
     }
