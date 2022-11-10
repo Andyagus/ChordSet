@@ -7,14 +7,14 @@ namespace Normcore
 {
    public class MockNormcore : MonoBehaviour
    {
-      public static Subject normcoreModelUpdated;
+      public Subject normcoreModelUpdated;
 
       private void Awake()
       {
          normcoreModelUpdated = new Subject();
       }
 
-      public static void UpdateNormcoreModel(InputKey key)
+      public void UpdateNormcoreModel(InputKey key)
       {
          normcoreModelUpdated.Notify(key);
       } 

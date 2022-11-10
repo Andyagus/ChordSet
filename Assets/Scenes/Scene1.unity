@@ -992,6 +992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223044499}
+  - component: {fileID: 223044500}
   m_Layer: 0
   m_Name: AR Keyboard
   m_TagString: Untagged
@@ -1014,6 +1015,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 6.275, y: 180, z: 0}
+--- !u!114 &223044500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223044498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548081bddc0a144ca818fdbe68cd97a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267403718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,6 +2756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1040693748}
+  - component: {fileID: 1040693749}
   m_Layer: 0
   m_Name: Normcore
   m_TagString: Untagged
@@ -2764,6 +2778,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1040693749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040693747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18166e9f898ad46df80dba01747daf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1065237362
 GameObject:
   m_ObjectHideFlags: 0

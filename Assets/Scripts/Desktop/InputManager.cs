@@ -11,9 +11,12 @@ namespace Desktop
     public class InputManager : MonoBehaviour, IObserver
     {
         private List<InputKey> _inputKeys;
+        private MockNormcore _normcore;
+        
         
         private void Awake()
         {
+            _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
             _inputKeys = GetComponentsInChildren<InputKey>().ToList<InputKey>();
         }
 
@@ -28,7 +31,7 @@ namespace Desktop
         public void OnNotify(object entity)
         {
             var inputKey = (InputKey)entity;
-            MockNormcore.UpdateNormcoreModel(inputKey);
+            _normcore.UpdateNormcoreModel(inputKey);
             
             //Removed this dictionary because requires keeping track of every key
             // InputKey inputKey = (InputKey)entity;
