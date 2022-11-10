@@ -13,7 +13,7 @@ namespace AR_Keyboard.State
         {
             foreach (var key in keyboard.ARModifierKeys)
             {
-                if (key.KeyName == "command")
+                if (key.KeyName == "command-left" || key.KeyName == "command-right")
                 {
                     KeyColorManager.ChangeKeyColor(key, Color.white);
                 }
@@ -33,7 +33,9 @@ namespace AR_Keyboard.State
                     {
                         if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                         {
-                            Debug.Log("command pressed");
+                            // Debug.Log("command pressed");
+                            var state1 = Instantiate(keyboard.states[1]);
+                            return state1;
                         }
                     }
                 }

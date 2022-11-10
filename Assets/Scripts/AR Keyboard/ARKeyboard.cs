@@ -17,8 +17,8 @@ public class ARKeyboard : MonoBehaviour, IObserver
     //convenience list for instantiation
     public List<ARKeyboardState> states;
     
-    public List<ARKey> ARPrimaryKeys;
-    public List<ARKey> ARModifierKeys;
+    [NonSerialized] public List<ARKey> ARPrimaryKeys;
+    [NonSerialized] public List<ARKey> ARModifierKeys;
 
     private void Awake()
     {
@@ -39,6 +39,14 @@ public class ARKeyboard : MonoBehaviour, IObserver
         var inputKey = (InputKey)entity; 
         // Debug.Log("Update state machine with: " + inputKey);
 
-        _state.HandleInput(inputKey, this);
+        //Ask question: how could a state store a value and handle functionality at same time? 
+        var state = _state.HandleInput(inputKey, this);
+        if (state != null)
+        {
+            Destroy(_state.gameObject);
+            _state = state;
+            _state.transform.SetParent(this.transform);
+            _state.Entry(this);
+        }
     }
 }

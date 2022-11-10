@@ -1,4 +1,5 @@
 using Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AR_Keyboard
@@ -18,5 +19,7 @@ namespace AR_Keyboard
             get => keyCode;
             set => keyCode = value;
         }
+
+        public List<Shortcut> shortcuts;
     }
 }

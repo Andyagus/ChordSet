@@ -537,6 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: shift
   keyCode: 0
+  shortcuts: []
 --- !u!1 &93209101
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: O
   keyCode: 0
+  shortcuts: []
 --- !u!1 &206772319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,8 +1070,6 @@ MonoBehaviour:
   states:
   - {fileID: 997014838649492552, guid: ab1c29177339d4018b67f6ec12bc6f11, type: 3}
   - {fileID: 4275630421079233843, guid: ae2bec4d7f0184d01a9ec82220da82ef, type: 3}
-  ARPrimaryKeys: []
-  ARModifierKeys: []
 --- !u!1 &267403718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: L
   keyCode: 0
+  shortcuts: []
 --- !u!1 &280520097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
+  shortcuts: []
 --- !u!1 &466215699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,6 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
+  shortcuts: []
 --- !u!1 &615206304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: H
   keyCode: 0
+  shortcuts: []
 --- !u!1 &681786371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,6 +1944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: S
   keyCode: 0
+  shortcuts: []
 --- !u!1 &699887238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: P
   keyCode: 0
+  shortcuts: []
 --- !u!1 &709226869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: M
   keyCode: 0
+  shortcuts: []
 --- !u!1 &749165182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: Q
   keyCode: 0
+  shortcuts: []
 --- !u!1 &797006722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: command-left
   keyCode: 0
+  shortcuts: []
 --- !u!1 &811029437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,6 +2854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: G
   keyCode: 0
+  shortcuts: []
 --- !u!1 &879148766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,6 +3103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: N
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1074017768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,6 +3214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: command-right
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1078766868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,6 +3437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: E
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1127246304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3627,6 +3640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: X
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1211919531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,6 +3751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: option
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1229698224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,6 +3954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: Z
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1253659524
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: I
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1279414147
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,6 +4256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1304386875
 GameObject:
   m_ObjectHideFlags: 0
@@ -4349,6 +4367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: J
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1344620125
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,6 +4524,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: C
   keyCode: 0
+  shortcuts:
+  - {fileID: 0}
+  - {fileID: 8804830497015223231, guid: d1b94aa1022a74d24a643be1ce95ade5, type: 3}
 --- !u!1 &1395003774
 GameObject:
   m_ObjectHideFlags: 0
@@ -4707,6 +4729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: F
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1424026404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,6 +4840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1427866429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,6 +4951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: V
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1456803775
 GameObject:
   m_ObjectHideFlags: 0
@@ -5129,6 +5154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: T
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1500659654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,6 +5411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: option
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1633028799
 GameObject:
   m_ObjectHideFlags: 0
@@ -5495,6 +5522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: A
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1637356731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5683,6 +5711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: W
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1701552722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5793,6 +5822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: shift
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1759678781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5995,6 +6025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: K
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1775093398
 GameObject:
   m_ObjectHideFlags: 0
@@ -6339,6 +6370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: Y
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1889811968
 GameObject:
   m_ObjectHideFlags: 0
@@ -6449,6 +6481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: control
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1897107113
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,6 +6592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: U
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1917761295
 GameObject:
   m_ObjectHideFlags: 0
@@ -6669,6 +6703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: B
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1922413563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6779,6 +6814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: R
   keyCode: 0
+  shortcuts: []
 --- !u!1 &1934853639
 GameObject:
   m_ObjectHideFlags: 0
@@ -7028,6 +7064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
+  shortcuts: []
 --- !u!1 &2023423765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7484,3 +7521,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: D
   keyCode: 0
+  shortcuts: []
