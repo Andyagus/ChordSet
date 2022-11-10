@@ -6,14 +6,14 @@ namespace Interfaces
 {
     public class Subject
     {
-        private List<Observer> _observers = new List<Observer>();
+        private List<IObserver> _observers = new List<IObserver>();
 
-        public void AddObserver(Observer observer)
+        public void AddObserver(IObserver observer)
         {
             _observers.Add(observer);
         }
 
-        public void RemoveObserver(Observer observer)
+        public void RemoveObserver(IObserver observer)
         {
             _observers.Remove(observer);
         }
