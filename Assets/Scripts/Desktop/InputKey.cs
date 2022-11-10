@@ -6,7 +6,8 @@ namespace Desktop
     public class InputKey : MonoBehaviour, IKey
     {
         [SerializeField] private string _keyName;
-    
+        public Subject onKeyChanged;
+        
         string IKey.KeyName
         {
             get => _keyName;
