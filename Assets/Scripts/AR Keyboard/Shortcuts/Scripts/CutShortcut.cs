@@ -7,6 +7,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
         public override void Execute()
         {
             Debug.Log("Cut Shortcut Called");
+            onShortcutExecuted.Notify(this);
         }
     }
 }

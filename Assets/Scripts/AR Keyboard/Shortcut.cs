@@ -1,25 +1,25 @@
+using Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace AR_Keyboard
 {
+    //maybe implement subscriber observer here
     public class Shortcut : MonoBehaviour
     {
         public string shortcutName;
-        //image might require canvas...
-        public Image shortcutImage; 
-        // public Canvas shortcutGraphic;
+        public Image shortcutImage;
         public TextMeshProUGUI textMeshPro;
 
+        public Subject onShortcutExecuted;
+        
         private void Awake()
         {
+            onShortcutExecuted = new Subject();
             textMeshPro.text = shortcutName;
         }
 
-        public virtual void Execute()
-        {
-        
-        }
+        public virtual void Execute() {}
     }
 }
