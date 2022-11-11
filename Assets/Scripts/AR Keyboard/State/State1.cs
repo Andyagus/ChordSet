@@ -8,16 +8,20 @@ using UnityEngine;
 
 public class State1 : ARKeyboardState
 {
+    
     public override void Entry(ARKeyboard keyboard)
     {
-
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
-            if (primaryKey.KeyName == "C")
+            if (primaryKey.shortcuts[1] != null)
             {
                 KeyShortcutManager.PlaceKeyShortcut(primaryKey);
-                // KeyShortcutManager(key)
             }
+            // if (primaryKey.KeyName == "C")
+            // {
+            //     var shortcut = KeyShortcutManager.PlaceKeyShortcut(primaryKey);
+            //     
+            // }
         }
         
         foreach (var modifierKey in keyboard.ARModifierKeys)
@@ -48,14 +52,11 @@ public class State1 : ARKeyboardState
 
     public override void Exit(ARKeyboard keyboard)
     {
-        
-        
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
-            if (primaryKey.KeyName == "C")
+            if (primaryKey.shortcuts[1] != null)
             {
                 KeyShortcutManager.RemoveShortcut(primaryKey);
-                // KeyShortcutManager(key)
             }
         }
     }
