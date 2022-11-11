@@ -9,10 +9,19 @@ public class KeyShortcutManager : MonoBehaviour
     {
         if (key.shortcuts[1] != null)
         {
+            
+            //TODO Fix this placement key method also prefab is rotated 180, not done programatically, bad...
             var shortcut = Instantiate(key.shortcuts[1]);
-            var offset = Vector3.up * 2;
-            shortcut.transform.position = key.transform.position + offset;
-            shortcut.transform.SetParent(key.transform);
+            //match top of key - just winging it need to be more elegant -- this whole thing
+            var offset = Vector3.up * 1.10f;
+            var shortcutTransform = shortcut.transform;
+            var keyTransform = key.transform;
+            shortcutTransform.position = keyTransform.position + offset;
+            shortcutTransform.rotation = keyTransform.rotation;
+            // shortcutTransform.eulerAngles = new Vector3(keyTransform.eulerAngles.x, 180, 0f);
+            
+            shortcutTransform.SetParent(keyTransform);
+            
             return shortcut;
         }
 
