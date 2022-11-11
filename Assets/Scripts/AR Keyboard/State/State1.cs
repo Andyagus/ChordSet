@@ -4,6 +4,7 @@ using System.ComponentModel;
 using AR_Keyboard.State;
 using Desktop;
 using Effects;
+using Enums;
 using UnityEngine;
 
 public class State1 : ARKeyboardState
@@ -17,11 +18,6 @@ public class State1 : ARKeyboardState
             {
                 KeyShortcutManager.PlaceKeyShortcut(primaryKey);
             }
-            // if (primaryKey.KeyName == "C")
-            // {
-            //     var shortcut = KeyShortcutManager.PlaceKeyShortcut(primaryKey);
-            //     
-            // }
         }
         
         foreach (var modifierKey in keyboard.ARModifierKeys)
@@ -47,6 +43,22 @@ public class State1 : ARKeyboardState
                 }
             }
         }
+
+        foreach (var primaryKey in keyboard.ARPrimaryKeys)
+        {
+
+            if (input.KeyName == primaryKey.KeyName)
+            {
+                if (primaryKey.shortcuts[1] != null && input.keyState == EKeyState.KEY_PRESSED)
+                {
+                    //execute the command on the "C" key
+                    primaryKey.shortcuts[1].Execute();    
+                }
+            }
+            
+
+        }
+        
         return base.HandleInput(input, keyboard);
     }
 

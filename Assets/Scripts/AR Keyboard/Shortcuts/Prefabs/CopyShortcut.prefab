@@ -63,10 +63,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: CopyShortcut
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2984314691449829545, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
 --- !u!1 &2198584561612239925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3714149720024486861, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
   m_PrefabInstance: {fileID: 3245334460964743160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2204134455225243384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3719716987950428416, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+  m_PrefabInstance: {fileID: 3245334460964743160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1089620962703082347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198584561612239925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1050913793f15405abc195be64baad8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcutName: Copy
+  shortcutImage: {fileID: 0}
+  textMeshPro: {fileID: 2204134455225243384}

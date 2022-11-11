@@ -17,4 +17,9 @@ public class Shortcut : MonoBehaviour
     {
         textMeshPro.text = shortcutName;
     }
+
+    public virtual void Execute()
+    {
+        
+    }
 }
