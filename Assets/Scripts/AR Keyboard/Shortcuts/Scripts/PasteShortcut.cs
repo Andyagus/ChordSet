@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PasteShortcut : Shortcut
+namespace AR_Keyboard.Shortcuts.Scripts
 {
-   public override void Execute()
+   public class PasteShortcut : Shortcut
    {
-      Debug.Log("Paste shortcut called");
+      public override void Execute()
+      {
+         Debug.Log("Paste shortcut called");
+      }
    }
 }

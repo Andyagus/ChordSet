@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Effects;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CutShortcut : Shortcut
+namespace AR_Keyboard.Shortcuts.Scripts
 {
-    public override void Execute()
+    public class CutShortcut : Shortcut
     {
-        Debug.Log("Cut Shortcut Called");
+        public override void Execute()
+        {
+            Debug.Log("Cut Shortcut Called");
+        }
     }
 }

@@ -1,25 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Shortcut : MonoBehaviour
+namespace AR_Keyboard
 {
-    public string shortcutName;
-    //image might require canvas...
-    public Image shortcutImage; 
-    // public Canvas shortcutGraphic;
-    public TextMeshProUGUI textMeshPro;
-
-    private void Awake()
+    public class Shortcut : MonoBehaviour
     {
-        textMeshPro.text = shortcutName;
-    }
+        public string shortcutName;
+        //image might require canvas...
+        public Image shortcutImage; 
+        // public Canvas shortcutGraphic;
+        public TextMeshProUGUI textMeshPro;
 
-    public virtual void Execute()
-    {
+        private void Awake()
+        {
+            textMeshPro.text = shortcutName;
+        }
+
+        public virtual void Execute()
+        {
         
+        }
     }
 }

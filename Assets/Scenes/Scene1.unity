@@ -978,7 +978,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &206772319
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &280520097
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &681786371
@@ -1958,7 +1958,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &699887238
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &709226869
@@ -2244,7 +2244,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &749165182
@@ -2359,7 +2359,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &797006722
@@ -2884,7 +2884,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &879148766
@@ -3137,7 +3137,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1074017768
@@ -3475,7 +3475,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1127246304
@@ -4115,7 +4115,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1279414147
@@ -4421,7 +4421,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1344620125
@@ -4789,7 +4789,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1424026404
@@ -5222,7 +5222,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1500659654
@@ -5594,7 +5594,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1637356731
@@ -5787,7 +5787,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1701552722
@@ -6105,7 +6105,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1775093398
@@ -6454,7 +6454,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1889811968
@@ -6680,7 +6680,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1917761295
@@ -6795,7 +6795,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1922413563
@@ -6910,7 +6910,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1934853639
@@ -7621,6 +7621,63 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
+  - {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+--- !u!1001 &4430858144602260219
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044787, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506223546258044791, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      propertyPath: m_Name
+      value: NullObjectShortcut
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}

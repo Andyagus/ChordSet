@@ -14,10 +14,7 @@ public class State1 : ARKeyboardState
     {
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
-            if (primaryKey.shortcuts[1] != null)
-            {
-                KeyShortcutManager.PlaceKeyShortcut(primaryKey);
-            }
+            KeyShortcutManager.PlaceKeyShortcut(primaryKey);
         }
         
         foreach (var modifierKey in keyboard.ARModifierKeys)

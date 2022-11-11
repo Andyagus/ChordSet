@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UndoShortcut : Shortcut
+namespace AR_Keyboard.Shortcuts.Scripts
 {
-    public override void Execute()
+    public class UndoShortcut : Shortcut
     {
-        Debug.Log("Undo Shortcut Called");
+        public override void Execute()
+        {
+            Debug.Log("Undo Shortcut Called");
+        }
     }
 }
