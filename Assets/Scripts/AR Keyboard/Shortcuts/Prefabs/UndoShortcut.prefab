@@ -61,3 +61,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+--- !u!1 &6851393512067810061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3714149720024486861, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+  m_PrefabInstance: {fileID: 7826769501027487936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6845844718411030976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3719716987950428416, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+  m_PrefabInstance: {fileID: 7826769501027487936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4052075402279823267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6851393512067810061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac9f8806af9f48c682293268ececfe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcutName: Undo
+  shortcutImage: {fileID: 0}
+  textMeshPro: {fileID: 6845844718411030976}

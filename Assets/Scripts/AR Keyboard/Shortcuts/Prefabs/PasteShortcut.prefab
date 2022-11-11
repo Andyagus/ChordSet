@@ -70,3 +70,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3714149720024486861, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
   m_PrefabInstance: {fileID: 470989506423034830}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3825346713159033550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3719716987950428416, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+  m_PrefabInstance: {fileID: 470989506423034830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3939285011346192212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819620966416580611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d2e02db7e0e414a9b38556d4a54e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shortcutName: Paste
+  shortcutImage: {fileID: 0}
+  textMeshPro: {fileID: 3825346713159033550}

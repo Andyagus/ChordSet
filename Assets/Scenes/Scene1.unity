@@ -3682,7 +3682,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 5985195158143472523, guid: 2dbb5c1b7e53f4cd68aacb51443da695, type: 3}
+  - {fileID: 8449726573886629572, guid: 2dbb5c1b7e53f4cd68aacb51443da695, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1211919531
@@ -4000,7 +4000,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 2520847291744864606, guid: 777d64d48a88148bfb16b92f8ca19cab, type: 3}
+  - {fileID: -4052075402279823267, guid: 777d64d48a88148bfb16b92f8ca19cab, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1253659524
@@ -5015,7 +5015,7 @@ MonoBehaviour:
   keyCode: 0
   shortcuts:
   - {fileID: 0}
-  - {fileID: 5254810505220426320, guid: da4972cefc8b544ebaa80a137b2c7852, type: 3}
+  - {fileID: 3939285011346192212, guid: da4972cefc8b544ebaa80a137b2c7852, type: 3}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &1456803775
