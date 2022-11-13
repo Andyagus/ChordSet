@@ -39,7 +39,7 @@ namespace Effects
 
         private IEnumerator RevertBackColorTimer(Shortcut shortcut)
         {
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.3147f);
             shortcut.GetComponentInChildren<Image>().color = originalShortcutColor;
         }
 

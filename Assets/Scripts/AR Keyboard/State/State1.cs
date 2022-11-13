@@ -50,11 +50,8 @@ public class State1 : ARKeyboardState
             {
                 if (primaryKey.shortcuts[1] != null && input.keyState == EKeyState.KEY_PRESSED)
                 {
-                    //TODO 
-                    // primaryKey.onPrimaryKeyHit.Notify(this);
-                    //execute the command on the "C" key
-                    // primaryKey.shortcuts[1].Execute();
-
+                    
+                    //getting the active Shortcut and calling execute on it 
                     primaryKey.GetComponentInChildren<Shortcut>().Execute();
 
                 }
