@@ -21,5 +21,12 @@ namespace AR_Keyboard
         }
 
         public List<Shortcut> shortcuts;
+        
+        public Subject onPrimaryKeyHit;
+    
+        private void Awake()
+        {
+            onPrimaryKeyHit = new Subject();
+        }
     }
 }

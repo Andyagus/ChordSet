@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d2e02db7e0e414a9b38556d4a54e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eShortcut: 1
   shortcutName: Paste
   shortcutImage: {fileID: 0}
   textMeshPro: {fileID: 3825346713159033550}

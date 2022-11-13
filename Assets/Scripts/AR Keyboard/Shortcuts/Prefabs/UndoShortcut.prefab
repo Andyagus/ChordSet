@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac9f8806af9f48c682293268ececfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eShortcut: 3
   shortcutName: Undo
   shortcutImage: {fileID: 0}
   textMeshPro: {fileID: 6845844718411030976}

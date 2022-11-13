@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a7453b41fe54a62bf159b4bdb51309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eShortcut: 2
   shortcutName: Cut
   shortcutImage: {fileID: 0}
   textMeshPro: {fileID: 3383651962320681749}

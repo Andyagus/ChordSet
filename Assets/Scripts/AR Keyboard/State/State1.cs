@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using AR_Keyboard;
 using AR_Keyboard.State;
 using Desktop;
 using Effects;
@@ -15,6 +16,7 @@ public class State1 : ARKeyboardState
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
             KeyShortcutManager.PlaceKeyShortcut(primaryKey);
+            //you'd want to subscribe here
         }
         
         foreach (var modifierKey in keyboard.ARModifierKeys)
@@ -43,17 +45,20 @@ public class State1 : ARKeyboardState
 
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
-
+            
             if (input.KeyName == primaryKey.KeyName)
             {
                 if (primaryKey.shortcuts[1] != null && input.keyState == EKeyState.KEY_PRESSED)
                 {
+                    //TODO 
+                    // primaryKey.onPrimaryKeyHit.Notify(this);
                     //execute the command on the "C" key
-                    primaryKey.shortcuts[1].Execute();    
+                    // primaryKey.shortcuts[1].Execute();
+
+                    primaryKey.GetComponentInChildren<Shortcut>().Execute();
+
                 }
             }
-            
-
         }
         
         return base.HandleInput(input, keyboard);

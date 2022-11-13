@@ -10,24 +10,25 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour, IObserver
 {
     private AudioSource _audioSource;
-    private List<Shortcut> _shortcuts;
+    private List<ARPrimaryKey> _primaryKeys;
     
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _shortcuts = GameObject.Find("AR Keyboard").GetComponentsInChildren<Shortcut>().ToList();
+        _primaryKeys = GameObject.Find("AR Keyboard").GetComponentsInChildren<ARPrimaryKey>().ToList();
     }
 
     private void Start()
     {
-        foreach (var shortcut in _shortcuts)
+        foreach (var primaryKey in _primaryKeys)
         {
-            shortcut.onShortcutExecuted.AddObserver(this);
+            primaryKey.onPrimaryKeyHit.AddObserver(this);
         }
     }
 
     public void OnNotify(object entity)
     {
-        Debug.Log(entity);
+        Shortcut shortcut = (Shortcut)entity;
+        // entity.
     }
 }
