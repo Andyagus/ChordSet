@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AR_Keyboard.State;
 using Desktop;
+using Enums;
 using Interfaces;
 using Normcore;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour, IObserver
     {
-        private MockNormcore _normcore;
+        // private KeySync _keySync;
         private ARKeyboardState _state;
     
         //convenience list for instantiation
@@ -23,7 +24,6 @@ namespace AR_Keyboard
         private void Awake()
         {
 
-            _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
             ARPrimaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
             ARModifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
             _state = Instantiate(states[0], this.transform, true);
@@ -32,9 +32,15 @@ namespace AR_Keyboard
 
         private void Start()
         {
-            _normcore.normcoreModelUpdated.AddObserver(this);
+            
+            // _normcore.normcoreModelUpdated.AddObserver(this);
         }
 
+        public void OnKeyReceived(string keyName, EKeyState keyState)
+        {
+            Debug.Log($"Received {keyName}, {keyState}");
+        }
+        
         public void OnNotify(object entity)
         {
             var inputKey = (InputKey)entity; 

@@ -11,17 +11,20 @@ namespace Desktop
     public class InputManager : MonoBehaviour, IObserver
     {
         private List<InputKey> _inputKeys;
-        private MockNormcore _normcore;
-        
+
+        private KeySync _keySync;
         
         private void Awake()
         {
-            _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
+            // _normcore = GameObject.Find("Normcore").GetComponent<MockNormcore>();
+
             _inputKeys = GetComponentsInChildren<InputKey>().ToList<InputKey>();
         }
 
         private void Start()
         {
+            _keySync = GameObject.FindObjectOfType<KeySync>();
+
             foreach (var key in _inputKeys)
             {
                 key.onKeyChanged.AddObserver(this);
@@ -31,7 +34,12 @@ namespace Desktop
         public void OnNotify(object entity)
         {
             var inputKey = (InputKey)entity;
-            _normcore.UpdateNormcoreModel(inputKey);
+            
+            #if !UNITY_EDITOR
+            _keySync.SetNewKey(inputKey.name, inputKey.keyState);
+            #endif
+            
+            // _normcore.UpdateNormcoreModel(inputKey);
             
             //Removed this dictionary because requires keeping track of every key
             // InputKey inputKey = (InputKey)entity;
