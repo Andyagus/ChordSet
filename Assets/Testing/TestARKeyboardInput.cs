@@ -48,7 +48,7 @@ public class TestARKeyboardInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             dict[1].keyState = EKeyState.KEY_PRESSED;
-            _ARKeyboard.OnKeyDictionaryReceived(dict);
+            // _ARKeyboard.OnKeyDictionaryReceived(dict);
 
             // var inputKey1 = new GameObject().AddComponent<InputKey>();
             // inputKey1.KeyName = "A";
@@ -62,7 +62,7 @@ public class TestARKeyboardInput : MonoBehaviour
             if (dict[1])
             {
                 dict[1].keyState = EKeyState.KEY_UNPRESSED;
-                _ARKeyboard.OnKeyDictionaryReceived(dict);
+                // _ARKeyboard.OnKeyDictionaryReceived(dict);
             }
             // var inputKey1 = new GameObject().AddComponent<InputKey>();
             // inputKey1.KeyName = "A";
@@ -76,7 +76,7 @@ public class TestARKeyboardInput : MonoBehaviour
             if (dict[2])
             {
                 dict[2].keyState = EKeyState.KEY_PRESSED;
-                _ARKeyboard.OnKeyDictionaryReceived(dict);
+                // _ARKeyboard.OnKeyDictionaryReceived(dict);
             }
             // _ARKeyboard.OnKeyReceived("S", EKeyState.KEY_PRESSED);
         }
@@ -86,7 +86,7 @@ public class TestARKeyboardInput : MonoBehaviour
             if (dict[2])
             {
                 dict[2].keyState = EKeyState.KEY_UNPRESSED;
-                _ARKeyboard.OnKeyDictionaryReceived(dict);
+                // _ARKeyboard.OnKeyDictionaryReceived(dict);
             }
             // _ARKeyboard.OnKeyReceived("S", EKeyState.KEY_UNPRESSED);
         }

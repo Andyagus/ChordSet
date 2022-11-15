@@ -5,6 +5,7 @@ using AR_Keyboard.State;
 using Desktop;
 using Enums;
 using Interfaces;
+using Normal.Realtime.Serialization;
 using Normcore;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
@@ -22,6 +23,9 @@ namespace AR_Keyboard
         [NonSerialized] public List<ARKey> ARPrimaryKeys;
         [NonSerialized] public List<ARKey> ARModifierKeys;
     
+        private KeySyncDictionary _keySyncDictionary;
+
+        
         private void Awake()
         {
 
@@ -34,6 +38,7 @@ namespace AR_Keyboard
         //TODO Just for dictionary testing
         private void Start()
         {
+            _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
             // var inputKey1 = new GameObject().AddComponent<InputKey>();
             // inputKey1.KeyName = "A";
             // inputKey1.keyState = EKeyState.KEY_PRESSED;
@@ -51,7 +56,7 @@ namespace AR_Keyboard
             // inputKey4.keyState = EKeyState.KEY_UNPRESSED;
             //
 
-            
+
             // var localDict = new Dictionary<int, InputKey>()
             // {
             //     {1, inputKey1},
@@ -69,12 +74,30 @@ namespace AR_Keyboard
         }
 
 
-        public void OnKeyDictionaryReceived(Dictionary<int, InputKey> dict)
+        public void SayHI()
         {
+            Debug.Log("hi");
+        }
+        
+        public void OnKeyDictionaryReceived(uint keyCode, RealtimeDictionary<KeySyncModel> dict)
+        {
+            Debug.Log("On dictionary Received called");
+            var sphere = Instantiate(debugSphere);
+            sphere.transform.position = transform.position;
+            
+            // Debug.Log(dict[keyCode].keyState);
             foreach (var kvp in dict)
             {
-                HandleInput(kvp.Value);    
+                Instantiate(debugSphere);
+                Debug.Log("AR Keyboard: " + kvp.Value.keyState);
             }
+            // // dict[keyCode].keyName;
+            // foreach (var kvp in dict)
+            // {
+            //     // kvp[keyCode]
+            //     // Debug.Log(kvp.Key);
+            //     // HandleInput(kvp.Value);    
+            // }
         }
         
         public void OnKeyReceived(string keyName, EKeyState keyState)

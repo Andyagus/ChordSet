@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
@@ -12,7 +13,7 @@ namespace Desktop
     {
         private List<InputKey> _inputKeys;
 
-        private KeySync _keySync;
+        private KeySyncDictionary _keySyncDictionary;
         
         private void Awake()
         {
@@ -23,18 +24,37 @@ namespace Desktop
 
         private void Start()
         {
-            _keySync = GameObject.FindObjectOfType<KeySync>();
+            _keySyncDictionary = GameObject.FindObjectOfType<KeySyncDictionary>();
 
             foreach (var key in _inputKeys)
             {
                 key.onKeyChanged.AddObserver(this);
             }
+
+            //TODO this is not great.
+            StartCoroutine(AddToDictionary());
+
+
+        }
+
+        public IEnumerator AddToDictionary()
+        {
+            yield return new WaitForSeconds(1);
+            
+            foreach (var key in _inputKeys)
+            {
+                _keySyncDictionary.CreateDictionary(key);
+            }      
         }
 
         public void OnNotify(object entity)
         {
+            
+            
             var inputKey = (InputKey)entity;
-            _keySync.SetNewKey(inputKey.KeyName, inputKey.keyState);
+            _keySyncDictionary.SetDictionary(inputKey);
+
+            // _keySync.SetNewKey(inputKey.KeyName, inputKey.keyState);
             
             
             // _normcore.UpdateNormcoreModel(inputKey);
