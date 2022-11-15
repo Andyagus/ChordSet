@@ -34,10 +34,8 @@ namespace Desktop
         public void OnNotify(object entity)
         {
             var inputKey = (InputKey)entity;
-            
-            #if !UNITY_EDITOR
             _keySync.SetNewKey(inputKey.name, inputKey.keyState);
-            #endif
+            
             
             // _normcore.UpdateNormcoreModel(inputKey);
             

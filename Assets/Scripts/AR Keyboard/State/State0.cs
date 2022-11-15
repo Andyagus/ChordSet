@@ -27,18 +27,14 @@ namespace AR_Keyboard.State
             //sooo nested.
             foreach (var modifierKey in keyboard.ARModifierKeys)
             {
-                if (input.KeyName == modifierKey.KeyName)
-                {
-                    if (input.keyState == EKeyState.KEY_PRESSED)
-                    {
-                        if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
-                        {
-                            // Debug.Log("command pressed");
-                            var state1 = Instantiate(keyboard.states[1]);
-                            return state1;
-                        }
-                    }
-                }
+                if (input.KeyName != modifierKey.KeyName) continue;
+                if (input.keyState != EKeyState.KEY_PRESSED) continue;
+                if (modifierKey.KeyName != "command-left" && modifierKey.KeyName != "command-right") continue;
+                // Debug.Log("command pressed");
+                //TODO remove
+                KeyColorManager.ChangeKeyColor(modifierKey, Color.white);
+                var state1 = Instantiate(keyboard.states[1]);
+                return state1;
             }
             
             //would love to do a direct compare input == key

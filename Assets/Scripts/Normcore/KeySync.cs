@@ -16,7 +16,7 @@ public class KeySync : RealtimeComponent<KeySyncModel>
     private void Start()
     {
         //need conditional here for only mobile app
-        _ARKeyboard = FindObjectOfType<ARKeyboard>();
+        _ARKeyboard = GameObject.FindObjectOfType<ARKeyboard>();
     }
 
     protected override void OnRealtimeModelReplaced(KeySyncModel previousModel, KeySyncModel currentModel)
@@ -37,7 +37,9 @@ public class KeySync : RealtimeComponent<KeySyncModel>
 
     private void HandleKeyState()
     {
+        #if !UNITY_EDITOR
         _ARKeyboard.OnKeyReceived(model.keyName, model.keyState);
+        #endif
         // Debug.Log($"New Key Set: {model.keyName}, {model.keyState}");
     }
 

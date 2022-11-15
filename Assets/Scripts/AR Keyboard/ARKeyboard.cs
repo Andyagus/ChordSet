@@ -12,7 +12,6 @@ namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour, IObserver
     {
-        // private KeySync _keySync;
         private ARKeyboardState _state;
     
         //convenience list for instantiation
@@ -29,25 +28,22 @@ namespace AR_Keyboard
             _state = Instantiate(states[0], this.transform, true);
             _state.Entry(this);
         }
-
-        private void Start()
-        {
-            
-            // _normcore.normcoreModelUpdated.AddObserver(this);
-        }
+        
 
         public void OnKeyReceived(string keyName, EKeyState keyState)
         {
-            Debug.Log($"Received {keyName}, {keyState}");
-        }
-        
-        public void OnNotify(object entity)
-        {
-            var inputKey = (InputKey)entity; 
-            // Debug.Log("Update state machine with: " + inputKey);
+            var inputKey = new GameObject().AddComponent<InputKey>();
+            inputKey.KeyName = keyName;
+            inputKey.keyState = keyState;
 
-            //Ask question: how could a state store a value and handle functionality at same time? 
-            var state = _state.HandleInput(inputKey, this);
+            HandleInput(inputKey);
+
+        }
+
+        private void HandleInput(InputKey input)
+        {
+            var state = _state.HandleInput(input, this);
+            
             if (state != null)
             {
                 _state.Exit(this);
@@ -56,6 +52,15 @@ namespace AR_Keyboard
                 _state.transform.SetParent(this.transform);
                 _state.Entry(this);
             }
+        }
+        
+        public void OnNotify(object entity)
+        {
+            var inputKey = (InputKey)entity; 
+            // Debug.Log("Update state machine with: " + inputKey);
+
+            //Ask question: how could a state store a value and handle functionality at same time? 
+           
         }
     }
 }
