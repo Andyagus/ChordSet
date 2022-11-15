@@ -4046,6 +4046,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1830328406}
   - component: {fileID: 1830328405}
+  - component: {fileID: 1830328407}
   m_Layer: 0
   m_Name: AR Keyboard
   m_TagString: Untagged
@@ -4065,6 +4066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548081bddc0a144ca818fdbe68cd97a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugSphere: {fileID: 2043261719982629501, guid: f32951caaded94881bc177625acadd92, type: 3}
   states:
   - {fileID: 997014838649492552, guid: ab1c29177339d4018b67f6ec12bc6f11, type: 3}
   - {fileID: 4275630421079233843, guid: ae2bec4d7f0184d01a9ec82220da82ef, type: 3}
@@ -4083,6 +4085,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50.492, y: 180, z: 0}
+--- !u!114 &1830328407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830328404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0a59c3cb21c4030ac470287b333208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1859980893
 GameObject:
   m_ObjectHideFlags: 0

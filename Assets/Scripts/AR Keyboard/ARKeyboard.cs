@@ -12,6 +12,7 @@ namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour, IObserver
     {
+        public GameObject debugSphere;
         private ARKeyboardState _state;
     
         //convenience list for instantiation
@@ -42,10 +43,15 @@ namespace AR_Keyboard
 
         private void HandleInput(InputKey input)
         {
+            Debug.Log("AR Keyboard: Handle Input");   
             var state = _state.HandleInput(input, this);
             
             if (state != null)
             {
+                // var sphere = Instantiate(debugSphere);
+                // sphere.transform.position = transform.position;
+                // Debug.Log("new state");
+
                 _state.Exit(this);
                 Destroy(_state.gameObject);
                 _state = state;
