@@ -12,7 +12,6 @@ public class KeySync : RealtimeComponent<KeySyncModel>
     private ARKeyboard _ARKeyboard; 
     // ReSharper restore InconsistentNaming
 
-
     private void Start()
     {
         //need conditional here for only mobile app

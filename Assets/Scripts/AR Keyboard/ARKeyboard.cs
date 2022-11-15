@@ -7,6 +7,7 @@ using Enums;
 using Interfaces;
 using Normcore;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 namespace AR_Keyboard
 {
@@ -29,15 +30,61 @@ namespace AR_Keyboard
             _state = Instantiate(states[0], this.transform, true);
             _state.Entry(this);
         }
-        
 
+        //TODO Just for dictionary testing
+        private void Start()
+        {
+            // var inputKey1 = new GameObject().AddComponent<InputKey>();
+            // inputKey1.KeyName = "A";
+            // inputKey1.keyState = EKeyState.KEY_PRESSED;
+            //
+            // var inputKey2 = new GameObject().AddComponent<InputKey>();
+            // inputKey2.KeyName = "S";
+            // inputKey2.keyState = EKeyState.KEY_PRESSED;
+            //
+            // var inputKey3 = new GameObject().AddComponent<InputKey>();
+            // inputKey3.KeyName = "D";
+            // inputKey3.keyState = EKeyState.KEY_PRESSED;
+            //
+            // var inputKey4 = new GameObject().AddComponent<InputKey>();
+            // inputKey4.KeyName = "A";
+            // inputKey4.keyState = EKeyState.KEY_UNPRESSED;
+            //
+
+            
+            // var localDict = new Dictionary<int, InputKey>()
+            // {
+            //     {1, inputKey1},
+            //     {2, inputKey2},
+            //     {3, inputKey3},
+            //     {4, inputKey4}
+            //
+            // };
+
+            // foreach (var kvp in localDict)
+            // {
+            //     HandleInput(kvp.Value);    
+            // }
+
+        }
+
+
+        public void OnKeyDictionaryReceived(Dictionary<int, InputKey> dict)
+        {
+            foreach (var kvp in dict)
+            {
+                HandleInput(kvp.Value);    
+            }
+        }
+        
         public void OnKeyReceived(string keyName, EKeyState keyState)
         {
-            var inputKey = new GameObject().AddComponent<InputKey>();
-            inputKey.KeyName = keyName;
-            inputKey.keyState = keyState;
-
-            HandleInput(inputKey);
+            
+            // var inputKey = new GameObject().AddComponent<InputKey>();
+            // inputKey.KeyName = keyName;
+            // inputKey.keyState = keyState;
+            //
+            // HandleInput(inputKey);
 
         }
 

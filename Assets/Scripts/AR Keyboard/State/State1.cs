@@ -53,7 +53,7 @@ public class State1 : ARKeyboardState
                 {
                     
                     //TODO Bug when letting go of modifier after activating shortcut
-                    
+                    // Debug.Log("Calling Execute Shortcut");
                     //getting the active Shortcut and calling execute on it 
                     primaryKey.GetComponentInChildren<Shortcut>().Execute();
 
