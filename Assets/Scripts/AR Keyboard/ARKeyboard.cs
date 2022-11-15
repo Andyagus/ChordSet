@@ -39,57 +39,18 @@ namespace AR_Keyboard
         private void Start()
         {
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
-            // var inputKey1 = new GameObject().AddComponent<InputKey>();
-            // inputKey1.KeyName = "A";
-            // inputKey1.keyState = EKeyState.KEY_PRESSED;
-            //
-            // var inputKey2 = new GameObject().AddComponent<InputKey>();
-            // inputKey2.KeyName = "S";
-            // inputKey2.keyState = EKeyState.KEY_PRESSED;
-            //
-            // var inputKey3 = new GameObject().AddComponent<InputKey>();
-            // inputKey3.KeyName = "D";
-            // inputKey3.keyState = EKeyState.KEY_PRESSED;
-            //
-            // var inputKey4 = new GameObject().AddComponent<InputKey>();
-            // inputKey4.KeyName = "A";
-            // inputKey4.keyState = EKeyState.KEY_UNPRESSED;
-            //
-
-
-            // var localDict = new Dictionary<int, InputKey>()
-            // {
-            //     {1, inputKey1},
-            //     {2, inputKey2},
-            //     {3, inputKey3},
-            //     {4, inputKey4}
-            //
-            // };
-
-            // foreach (var kvp in localDict)
-            // {
-            //     HandleInput(kvp.Value);    
-            // }
-
+            
         }
 
-
-        public void SayHI()
-        {
-            Debug.Log("hi");
-        }
-        
         public void OnKeyDictionaryReceived(uint keyCode, RealtimeDictionary<KeySyncModel> dict)
         {
-            Debug.Log("On dictionary Received called");
-            var sphere = Instantiate(debugSphere);
-            sphere.transform.position = transform.position;
-            
-            // Debug.Log(dict[keyCode].keyState);
             foreach (var kvp in dict)
             {
-                Instantiate(debugSphere);
-                Debug.Log("AR Keyboard: " + kvp.Value.keyState);
+                var inputKey = new GameObject().AddComponent<InputKey>();
+                inputKey.KeyName = kvp.Value.keyName;
+                inputKey.keyState = kvp.Value.keyState;
+                
+                HandleInput(inputKey);
             }
             // // dict[keyCode].keyName;
             // foreach (var kvp in dict)

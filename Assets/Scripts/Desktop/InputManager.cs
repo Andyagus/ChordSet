@@ -50,7 +50,6 @@ namespace Desktop
         public void OnNotify(object entity)
         {
             
-            
             var inputKey = (InputKey)entity;
             _keySyncDictionary.SetDictionary(inputKey);
 
