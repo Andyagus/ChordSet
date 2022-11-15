@@ -5285,7 +5285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416791929047875105, guid: 4e5fac90a856c4cc3beba1017f03760c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 416791929047875107, guid: 4e5fac90a856c4cc3beba1017f03760c, type: 3}
       propertyPath: _ARKeyboard
