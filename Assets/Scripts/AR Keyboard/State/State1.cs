@@ -51,6 +51,8 @@ public class State1 : ARKeyboardState
                 if (primaryKey.shortcuts[1] != null && input.keyState == EKeyState.KEY_PRESSED)
                 {
                     
+                    //TODO Bug when letting go of modifier after activating shortcut
+                    
                     //getting the active Shortcut and calling execute on it 
                     primaryKey.GetComponentInChildren<Shortcut>().Execute();
 
