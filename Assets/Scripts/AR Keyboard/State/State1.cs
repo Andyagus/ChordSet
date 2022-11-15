@@ -13,6 +13,7 @@ public class State1 : ARKeyboardState
     
     public override void Entry(ARKeyboard keyboard)
     {
+        Debug.Log("Entered State 1");
         foreach (var primaryKey in keyboard.ARPrimaryKeys)
         {
             KeyShortcutManager.PlaceKeyShortcut(primaryKey);

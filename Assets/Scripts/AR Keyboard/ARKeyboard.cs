@@ -43,15 +43,11 @@ namespace AR_Keyboard
 
         private void HandleInput(InputKey input)
         {
-            Debug.Log("AR Keyboard: Handle Input");   
             var state = _state.HandleInput(input, this);
             
             if (state != null)
             {
-                // var sphere = Instantiate(debugSphere);
-                // sphere.transform.position = transform.position;
-                // Debug.Log("new state");
-
+                Debug.Log("New State received");
                 _state.Exit(this);
                 Destroy(_state.gameObject);
                 _state = state;
