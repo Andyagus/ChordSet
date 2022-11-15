@@ -22,8 +22,8 @@ namespace AR_Keyboard.State
 
         public override ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard)
         {
-            
-            Debug.Log($"Input:{input.KeyName},  {input.keyState}");
+            //TODO This is a good debug             
+            // Debug.Log($"Input:{input.KeyName},  {input.keyState}");
             
             //Not sure if its good to have split up into two separate lists, doesn't really matter
             

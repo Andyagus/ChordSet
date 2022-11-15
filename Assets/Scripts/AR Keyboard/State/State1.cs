@@ -24,6 +24,7 @@ public class State1 : ARKeyboardState
         {
             if(modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
             {
+                Debug.Log("Accessed modifier keys");
                 KeyColorManager.ChangeKeyColor(modifierKey, Color.yellow);
             }
         }

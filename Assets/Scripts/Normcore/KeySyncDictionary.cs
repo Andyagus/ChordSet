@@ -24,14 +24,17 @@ public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
 
     private void OnModelAdded(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel keySyncModel, bool remote)
     {
-        Debug.Log("On model added");
+        // Debug.Log("On model added");
     }
 
     private void OnModelReplaced(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel oldmodel, KeySyncModel newmodel, bool remote)
     {
         // #if !UNITY_EDITOR
         _ARKeyboard = GameObject.FindObjectOfType<ARKeyboard>();
-        _ARKeyboard.OnKeyDictionaryReceived(1, model.realtimeDictionary);
+        if (_ARKeyboard != null)
+        {
+            _ARKeyboard.OnKeyDictionaryReceived(1, model.realtimeDictionary);
+        }
         // #endif
         
         // Debug.Log("On model replaced");
