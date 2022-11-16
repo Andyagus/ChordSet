@@ -41,15 +41,15 @@ namespace AR_Keyboard
 
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
-            // foreach (var kvp in dict)
-            // {
-            //     //TODO USE EXISTING COMPONENTS IN THE SCENE -- maybe create all on start
-            //     var inputKey = new GameObject().AddComponent<InputKey>();
-            //     inputKey.KeyName = kvp.Value.keyName;
-            //     inputKey.keyState = kvp.Value.keyState;
-            //     
-            //     HandleInput(inputKey);
-            // }
+            foreach (var kvp in dict)
+            {
+                //TODO USE EXISTING COMPONENTS IN THE SCENE -- maybe create all on start
+                var inputKey = new GameObject().AddComponent<InputKey>();
+                inputKey.KeyName = kvp.Value.keyName;
+                inputKey.keyState = kvp.Value.keyState;
+                
+                HandleInput(inputKey);
+            }
      
         }
         
