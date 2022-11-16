@@ -20,8 +20,12 @@ namespace AR_Keyboard
             set => keyCode = value;
         }
 
-        public List<Shortcut> shortcuts;
-        
+        public Shortcut typingStateShortcut;
+        public Shortcut commandStateShortcut;
+        //Other shortcuts...
+        //public Shortcut commandShiftStateShortcut;
+        //public Shortcut commandShiftStateShortcut;
+
         public Subject onPrimaryKeyHit;
     
         private void Awake()
