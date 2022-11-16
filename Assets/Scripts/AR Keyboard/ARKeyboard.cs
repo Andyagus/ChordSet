@@ -12,23 +12,20 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 namespace AR_Keyboard
 {
-    public class ARKeyboard : MonoBehaviour, IObserver
+    public class ARKeyboard : MonoBehaviour
     {
         public GameObject debugSphere;
         private ARKeyboardState _state;
-    
-        //convenience list for instantiation
+        
         public List<ARKeyboardState> states;
     
-        [NonSerialized] public List<ARKey> ARPrimaryKeys;
-        [NonSerialized] public List<ARKey> ARModifierKeys;
+        public List<ARKey> ARPrimaryKeys;
+        public List<ARKey> ARModifierKeys;
     
         private KeySyncDictionary _keySyncDictionary;
 
-        
         private void Awake()
         {
-
             ARPrimaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
             ARModifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
             _state = Instantiate(states[0], this.transform, true);
@@ -42,36 +39,30 @@ namespace AR_Keyboard
             
         }
 
-        public void OnKeyDictionaryReceived(uint keyCode, RealtimeDictionary<KeySyncModel> dict)
+        public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
-            foreach (var kvp in dict)
-            {
-                var inputKey = new GameObject().AddComponent<InputKey>();
-                inputKey.KeyName = kvp.Value.keyName;
-                inputKey.keyState = kvp.Value.keyState;
-                
-                HandleInput(inputKey);
-            }
-            // // dict[keyCode].keyName;
             // foreach (var kvp in dict)
             // {
-            //     // kvp[keyCode]
-            //     // Debug.Log(kvp.Key);
-            //     // HandleInput(kvp.Value);    
+            //     //TODO USE EXISTING COMPONENTS IN THE SCENE -- maybe create all on start
+            //     var inputKey = new GameObject().AddComponent<InputKey>();
+            //     inputKey.KeyName = kvp.Value.keyName;
+            //     inputKey.keyState = kvp.Value.keyState;
+            //     
+            //     HandleInput(inputKey);
             // }
+     
         }
         
-        public void OnKeyReceived(string keyName, EKeyState keyState)
-        {
-            
-            // var inputKey = new GameObject().AddComponent<InputKey>();
-            // inputKey.KeyName = keyName;
-            // inputKey.keyState = keyState;
-            //
-            // HandleInput(inputKey);
-
-        }
-
+        //
+        // public void AcceptTestInput(string keyName, EKeyState state)
+        // {
+        //     var inputKey = new GameObject().AddComponent<InputKey>();
+        //     inputKey.KeyName = keyName;
+        //     inputKey.keyState = state;
+        //     HandleInput();
+        // }
+        //
+        
         private void HandleInput(InputKey input)
         {
             var state = _state.HandleInput(input, this);
@@ -86,13 +77,14 @@ namespace AR_Keyboard
             }
         }
         
-        public void OnNotify(object entity)
-        {
-            var inputKey = (InputKey)entity; 
-            // Debug.Log("Update state machine with: " + inputKey);
-
-            //Ask question: how could a state store a value and handle functionality at same time? 
-           
-        }
+        // // TODO removed observer
+        // public void OnNotify(object entity)
+        // {
+        //     // var inputKey = (InputKey)entity; 
+        //     // Debug.Log("Update state machine with: " + inputKey);
+        //
+        //     //Ask question: how could a state store a value and handle functionality at same time? 
+        //    
+        // }
     }
 }

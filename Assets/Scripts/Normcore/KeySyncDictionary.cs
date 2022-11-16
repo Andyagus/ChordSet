@@ -33,7 +33,7 @@ public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
         _ARKeyboard = GameObject.FindObjectOfType<ARKeyboard>();
         if (_ARKeyboard != null)
         {
-            _ARKeyboard.OnKeyDictionaryReceived(1, model.realtimeDictionary);
+            _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);
         }
         // #endif
         

@@ -47,7 +47,8 @@ public class TestARKeyboardInput : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.A))
         {
-            dict[1].keyState = EKeyState.KEY_PRESSED;
+            // _ARKeyboard.AcceptTestInput("A", EKeyState.KEY_PRESSED);
+            // dict[1].keyState = EKeyState.KEY_PRESSED;
             // _ARKeyboard.OnKeyDictionaryReceived(dict);
 
             // var inputKey1 = new GameObject().AddComponent<InputKey>();
@@ -59,11 +60,8 @@ public class TestARKeyboardInput : MonoBehaviour
         
         if (Input.GetKeyUp(KeyCode.A))
         {
-            if (dict[1])
-            {
-                dict[1].keyState = EKeyState.KEY_UNPRESSED;
-                // _ARKeyboard.OnKeyDictionaryReceived(dict);
-            }
+            // _ARKeyboard.AcceptTestInput("A", EKeyState.KEY_UNPRESSED);
+
             // var inputKey1 = new GameObject().AddComponent<InputKey>();
             // inputKey1.KeyName = "A";
             // inputKey1.keyState = EKeyState.KEY_UNPRESSED;

@@ -15,6 +15,9 @@ namespace Effects
                 //TODO Fix this placement key method also prefab is rotated 180, not done programatically, bad...
                 //TODO Need to fix so offset is ontop of the key, world to local……
                 var shortcut = Instantiate(key.shortcuts[1]);
+                
+                
+                
                 //match top of key - just winging it need to be more elegant -- this whole thing
                 // var offset = Vector3.forward * 3.9f;
                 var shortcutTransform = shortcut.transform;

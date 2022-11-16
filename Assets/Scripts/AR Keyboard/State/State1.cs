@@ -31,18 +31,6 @@ public class State1 : ARKeyboardState
     }
 
     public override ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard){
-        //     foreach (var modifierKey in keyboard.ARModifierKeys)
-    //     {
-    //         if (input.KeyName == modifierKey.KeyName && input.keyState == EKeyState.KEY_UNPRESSED)
-    //         {
-    //             if (modifierKey.KeyName == "command-left" && input.keyState == EKeyState.KEY_UNPRESSED || modifierKey.KeyName == "command-right" && input.keyState == EKeyState.KEY_UNPRESSED)
-    //             {
-    //                 // Debug.Log("command released");
-    //                 Debug.Log("Calling back to state 0");
-    //                 var state0 = Instantiate(keyboard.states[0]);
-    //                 return state0;
-    //             }
-    //         }
 
         foreach (var modifierKey in keyboard.ARModifierKeys)
         {
