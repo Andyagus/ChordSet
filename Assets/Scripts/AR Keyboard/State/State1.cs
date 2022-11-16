@@ -24,23 +24,37 @@ public class State1 : ARKeyboardState
         {
             if(modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
             {
-                Debug.Log("Accessed modifier keys");
+                //
                 KeyColorManager.ChangeKeyColor(modifierKey, Color.yellow);
             }
         }
     }
 
-    public override ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard)
-    {
+    public override ARKeyboardState HandleInput(InputKey input, ARKeyboard keyboard){
+        //     foreach (var modifierKey in keyboard.ARModifierKeys)
+    //     {
+    //         if (input.KeyName == modifierKey.KeyName && input.keyState == EKeyState.KEY_UNPRESSED)
+    //         {
+    //             if (modifierKey.KeyName == "command-left" && input.keyState == EKeyState.KEY_UNPRESSED || modifierKey.KeyName == "command-right" && input.keyState == EKeyState.KEY_UNPRESSED)
+    //             {
+    //                 // Debug.Log("command released");
+    //                 Debug.Log("Calling back to state 0");
+    //                 var state0 = Instantiate(keyboard.states[0]);
+    //                 return state0;
+    //             }
+    //         }
+
         foreach (var modifierKey in keyboard.ARModifierKeys)
         {
-            if (input.KeyName == modifierKey.KeyName)
+            if (modifierKey.KeyName == input.KeyName)
             {
-                if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
+                if (input.keyState == EKeyState.KEY_UNPRESSED)
                 {
-                    // Debug.Log("command released");
-                    var state0 = Instantiate(keyboard.states[0]);
-                    return state0;
+                    if (modifierKey.KeyName == "command-left")
+                    {
+                        var state0 = Instantiate(keyboard.states[0]);
+                        return state0;
+                    }
                 }
             }
         }

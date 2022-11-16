@@ -78,7 +78,6 @@ namespace AR_Keyboard
             
             if (state != null)
             {
-                Debug.Log("New State received");
                 _state.Exit(this);
                 Destroy(_state.gameObject);
                 _state = state;

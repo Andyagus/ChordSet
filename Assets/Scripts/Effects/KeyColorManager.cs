@@ -45,6 +45,7 @@ namespace Effects
 
         public static void ChangeKeyColor(ARKey key, Color color)
         {
+            // Debug.Log("Color Manager: " + key.KeyName);
             var keyMaterial= key.GetComponent<MeshRenderer>().material;
             keyMaterial.color = color;
         }
