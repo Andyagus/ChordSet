@@ -16,6 +16,8 @@ namespace AR_Keyboard.State
         /// </summary>
         // public List<ARKey> interestedModifiers;
         
+        
+        //we are passing in a dictionary of every single key on handle input
         public ARKeyboardState nextState;
         
         //Todo discuss with sunny, make all keys prefabs? Get rid of nested loop - algorithmic..
@@ -34,8 +36,11 @@ namespace AR_Keyboard.State
         {
             if (keyName == "command-left" || keyName == "command-right")
             {
-                var commandState = Instantiate(keyboard.commandState);
-                return commandState;
+                if (keyState == EKeyState.KEY_PRESSED)
+                {
+                    var commandState = Instantiate(keyboard.commandState);
+                    return commandState;
+                }
             }
 
             foreach (var primaryKey in keyboard.ARPrimaryKeys)

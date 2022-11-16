@@ -24,7 +24,6 @@ namespace AR_Keyboard
         // public List<ARKeyboardState> states;
         // public ARKeyboardState initialState;
         
-        
         // ReSharper disable once InconsistentNaming
         [NonSerialized] public List<ARKey> ARPrimaryKeys;
         // ReSharper disable once InconsistentNaming
@@ -44,7 +43,6 @@ namespace AR_Keyboard
         private void Start()
         {
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
-            
         }
 
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
@@ -68,7 +66,6 @@ namespace AR_Keyboard
             
             if (state != null)
             {
-                Debug.Log("Setting new state");
                 _state.Exit(this);
                 Destroy(_state.gameObject);
                 _state = state;

@@ -8,6 +8,7 @@ namespace AR_Keyboard.State
     {
         public override void Entry(ARKeyboard keyboard)
         {
+            //modifier keys are directly linked to the keyboard
             foreach (var modifierKey in keyboard.ARModifierKeys)
             {
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
@@ -24,9 +25,9 @@ namespace AR_Keyboard.State
 
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
-            foreach (var modifierKey in keyboard.ARModifierKeys)
-            {
-                if (modifierKey.KeyName == "command-left")
+          
+            //modifiers we have a specific we are looking for 
+                if (keyName == "command-left")
                 {
                     if (keyState == EKeyState.KEY_UNPRESSED)
                     {
@@ -36,8 +37,20 @@ namespace AR_Keyboard.State
                         return typingState;
                     }
                 }
-            }
-            return null;
+
+            //primary, we are interested in all keys
+                foreach (var primaryKey in keyboard.ARPrimaryKeys)
+                {
+                    if (keyName == primaryKey.KeyName)
+                    {
+                        if (keyState == EKeyState.KEY_PRESSED)
+                        {
+                            primaryKey.GetComponentInChildren<Shortcut>().Execute();
+                        }
+                    }
+                }
+                
+                return null;
         }
 
         public override void Exit(ARKeyboard keyboard)
