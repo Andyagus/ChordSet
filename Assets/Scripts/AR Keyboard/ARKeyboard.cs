@@ -8,7 +8,6 @@ using Interfaces;
 using Normal.Realtime.Serialization;
 using Normcore;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 namespace AR_Keyboard
 {

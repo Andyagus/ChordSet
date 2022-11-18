@@ -12,5 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/3Normcore/NormcoreCommonScene.unity
     guid: f8bee401a16414d5d91fbe012a0f56ae
   m_configObjects:
+    AR Foundation RemoteARFoundationRemoteLoaderSettings: {fileID: 11400000, guid: 6ee8623258bc94713b1fe1d84767dd92, type: 2}
+    AR Foundation RemoteARFoundationRemoteSessionRecordsData: {fileID: 11400000, guid: 6fa4771eab365469ab7852080c9049d1, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 9e62da970586d49479f23562ec92efa5, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: cf110879396d14e46924de692395555a, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 852beb6c9013845e6a2ff1b508e4755b, type: 2}
