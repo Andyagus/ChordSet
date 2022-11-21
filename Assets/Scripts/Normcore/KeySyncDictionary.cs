@@ -17,6 +17,7 @@ public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
     
     protected override void OnRealtimeModelReplaced(KeySyncDictionaryModel previousModel, KeySyncDictionaryModel currentModel)
     {
+        // currentModel.realtimeDictionary.modelReplaced;
         currentModel.realtimeDictionary.modelAdded += OnModelAdded;
         currentModel.realtimeDictionary.modelReplaced += OnModelReplaced;
     }
@@ -47,9 +48,11 @@ public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
 
     public void CreateDictionary(InputKey inputKey)
     {
-        var key = new KeySyncModel();
-        key.keyName = inputKey.KeyName;
-        key.keyState = inputKey.keyState;
+        var key = new KeySyncModel
+        {
+            keyName = inputKey.KeyName,
+            keyState = inputKey.keyState
+        };
         if (!model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
         {
             model.realtimeDictionary.Add((uint)inputKey.KeyCode, key);
@@ -58,9 +61,11 @@ public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
 
     public void SetDictionary(InputKey inputKey)
     {
-        var key = new KeySyncModel();
-        key.keyName = inputKey.KeyName;
-        key.keyState = inputKey.keyState;
+        var key = new KeySyncModel
+        {
+            keyName = inputKey.KeyName,
+            keyState = inputKey.keyState
+        };
 
         if (model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
         {
