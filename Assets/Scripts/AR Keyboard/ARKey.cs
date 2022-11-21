@@ -22,30 +22,58 @@ namespace AR_Keyboard
             set => keyCode = value;
         }
 
+
+        public Shortcut currentState;
+        
         public Shortcut typingStateShortcut;
         public Shortcut commandStateShortcut;
-        //Other shortcuts...
-        //public Shortcut commandShiftStateShortcut;
-        //public Shortcut commandShiftStateShortcut;
 
         public Subject onPrimaryKeyHit;
-    
+        
+        private ARKeyboard _arKeyboard;
+        
         private void Awake()
         {
+            _arKeyboard = GameObject.Find("AR Keyboard").GetComponent<ARKeyboard>();
+            _arKeyboard.onStateChanged += OnStateChanged;
             onPrimaryKeyHit = new Subject();
+        }
+
+        private void OnStateChanged(ARKeyboardState state)
+        {
+            switch (state.stateName)
+            {
+                case "Typing":
+                    currentState = typingStateShortcut;
+                    break;
+                case "Command":
+                    currentState = commandStateShortcut;
+                    break;
+            }
+            DisplayGraphic();
+        }
+
+        private void DisplayGraphic()
+        {
+            if (currentState != null)
+            {
+                Debug.Log("Displaying State Graphics");    
+            }
+            else
+            {
+                //null object pattern....
+                Debug.Log("No state here");
+            }
+            
+            // if (currentState.name != "Empty State")
+            // {
+            //     Debug.Log("Displaying graphics of: " + currentState.name);
+            // }
         }
 
         public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)
         {
-            switch (keyboardState.stateName)
-            {
-                case "Typing":
-                    typingStateShortcut.Execute();
-                    break;
-                case "Command":
-                    commandStateShortcut.Execute();
-                    break;
-            }
+            currentState.Execute(keyState, this);
         }
     }
 }

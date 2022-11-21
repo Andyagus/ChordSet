@@ -18,7 +18,9 @@ namespace AR_Keyboard
 
         public ARKeyboardState typingState;
         public ARKeyboardState commandState;
-        
+
+
+        public Action<ARKeyboardState> onStateChanged;
         
         // public List<ARKeyboardState> states;
         // public ARKeyboardState initialState;
@@ -84,6 +86,7 @@ namespace AR_Keyboard
                 _state = state;
                 _state.transform.SetParent(this.transform);
                 _state.Entry(this);
+                onStateChanged(_state);
             }
         }
    

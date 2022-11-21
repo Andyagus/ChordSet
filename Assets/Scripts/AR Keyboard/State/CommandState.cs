@@ -39,16 +39,16 @@ namespace AR_Keyboard.State
                 }
 
             //primary, we are interested in all keys
-                foreach (var primaryKey in keyboard.primaryKeys)
-                {
-                    if (keyName == primaryKey.KeyName)
-                    {
-                        if (keyState == EKeyState.KEY_PRESSED)
-                        {
-                            primaryKey.GetComponentInChildren<Shortcut>().Execute();
-                        }
-                    }
-                }
+                // foreach (var primaryKey in keyboard.primaryKeys)
+                // {
+                //     if (keyName == primaryKey.KeyName)
+                //     {
+                //         if (keyState == EKeyState.KEY_PRESSED)
+                //         {
+                //             primaryKey.GetComponentInChildren<Shortcut>().Execute(keyState, primaryKey);
+                //         }
+                //     }
+                // }
                 
                 return null;
         }

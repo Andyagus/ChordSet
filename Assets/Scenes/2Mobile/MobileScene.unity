@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: S
   keyCode: 0
-  typingStateShortcut: {fileID: 0}
+  typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
 --- !u!65 &33008259
 BoxCollider:
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: D
   keyCode: 0
-  typingStateShortcut: {fileID: 0}
+  typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
 --- !u!65 &124385996
 BoxCollider:
