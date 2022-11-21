@@ -9,28 +9,29 @@ namespace AR_Keyboard.State
     {
         // public ARKeyboardState nextState;
 
-        public List<ARModifierKey> activeModifiers;
+        // public List<ARModifierKey> activeModifiers;
         public List<ARModifierKey> availableModifiers;
-        public List<ARModifierKey> unavailableModifiers;
+        // public List<ARModifierKey> unavailableModifiers;
 
         public ARKeyboardState nextState;
         public ARKeyboardState previousState;
         
         public override void Entry(ARKeyboard keyboard)
         {
+            Debug.Log("Entry called on typing state");
         }
 
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
-
+            Debug.Log("Handle Input");
             //communciate the availablity with the modifiers…
-            foreach (var modifier in availableModifiers)
-            {
-                if (keyName == modifier.KeyName && keyState == EKeyState.KEY_PRESSED) 
-                {   
-                    Debug.Log("Move to next state");
-                }
-            }
+            // foreach (var modifier in availableModifiers)
+            // {
+            //     if (keyName == modifier.KeyName && keyState == EKeyState.KEY_PRESSED) 
+            //     {   
+            //         Debug.Log("Move to next state");
+            //     }
+            // }
             // if (keyName == "command-left" || keyName == "command-right")
             // {
             //     if (keyState == EKeyState.KEY_PRESSED)

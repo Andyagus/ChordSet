@@ -13,7 +13,7 @@ namespace AR_Keyboard
         [SerializeField] private string keyName;
         [SerializeField] private KeyCode keycode;
 
-        [SerializeField] private Shortcut typingStateShortcut;
+        [SerializeField] public Shortcut typingStateShortcut;
         [SerializeField] private Shortcut commandStateShortcut;
         
         public string KeyName

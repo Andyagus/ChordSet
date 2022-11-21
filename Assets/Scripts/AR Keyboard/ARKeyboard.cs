@@ -61,11 +61,24 @@ namespace AR_Keyboard
         
         public void DelegateInput(string keyName, EKeyState keyState)
         {
+            // foreach (var primaryKey in primaryKeys)
+            // {
+            //     if (primaryKey.KeyName == keyName)
+            //     {
+            //         HandlePrimaryInput(primaryKey, keyName, keyState);
+            //     }
+            // }
+            
+            
             foreach (var primaryKey in primaryKeys)
             {
                 if (primaryKey.KeyName == keyName)
                 {
-                    HandlePrimaryInput(primaryKey, keyName, keyState);
+                    if (primaryKey.typingStateShortcut != null)
+                    {
+                        Debug.Log("Has typing state");
+                    }
+                    // HandlePrimaryInput(primaryKey, keyName, keyState);
                 }
             }
 

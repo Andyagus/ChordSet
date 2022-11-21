@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
@@ -10,14 +11,19 @@ namespace AR_Keyboard
         [SerializeField] private KeyCode keyCode;
         public KeyCode KeyCode { get => keyCode; set => keyCode = value; }
         
-        //modifier state
-        // public enum ModifierState
-        // {
-        //     AVAILABLE,
-        //     UNAVAILABLE,
-        //     ACTIVE
-        // }
-        
-        
+        // modifier state
+         public enum EModifierState
+         {
+             AVAILABLE,
+             UNAVAILABLE,
+             ACTIVE
+         }
+
+         public EModifierState modifierState = EModifierState.ACTIVE;
+
+         private void Update()
+         {
+             
+         }
     }
 }
