@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class ARPrimaryKey : ARKey
 {
-   
-
+    //in AR KEY
+    public void HandleInput()
+    {
+        // Debug.Log($"Hello from the {this.KeyName} key");
+    }
 }

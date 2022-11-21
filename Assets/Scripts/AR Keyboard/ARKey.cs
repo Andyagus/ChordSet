@@ -1,5 +1,7 @@
 using Interfaces;
 using System.Collections.Generic;
+using AR_Keyboard.State;
+using Enums;
 using UnityEngine;
 
 namespace AR_Keyboard
@@ -31,6 +33,19 @@ namespace AR_Keyboard
         private void Awake()
         {
             onPrimaryKeyHit = new Subject();
+        }
+
+        public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)
+        {
+            switch (keyboardState.stateName)
+            {
+                case "Typing":
+                    typingStateShortcut.Execute();
+                    break;
+                case "Command":
+                    commandStateShortcut.Execute();
+                    break;
+            }
         }
     }
 }

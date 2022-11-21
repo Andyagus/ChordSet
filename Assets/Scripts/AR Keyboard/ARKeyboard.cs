@@ -24,16 +24,16 @@ namespace AR_Keyboard
         // public ARKeyboardState initialState;
         
         // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> ARPrimaryKeys;
+        [NonSerialized] public List<ARKey> primaryKeys;
         // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> ARModifierKeys;
+        [NonSerialized] public List<ARKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;
 
         private void Awake()
         {
-            ARPrimaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
-            ARModifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
+            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
+            modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
             _state = Instantiate(typingState, this.transform, true);
             _state.Entry(this);
         }
@@ -56,7 +56,21 @@ namespace AR_Keyboard
 
         public void AcceptTestInput(string keyName, EKeyState keyState)
         {
-            HandleInput(keyName, keyState);
+            foreach (var key in primaryKeys)
+            {
+                if (keyName == key.KeyName)
+                {
+                    key.HandleInput(_state, keyState);
+                }
+            }
+
+            foreach (var key in modifierKeys)
+            {
+                if (keyName == key.KeyName)
+                {
+                    HandleInput(keyName, keyState);
+                }
+            }
         }
         
         private void HandleInput(string keyName, EKeyState keyState)
