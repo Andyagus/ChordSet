@@ -25,7 +25,7 @@ namespace Effects
         {
             foreach (var primaryKey in _primaryKeys)
             {
-                primaryKey.onPrimaryKeyHit.AddObserver(this);
+                // primaryKey.onPrimaryKeyHit.AddObserver(this);
             }
         }
 
@@ -43,7 +43,7 @@ namespace Effects
             shortcut.GetComponentInChildren<Image>().color = originalShortcutColor;
         }
 
-        public static void ChangeKeyColor(ARKey key, Color color)
+        public static void ChangeKeyColor(ARPrimaryKey key, Color color)
         {
             // Debug.Log("Color Manager: " + key.KeyName);
             var keyMaterial= key.GetComponent<MeshRenderer>().material;

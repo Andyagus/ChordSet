@@ -8,6 +8,7 @@ using Interfaces;
 using Normal.Realtime.Serialization;
 using Normcore;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace AR_Keyboard
 {
@@ -26,18 +27,20 @@ namespace AR_Keyboard
         // public ARKeyboardState initialState;
         
         // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> primaryKeys;
+        [NonSerialized] public List<ARPrimaryKey> primaryKeys;
         // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> modifierKeys;
+        [NonSerialized] public List<ARModifierKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;
 
         private void Awake()
         {
-            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
-            modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
+            
+            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
+            modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             _state = Instantiate(typingState, this.transform, true);
             _state.Entry(this);
+            onStateChanged(_state);
         }
 
         //TODO Just for dictionary testing
@@ -52,31 +55,61 @@ namespace AR_Keyboard
             {
                 var keyName = kvp.Value.keyName;
                 var keyState = kvp.Value.keyState;
-                HandleInput(keyName, keyState);
+                HandleModifierInput(keyName, keyState);
             }
         }
-
-        public void AcceptTestInput(string keyName, EKeyState keyState)
+        
+        public void DelegateInput(string keyName, EKeyState keyState)
         {
-            foreach (var key in primaryKeys)
+            foreach (var primaryKey in primaryKeys)
             {
-                if (keyName == key.KeyName)
+                if (primaryKey.KeyName == keyName)
                 {
-                    key.HandleInput(_state, keyState);
+                    HandlePrimaryInput(primaryKey, keyName, keyState);
                 }
             }
 
-            foreach (var key in modifierKeys)
+            foreach (var modifierKey in modifierKeys)
             {
-                if (keyName == key.KeyName)
+                if (modifierKey.KeyName == keyName)
                 {
-                    HandleInput(keyName, keyState);
+                    HandleModifierInput(keyName, keyState);
                 }
             }
         }
         
-        private void HandleInput(string keyName, EKeyState keyState)
+        public void AcceptTestInput(string keyName, EKeyState keyState)
         {
+             
+            DelegateInput(keyName, keyState);
+            //TODO: use inheritance to put both primary and modifiers in one list, and then delegate to different handle inputs based on type 
+            
+            // foreach (var key in primaryKeys)
+            // {
+            //     if (keyName == key.KeyName)
+            //     {
+            //         HandlePrimaryInput(key, keyName, keyState);
+            //     }
+            // }
+            //
+            // foreach (var key in modifierKeys)
+            // {
+            //     if (keyName == key.KeyName)
+            //     {
+            //         HandleModifierInput(keyName, keyState);
+            //     }
+            // }
+        }
+
+        private void HandlePrimaryInput(ARPrimaryKey primaryKey, string keyName, EKeyState keyState)
+        {
+            primaryKey.HandleInput(_state, keyState);
+        }
+        
+        
+        private void HandleModifierInput(string keyName, EKeyState keyState)
+        {
+            
             var state = _state.HandleInput(keyName, keyState, this);
             
             if (state != null)

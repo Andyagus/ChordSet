@@ -13,13 +13,13 @@ namespace AR_Keyboard.State
             {
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
-                    KeyColorManager.ChangeKeyColor(modifierKey, Color.yellow);
+                    // KeyColorManager.ChangeKeyColor(modifierKey, Color.yellow);
                 }
             }
 
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                KeyShortcutManager.PlaceKeyShortcut(primaryKey, this);
+                // KeyShortcutManager.PlaceKeyShortcut(primaryKey, this);
             }
         }
 
@@ -57,7 +57,7 @@ namespace AR_Keyboard.State
         {
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                KeyShortcutManager.RemoveShortcut(primaryKey);
+                // KeyShortcutManager.RemoveShortcut(primaryKey);
             }
         }
     }

@@ -17,7 +17,7 @@ namespace AR_Keyboard.State
             {
                 if (key.KeyName == "command-left" || key.KeyName == "command-right")
                 {
-                    KeyColorManager.ChangeKeyColor(key, Color.white);
+                    // KeyColorManager.ChangeKeyColor(key, Color.white);
                 }
             }
         }

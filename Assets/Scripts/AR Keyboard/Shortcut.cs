@@ -24,6 +24,6 @@ namespace AR_Keyboard
             textMeshPro.text = shortcutName;
         }
 
-        public virtual void Execute(EKeyState keyState, ARKey key) {}
+        public virtual void Execute(EKeyState keyState, ARPrimaryKey key) {}
     }
 }

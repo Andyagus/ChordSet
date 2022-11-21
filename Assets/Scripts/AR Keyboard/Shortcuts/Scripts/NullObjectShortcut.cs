@@ -6,5 +6,5 @@ using UnityEngine;
 
 public class NullObjectShortcut : Shortcut
 {
-    public override void Execute(EKeyState keyState, ARKey key) {}
+    public override void Execute(EKeyState keyState, ARPrimaryKey key) {}
 }

@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour, IObserver
     {
         foreach (var primaryKey in _primaryKeys)
         {
-            primaryKey.onPrimaryKeyHit.AddObserver(this);
+            // primaryKey.onPrimaryKeyHit.AddObserver(this);
         }
     }
 

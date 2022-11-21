@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CopyShortcut : Shortcut
 {
-    public override void Execute(EKeyState keyState, ARKey key)
+    public override void Execute(EKeyState keyState, ARPrimaryKey key)
     {
         Debug.Log("Copy Shortcut Called");
     }

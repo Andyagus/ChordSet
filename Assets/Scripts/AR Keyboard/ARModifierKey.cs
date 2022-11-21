@@ -1,19 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using AR_Keyboard;
+using Interfaces;
 using UnityEngine;
 
-public class ARModifierKey : ARKey
+namespace AR_Keyboard
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ARModifierKey : MonoBehaviour, IKey
     {
+        [SerializeField] private string keyName;
+        public string KeyName { get => keyName; set => keyName = value; }
+        [SerializeField] private KeyCode keyCode;
+        public KeyCode KeyCode { get => keyCode; set => keyCode = value; }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        //modifier state
+        // public enum ModifierState
+        // {
+        //     AVAILABLE,
+        //     UNAVAILABLE,
+        //     ACTIVE
+        // }
+        
         
     }
 }
