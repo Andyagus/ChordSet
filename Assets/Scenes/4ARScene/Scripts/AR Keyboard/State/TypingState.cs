@@ -55,46 +55,7 @@ namespace AR_Keyboard.State
         
             return null;
         }
-
-        // public override void Entry(ARKeyboard keyboard)
-        // {
-        //     requiredKeys = new List<ARModifierKey>();
-        //     var cmdLeft = GameObject.Find("Command Left").GetComponent<ARModifierKey>();
-        //     var cmdRight = GameObject.Find("Command Right").GetComponent<ARModifierKey>();
-        //     requiredKeys.Add(cmdLeft);
-        //     requiredKeys.Add(cmdRight);
-        //     
-        //     foreach (var modifierKey in requiredKeys)
-        //     {
-        //         var getRend = modifierKey.GetComponent<MeshRenderer>();
-        //         getRend.material.color = Color.white;
-        //     }
-        // }
-
-        // public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
-        // {
-        //     //maybe required keys could be in AR Keyboard
-        //     foreach (var modKey in requiredKeys)
-        //     {
-        //         if (keyName == modKey.KeyName)
-        //         {
-        //             foreach (var state in nextStates)
-        //             {
-        //                 if (state.keyToActivate.KeyName == modKey.KeyName)
-        //                 {
-        //                     // var stateType = state.GetType();
-        //                     var nextState = Instantiate(state);
-        //                     return nextState;
-        //                     Debug.Log("Move to next state"); 
-        //                 }
-        //             }
-        //         }    
-        //     }
-        //     
-        //     
-        //     return null;
-        // }
-
+        
         private void MoveToNextState()
         {
             throw new System.NotImplementedException();

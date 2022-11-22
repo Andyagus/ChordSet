@@ -29,13 +29,16 @@ namespace AR_Keyboard
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             _state = Instantiate(typingState, this.transform, true);
-            // _state
             _state.Entry(this);
-            onStateChanged(_state);
+     
         }
 
         private void Start()
         {
+            if (onStateChanged != null)
+            {
+                onStateChanged(_state);
+            }
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
         }
 
