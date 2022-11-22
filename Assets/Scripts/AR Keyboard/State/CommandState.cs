@@ -9,7 +9,7 @@ namespace AR_Keyboard.State
         public override void Entry(ARKeyboard keyboard)
         {
             //modifier keys are directly linked to the keyboard
-            foreach (var modifierKey in keyboard.ARModifierKeys)
+            foreach (var modifierKey in keyboard.modifierKeys)
             {
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
@@ -17,7 +17,7 @@ namespace AR_Keyboard.State
                 }
             }
 
-            foreach (var primaryKey in keyboard.ARPrimaryKeys)
+            foreach (var primaryKey in keyboard.primaryKeys)
             {
                 KeyShortcutManager.PlaceKeyShortcut(primaryKey, this);
             }
@@ -39,7 +39,7 @@ namespace AR_Keyboard.State
                 }
 
             //primary, we are interested in all keys
-                foreach (var primaryKey in keyboard.ARPrimaryKeys)
+                foreach (var primaryKey in keyboard.primaryKeys)
                 {
                     if (keyName == primaryKey.KeyName)
                     {
@@ -55,7 +55,7 @@ namespace AR_Keyboard.State
 
         public override void Exit(ARKeyboard keyboard)
         {
-            foreach (var primaryKey in keyboard.ARPrimaryKeys)
+            foreach (var primaryKey in keyboard.primaryKeys)
             {
                 KeyShortcutManager.RemoveShortcut(primaryKey);
             }

@@ -27,7 +27,7 @@ namespace AR_Keyboard.State
         //Todo discuss with sunny, make all keys prefabs? Get rid of nested loop - algorithmic..
         public override void Entry(ARKeyboard keyboard)
         {
-            foreach (var modifierKey in keyboard.ARModifierKeys)
+            foreach (var modifierKey in keyboard.modifierKeys)
             {
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
@@ -43,13 +43,13 @@ namespace AR_Keyboard.State
                 if (keyState == EKeyState.KEY_PRESSED)
                 {
                     Debug.Log("KEy press");
-                    // var state = Instantiate(commandState);
-                    // return state;
+                    var state = Instantiate(keyboard.commandState);
+                    return state;
                     // Debug.Log("next state");
                 }
             }
 
-            foreach (var primaryKey in keyboard.ARPrimaryKeys)
+            foreach (var primaryKey in keyboard.primaryKeys)
             {
                 if (keyName == primaryKey.KeyName)
                 {

@@ -13,7 +13,7 @@ namespace AR_Keyboard.State
         public override void Entry(ARKeyboard keyboard)
         {
             Debug.Log("Entered State 0");
-            foreach (var key in keyboard.ARModifierKeys)
+            foreach (var key in keyboard.modifierKeys)
             {
                 if (key.KeyName == "command-left" || key.KeyName == "command-right")
                 {
