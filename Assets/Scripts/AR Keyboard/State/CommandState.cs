@@ -27,8 +27,8 @@ namespace AR_Keyboard.State
             {
                 if (keyState == EKeyState.KEY_UNPRESSED)
                 {
-                    var newState = Instantiate(typingState);
-                    return typingState;
+                    var newState = Instantiate(this.typingState);
+                    return newState;
                 }
             }
             return null;
