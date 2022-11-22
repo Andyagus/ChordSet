@@ -16,6 +16,10 @@ namespace AR_Keyboard.State
         /// </summary>
         // public List<ARKey> interestedModifiers;
         
+        //possible states we could transition too...
+        //each state has required modifier keyyy then we check here in the state machine for it
+        // public ARKeyboardState commandState;
+        // public ARKeyboardState otherState;
         
         //we are passing in a dictionary of every single key on handle input
         public ARKeyboardState nextState;
@@ -38,8 +42,10 @@ namespace AR_Keyboard.State
             {
                 if (keyState == EKeyState.KEY_PRESSED)
                 {
-                    var commandState = Instantiate(keyboard.commandState);
-                    return commandState;
+                    Debug.Log("KEy press");
+                    // var state = Instantiate(commandState);
+                    // return state;
+                    // Debug.Log("next state");
                 }
             }
 

@@ -18,23 +18,18 @@ namespace AR_Keyboard
 
         public ARKeyboardState typingState;
         public ARKeyboardState commandState;
+        public Action<ARKeyboardState> onStateChanged;
         
-        
-        // public List<ARKeyboardState> states;
-        // public ARKeyboardState initialState;
-        
-        // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> ARPrimaryKeys;
-        // ReSharper disable once InconsistentNaming
-        [NonSerialized] public List<ARKey> ARModifierKeys;
+        [NonSerialized] public List<ARPrimaryKey> primaryKeys;
+        [NonSerialized] public List<ARModifierKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;
 
         private void Awake()
         {
-            ARPrimaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList<ARKey>();
-            ARModifierKeys = GetComponentsInChildren<ARModifierKey>().ToList<ARKey>();
-            _state = Instantiate(typingState, this.transform, true);
+            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
+            modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
+            _state = Instantiate(typingState, transform, true);
             _state.Entry(this);
         }
 
