@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: Command
+  keyToActivate: {fileID: 4138639587737009420, guid: 1837e2db392a14450b882c7c57af8fc1, type: 3}
+  typingState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}

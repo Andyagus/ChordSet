@@ -8,34 +8,24 @@ using Interfaces;
 using Normal.Realtime.Serialization;
 using Normcore;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour
     {
-        public GameObject debugSphere;
         private ARKeyboardState _state;
-
         public ARKeyboardState typingState;
         public ARKeyboardState commandState;
-
-
         public Action<ARKeyboardState> onStateChanged;
-        
-        // public List<ARKeyboardState> states;
-        // public ARKeyboardState initialState;
-        
-        // ReSharper disable once InconsistentNaming
+
         [NonSerialized] public List<ARPrimaryKey> primaryKeys;
-        // ReSharper disable once InconsistentNaming
         [NonSerialized] public List<ARModifierKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;
 
         private void Awake()
         {
-            
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             _state = Instantiate(typingState, this.transform, true);
@@ -43,7 +33,6 @@ namespace AR_Keyboard
             onStateChanged(_state);
         }
 
-        //TODO Just for dictionary testing
         private void Start()
         {
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
@@ -59,29 +48,8 @@ namespace AR_Keyboard
             }
         }
         
-        public void DelegateInput(string keyName, EKeyState keyState)
+        private void DelegateInput(string keyName, EKeyState keyState)
         {
-            // foreach (var primaryKey in primaryKeys)
-            // {
-            //     if (primaryKey.KeyName == keyName)
-            //     {
-            //         HandlePrimaryInput(primaryKey, keyName, keyState);
-            //     }
-            // }
-            
-            
-            foreach (var primaryKey in primaryKeys)
-            {
-                if (primaryKey.KeyName == keyName)
-                {
-                    if (primaryKey.typingStateShortcut != null)
-                    {
-                        Debug.Log("Has typing state");
-                    }
-                    // HandlePrimaryInput(primaryKey, keyName, keyState);
-                }
-            }
-
             foreach (var modifierKey in modifierKeys)
             {
                 if (modifierKey.KeyName == keyName)
@@ -89,37 +57,29 @@ namespace AR_Keyboard
                     HandleModifierInput(keyName, keyState);
                 }
             }
+            
+            foreach (var primaryKey in primaryKeys)
+            {
+                if (keyName == primaryKey.KeyName)
+                {
+                    HandlePrimaryInput(primaryKey, keyName, keyState);
+                }
+            }
+            
         }
-        
+
         public void AcceptTestInput(string keyName, EKeyState keyState)
         {
-             
             DelegateInput(keyName, keyState);
-            //TODO: use inheritance to put both primary and modifiers in one list, and then delegate to different handle inputs based on type 
-            
-            // foreach (var key in primaryKeys)
-            // {
-            //     if (keyName == key.KeyName)
-            //     {
-            //         HandlePrimaryInput(key, keyName, keyState);
-            //     }
-            // }
-            //
-            // foreach (var key in modifierKeys)
-            // {
-            //     if (keyName == key.KeyName)
-            //     {
-            //         HandleModifierInput(keyName, keyState);
-            //     }
-            // }
+            //TODO: use inheritance to put both
+            //primary and modifiers in one list, and then delegate to different handle inputs based on type 
         }
 
         private void HandlePrimaryInput(ARPrimaryKey primaryKey, string keyName, EKeyState keyState)
         {
             primaryKey.HandleInput(_state, keyState);
         }
-        
-        
+
         private void HandleModifierInput(string keyName, EKeyState keyState)
         {
             
@@ -133,8 +93,10 @@ namespace AR_Keyboard
                 _state.transform.SetParent(this.transform);
                 _state.Entry(this);
                 onStateChanged(_state);
+                // StateChanged();
             }
         }
-   
-    }
+        
+        }
 }
+

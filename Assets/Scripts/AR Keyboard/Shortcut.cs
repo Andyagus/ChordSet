@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+using AR_Keyboard.State;
 using Interfaces;
 using TMPro;
 using UnityEngine;
 using Enums;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 namespace AR_Keyboard
@@ -12,6 +15,11 @@ namespace AR_Keyboard
 
         public EShortcuts eShortcut;
 
+
+        public ARKeyboardState requiredState;
+
+        public ARModifierKey modifierKey;
+        
         public string shortcutName;
         public Image shortcutImage;
         public TextMeshProUGUI textMeshPro;

@@ -10,7 +10,15 @@ namespace AR_Keyboard
         public string KeyName { get => keyName; set => keyName = value; }
         [SerializeField] private KeyCode keyCode;
         public KeyCode KeyCode { get => keyCode; set => keyCode = value; }
-        
+
+        private MeshRenderer rend;
+
+
+        private void Awake()
+        {
+            rend = GetComponent<MeshRenderer>();
+        }
+
         // modifier state
          public enum EModifierState
          {
@@ -19,11 +27,33 @@ namespace AR_Keyboard
              ACTIVE
          }
 
-         public EModifierState modifierState = EModifierState.ACTIVE;
+         public EModifierState modifierState;
+
+         public void Available()
+         {
+             modifierState = EModifierState.AVAILABLE;
+         }
+         
+         public void Active()
+         {
+             modifierState = EModifierState.ACTIVE;
+         }
 
          private void Update()
          {
-             
+             switch (modifierState)
+             {
+                 case EModifierState.AVAILABLE:
+                     rend.material.color = Color.blue;
+                     break;
+                 case EModifierState.UNAVAILABLE:
+                     rend.material.color = Color.grey;
+                     break;
+                 case EModifierState.ACTIVE:
+                     rend.material.color = Color.yellow;
+                     break;
+             }
          }
+
     }
 }

@@ -1,12 +1,12 @@
 using Effects;
 using Enums;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 namespace AR_Keyboard.Shortcuts.Scripts
 {
     public class TypingStateShortcut : Shortcut
     {
-
         public override void Execute(EKeyState keyState, ARPrimaryKey key)
         {
             if (keyState == EKeyState.KEY_PRESSED)

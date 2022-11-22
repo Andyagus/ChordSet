@@ -14,7 +14,7 @@ namespace AR_Keyboard
         [SerializeField] private KeyCode keycode;
 
         [SerializeField] public Shortcut typingStateShortcut;
-        [SerializeField] private Shortcut commandStateShortcut;
+        [SerializeField] public Shortcut commandStateShortcut;
         
         public string KeyName
         {
@@ -50,6 +50,7 @@ namespace AR_Keyboard
 
             SetGraphics();
         }
+        
 
         private void SetGraphics()
         {

@@ -67,17 +67,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3714149720024486861, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
   m_PrefabInstance: {fileID: 2119563116976540181}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3383651962320681749 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3719716987950428416, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
-  m_PrefabInstance: {fileID: 2119563116976540181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8449726573886629572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +80,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eShortcut: 2
+  requiredState: {fileID: 0}
+  modifierKey: {fileID: 4138639587737009420, guid: 1837e2db392a14450b882c7c57af8fc1, type: 3}
   shortcutName: Cut
   shortcutImage: {fileID: 0}
   textMeshPro: {fileID: 3383651962320681749}
+--- !u!114 &3383651962320681749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3719716987950428416, guid: 3fab1752a431b4544af33b8b790816c8, type: 3}
+  m_PrefabInstance: {fileID: 2119563116976540181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
