@@ -8,12 +8,11 @@ using UnityEngine;
 
 public class TestARKeyboardInput : MonoBehaviour
 {
-    public ARKeyboard _ARKeyboard;
-
-    public Dictionary<int, InputKey> dict;
+    private ARKeyboard _ARKeyboard;
 
     private void Start()
     {
+        _ARKeyboard = GetComponentInParent<ARKeyboard>();
     }
 
     private void Update()

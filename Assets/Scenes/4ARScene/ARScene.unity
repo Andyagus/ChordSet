@@ -264,7 +264,7 @@ MonoBehaviour:
   planeManager: {fileID: 112679802}
   placementInteractable: {fileID: 516802050}
   gestureInteractor: {fileID: 1895562551}
-  _ARKeyboard: {fileID: 8403880990647718866, guid: 6ee5fe287340f48de8e8b7c9e3fbf797, type: 3}
+  _ARKeyboard: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
 --- !u!1 &516802045
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls: []
   m_XROrigin: {fileID: 112679798}
   m_ARSessionOrigin: {fileID: 0}
-  m_PlacementPrefab: {fileID: 1005055943767621804, guid: 88b77f8ad0a7a412486bb9eff60c8680, type: 3}
+  m_PlacementPrefab: {fileID: 1005055943767621804, guid: d0c314899f51549b88ac3121462249ce, type: 3}
   m_FallbackLayerMask:
     serializedVersion: 2
     m_Bits: 0

@@ -19,7 +19,7 @@ namespace AR_Keyboard
         public ARKeyboardState commandState;
         public Action<ARKeyboardState> onStateChanged;
 
-        [NonSerialized] public List<ARPrimaryKey> primaryKeys;
+        [NonSerialized] private List<ARPrimaryKey> primaryKeys;
         [NonSerialized] public List<ARModifierKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;
@@ -40,6 +40,11 @@ namespace AR_Keyboard
                 onStateChanged(_state);
             }
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
+        }
+
+        private void Update()
+        {
+            
         }
 
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
@@ -75,8 +80,7 @@ namespace AR_Keyboard
         public void AcceptTestInput(string keyName, EKeyState keyState)
         {
             DelegateInput(keyName, keyState);
-            //TODO: use inheritance to put both
-            //primary and modifiers in one list, and then delegate to different handle inputs based on type 
+            Debug.Log("Test input received");
         }
 
         private void HandlePrimaryInput(ARPrimaryKey primaryKey, string keyName, EKeyState keyState)
