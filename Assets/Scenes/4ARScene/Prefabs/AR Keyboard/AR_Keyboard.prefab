@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: W
+  keycode: 119
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: V
+  keycode: 118
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -397,8 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: L
+  keycode: 108
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -512,8 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: K
+  keycode: 107
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -760,8 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: E
+  keycode: 101
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -875,8 +875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: R
+  keycode: 114
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -990,8 +990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: U
+  keycode: 117
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1105,8 +1105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: G
+  keycode: 103
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1220,8 +1220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: I
+  keycode: 105
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1335,8 +1335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: X
+  keycode: 120
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1360,7 +1360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2007625808162187334
 Transform:
   m_ObjectHideFlags: 0
@@ -1583,8 +1583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: T
+  keycode: 116
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1698,8 +1698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: N
+  keycode: 110
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1813,8 +1813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: Y
+  keycode: 121
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -1928,8 +1928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: P
+  keycode: 112
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2043,8 +2043,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: B
+  keycode: 98
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2158,8 +2158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: Q
+  keycode: 113
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2273,8 +2273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: M
+  keycode: 109
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2388,8 +2388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: Z
+  keycode: 122
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2503,8 +2503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: F
+  keycode: 102
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2618,8 +2618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: O
+  keycode: 111
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -2655,6 +2655,8 @@ Transform:
   - {fileID: 1993635173703993136}
   - {fileID: 8223392750689772674}
   - {fileID: 717732052349399747}
+  - {fileID: 5373778533119847049}
+  - {fileID: 4444329999263461164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2915,8 +2917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: C
+  keycode: 99
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -3030,8 +3032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: J
+  keycode: 106
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -3145,8 +3147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: 
-  keycode: 0
+  keyName: H
+  keycode: 104
   typingStateShortcut: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
   commandStateShortcut: {fileID: 0}
   currentShortcut: {fileID: 0}
@@ -3215,6 +3217,140 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 416791929047875104, guid: 4e5fac90a856c4cc3beba1017f03760c, type: 3}
   m_PrefabInstance: {fileID: 881961649971875043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1155101621403952531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8403880990647718867}
+    m_Modifications:
+    - target: {fileID: 3701051942604345035, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: keyName
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0955
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0012972206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00558
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211233278084141464, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_Name
+      value: KeyPrefabTest2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1831608132893326563, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+--- !u!4 &5373778533119847049 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+  m_PrefabInstance: {fileID: 1155101621403952531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7438168953585475638
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8403880990647718867}
+    m_Modifications:
+    - target: {fileID: 3701051942604345035, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: keyName
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0766
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0012972206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00558
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211233278084141464, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+      propertyPath: m_Name
+      value: KeyPrefabTest2 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1831608132893326563, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+--- !u!4 &4444329999263461164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6527054890327920410, guid: 80ce225cdafab44a3a07e26798d876c8, type: 3}
+  m_PrefabInstance: {fileID: 7438168953585475638}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8299422608510695710
 PrefabInstance:

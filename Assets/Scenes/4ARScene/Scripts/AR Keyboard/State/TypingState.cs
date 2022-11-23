@@ -14,13 +14,6 @@ namespace AR_Keyboard.State
         //each state has required modifier keyyy then we check here in the state machine for it
         public ARKeyboardState commandState;
         public ARKeyboardState otherState;
-        
-        //TODO: 
-        // public List<ARKeyboardState> states;
-        // foreach (var state in states)
-        // {
-        //     if(state.keyToActivate.KeyName == "Command-Left")
-        // }
 
         //TODO:: i want to have a list here of the keys required to be in this state.. and it would be null
         //and it would be all connected………… 
@@ -37,7 +30,6 @@ namespace AR_Keyboard.State
                 }
             }
         }
-
 
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {

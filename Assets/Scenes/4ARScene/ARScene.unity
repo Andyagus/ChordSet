@@ -424,7 +424,7 @@ MonoBehaviour:
       m_Calls: []
   m_XROrigin: {fileID: 112679798}
   m_ARSessionOrigin: {fileID: 0}
-  m_PlacementPrefab: {fileID: 1005055943767621804, guid: 487b09b4ebf6c4160b884890067c5b18, type: 3}
+  m_PlacementPrefab: {fileID: 1005055943767621804, guid: 88b77f8ad0a7a412486bb9eff60c8680, type: 3}
   m_FallbackLayerMask:
     serializedVersion: 2
     m_Bits: 0

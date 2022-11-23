@@ -48,7 +48,7 @@ namespace AR_Keyboard
             {
                 var keyName = kvp.Value.keyName;
                 var keyState = kvp.Value.keyState;
-                HandleModifierInput(keyName, keyState);
+                DelegateInput(keyName, keyState);
             }
         }
         

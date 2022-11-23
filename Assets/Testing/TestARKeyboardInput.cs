@@ -51,7 +51,7 @@ public class TestARKeyboardInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftCommand))
         {
             _ARKeyboard.AcceptTestInput("command-left", EKeyState.KEY_PRESSED);
-
+        
         }
         if (Input.GetKeyUp(KeyCode.LeftCommand))
         {

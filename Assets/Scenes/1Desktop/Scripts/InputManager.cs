@@ -24,13 +24,10 @@ namespace Desktop
             _keySyncDictionary = GameObject.FindObjectOfType<KeySyncDictionary>();
             
             
-            foreach (var key in _inputKeys)
-            {
-                _keySyncDictionary.CreateDictionary(key);
-            }  
+
             
             //TODO this is not great.
-            // StartCoroutine(AddToDictionary());
+            StartCoroutine(AddToDictionary());
             
             foreach (var key in _inputKeys)
             {
@@ -39,12 +36,15 @@ namespace Desktop
 
         }
         
-        // public IEnumerator AddToDictionary()
-        // {
-        //     yield return new WaitForSeconds(1);
-        //     
-        //   
-        // }
+        public IEnumerator AddToDictionary()
+        {
+            yield return new WaitForSeconds(1);
+            
+            foreach (var key in _inputKeys)
+            {
+                _keySyncDictionary.CreateDictionary(key);
+            }  
+        }
 
         public void OnNotify(object entity)
         {
