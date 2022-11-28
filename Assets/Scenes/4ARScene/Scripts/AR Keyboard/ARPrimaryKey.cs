@@ -1,7 +1,9 @@
 using System;
 using AR_Keyboard.State;
+using DG.Tweening;
 using Enums;
 using Interfaces;
+using TMPro;
 using UnityEngine;
 
 namespace AR_Keyboard
@@ -15,6 +17,8 @@ namespace AR_Keyboard
 
         [SerializeField] public Shortcut typingStateShortcut;
         [SerializeField] public Shortcut commandStateShortcut;
+
+        private TextMeshProUGUI _textMesh;
         
         public string KeyName
         {
@@ -31,9 +35,18 @@ namespace AR_Keyboard
         
         private void Awake()
         {
+            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             _arKeyboard.onStateChanged += OnStateChanged;
             // currentShortcut = typingStateShortcut;
+        }
+
+        private void Start()
+        {
+            if (_textMesh != null)
+            {
+                _textMesh.text = KeyName;
+            }
         }
 
         private void OnStateChanged(ARKeyboardState state)
@@ -54,7 +67,19 @@ namespace AR_Keyboard
 
         private void SetGraphics()
         {
+            // if (_textMesh != null)
+            // {
+            //     // Debug.Log("TEXT MESH):");
+            //     _textMesh.DOText("hello", 1);
+            // }
+
+            //don't like how I am breaking command pattern by adding an additional method here.
+            //Command pattern typically only has execute function 
+            //But setgraphics is ' required ' because serves different function 
+            //is this becoming too much like a seperate state machine? (Entry Method?) - -can improve
+            // in the future get the graphics working
             
+            currentShortcut.SetGraphics();  
         }
 
         public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)

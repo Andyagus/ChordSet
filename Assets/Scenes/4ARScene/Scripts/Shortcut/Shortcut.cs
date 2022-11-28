@@ -33,5 +33,7 @@ namespace AR_Keyboard
         }
 
         public virtual void Execute(EKeyState keyState, ARPrimaryKey key) {}
+
+        public virtual void SetGraphics(){}
     }
 }
