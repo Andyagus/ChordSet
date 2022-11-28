@@ -26,7 +26,7 @@ namespace AR_Keyboard
 
         public Subject onShortcutExecuted;
         
-        private void Awake()
+        public virtual void Awake()
         {
             onShortcutExecuted = new Subject();
             textMeshPro.text = shortcutName;
@@ -34,6 +34,8 @@ namespace AR_Keyboard
 
         public virtual void Execute(EKeyState keyState, ARPrimaryKey key) {}
 
-        public virtual void SetGraphics(){}
+        public virtual void SetGraphics(ARPrimaryKey key){}
+
+        public virtual void StopSequence() {}
     }
 }

@@ -39,14 +39,11 @@ namespace AR_Keyboard
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             _arKeyboard.onStateChanged += OnStateChanged;
         }
-
-        private void Start()
-        {
-            
-        }
-
+        
         private void OnStateChanged(ARKeyboardState state)
         {
+            StopSequence();
+            
             switch (state.stateName)
             {
                 case "Typing":
@@ -59,23 +56,22 @@ namespace AR_Keyboard
 
             SetGraphics();
         }
-        
+
+        private void StopSequence()
+        {
+            if (currentShortcut != null)
+            {
+                currentShortcut.StopSequence();
+            }
+        }
+
 
         private void SetGraphics()
         {
-            // if (_textMesh != null)
-            // {
-            //     // Debug.Log("TEXT MESH):");
-            //     _textMesh.DOText("hello", 1);
-            // }
-
-            //don't like how I am breaking command pattern by adding an additional method here.
-            //Command pattern typically only has execute function 
-            //But setgraphics is ' required ' because serves different function 
-            //is this becoming too much like a seperate state machine? (Entry Method?) - -can improve
-            // in the future get the graphics working
-            
-            // currentShortcut.SetGraphics();  
+            if (currentShortcut != null)
+            {
+                currentShortcut.SetGraphics(key: this);
+            }
         }
 
         public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)

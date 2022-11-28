@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5935649021214683534, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 4767926295433023761, guid: 004cd95221d684cd7849b76a77af8122, type: 3}
     - target: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Name
       value: AR_Keyboard
