@@ -38,15 +38,11 @@ namespace AR_Keyboard
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             _arKeyboard.onStateChanged += OnStateChanged;
-            // currentShortcut = typingStateShortcut;
         }
 
         private void Start()
         {
-            if (_textMesh != null)
-            {
-                _textMesh.text = KeyName;
-            }
+            
         }
 
         private void OnStateChanged(ARKeyboardState state)
@@ -79,12 +75,16 @@ namespace AR_Keyboard
             //is this becoming too much like a seperate state machine? (Entry Method?) - -can improve
             // in the future get the graphics working
             
-            currentShortcut.SetGraphics();  
+            // currentShortcut.SetGraphics();  
         }
 
         public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)
         {
-            currentShortcut.Execute(keyState, this);
+            // too many a's
+            if (currentShortcut != null)
+            {
+                currentShortcut.Execute(keyState, this);
+            }
         }
     }
 }

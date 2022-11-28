@@ -11,12 +11,12 @@ namespace AR_Keyboard
         [SerializeField] private KeyCode keyCode;
         public KeyCode KeyCode { get => keyCode; set => keyCode = value; }
 
-        private MeshRenderer rend;
+        private MeshRenderer _meshRenderer;
 
 
         private void Awake()
         {
-            rend = GetComponent<MeshRenderer>();
+            _meshRenderer = GetComponentInChildren<MeshRenderer>();
         }
 
         // modifier state
@@ -44,13 +44,13 @@ namespace AR_Keyboard
              switch (modifierState)
              {
                  case EModifierState.AVAILABLE:
-                     rend.material.color = Color.blue;
+                     _meshRenderer.material.color = Color.blue;
                      break;
                  case EModifierState.UNAVAILABLE:
-                     rend.material.color = Color.grey;
+                     _meshRenderer.material.color = Color.grey;
                      break;
                  case EModifierState.ACTIVE:
-                     rend.material.color = Color.yellow;
+                     _meshRenderer.material.color = Color.yellow;
                      break;
              }
          }

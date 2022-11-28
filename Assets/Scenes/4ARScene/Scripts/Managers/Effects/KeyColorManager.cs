@@ -46,7 +46,7 @@ namespace Effects
         public static void ChangeKeyColor(ARPrimaryKey key, Color color)
         {
             // Debug.Log("Color Manager: " + key.KeyName);
-            var keyMaterial= key.GetComponent<MeshRenderer>().material;
+            var keyMaterial= key.GetComponentInChildren<MeshRenderer>().material;
             keyMaterial.color = color;
         }
         
