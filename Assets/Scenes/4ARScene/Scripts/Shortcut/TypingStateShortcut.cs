@@ -16,6 +16,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
             if (_sequence != null)
             {
                 _sequence.Pause();
+                _sequence.Kill();
             }
         }
 
@@ -23,6 +24,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
         {
             // DOTween.pause
 
+            Debug.Log("Set graphics Called from typing state");
+            
             _sequence = DOTween.Sequence();
             var text = key.GetComponentInChildren<TextMeshProUGUI>();
             var dt = text.DOText(key.name, 1f);

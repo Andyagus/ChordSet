@@ -35,6 +35,8 @@ namespace AR_Keyboard
         
         private void Awake()
         {
+            DOTween.Clear();
+            DOTween.SetTweensCapacity(200, 125);
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             _arKeyboard.onStateChanged += OnStateChanged;
@@ -68,8 +70,18 @@ namespace AR_Keyboard
 
         private void SetGraphics()
         {
+            
             if (currentShortcut != null)
             {
+                //bad
+                // if (currentShortcut.shortcutName == "Undo")
+                // {
+                //     var shortcut = Instantiate(currentShortcut);
+                //     shortcut.transform.position = this.transform.position;
+                // }
+                
+                // var cs = Instantiate(currentShortcut);
+                // cs.transform.position = this.transform.position;
                 currentShortcut.SetGraphics(key: this);
             }
         }
