@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AR_Keyboard.State;
 using Interfaces;
@@ -13,9 +14,9 @@ namespace AR_Keyboard
     public class Shortcut : MonoBehaviour
     {
         //
+        public Subject onShortcutExecuted;
         public EShortcuts eShortcut;
-
-
+        
         // public ARKeyboardState requiredState;
 
         // public ARModifierKey modifierKey;
@@ -24,13 +25,18 @@ namespace AR_Keyboard
         // public Image shortcutImage;
         // public TextMeshProUGUI textMeshPro;
 
-        public Subject onShortcutExecuted;
         
         public virtual void Awake()
         {
             onShortcutExecuted = new Subject();
+            
+            
+            
+            
+            // onShortcutExecuted.GetInstanceID();
             // textMeshPro.text = shortcutName;
         }
+        
 
         public virtual void Execute(EKeyState keyState, ARPrimaryKey key) {}
 

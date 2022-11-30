@@ -3631,6 +3631,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 4767926295433023761, guid: 004cd95221d684cd7849b76a77af8122, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: Z

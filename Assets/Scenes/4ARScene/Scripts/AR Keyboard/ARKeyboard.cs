@@ -80,7 +80,6 @@ namespace AR_Keyboard
         public void AcceptTestInput(string keyName, EKeyState keyState)
         {
             DelegateInput(keyName, keyState);
-            Debug.Log("Test input received");
         }
 
         private void HandlePrimaryInput(ARPrimaryKey primaryKey, string keyName, EKeyState keyState)

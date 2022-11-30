@@ -51,8 +51,11 @@ namespace AR_Keyboard
                 case "Typing":
                     currentShortcut = typingStateShortcut;
                     break;
-                case "Command": 
-                    currentShortcut = commandStateShortcut;
+                case "Command":
+                    if (currentShortcut != null)
+                    {
+                        currentShortcut = commandStateShortcut;
+                    }
                     break;
             }
 
@@ -73,22 +76,17 @@ namespace AR_Keyboard
             
             if (currentShortcut != null)
             {
-                //bad
-                // if (currentShortcut.shortcutName == "Undo")
-                // {
-                //     var shortcut = Instantiate(currentShortcut);
-                //     shortcut.transform.position = this.transform.position;
-                // }
-                
-                // var cs = Instantiate(currentShortcut);
-                // cs.transform.position = this.transform.position;
+                var offset = new Vector3(0f, 0.00013f, 0f);
+
+                var _undoGameObject = Instantiate(gameObject, this.transform);
+                _undoGameObject.transform.position = this.transform.position + offset;
+
                 currentShortcut.SetGraphics(key: this);
             }
         }
 
         public void HandleInput(ARKeyboardState keyboardState, EKeyState keyState)
         {
-            // too many a's
             if (currentShortcut != null)
             {
                 currentShortcut.Execute(keyState, this);
