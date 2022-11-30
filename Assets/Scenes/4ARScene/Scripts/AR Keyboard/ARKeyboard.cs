@@ -71,7 +71,8 @@ namespace AR_Keyboard
             {
                 if (keyName == primaryKey.KeyName)
                 {
-                    HandlePrimaryInput(primaryKey, keyName, keyState);
+                    HandleModifierInput(keyName, keyState);
+                    // HandlePrimaryInput(primaryKey, keyName, keyState);
                 }
             }
             

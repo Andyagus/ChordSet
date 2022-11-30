@@ -38,6 +38,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
 
         public override void Execute(EKeyState keyState, ARPrimaryKey key)
         {
+            
+            Debug.Log("Typing shortcut called");
             if (keyState == EKeyState.KEY_PRESSED)
             {
                 KeyColorManager.ChangeKeyColor(key, Color.grey);

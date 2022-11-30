@@ -23,7 +23,7 @@ namespace AR_Keyboard.State
         public override void Entry(ARKeyboard keyboard)
         {
             Debug.Log("Back in Typing State");
-            HandlePrimaryKeys(keyboard);
+            PrimaryKeysEntry(keyboard);
             
             foreach (var modifierKey in keyboard.modifierKeys)
             {
@@ -35,14 +35,12 @@ namespace AR_Keyboard.State
             }
         }
 
-        private void HandlePrimaryKeys(ARKeyboard keyboard)
+        private void PrimaryKeysEntry(ARKeyboard keyboard)
         {
             foreach (var primaryKey in keyboard.primaryKeys)
             {
                 if (primaryKey.typingStateShortcut != null)
                 {
-
-
                     if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                     {
                         Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
@@ -65,9 +63,11 @@ namespace AR_Keyboard.State
         {
             //this is checking the modifier keys input
             
+            HandleInputPrimaryKey(keyboard, keyName, keyState);
+            
             if (keyName == "command-left" || keyName == "command-right")
             {
-
+            
                 if (keyState == EKeyState.KEY_PRESSED)
                 {
                     var state = Instantiate(commandState);
@@ -79,7 +79,18 @@ namespace AR_Keyboard.State
             return null;
         }
 
-       
+        private void HandleInputPrimaryKey(ARKeyboard keyboard, string keyName, EKeyState keyState)
+        {
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (primaryKey.name == keyName)
+                {
+                    
+                    primaryKey.currentShortcut.Execute(keyState, primaryKey);
+                    // Debug.Log(primaryKey.name);
+                }   
+            }
+        }
 
         private void MoveToNextState()
         {
