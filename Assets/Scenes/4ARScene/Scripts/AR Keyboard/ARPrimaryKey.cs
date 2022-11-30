@@ -77,10 +77,7 @@ namespace AR_Keyboard
             if (currentShortcut != null)
             {
                 var offset = new Vector3(0f, 0.00013f, 0f);
-
-                var _undoGameObject = Instantiate(gameObject, this.transform);
-                _undoGameObject.transform.position = this.transform.position + offset;
-
+                
                 currentShortcut.SetGraphics(key: this);
             }
         }

@@ -63,25 +63,25 @@ public class UndoShortcut : Shortcut
         var sequenceDuration = 3;
         
         //Sequence
-        // _sequence = DOTween.Sequence();
-        // var offset = new Vector3(0f, 0.00013f, 0f);
-        // _undoGameObject = Instantiate(gameObject, key.transform);
-        // _undoGameObject.transform.position = key.transform.position + offset;
+        _sequence = DOTween.Sequence();
+        var offset = new Vector3(0f, 0.00013f, 0f);
+        _undoGameObject = Instantiate(gameObject, key.transform);
+        _undoGameObject.transform.position = key.transform.position + offset;
         
-        // undoText = _undoGameObject.GetComponentInChildren<TextMeshProUGUI>();
-        //
-        // var images = _undoGameObject.GetComponentsInChildren<Image>();
-        // arrowIcon = images[0];
-        // pulsingLineIcon = images[1];
-        //
-        // _sequence.Append(pulsingLineIcon.DOFade(1, sequenceDuration / 7.34f));
-        // _sequence.Append(pulsingLineIcon.rectTransform.DOLocalMoveX(distanceToMoveRectTransform, timeToMoveRectTransform));
-        // _sequence.Append(keyText.DOFade(0, sequenceDuration/8f));
-        // _sequence.Append(pulsingLineIcon.DOFade(0, iconFadeOutOffset));
-        // _sequence.Insert(arrowFadeInTime, arrowIcon.DOFade(1, 2f));
-        // Debug.Log("end set graphics id:  "+ this.GetInstanceID());
+        undoText = _undoGameObject.GetComponentInChildren<TextMeshProUGUI>();
+        
+        var images = _undoGameObject.GetComponentsInChildren<Image>();
+        arrowIcon = images[0];
+        pulsingLineIcon = images[1];
+        
+        _sequence.Append(pulsingLineIcon.DOFade(1, sequenceDuration / 7.34f));
+        _sequence.Append(pulsingLineIcon.rectTransform.DOLocalMoveX(distanceToMoveRectTransform, timeToMoveRectTransform));
+        _sequence.Append(keyText.DOFade(0, sequenceDuration/8f));
+        _sequence.Append(pulsingLineIcon.DOFade(0, iconFadeOutOffset));
+        _sequence.Insert(arrowFadeInTime, arrowIcon.DOFade(1, 2f));
+        Debug.Log("end set graphics id:  "+ this.GetInstanceID());
       
-        onShortcutExecuted.Notify(this);
+        // onShortcutExecuted.Notify(this);
 
     }
 
