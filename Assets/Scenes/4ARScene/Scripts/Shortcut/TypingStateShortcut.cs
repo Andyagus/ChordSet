@@ -23,8 +23,6 @@ namespace AR_Keyboard.Shortcuts.Scripts
         public override void SetGraphics(ARPrimaryKey key)
         {
             // DOTween.pause
-
-            Debug.Log("Set graphics Called from typing state");
             
             _sequence = DOTween.Sequence();
             var text = key.GetComponentInChildren<TextMeshProUGUI>();

@@ -325,10 +325,22 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 4630679486530067887, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4644673007380862636, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 4946749845028105562, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196605519061625183, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5898732734874521071, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
@@ -341,6 +353,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 6373141658466422034, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6519344695342142326, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
@@ -353,6 +369,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 7780210144861475169, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8173707973111343450, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 

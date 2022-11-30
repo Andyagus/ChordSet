@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Effects;
 using Enums;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace AR_Keyboard.State
 
         public override void Entry(ARKeyboard keyboard)
         {
+            Debug.Log("Back in Typing State");
+            HandlePrimaryKeys(keyboard);
+            
             foreach (var modifierKey in keyboard.modifierKeys)
             {
                 //this is accessing the modifier keys
@@ -31,12 +35,39 @@ namespace AR_Keyboard.State
             }
         }
 
+        private void HandlePrimaryKeys(ARKeyboard keyboard)
+        {
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (primaryKey.typingStateShortcut != null)
+                {
+
+
+                    if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+                    {
+                        Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
+                        primaryKey.currentShortcut.StopSequence();
+                    }
+                    
+                    var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
+                    
+                    primaryKey.currentShortcut = shortcut;
+                    
+                    var offset = new Vector3(0f, 0.0007f, 0f);
+                    shortcut.transform.position = primaryKey.transform.position + offset;
+
+                    shortcut.SetGraphics(primaryKey);
+                }
+            }
+        }
+
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
             //this is checking the modifier keys input
             
             if (keyName == "command-left" || keyName == "command-right")
             {
+
                 if (keyState == EKeyState.KEY_PRESSED)
                 {
                     var state = Instantiate(commandState);
@@ -47,7 +78,9 @@ namespace AR_Keyboard.State
         
             return null;
         }
-        
+
+       
+
         private void MoveToNextState()
         {
             throw new System.NotImplementedException();

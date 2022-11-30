@@ -19,7 +19,7 @@ namespace AR_Keyboard
         public ARKeyboardState commandState;
         public Action<ARKeyboardState> onStateChanged;
 
-        [NonSerialized] private List<ARPrimaryKey> primaryKeys;
+        [NonSerialized] public List<ARPrimaryKey> primaryKeys;
         [NonSerialized] public List<ARModifierKey> modifierKeys;
 
         private KeySyncDictionary _keySyncDictionary;

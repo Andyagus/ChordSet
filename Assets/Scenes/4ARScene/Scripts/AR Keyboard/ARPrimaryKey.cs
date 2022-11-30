@@ -19,6 +19,7 @@ namespace AR_Keyboard
         [SerializeField] public Shortcut commandStateShortcut;
 
         private TextMeshProUGUI _textMesh;
+
         
         public string KeyName
         {
@@ -40,6 +41,9 @@ namespace AR_Keyboard
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             _arKeyboard.onStateChanged += OnStateChanged;
+
+
+            currentShortcut = new GameObject("Shortcut").AddComponent<Shortcut>();
         }
         
         private void OnStateChanged(ARKeyboardState state)
@@ -48,15 +52,8 @@ namespace AR_Keyboard
             
             switch (state.stateName)
             {
-                case "Typing":
-                    currentShortcut = typingStateShortcut;
-                    break;
-                case "Command":
-                    if (currentShortcut != null)
-                    {
-                        currentShortcut = commandStateShortcut;
-                    }
-                    break;
+               default:
+                   break;
             }
 
             SetGraphics();
@@ -77,7 +74,6 @@ namespace AR_Keyboard
             if (currentShortcut != null)
             {
                 var offset = new Vector3(0f, 0.00013f, 0f);
-                
                 currentShortcut.SetGraphics(key: this);
             }
         }

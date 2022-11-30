@@ -21,28 +21,19 @@ public class AudioManager : MonoBehaviour, IObserver
         _audioSource = GetComponent<AudioSource>();
         _arKeyboard = FindObjectOfType<ARKeyboard>();
         _primaryKeys = FindObjectOfType<ARKeyboard>().GetComponentsInChildren<ARPrimaryKey>().ToList();
-    }
 
-    private void Start()
-    {
-
-        _arKeyboard.onStateChanged += OnKeyboardStateChange;
+        foreach (var key in _primaryKeys)
+        {
+            // key.OnNewShortcut += OnNewShortcut;
+        }
         
-        foreach (var primaryKey in _primaryKeys)
-        {
-            Debug.Log("Primary Key");
-            // primaryKey.onPrimaryKeyHit.AddObserver(this);
-        }
     }
+    
 
-    private void OnKeyboardStateChange(ARKeyboardState obj)
-    {
-        var shortcuts = _arKeyboard.GetComponentsInChildren<Shortcut>();
-        foreach (var shortcut in shortcuts)
-        {
-            shortcut.onShortcutExecuted.AddObserver(this); 
-        }
-    }
+    // private void OnKeyboardStateChange(ARKeyboardState obj)
+    // {
+    //     foreach(var key in _primaryKeys)
+    // }
 
     public void OnNotify(object entity)
     {
