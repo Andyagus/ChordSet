@@ -20,13 +20,23 @@ namespace AR_Keyboard.Shortcuts.Scripts
         
         public override void Execute(EKeyState keyState, ARPrimaryKey key)
         {
+            
             _executeSequence = DOTween.Sequence();
-            _executeSequence.Append(scissors.rectTransform.DOLocalMoveX(amountToMoveScissors, 1f, false));
-            // _executeSequence.Append(xFull.transform.DOSpiral(2f));
-            _executeSequence.Insert(1, xTop.rectTransform.DOSpiral(2));
-            _executeSequence.Insert(1, xBottom.rectTransform.DOSpiral(2));
-            // var primaryKey = GetComponentInParent<ARPrimaryKey>();
-            // primaryKey.onPrimaryKeyHit.Notify(this);
+
+            if (scissors != null)
+            {
+                _executeSequence.Append(scissors.rectTransform.DOLocalMoveX(amountToMoveScissors, 0.3f));
+            }
+            
+            var tweenToLocation1 = new Vector3(0.05f, 0.03f, 0.002f);
+            var tweenToLocation2 = new Vector3(0.08f, 0.07f, 0.002f);
+            
+            _executeSequence.Insert(0.3f, xTop.rectTransform.DOLocalMove(tweenToLocation1, 1.2f));
+            _executeSequence.Insert(0.3f, xBottom.rectTransform.DOLocalMove(tweenToLocation2, 2.1f));
+            
+            _executeSequence.Insert(1.2f, xTop.DOFade(0, 1f));
+            _executeSequence.Insert(1.2f, xBottom.DOFade(0, 1f));
+            // _executeSequence.SetAutoKill(false);
         }
 
         public override void SetGraphics(ARPrimaryKey key)
@@ -37,10 +47,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
             _animationSequence.Append(keyText.DOFade(0, 1f))
                 .Append(xTop.DOFade(1, 0.5f))
                 .Insert(1, xBottom.DOFade(1, 0.5f))
-                .Append(scissors.DOFade(1, 1f)).SetAutoKill(false);
+                .Append(scissors.DOFade(1, 1f));
             _animationSequence.SetAutoKill(false);
-
-
         }
 
         public override void StopSequence()
@@ -53,8 +61,10 @@ namespace AR_Keyboard.Shortcuts.Scripts
             
             if (_executeSequence != null)
             {
-                _executeSequence.Pause();
-                _executeSequence.Kill();
+                DOTween.Kill(_executeSequence);
+                DOTween.Kill(xTop);
+                DOTween.Kill(xBottom);
+                DOTween.Kill(scissors);
             }
         }
     }

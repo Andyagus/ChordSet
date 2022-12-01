@@ -43,8 +43,8 @@ namespace AR_Keyboard.State
                 {
                     if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                     {
-                        Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
                         primaryKey.currentShortcut.StopSequence();
+                        Destroy(primaryKey.currentShortcut.gameObject);
                     }
                     
                     var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
@@ -84,7 +84,6 @@ namespace AR_Keyboard.State
             {
                 if (primaryKey.name == keyName)
                 {
-                    
                     primaryKey.currentShortcut.Execute(keyState, primaryKey);
                     // Debug.Log(primaryKey.name);
                 }   

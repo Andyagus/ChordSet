@@ -10,6 +10,8 @@ public class NullObjectShortcut : Shortcut
 {
     public override void SetGraphics(ARPrimaryKey key)
     {
+        
+        
         var text = key.GetComponentInChildren<TextMeshProUGUI>();
         text.DOFade(.1f, 1.3f);
     }
