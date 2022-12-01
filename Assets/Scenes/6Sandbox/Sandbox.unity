@@ -377,7 +377,7 @@ PrefabInstance:
     - target: {fileID: 1383454313952767984, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
     - target: {fileID: 1608446225970789559, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
@@ -405,7 +405,7 @@ PrefabInstance:
     - target: {fileID: 2685013549313684881, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
     - target: {fileID: 2970428685135250059, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
@@ -473,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 8173707973111343450, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      objectReference: {fileID: -7872775658559453701, guid: c713dccda9ea944019fb2418e3c72dea, type: 3}
     - target: {fileID: 8202243168393888317, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
