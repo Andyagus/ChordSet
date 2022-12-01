@@ -19,8 +19,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
       
       public override void Awake()
       {
+         //THIS IS NOT IDEAL BECAUSE THERE ARE MULTIPLE TEXT MESHES
          _mainKeyText = GameObject.Find("V").GetComponentInChildren<TextMeshProUGUI>();
-
          _copyShortcut = GameObject.Find("C").GetComponentInChildren<CopyShortcut>();
          base.Awake();
       }
@@ -56,12 +56,13 @@ namespace AR_Keyboard.Shortcuts.Scripts
 
       }
 
-      
-      
-      
       public override void StopSequence()
       {
-         base.StopSequence();
+         if (_executeSequence != null)
+         {
+            _executeSequence.Pause();
+            _executeSequence.Kill();
+         }
       }
 
       public override void SetGraphics(ARPrimaryKey key)
