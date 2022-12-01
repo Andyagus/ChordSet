@@ -48,13 +48,12 @@ namespace AR_Keyboard.State
                     }
                     
                     var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
+                    var offset = new Vector3(0f, 0.0007f, 0f);
+                    shortcut.transform.position = primaryKey.transform.position + offset;
+                    shortcut.SetGraphics(primaryKey);
                     
                     primaryKey.currentShortcut = shortcut;
                     
-                    var offset = new Vector3(0f, 0.0007f, 0f);
-                    shortcut.transform.position = primaryKey.transform.position + offset;
-
-                    shortcut.SetGraphics(primaryKey);
                 }
             }
         }

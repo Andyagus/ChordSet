@@ -57,6 +57,37 @@ public class TestARKeyboardInput : MonoBehaviour
             _ARKeyboard.AcceptTestInput("Z", EKeyState.KEY_UNPRESSED);
         }
         
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            _ARKeyboard.AcceptTestInput("X", EKeyState.KEY_PRESSED);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            _ARKeyboard.AcceptTestInput("X", EKeyState.KEY_UNPRESSED);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _ARKeyboard.AcceptTestInput("C", EKeyState.KEY_PRESSED);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            _ARKeyboard.AcceptTestInput("C", EKeyState.KEY_UNPRESSED);
+        }
+        
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            _ARKeyboard.AcceptTestInput("V", EKeyState.KEY_PRESSED);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            _ARKeyboard.AcceptTestInput("V", EKeyState.KEY_UNPRESSED);
+        }
+        
         if (Input.GetKeyDown(KeyCode.LeftCommand))
         {
             _ARKeyboard.AcceptTestInput("command-left", EKeyState.KEY_PRESSED);
