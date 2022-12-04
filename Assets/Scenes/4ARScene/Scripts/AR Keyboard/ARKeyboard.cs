@@ -61,23 +61,7 @@ namespace AR_Keyboard
         {
             
             HandleInput(keyName, keyState);
-            
-            // foreach (var modifierKey in modifierKeys)
-            // {
-            //     if (modifierKey.KeyName == keyName)
-            //     {
-            //         HandleModifierInput(keyName, keyState);
-            //     }
-            // }
-            //
-            // foreach (var primaryKey in primaryKeys)
-            // {
-            //     if (keyName == primaryKey.KeyName)
-            //     {
-            //         HandleModifierInput(keyName, keyState);
-            //         // HandlePrimaryInput(primaryKey, keyName, keyState);
-            //     }
-            // }
+     
             
         }
 
