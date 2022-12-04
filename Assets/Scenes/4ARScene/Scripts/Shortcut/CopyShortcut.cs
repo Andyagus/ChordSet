@@ -46,7 +46,10 @@ public class CopyShortcut : Shortcut
         _executeSequence.Append(stamp.DOLocalMove(moveToVKeyPos, 0.896453f));
 
         graphicCopied = true;
-        onGraphicCopied();
+        if (onGraphicCopied != null)
+        {
+            onGraphicCopied();
+        }
     }
 
     public override void StopSequence()

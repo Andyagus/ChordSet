@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: 
   keyCode: 0
-  modifierState: 0
+  modifierText: {fileID: 6253010008251220902}
+  activeGlowGameObject: {fileID: 0}
 --- !u!1 &4867929628544056754
 GameObject:
   m_ObjectHideFlags: 0

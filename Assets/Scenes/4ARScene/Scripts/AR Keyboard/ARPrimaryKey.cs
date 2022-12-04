@@ -43,8 +43,8 @@ namespace AR_Keyboard
             _arKeyboard.onStateChanged += OnStateChanged;
 
 
-            currentShortcut = new GameObject("Shortcut").AddComponent<Shortcut>();
-            currentShortcut.transform.SetParent(this.transform);
+            // currentShortcut = new GameObject("Shortcut").AddComponent<Shortcut>();
+            // currentShortcut.transform.SetParent(this.transform);
         }
         
         private void OnStateChanged(ARKeyboardState state)

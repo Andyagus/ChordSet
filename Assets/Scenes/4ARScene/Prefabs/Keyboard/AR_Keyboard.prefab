@@ -409,6 +409,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: L
@@ -611,6 +615,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: V
@@ -681,6 +689,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 1255088135940456195, guid: 855b4643516c046138bff739eb2b28b1, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: X
@@ -825,6 +837,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: G
@@ -895,6 +911,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: F
@@ -1179,6 +1199,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: O
@@ -1421,6 +1445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Command Key Right
       objectReference: {fileID: 0}
+    - target: {fileID: 3387944423415815880, guid: 56640e014d1044354b844ef4f767d0f6, type: 3}
+      propertyPath: activeGlowGameObject
+      value: 
+      objectReference: {fileID: 60666234214374294, guid: 79ac7eaf4146f48a0aa106d148f0ac47, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56640e014d1044354b844ef4f767d0f6, type: 3}
 --- !u!4 &3485811441176476228 stripped
@@ -1513,6 +1541,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: W
@@ -1859,6 +1891,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: A
@@ -1999,6 +2035,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: I
@@ -2069,6 +2109,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: J
@@ -2645,6 +2689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Command Key Left
       objectReference: {fileID: 0}
+    - target: {fileID: 3387944423415815880, guid: 4313f2ede6c1245beb00998e99ad251f, type: 3}
+      propertyPath: activeGlowGameObject
+      value: 
+      objectReference: {fileID: 60666234214374294, guid: 79ac7eaf4146f48a0aa106d148f0ac47, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4313f2ede6c1245beb00998e99ad251f, type: 3}
 --- !u!4 &1631927617856623765 stripped
@@ -2667,6 +2715,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: P
@@ -2737,6 +2789,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: M
@@ -2807,6 +2863,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: T
@@ -3219,6 +3279,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: Y
@@ -3359,6 +3423,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: N
@@ -3705,6 +3773,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: E
@@ -3989,6 +4061,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: U
@@ -4323,6 +4399,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: S
@@ -4805,6 +4885,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: -7872775658559453701, guid: c713dccda9ea944019fb2418e3c72dea, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: C
@@ -4875,6 +4959,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: B
@@ -5007,6 +5095,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: Q
@@ -5143,6 +5235,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: R
@@ -5213,6 +5309,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: H
@@ -5613,6 +5713,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: K
@@ -5757,6 +5861,10 @@ PrefabInstance:
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: D

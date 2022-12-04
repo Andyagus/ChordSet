@@ -12,7 +12,6 @@ namespace AR_Keyboard.State
         public override void Entry(ARKeyboard keyboard)
         {
             PrimaryKeysEntry(keyboard);
-
             foreach (var modifierKey in keyboard.modifierKeys)
             {
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
@@ -27,7 +26,7 @@ namespace AR_Keyboard.State
 
             HandleInputPrimaryKey(keyboard, keyName, keyState);
             
-            if (keyName == "command-left" || keyName == "command-right")
+            if (keyName == "command-left")
             {
                 if (keyState == EKeyState.KEY_UNPRESSED)
                 {
@@ -44,7 +43,10 @@ namespace AR_Keyboard.State
             {
                 if (primaryKey.name == keyName)
                 {
-                    primaryKey.currentShortcut.Execute(keyState, primaryKey);
+                    if (keyState == EKeyState.KEY_PRESSED)
+                    {
+                        primaryKey.currentShortcut.Execute(keyState, primaryKey);
+                    }
                     // Debug.Log(primaryKey.name);
                 }   
             }

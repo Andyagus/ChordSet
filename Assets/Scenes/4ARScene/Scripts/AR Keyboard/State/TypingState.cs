@@ -22,7 +22,6 @@ namespace AR_Keyboard.State
 
         public override void Entry(ARKeyboard keyboard)
         {
-            Debug.Log("Back in Typing State");
             PrimaryKeysEntry(keyboard);
             
             foreach (var modifierKey in keyboard.modifierKeys)
@@ -31,6 +30,10 @@ namespace AR_Keyboard.State
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
                     modifierKey.Available();
+                }
+                else
+                {
+                    modifierKey.Unavailable();
                 }
             }
         }

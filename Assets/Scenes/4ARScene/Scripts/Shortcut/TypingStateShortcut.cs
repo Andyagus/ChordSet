@@ -42,15 +42,10 @@ namespace AR_Keyboard.Shortcuts.Scripts
             Debug.Log("Typing shortcut called");
             if (keyState == EKeyState.KEY_PRESSED)
             {
-                KeyColorManager.ChangeKeyColor(key, Color.grey);
+                KeyColorManager.ChangeKeyColor(key, Color.gray);
             }else if (keyState == EKeyState.KEY_UNPRESSED)
             {
-                var originalColor = new Color 
-                {
-                     r = .1132075f,
-                     g = .1132075f,
-                     b = .1132075f 
-                }; 
+                var originalColor = Color.black;
                 KeyColorManager.ChangeKeyColor(key, originalColor);
             }
         }

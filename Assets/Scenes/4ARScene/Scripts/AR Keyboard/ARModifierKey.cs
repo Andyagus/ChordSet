@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using DG.Tweening;
 using Interfaces;
+using TMPro;
 using UnityEngine;
 
 namespace AR_Keyboard
@@ -12,48 +15,55 @@ namespace AR_Keyboard
         public KeyCode KeyCode { get => keyCode; set => keyCode = value; }
 
         private MeshRenderer _meshRenderer;
+        private Color _originalColor;
 
+        private Sequence _unavailableSequence;
+        // public TextMeshProUGUI modifierText;
 
+        public TextMeshProUGUI[] modifierTexts;
+        
         private void Awake()
         {
+            modifierTexts = GetComponentsInChildren<TextMeshProUGUI>();
             _meshRenderer = GetComponentInChildren<MeshRenderer>();
+            _originalColor = _meshRenderer.material.color;
         }
-
-        // modifier state
-         public enum EModifierState
-         {
-             AVAILABLE,
-             UNAVAILABLE,
-             ACTIVE
-         }
-
-         public EModifierState modifierState;
+        
+         public GameObject activeGlowGameObject;
 
          public void Available()
          {
-             modifierState = EModifierState.AVAILABLE;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.black, 0.34f);
+             var glow = Instantiate(activeGlowGameObject, transform);
+             glow.transform.position = transform.position;
+         }
+
+         public void Unavailable()
+         {
+             StartCoroutine(FadeOutKeys());
          }
          
          public void Active()
          {
-             modifierState = EModifierState.ACTIVE;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.white, 0.74652f);
          }
 
-         private void Update()
+         private IEnumerator FadeOutKeys()
          {
-             switch (modifierState)
+             //for editor hiccups
+             yield return new WaitForSeconds(0.1f);
+             _unavailableSequence = DOTween.Sequence();
+
+             foreach (var text in modifierTexts)
              {
-                 case EModifierState.AVAILABLE:
-                     _meshRenderer.material.color = Color.blue;
-                     break;
-                 case EModifierState.UNAVAILABLE:
-                     _meshRenderer.material.color = Color.grey;
-                     break;
-                 case EModifierState.ACTIVE:
-                     _meshRenderer.material.color = Color.yellow;
-                     break;
+                _unavailableSequence.Insert(0, text.DOFade(0.1f, 1f));
              }
+             _unavailableSequence.SetAutoKill(false);
          }
+         
+        
 
     }
 }

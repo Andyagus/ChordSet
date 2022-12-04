@@ -59,22 +59,25 @@ namespace AR_Keyboard
         
         private void DelegateInput(string keyName, EKeyState keyState)
         {
-            foreach (var modifierKey in modifierKeys)
-            {
-                if (modifierKey.KeyName == keyName)
-                {
-                    HandleModifierInput(keyName, keyState);
-                }
-            }
             
-            foreach (var primaryKey in primaryKeys)
-            {
-                if (keyName == primaryKey.KeyName)
-                {
-                    HandleModifierInput(keyName, keyState);
-                    // HandlePrimaryInput(primaryKey, keyName, keyState);
-                }
-            }
+            HandleInput(keyName, keyState);
+            
+            // foreach (var modifierKey in modifierKeys)
+            // {
+            //     if (modifierKey.KeyName == keyName)
+            //     {
+            //         HandleModifierInput(keyName, keyState);
+            //     }
+            // }
+            //
+            // foreach (var primaryKey in primaryKeys)
+            // {
+            //     if (keyName == primaryKey.KeyName)
+            //     {
+            //         HandleModifierInput(keyName, keyState);
+            //         // HandlePrimaryInput(primaryKey, keyName, keyState);
+            //     }
+            // }
             
         }
 
@@ -82,13 +85,9 @@ namespace AR_Keyboard
         {
             DelegateInput(keyName, keyState);
         }
+        
 
-        private void HandlePrimaryInput(ARPrimaryKey primaryKey, string keyName, EKeyState keyState)
-        {
-            primaryKey.HandleInput(_state, keyState);
-        }
-
-        private void HandleModifierInput(string keyName, EKeyState keyState)
+        private void HandleInput(string keyName, EKeyState keyState)
         {
             
             var state = _state.HandleInput(keyName, keyState, this);

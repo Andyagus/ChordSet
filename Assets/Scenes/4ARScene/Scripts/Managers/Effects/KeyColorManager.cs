@@ -16,9 +16,24 @@ namespace Effects
         private List<ARPrimaryKey> _primaryKeys;
         //could switch to other………
 
+        private static Dictionary<string, Color> _colorPalette;
+        
+
         private void Awake()
         {
             _primaryKeys = GameObject.Find("AR Keyboard").GetComponentsInChildren<ARPrimaryKey>().ToList();
+
+            _colorPalette = new Dictionary<string, Color>()
+            {
+                {"white", Color.white},
+                {"black", Color.black}
+            };
+        }
+
+        public static Color ColorRequest(string colorRequest)
+        {
+            var color = _colorPalette[colorRequest];
+            return color;
         }
 
         private void Start()

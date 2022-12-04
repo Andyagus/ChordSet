@@ -366,118 +366,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 780034726868001934, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 1315341640515562691, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 1255088135940456195, guid: 855b4643516c046138bff739eb2b28b1, type: 3}
-    - target: {fileID: 1383454313952767984, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
-    - target: {fileID: 1608446225970789559, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 1771460289295724781, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 2112983765034019222, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 2202238653972478001, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 2580837115424462338, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 2597795471862611742, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 2685013549313684881, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
-    - target: {fileID: 2970428685135250059, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 3769574567728277511, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 3841900074320617131, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 3868526611057327140, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 4630679486530067887, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4644673007380862636, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 4946749845028105562, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5196605519061625183, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5898732734874521071, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 5935649021214683534, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 4767926295433023761, guid: 004cd95221d684cd7849b76a77af8122, type: 3}
-    - target: {fileID: 6111837794893667542, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 6373141658466422034, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6519344695342142326, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 7504798568189558601, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 7661856218849394864, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 7780210144861475169, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173707973111343450, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: -7872775658559453701, guid: c713dccda9ea944019fb2418e3c72dea, type: 3}
-    - target: {fileID: 8202243168393888317, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     - target: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Name
       value: AR_Keyboard
@@ -526,18 +414,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8940346757050331172, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 9122281355133669150, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-    - target: {fileID: 9200355769283338465, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: commandStateShortcut
-      value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
 --- !u!1 &1502763814
@@ -557,7 +433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1502763815
 AudioListener:
   m_ObjectHideFlags: 0
@@ -641,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1540490336
 AudioListener:
   m_ObjectHideFlags: 0
@@ -708,3 +584,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 86.496, y: 0, z: 0}
+--- !u!1 &1793686386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793686388}
+  - component: {fileID: 1793686387}
+  m_Layer: 0
+  m_Name: AR Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1793686387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793686386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe845dfb7edc54ca7b37d4c6b737a894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1793686388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793686386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.934932, y: -6.244687, z: -16.13287}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
