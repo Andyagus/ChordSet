@@ -43,15 +43,27 @@ namespace AR_Keyboard.Shortcuts.Scripts
         {
             
             Debug.Log("Executing primary key");
+
+
+            if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.ACTIVE)
+            {
+                KeyColorManager.ChangeKeyColor(primaryKey, Color.white);
+
+                // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_ON);
+            }else if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.INACTIVE)
+            {
+                KeyColorManager.ChangeKeyColor(primaryKey, Color.black);
+                // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
+            }
             
-            if (inputKeyState == EKeyState.KEY_PRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_OFF)
-            {
-                primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_ON);
-            }
-            else if (inputKeyState == EKeyState.KEY_UNPRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_ON)
-            {
-                primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
-            }
+            // if (inputKeyState == EKeyState.KEY_PRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_OFF)
+            // {
+            //     primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_ON);
+            // }
+            // else if (inputKeyState == EKeyState.KEY_UNPRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_ON)
+            // {
+            //     primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
+            // }
 
         }
     }
