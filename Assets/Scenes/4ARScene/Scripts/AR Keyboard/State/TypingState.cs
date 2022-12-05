@@ -64,33 +64,21 @@ namespace AR_Keyboard.State
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
             //this is checking the modifier keys input
-            
-            HandleInputPrimaryKey(keyboard, keyName, keyState);
-            
-            if (keyName == "command-left" || keyName == "command-right")
+
+            Debug.Log("Handle input called");
+            // HandleInputPrimaryKey(keyboard, keyName, keyState);
+            if (keyName == "A")
             {
-            
-                if (keyState == EKeyState.KEY_PRESSED)
-                {
-                    var state = Instantiate(commandState);
-                    return state;
-                    // Debug.Log("next state");
-                }
+                Debug.Log("A key called");
             }
+
         
             return null;
         }
 
         private void HandleInputPrimaryKey(ARKeyboard keyboard, string keyName, EKeyState keyState)
         {
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                if (primaryKey.name == keyName)
-                {
-                    primaryKey.currentShortcut.Execute(keyState, primaryKey);
-                    // Debug.Log(primaryKey.name);
-                }   
-            }
+            // Debug.Log("Handle input primary key");
         }
 
         private void MoveToNextState()

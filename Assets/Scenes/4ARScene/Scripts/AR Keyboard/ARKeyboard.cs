@@ -61,13 +61,14 @@ namespace AR_Keyboard
         {
             
             HandleInput(keyName, keyState);
-     
-            
         }
 
         public void AcceptTestInput(string keyName, EKeyState keyState)
         {
-            DelegateInput(keyName, keyState);
+            if (keyName == "A")
+            {
+                DelegateInput(keyName, keyState);
+            }
         }
         
 
