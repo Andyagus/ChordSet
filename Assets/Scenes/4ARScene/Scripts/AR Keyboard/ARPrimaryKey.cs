@@ -68,12 +68,12 @@ namespace AR_Keyboard
                 // case EPrimaryKeyState.INACTIVE:
                 //     primaryKeyState = EPrimaryKeyState.INACTIVE;
                 //     break;
-                // case EPrimaryKeyState.TYPING_ON:
-                //     TypingOn();
-                //     break;
-                // case EPrimaryKeyState.TYPING_OFFa:
-                //     TypingOff();
-                //     break;
+                case EPrimaryKeyState.TYPING_ON:
+                    TypingOn();
+                    break;
+                case EPrimaryKeyState.TYPING_OFF:
+                    TypingOff();
+                    break;
             }
         }
 

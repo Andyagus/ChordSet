@@ -59,12 +59,15 @@ namespace AR_Keyboard.State
 
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
-            if (inputKeyName == "command-left" || inputKeyName == "command-right")
+            foreach (var modifierKey in keyboard.modifierKeys)
             {
-                if (inputKeyState == EKeyState.KEY_PRESSED)
+                if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
-                    var state = Instantiate(commandState);
-                    return state;
+                    if (modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
+                    {
+                        var state = Instantiate(commandState);
+                        return state;
+                    }
                 }
             }
             return null;

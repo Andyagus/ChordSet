@@ -69,21 +69,34 @@ namespace AR_Keyboard.State
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
 
+            
             foreach (var modifierKey in keyboard.modifierKeys)
             {
-                if (modifierKey.KeyName == inputKeyName)
+                if (modifierKey.KeyName == "command-left")
                 {
-                    if (modifierKey.modifierState == ARModifierKey.EModifierKeyState.ACTIVE)
+                    if (modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
                     {
-                        if (inputKeyState == EKeyState.KEY_UNPRESSED)
-                        {
-                            Debug.Log("Called modifier state");
-                            var state = Instantiate(typingState);
-                            return state;
-                        }
+                        var state = Instantiate(typingState);
+                        return state;
                     }
                 }
             }
+            
+            // foreach (var modifierKey in keyboard.modifierKeys)
+            // {
+            //     if (modifierKey.KeyName == inputKeyName)
+            //     {
+            //         if (modifierKey.modifierState == ARModifierKey.EModifierKeyState.ACTIVE)
+            //         {
+            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
+            //             {
+            //                 Debug.Log("Called modifier state");
+            //                 var state = Instantiate(typingState);
+            //                 return state;
+            //             }
+            //         }
+            //     }
+            // }
             return null;
         }
 
