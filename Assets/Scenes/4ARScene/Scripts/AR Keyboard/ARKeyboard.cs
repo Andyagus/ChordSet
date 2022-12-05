@@ -15,7 +15,7 @@ namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour
     {
-        private ARKeyboardState _state;
+        private ARKeyboardState _ambientModeState;
         public ARKeyboardState typingState;
         public ARKeyboardState commandState;
         public Action<ARKeyboardState> onStateChanged;
@@ -29,8 +29,8 @@ namespace AR_Keyboard
         {
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
-            _state = Instantiate(typingState, this.transform, true);
-            _state.Entry(this);
+            _ambientModeState = Instantiate(typingState, this.transform, true);
+            _ambientModeState.Entry(this);
      
         }
 
@@ -38,14 +38,22 @@ namespace AR_Keyboard
         {
             if (onStateChanged != null)
             {
-                onStateChanged(_state);
+                onStateChanged(_ambientModeState);
             }
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
         }
 
         private void Update()
         {
-            
+
+            foreach (var key in primaryKeys)
+            {
+                if (key.keyPressedState == EKeyState.KEY_PRESSED)
+                {
+                    Debug.Log(key.KeyName);
+                }
+                
+            }   
         }
 
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
@@ -58,6 +66,7 @@ namespace AR_Keyboard
                 DelegateInput(keyName, keyState);
             }
         }
+        
         
         private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
         {
@@ -123,16 +132,16 @@ namespace AR_Keyboard
         private void HandleInput(string keyName, EKeyState keyState)
         {
             
-            var state = _state.HandleInput(keyName, keyState, this);
+            var state = _ambientModeState.HandleInput(keyName, keyState, this);
             
             if (state != null)
             {
-                _state.Exit(this);
-                Destroy(_state.gameObject);
-                _state = state;
-                _state.transform.SetParent(this.transform);
-                _state.Entry(this);
-                onStateChanged(_state);
+                _ambientModeState.Exit(this);
+                Destroy(_ambientModeState.gameObject);
+                _ambientModeState = state;
+                _ambientModeState.transform.SetParent(this.transform);
+                _ambientModeState.Entry(this);
+                onStateChanged(_ambientModeState);
                 // StateChanged();
             }
         }
