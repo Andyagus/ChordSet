@@ -31,15 +31,6 @@ public class UndoShortcut : Shortcut
     [SerializeField]  private float arrowFadeInTime = 1.12f;
 
 
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
-    private void Start()
-    {
-    }
-
     public override void StopSequence()
     {
         if (_sequence != null)

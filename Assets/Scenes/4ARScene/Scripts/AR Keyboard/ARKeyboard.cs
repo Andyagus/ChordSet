@@ -49,6 +49,7 @@ namespace AR_Keyboard
 
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
+            Debug.Log("dictionary count: " + dict.Count);
             foreach (var kvp in dict)
             {
                 var keyName = kvp.Value.keyName;

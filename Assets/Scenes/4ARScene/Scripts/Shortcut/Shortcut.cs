@@ -13,28 +13,14 @@ namespace AR_Keyboard
     //maybe implement subscriber observer here
     public class Shortcut : MonoBehaviour
     {
-        //
+        
         public Subject onShortcutExecuted;
         public EShortcuts eShortcut;
-        
-        // public ARKeyboardState requiredState;
-
-        // public ARModifierKey modifierKey;
-        
         public string shortcutName;
-        // public Image shortcutImage;
-        // public TextMeshProUGUI textMeshPro;
 
-        
         public virtual void Awake()
         {
             onShortcutExecuted = new Subject();
-            
-            
-            
-            
-            // onShortcutExecuted.GetInstanceID();
-            // textMeshPro.text = shortcutName;
         }
         
 

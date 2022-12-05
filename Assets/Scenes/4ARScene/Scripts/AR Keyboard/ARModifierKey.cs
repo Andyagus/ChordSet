@@ -21,6 +21,15 @@ namespace AR_Keyboard
         // public TextMeshProUGUI modifierText;
 
         public TextMeshProUGUI[] modifierTexts;
+
+        public enum EModifierKeyState
+        {
+            AVAILABLE,
+            ACTIVE,
+            UNAVAILABLE
+        }
+
+        public EModifierKeyState modifierState;
         
         private void Awake()
         {
@@ -31,21 +40,43 @@ namespace AR_Keyboard
         
          public GameObject activeGlowGameObject;
 
-         public void Available()
+
+         public void ChangeLocalState(EModifierKeyState state)
          {
+             switch (state)
+             {
+                 case EModifierKeyState.AVAILABLE:
+                     Available();
+                     break;
+                 case EModifierKeyState.ACTIVE:
+                     Active();
+                     break;
+                 case EModifierKeyState.UNAVAILABLE:
+                     Unavailable();
+                     break;
+                 default:
+                     break;
+             }
+         }
+         
+         private void Available()
+         {
+             modifierState = EModifierKeyState.AVAILABLE;
              var rend = GetComponentInChildren<MeshRenderer>();
-             rend.material.DOColor(Color.black, 0.34f);
-             var glow = Instantiate(activeGlowGameObject, transform);
-             glow.transform.position = transform.position;
+             rend.material.DOColor(Color.yellow, 0.34f);
+             // var glow = Instantiate(activeGlowGameObject, transform);
+             // glow.transform.position = transform.position;
          }
 
-         public void Unavailable()
+         private void Unavailable()
          {
+             modifierState = EModifierKeyState.UNAVAILABLE;
              StartCoroutine(FadeOutKeys());
          }
          
-         public void Active()
+         private void Active()
          {
+             modifierState = EModifierKeyState.ACTIVE;
              var rend = GetComponentInChildren<MeshRenderer>();
              rend.material.DOColor(Color.white, 0.74652f);
          }

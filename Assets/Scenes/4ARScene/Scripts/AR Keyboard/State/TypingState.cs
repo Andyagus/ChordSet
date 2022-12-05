@@ -9,16 +9,7 @@ namespace AR_Keyboard.State
 {
     public class TypingState : ARKeyboardState
     {
-        // [SerializeField] private List<ARKeyboardState> nextStates;
-        
-        //possible states we could transition too...
-        //each state has required modifier keyyy then we check here in the state machine for it
         public ARKeyboardState commandState;
-        public ARKeyboardState otherState;
-
-        //TODO:: i want to have a list here of the keys required to be in this state.. and it would be null
-        //and it would be all connected………… 
-        // private List<ARModifierKey> requiredKeys;
 
         public override void Entry(ARKeyboard keyboard)
         {
@@ -29,11 +20,11 @@ namespace AR_Keyboard.State
                 //this is accessing the modifier keys
                 if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
                 {
-                    modifierKey.Available();
+                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.AVAILABLE);
                 }
                 else
                 {
-                    modifierKey.Unavailable();
+                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.UNAVAILABLE);
                 }
             }
         }
@@ -63,22 +54,26 @@ namespace AR_Keyboard.State
 
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
-            //this is checking the modifier keys input
+            HandleInputPrimaryKey(keyName, keyState, keyboard);
+            return HandleInputModifierKey(keyName, keyState, keyboard);
+        }
 
-            Debug.Log("Handle input called");
-            // HandleInputPrimaryKey(keyboard, keyName, keyState);
-            if (keyName == "A")
+        private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
+        {
+            if (inputKeyName == "command-left" || inputKeyName == "command-right")
             {
-                Debug.Log("A key called");
+                if (inputKeyState == EKeyState.KEY_PRESSED)
+                {
+                    var state = Instantiate(commandState);
+                    return state;
+                }
             }
-
-        
             return null;
         }
 
-        private void HandleInputPrimaryKey(ARKeyboard keyboard, string keyName, EKeyState keyState)
+        private void HandleInputPrimaryKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
-            // Debug.Log("Handle input primary key");
+            Debug.Log("Handle input primary key typing state");
         }
 
         private void MoveToNextState()
