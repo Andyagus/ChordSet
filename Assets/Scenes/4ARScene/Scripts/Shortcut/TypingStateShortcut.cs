@@ -24,6 +24,9 @@ namespace AR_Keyboard.Shortcuts.Scripts
         {
             // DOTween.pause
             
+            //these are available graphics...
+            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
+
             _sequence = DOTween.Sequence();
             var text = key.GetComponentInChildren<TextMeshProUGUI>();
             var dt = text.DOText(key.name, 1f);
@@ -36,18 +39,20 @@ namespace AR_Keyboard.Shortcuts.Scripts
             // DOTween.Clear();
         }
 
-        public override void Execute(EKeyState keyState, ARPrimaryKey key)
+        public override void Execute(EKeyState inputKeyState, ARPrimaryKey primaryKey)
         {
             
-            Debug.Log("Typing shortcut called");
-            if (keyState == EKeyState.KEY_PRESSED)
+            Debug.Log("Executing primary key");
+            
+            if (inputKeyState == EKeyState.KEY_PRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_OFF)
             {
-                KeyColorManager.ChangeKeyColor(key, Color.gray);
-            }else if (keyState == EKeyState.KEY_UNPRESSED)
-            {
-                var originalColor = Color.black;
-                KeyColorManager.ChangeKeyColor(key, originalColor);
+                primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_ON);
             }
+            else if (inputKeyState == EKeyState.KEY_UNPRESSED && primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.TYPING_ON)
+            {
+                primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
+            }
+
         }
     }
 }

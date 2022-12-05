@@ -35,6 +35,7 @@ namespace AR_Keyboard.State
             {
                 if (primaryKey.typingStateShortcut != null)
                 {
+                    
                     if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                     {
                         primaryKey.currentShortcut.StopSequence();
@@ -46,19 +47,10 @@ namespace AR_Keyboard.State
                     var offset = new Vector3(0f, 0.0007f, 0f);
                     primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
                     primaryKey.currentShortcut.SetGraphics(primaryKey);
-                    
-                    
                 }
             }
         }
         
-        // var newShortcut = Instantiate(primaryKey.commandStateShortcut, primaryKey.transform);
-        // primaryKey.currentShortcut = newShortcut;
-        //
-        // var offset = new Vector3(0, 0.0007f, 0f);
-        // newShortcut.transform.position = primaryKey.transform.position + offset;
-        // newShortcut.SetGraphics(primaryKey);
-
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {
             HandleInputPrimaryKey(keyName, keyState, keyboard);
@@ -80,7 +72,16 @@ namespace AR_Keyboard.State
 
         private void HandleInputPrimaryKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
-            Debug.Log("Handle input primary key typing state");
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (inputKeyName == primaryKey.KeyName)
+                {
+                    if (primaryKey.currentShortcut != null)
+                    {
+                        primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
+                    }
+                }
+            }
         }
 
         private void MoveToNextState()
