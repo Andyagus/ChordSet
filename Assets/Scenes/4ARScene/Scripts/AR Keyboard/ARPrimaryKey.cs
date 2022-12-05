@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace AR_Keyboard
 {
-    public class ARPrimaryKey : MonoBehaviour, IKey
+    public class ARPrimaryKey : Key
     {
         private ARKeyboard _arKeyboard;
         
@@ -40,11 +40,9 @@ namespace AR_Keyboard
             ANIMATION_PLAY,
             TYPING_ON,
             TYPING_OFF,
-            ACTIVE,
-            INACTIVE
             // SELECTED
         }
-
+        
         public EPrimaryKeyState primaryKeyState;
         
         public Shortcut currentShortcut;
@@ -57,22 +55,25 @@ namespace AR_Keyboard
             _arKeyboard = GetComponentInParent<ARKeyboard>();
         }
 
+
+        
+        
         public void SetPrimaryKeyState(EPrimaryKeyState state)
         {
             switch (state)
             {
-                case EPrimaryKeyState.ACTIVE:
-                    primaryKeyState = EPrimaryKeyState.ACTIVE;
-                    break;
-                case EPrimaryKeyState.INACTIVE:
-                    primaryKeyState = EPrimaryKeyState.INACTIVE;
-                    break;
-                case EPrimaryKeyState.TYPING_ON:
-                    TypingOn();
-                    break;
-                case EPrimaryKeyState.TYPING_OFF:
-                    TypingOff();
-                    break;
+                // case EPrimaryKeyState.ACTIVE:
+                //     primaryKeyState = EPrimaryKeyState.ACTIVE;
+                //     break;
+                // case EPrimaryKeyState.INACTIVE:
+                //     primaryKeyState = EPrimaryKeyState.INACTIVE;
+                //     break;
+                // case EPrimaryKeyState.TYPING_ON:
+                //     TypingOn();
+                //     break;
+                // case EPrimaryKeyState.TYPING_OFFa:
+                //     TypingOff();
+                //     break;
             }
         }
 

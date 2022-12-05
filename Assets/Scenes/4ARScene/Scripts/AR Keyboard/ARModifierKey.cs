@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace AR_Keyboard
 {
-    public class ARModifierKey : MonoBehaviour, IKey
+    public class ARModifierKey : Key
     {
         [SerializeField] private string keyName;
         public string KeyName { get => keyName; set => keyName = value; }

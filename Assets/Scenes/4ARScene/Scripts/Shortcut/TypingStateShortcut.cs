@@ -45,12 +45,12 @@ namespace AR_Keyboard.Shortcuts.Scripts
             Debug.Log("Executing primary key");
 
 
-            if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.ACTIVE)
+            if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
             {
                 KeyColorManager.ChangeKeyColor(primaryKey, Color.white);
 
                 // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_ON);
-            }else if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.INACTIVE)
+            }else if (primaryKey.keyPressedState == EKeyState.KEY_UNPRESSED)
             {
                 KeyColorManager.ChangeKeyColor(primaryKey, Color.black);
                 // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);

@@ -64,7 +64,6 @@ namespace AR_Keyboard.State
         {
             HandleInputPrimaryKey(keyName, keyState, keyboard);
             return HandleInputModifierKey(keyName, keyState, keyboard);
-            return null;
         }
 
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
@@ -92,12 +91,9 @@ namespace AR_Keyboard.State
         {
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                if (primaryKey.KeyName == inputKeyName)
+                if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
                 {
-                    if (inputKeyState == EKeyState.KEY_PRESSED)
-                    {
-                        primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
-                    }
+                    primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
                 }
             }
         }

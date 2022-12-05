@@ -65,24 +65,47 @@ namespace AR_Keyboard
             {
                 if (inputKeyName == primaryKey.KeyName)
                 {
-                    if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.INACTIVE)
+                    if (primaryKey.keyPressedState == EKeyState.KEY_UNPRESSED)
                     {
                         if (inputKeyState == EKeyState.KEY_PRESSED)
                         {
-                            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ACTIVE);
+                            primaryKey.SetPressedState(EKeyState.KEY_PRESSED);
                             HandleInput(inputKeyName, inputKeyState);
                         }
                     }
-                    if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.ACTIVE)
+                    if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
                     {
                         if (inputKeyState == EKeyState.KEY_UNPRESSED)
                         {
-                            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.INACTIVE);
+                            primaryKey.SetPressedState(EKeyState.KEY_UNPRESSED);
                             HandleInput(inputKeyName, inputKeyState);
 
                         }
-                    } 
-                                
+                    }
+                }    
+            }
+            
+            foreach (var modifierKey in modifierKeys)
+            {
+                if (inputKeyName == modifierKey.KeyName)
+                {
+                    if (modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
+                    {
+                        if (inputKeyState == EKeyState.KEY_PRESSED)
+                        {
+                            modifierKey.SetPressedState(EKeyState.KEY_PRESSED);
+                            HandleInput(inputKeyName, inputKeyState);
+                        }
+                    }
+                    if (modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
+                    {
+                        if (inputKeyState == EKeyState.KEY_UNPRESSED)
+                        {
+                            modifierKey.SetPressedState(EKeyState.KEY_UNPRESSED);
+                            HandleInput(inputKeyName, inputKeyState);
+
+                        }
+                    }
                 }    
             }
             
