@@ -37,6 +37,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
             _executeSequence.Insert(1.2f, xTop.DOFade(0, 1f));
             _executeSequence.Insert(1.2f, xBottom.DOFade(0, 1f));
             // _executeSequence.SetAutoKill(false);
+
+            base.Execute(keyState, key);
         }
 
         public override void SetGraphics(ARPrimaryKey key)
@@ -49,9 +51,10 @@ namespace AR_Keyboard.Shortcuts.Scripts
                 .Insert(1, xBottom.DOFade(1, 0.5f))
                 .Append(scissors.DOFade(1, 1f));
             _animationSequence.SetAutoKill(false);
+            base.SetGraphics(key);
         }
 
-        public override void StopSequence()
+        public override void StopSequence(ARPrimaryKey key)
         {
             if (_animationSequence != null)
             {
@@ -64,6 +67,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
                 _executeSequence.Pause();
                 _executeSequence.Kill();
             }
+            base.StopSequence(key);
         }
     }
 }

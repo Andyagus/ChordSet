@@ -31,6 +31,7 @@ public class CopyShortcut : Shortcut
         // _originalPosition = transform.position;
         _setGraphicSequence = DOTween.Sequence();
         _setGraphicSequence.Append(stamp.DOLocalMoveY(localYMove, 1.2f));
+        base.SetGraphics(key);
     }
 
     public override void Execute(EKeyState keyState, ARPrimaryKey key)
@@ -50,9 +51,11 @@ public class CopyShortcut : Shortcut
         {
             onGraphicCopied();
         }
+        
+        base.Execute(keyState, key);
     }
 
-    public override void StopSequence()
+    public override void StopSequence(ARPrimaryKey key)
     {
         if (_setGraphicSequence != null)
         {
@@ -65,5 +68,6 @@ public class CopyShortcut : Shortcut
             _executeSequence.Pause();
             _executeSequence.Kill();
         }
+        base.StopSequence(key);
     }
 }

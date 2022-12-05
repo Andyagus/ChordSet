@@ -22,12 +22,21 @@ namespace AR_Keyboard
         {
             onShortcutExecuted = new Subject();
         }
-        
 
-        public virtual void Execute(EKeyState keyState, ARPrimaryKey key) {}
 
-        public virtual void SetGraphics(ARPrimaryKey key){}
+        public virtual void Execute(EKeyState keyState, ARPrimaryKey key)
+        {
+            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
+        }
 
-        public virtual void StopSequence() {}
+        public virtual void SetGraphics(ARPrimaryKey key)
+        {
+            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+        }
+
+        public virtual void StopSequence(ARPrimaryKey key)
+        {
+            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+        }
     }
 }

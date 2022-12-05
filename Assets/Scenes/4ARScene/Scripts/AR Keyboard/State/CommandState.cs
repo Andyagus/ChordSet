@@ -24,11 +24,6 @@ namespace AR_Keyboard.State
                 {
                     modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
                 }
-
-                // if (modifierKey.KeyName == "command-right")
-                // {
-                //     modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
-                // }
             }
         }
 
@@ -47,7 +42,7 @@ namespace AR_Keyboard.State
         {
             if (primaryKey.GetComponentInChildren<Shortcut>() != null)
             {
-                primaryKey.currentShortcut.StopSequence();
+                primaryKey.currentShortcut.StopSequence(primaryKey);
                 Destroy(primaryKey.currentShortcut.gameObject);
             }
 
@@ -68,7 +63,6 @@ namespace AR_Keyboard.State
 
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
-
             
             foreach (var modifierKey in keyboard.modifierKeys)
             {
@@ -81,22 +75,6 @@ namespace AR_Keyboard.State
                     }
                 }
             }
-            
-            // foreach (var modifierKey in keyboard.modifierKeys)
-            // {
-            //     if (modifierKey.KeyName == inputKeyName)
-            //     {
-            //         if (modifierKey.modifierState == ARModifierKey.EModifierKeyState.ACTIVE)
-            //         {
-            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
-            //             {
-            //                 Debug.Log("Called modifier state");
-            //                 var state = Instantiate(typingState);
-            //                 return state;
-            //             }
-            //         }
-            //     }
-            // }
             return null;
         }
 

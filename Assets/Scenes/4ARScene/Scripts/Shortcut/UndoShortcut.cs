@@ -31,13 +31,14 @@ public class UndoShortcut : Shortcut
     [SerializeField]  private float arrowFadeInTime = 1.12f;
 
 
-    public override void StopSequence()
+    public override void StopSequence(ARPrimaryKey key)
     {
         if (_sequence != null)
         {
             _sequence.Pause();
             _sequence.Kill();
         }
+        base.StopSequence(key);
     }
 
 
@@ -61,7 +62,12 @@ public class UndoShortcut : Shortcut
         _sequence.Append(keyText.DOFade(0, sequenceDuration/8f));
         _sequence.Append(pulsingLineIcon.DOFade(0, iconFadeOutOffset));
         _sequence.Insert(arrowFadeInTime, arrowIcon.DOFade(1, 2f));
-
+        _sequence.onComplete += () =>
+        {
+            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+        };
+        
+        base.SetGraphics(key);
     }
 
 
@@ -71,6 +77,7 @@ public class UndoShortcut : Shortcut
 
         onShortcutExecuted.Notify(this);
         Debug.Log("Undo Shortcut Called");
+        base.Execute(keyState, key);
     }
 }
 

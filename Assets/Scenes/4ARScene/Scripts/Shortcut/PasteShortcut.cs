@@ -53,16 +53,18 @@ namespace AR_Keyboard.Shortcuts.Scripts
                .Append(cLetterText.DOFade(1, 0f))
                .Append(_copyShortcut.stamp.DOLocalMove(postPos, 0.2f).SetEase(Ease.InSine));
          }
-
+         base.Execute(keyState, key);
       }
 
-      public override void StopSequence()
+      public override void StopSequence(ARPrimaryKey key)
       {
          if (_executeSequence != null)
          {
             _executeSequence.Pause();
             _executeSequence.Kill();
          }
+         
+         base.StopSequence(key);
       }
 
       public override void SetGraphics(ARPrimaryKey key)

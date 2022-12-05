@@ -11,7 +11,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
     {
         private Sequence _sequence;
         
-        public override void StopSequence()
+        public override void StopSequence(ARPrimaryKey primaryKey)
         {
             if (_sequence != null)
             {

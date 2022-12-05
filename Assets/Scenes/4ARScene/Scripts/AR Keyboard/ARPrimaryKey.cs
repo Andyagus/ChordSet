@@ -54,20 +54,21 @@ namespace AR_Keyboard
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
         }
-
-
         
         
         public void SetPrimaryKeyState(EPrimaryKeyState state)
         {
             switch (state)
             {
-                // case EPrimaryKeyState.ACTIVE:
-                //     primaryKeyState = EPrimaryKeyState.ACTIVE;
-                //     break;
-                // case EPrimaryKeyState.INACTIVE:
-                //     primaryKeyState = EPrimaryKeyState.INACTIVE;
-                //     break;
+                case EPrimaryKeyState.ANIMATION_PAUSE:
+                    AnimationPause();
+                    break;
+                case EPrimaryKeyState.ANIMATION_PLAY:
+                    AnimationPlay();
+                    break;
+                case EPrimaryKeyState.UNAVAILABLE:
+                    Unavailable();
+                    break;
                 case EPrimaryKeyState.TYPING_ON:
                     TypingOn();
                     break;
@@ -78,6 +79,23 @@ namespace AR_Keyboard
         }
 
 
+        private void AnimationPause()
+        {
+            primaryKeyState = EPrimaryKeyState.ANIMATION_PAUSE;
+        }
+        
+        private void AnimationPlay()
+        {
+            primaryKeyState = EPrimaryKeyState.ANIMATION_PLAY;
+        }
+
+        private void Unavailable()
+        {
+            primaryKeyState = EPrimaryKeyState.UNAVAILABLE;
+            var text = GetComponentInChildren<TextMeshProUGUI>();
+            text.DOFade(.1f, 1.3f);    
+        }
+        
         private void TypingOn()
         {
             primaryKeyState = EPrimaryKeyState.TYPING_ON;

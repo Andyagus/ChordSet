@@ -38,7 +38,7 @@ namespace AR_Keyboard.State
                     
                     if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                     {
-                        primaryKey.currentShortcut.StopSequence();
+                        primaryKey.currentShortcut.StopSequence(primaryKey);
                         Destroy(primaryKey.currentShortcut.gameObject);
                     }
                     
