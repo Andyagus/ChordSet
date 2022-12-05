@@ -26,7 +26,8 @@ namespace AR_Keyboard
         {
             AVAILABLE,
             ACTIVE,
-            UNAVAILABLE
+            UNAVAILABLE,
+            DEFAULT
         }
 
         public EModifierKeyState modifierState;
@@ -54,11 +55,21 @@ namespace AR_Keyboard
                  case EModifierKeyState.UNAVAILABLE:
                      Unavailable();
                      break;
+                 case EModifierKeyState.DEFAULT:
+                     DefaultState();
+                     break;
                  default:
                      break;
              }
          }
-         
+
+         private void DefaultState()
+         {
+             modifierState = EModifierKeyState.DEFAULT;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.black, 0.34f);
+         }
+
          private void Available()
          {
              modifierState = EModifierKeyState.AVAILABLE;

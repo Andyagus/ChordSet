@@ -40,6 +40,7 @@ namespace AR_Keyboard
             ANIMATION_PLAY,
             TYPING_ON,
             TYPING_OFF,
+            DEFAULT
             // SELECTED
         }
         
@@ -75,7 +76,16 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.TYPING_OFF:
                     TypingOff();
                     break;
+                case EPrimaryKeyState.DEFAULT:
+                    DefaultState();
+                    break;
             }
+        }
+
+        private void DefaultState()
+        {
+            primaryKeyState = EPrimaryKeyState.DEFAULT;
+            KeyColorManager.ChangeKeyColor(this, Color.black);
         }
 
 

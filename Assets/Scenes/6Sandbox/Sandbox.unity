@@ -406,6 +406,10 @@ PrefabInstance:
       propertyPath: primaryKeyState
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2234075790212335025, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: keyName
+      value: F5
+      objectReference: {fileID: 0}
     - target: {fileID: 2275200022673864968, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyPressedState
       value: 1
@@ -478,6 +482,10 @@ PrefabInstance:
       propertyPath: keyPressedState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7429294698044142268, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: undoShortcutState
+      value: 
+      objectReference: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}
     - target: {fileID: 7504798568189558601, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: primaryKeyState
       value: 7
