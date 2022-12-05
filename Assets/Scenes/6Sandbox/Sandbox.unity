@@ -554,6 +554,14 @@ PrefabInstance:
       propertyPath: primaryKeyState
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8968160925377885380, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: keyName
+      value: Escape
+      objectReference: {fileID: 0}
+    - target: {fileID: 8968160925377885380, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: keycode
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 9122281355133669150, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: primaryKeyState
       value: 7
