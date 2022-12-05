@@ -61,10 +61,8 @@ namespace AR_Keyboard.Shortcuts.Scripts
             
             if (_executeSequence != null)
             {
-                DOTween.Kill(_executeSequence);
-                DOTween.Kill(xTop);
-                DOTween.Kill(xBottom);
-                DOTween.Kill(scissors);
+                _executeSequence.Pause();
+                _executeSequence.Kill();
             }
         }
     }

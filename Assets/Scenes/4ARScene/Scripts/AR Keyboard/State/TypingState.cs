@@ -42,15 +42,22 @@ namespace AR_Keyboard.State
                     }
                     
                     var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
-                    var offset = new Vector3(0f, 0.0007f, 0f);
-                    shortcut.transform.position = primaryKey.transform.position + offset;
-                    shortcut.SetGraphics(primaryKey);
-                    
                     primaryKey.currentShortcut = shortcut;
+                    var offset = new Vector3(0f, 0.0007f, 0f);
+                    primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
+                    primaryKey.currentShortcut.SetGraphics(primaryKey);
+                    
                     
                 }
             }
         }
+        
+        // var newShortcut = Instantiate(primaryKey.commandStateShortcut, primaryKey.transform);
+        // primaryKey.currentShortcut = newShortcut;
+        //
+        // var offset = new Vector3(0, 0.0007f, 0f);
+        // newShortcut.transform.position = primaryKey.transform.position + offset;
+        // newShortcut.SetGraphics(primaryKey);
 
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
         {

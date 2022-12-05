@@ -48,17 +48,16 @@ namespace AR_Keyboard.State
             if (primaryKey.GetComponentInChildren<Shortcut>() != null)
             {
                 primaryKey.currentShortcut.StopSequence();
-                Destroy(primaryKey.currentShortcut.gameObject); 
-                // Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
-                
-                //instantiate new shortcut now
-                var newShortcut = Instantiate(primaryKey.commandStateShortcut, primaryKey.transform);
-                primaryKey.currentShortcut = newShortcut;
-
-                var offset = new Vector3(0, 0.0007f, 0f);
-                newShortcut.transform.position = primaryKey.transform.position + offset;
-                newShortcut.SetGraphics(primaryKey);
+                Destroy(primaryKey.currentShortcut.gameObject);
             }
+
+            var newShortcut = Instantiate(primaryKey.commandStateShortcut, primaryKey.transform);
+            primaryKey.currentShortcut = newShortcut;
+
+            var offset = new Vector3(0, 0.0007f, 0f);
+            primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
+            primaryKey.currentShortcut.SetGraphics(primaryKey);
+            
         }
         
         public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
