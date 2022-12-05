@@ -25,7 +25,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
             // DOTween.pause
             
             //these are available graphics...
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
+            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.TYPING_OFF);
 
             _sequence = DOTween.Sequence();
             var text = key.GetComponentInChildren<TextMeshProUGUI>();

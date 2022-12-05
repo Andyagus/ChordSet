@@ -72,6 +72,8 @@ namespace AR_Keyboard.State
 
         private void HandleInputPrimaryKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
+            Debug.Log("Handle primary input");
+            
             foreach (var primaryKey in keyboard.primaryKeys)
             {
                 if (inputKeyName == primaryKey.KeyName)

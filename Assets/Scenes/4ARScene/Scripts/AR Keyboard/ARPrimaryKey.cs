@@ -39,7 +39,9 @@ namespace AR_Keyboard
             ANIMATION_PAUSE,
             ANIMATION_PLAY,
             TYPING_ON,
-            TYPING_OFF
+            TYPING_OFF,
+            ACTIVE,
+            INACTIVE
             // SELECTED
         }
 
@@ -59,6 +61,12 @@ namespace AR_Keyboard
         {
             switch (state)
             {
+                case EPrimaryKeyState.ACTIVE:
+                    primaryKeyState = EPrimaryKeyState.ACTIVE;
+                    break;
+                case EPrimaryKeyState.INACTIVE:
+                    primaryKeyState = EPrimaryKeyState.INACTIVE;
+                    break;
                 case EPrimaryKeyState.TYPING_ON:
                     TypingOn();
                     break;

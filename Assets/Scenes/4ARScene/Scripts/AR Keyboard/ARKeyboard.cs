@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AR_Keyboard.State;
 using Desktop;
+using DG.Tweening;
 using Enums;
 using Interfaces;
 using Normal.Realtime.Serialization;
@@ -58,10 +59,33 @@ namespace AR_Keyboard
             }
         }
         
-        private void DelegateInput(string keyName, EKeyState keyState)
+        private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
         {
+            foreach (var primaryKey in primaryKeys)
+            {
+                if (inputKeyName == primaryKey.KeyName)
+                {
+                    if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.INACTIVE)
+                    {
+                        if (inputKeyState == EKeyState.KEY_PRESSED)
+                        {
+                            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ACTIVE);
+                            HandleInput(inputKeyName, inputKeyState);
+                        }
+                    }
+                    if (primaryKey.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.ACTIVE)
+                    {
+                        if (inputKeyState == EKeyState.KEY_UNPRESSED)
+                        {
+                            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.INACTIVE);
+                            HandleInput(inputKeyName, inputKeyState);
+
+                        }
+                    } 
+                                
+                }    
+            }
             
-            HandleInput(keyName, keyState);
         }
 
         public void AcceptTestInput(string keyName, EKeyState keyState)
