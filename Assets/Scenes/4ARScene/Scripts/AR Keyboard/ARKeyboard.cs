@@ -149,12 +149,6 @@ namespace AR_Keyboard
                     _ambientModeActive = false;
                     Debug.Log(_ambientModeActive);
                 }
-                //if ESCAPE IS PRESSED
-                // if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-                // {
-                //     _ambientModeActive = true;
-                //     Debug.Log(_ambientModeActive);
-                // }
             }
 
             if (keyName == "Escape")
@@ -183,7 +177,6 @@ namespace AR_Keyboard
                     _ambientModeState.transform.SetParent(this.transform);
                     _ambientModeState.Entry(this);
                     onStateChanged(_ambientModeState);
-                    // StateChanged();
                 }
             }
             else

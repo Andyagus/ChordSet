@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AR_Keyboard;
 using DG.Tweening;
 using Enums;
@@ -14,6 +15,9 @@ public class UndoShortcut : Shortcut
     private Image pulsingLineIcon;
     private TextMeshProUGUI undoText;
     private Sequence _sequence;
+
+    //would do Key, but don't have keys as prefabs……
+    public List<string> keysToAccess;
 
     [Header("Control Panel")] [SerializeField]
     

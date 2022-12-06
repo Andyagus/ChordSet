@@ -387,6 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eShortcut: 3
   shortcutName: Undo
+  keysToAccess:
+  - command-left
+  - Z
   distanceToMoveRectTransform: -0.3
   iconFadeOutOffset: 1
   arrowFadeInTime: 1.12

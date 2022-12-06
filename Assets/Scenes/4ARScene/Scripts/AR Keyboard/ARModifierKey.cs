@@ -4,6 +4,7 @@ using DG.Tweening;
 using Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AR_Keyboard
 {
@@ -27,7 +28,10 @@ namespace AR_Keyboard
             AVAILABLE,
             ACTIVE,
             UNAVAILABLE,
-            DEFAULT
+            DEFAULT,
+            LEARNING_SHOWCASE,
+            LEARNING_AVAILABLE,
+            LEARNING_SELECTED
         }
 
         public EModifierKeyState modifierState;
@@ -58,9 +62,41 @@ namespace AR_Keyboard
                  case EModifierKeyState.DEFAULT:
                      DefaultState();
                      break;
+                 case EModifierKeyState.LEARNING_SHOWCASE:
+                     LearningShowcase();
+                     break;
+                 case EModifierKeyState.LEARNING_AVAILABLE:
+                     LearningAvailable();
+                     break;
+                 case EModifierKeyState.LEARNING_SELECTED:
+                     LearningSelected();
+                     break;
+                 
                  default:
                      break;
              }
+         }
+
+         private void LearningSelected()
+         {
+             modifierState = EModifierKeyState.LEARNING_AVAILABLE;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.yellow, 2f);
+         }
+
+         private void LearningAvailable()
+         {
+             modifierState = EModifierKeyState.LEARNING_AVAILABLE;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.white, 2f);
+         }
+
+         private void LearningShowcase()
+         {
+             modifierState = EModifierKeyState.LEARNING_SHOWCASE;
+             var rend = GetComponentInChildren<MeshRenderer>();
+             rend.material.DOColor(Color.cyan, 2f);
+
          }
 
          private void DefaultState()
@@ -102,6 +138,13 @@ namespace AR_Keyboard
              {
                 _unavailableSequence.Insert(0, text.DOFade(0.1f, 1f));
              }
+             
+             if (GetComponentInChildren<Image>() != null)
+             {
+                 var image = GetComponentInChildren<Image>();
+                 image.DOFade(.1f, 1.3f);
+             }
+             
              _unavailableSequence.SetAutoKill(false);
          }
          

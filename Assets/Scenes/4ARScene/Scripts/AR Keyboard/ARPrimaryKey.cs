@@ -1,4 +1,5 @@
 using System;
+using System.Net.Mime;
 using AR_Keyboard.State;
 using DG.Tweening;
 using Effects;
@@ -6,6 +7,7 @@ using Enums;
 using Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AR_Keyboard
 {
@@ -40,7 +42,11 @@ namespace AR_Keyboard
             ANIMATION_PLAY,
             TYPING_ON,
             TYPING_OFF,
-            DEFAULT
+            DEFAULT,
+            LEARNING_SHOWCASE,
+            LEARNING_AVAILABLE,
+            LEARNING_SELECTED,
+            LEARNING_HELPER
             // SELECTED
         }
         
@@ -61,6 +67,7 @@ namespace AR_Keyboard
         {
             switch (state)
             {
+                
                 case EPrimaryKeyState.ANIMATION_PAUSE:
                     AnimationPause();
                     break;
@@ -79,7 +86,52 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.DEFAULT:
                     DefaultState();
                     break;
+                case EPrimaryKeyState.LEARNING_SHOWCASE:
+                    LearningShowcase();
+                    break;
+                case EPrimaryKeyState.LEARNING_HELPER:
+                    LearningHelper();
+                    break;
+                case EPrimaryKeyState.LEARNING_AVAILABLE:
+                    LearningAvailable();
+                    break;
+                case EPrimaryKeyState.LEARNING_SELECTED:
+                    LearningSelected();
+                    break;
             }
+        }
+
+        private void LearningSelected()
+        {
+            primaryKeyState = EPrimaryKeyState.LEARNING_SELECTED;
+
+            var rend = GetComponentInChildren<Renderer>();
+            rend.material.DOColor(Color.yellow, 2f);
+        }
+
+        private void LearningAvailable()
+        {
+            primaryKeyState = EPrimaryKeyState.LEARNING_AVAILABLE;
+
+            var rend = GetComponentInChildren<Renderer>();
+            rend.material.DOColor(Color.white, 2f);
+        }
+
+        private void LearningHelper()
+        {
+            primaryKeyState = EPrimaryKeyState.LEARNING_HELPER;
+
+            var rend = GetComponentInChildren<Renderer>();
+            rend.material.DOColor(Color.red, 2f);
+        }
+
+        private void LearningShowcase()
+        {
+            primaryKeyState = EPrimaryKeyState.LEARNING_SHOWCASE;
+
+            var rend = GetComponentInChildren<Renderer>();
+            rend.material.DOColor(Color.cyan, 2f);
+            // KeyColorManager.ChangeKeyColor(this, Color.cyan);
         }
 
         private void DefaultState()
@@ -102,8 +154,18 @@ namespace AR_Keyboard
         private void Unavailable()
         {
             primaryKeyState = EPrimaryKeyState.UNAVAILABLE;
-            var text = GetComponentInChildren<TextMeshProUGUI>();
-            text.DOFade(.1f, 1.3f);    
+            var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+            
+            foreach(var text in textGroup)
+            {
+                text.DOFade(.1f, 1.3f);
+            }
+
+            if (GetComponentInChildren<Image>() != null)
+            {
+                var image = GetComponentInChildren<Image>();
+                image.DOFade(.1f, 1.3f);
+            }
         }
         
         private void TypingOn()

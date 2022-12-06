@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: UndoShortcutState
+  shortcutNameCanvas: {fileID: 4656523175624628752, guid: e3843c9ab079a41fdbda0e1e7bb8f7e7, type: 3}
+  undoShortcut: {fileID: 4767926295433023761, guid: 004cd95221d684cd7849b76a77af8122, type: 3}
