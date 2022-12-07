@@ -5,6 +5,7 @@ using DG.Tweening;
 using Effects;
 using Enums;
 using Interfaces;
+using Scenes._4ARScene.Scripts.AR_Keyboard;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,9 @@ namespace AR_Keyboard
 
         [SerializeField] public Shortcut typingStateShortcut;
         [SerializeField] public Shortcut commandStateShortcut;
-        [SerializeField] public Shortcut learningStateShortcut; 
+        [SerializeField] public Shortcut learningStateWelcomeShortcut;
+        [SerializeField] public Shortcut learningStateUndoShortcut;
+        [SerializeField] public ARPrimaryKey referenceKeyForMultikeyShortcuts;
         
         private TextMeshProUGUI _textMesh;
 
@@ -46,6 +49,7 @@ namespace AR_Keyboard
             DEFAULT,
             LEARNING_WELCOME,
             LEARNING_SHOWCASE,
+            LEARNING_STATE_ENTRY,
             LEARNING_AVAILABLE,
             LEARNING_SELECTED,
             LEARNING_HELPER,
@@ -60,17 +64,18 @@ namespace AR_Keyboard
         private void Awake()
         {
             DOTween.Clear();
-            DOTween.SetTweensCapacity(200, 125);
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
         }
+        
+        
         
         
         public void SetPrimaryKeyState(EPrimaryKeyState state)
         {
             switch (state)
             {
-                
+                //this should be passed to animation manager.   
                 case EPrimaryKeyState.ANIMATION_PAUSE:
                     AnimationPause();
                     break;
@@ -92,6 +97,9 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.LEARNING_SHOWCASE:
                     LearningShowcase();
                     break;
+                case EPrimaryKeyState.LEARNING_STATE_ENTRY:
+                    LearningStateEntry();
+                    break;
                 case EPrimaryKeyState.LEARNING_WELCOME:
                     LearningWelcome();
                     break;
@@ -107,8 +115,59 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON:
                     LearningActiveMenuButton();
                     break;
+
+            }
+        }
+
+        private void LearningStateEntry()
+        {
+            
+            // if (learningStateUndoShortcut != null)
+            // {
+            //     
+            // }
+            
+            if (KeyName == "Q")
+            {
+                AnimationManager.AnimateLearningModeShortcut(this, learningStateUndoShortcut);
+                // KeyColorManager.InstantiateShortcut(this, learningStateUndoShortcut);
+            }else if (KeyName == "W")
+            {
+                // KeyColorManager.InstantiateShortcut(this, learningStateUndoShortcut);
+            }else if (KeyName == "S")
+            {
+                
+            }else if (KeyName == "<")
+            {
+                
+            }else if (KeyName == ">")
+            {
                 
             }
+            else if (KeyName == "P")
+            {
+                //play/pause
+            }
+            else
+            {
+                var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+
+                foreach (var text in textGroup)
+                {
+                    text.DOFade(0, 1.4f);
+                }
+                
+                  
+                if (GetComponentInChildren<Image>() != null)
+                {
+                    var image = GetComponentInChildren<Image>();
+                    image.DOFade(.1f, 1.3f);
+                }
+
+                
+                // primaryKey.SetPrimaryKeyState(learning);
+            }
+
         }
 
         private void LearningActiveMenuButton()
@@ -117,7 +176,6 @@ namespace AR_Keyboard
             var rend = GetComponentInChildren<Renderer>();
             rend.material.DOColor(Color.white, 0.2f);
 
-            
             
         }
 
@@ -139,28 +197,14 @@ namespace AR_Keyboard
             {
                 var sequence = DOTween.Sequence();
                 sequence.Pause();
-                sequence.AppendCallback(() =>
-                {
-                    KeyColorManager.InstantiateShortcut(this, learningStateShortcut);
-                });
-
-                //bug here, double append
+                
+                var shortcut = KeyColorManager.InstantiateShortcut(this, learningStateWelcomeShortcut);
+                var shortcutImage = shortcut.GetComponentInChildren(typeof(Image), false) as Image;
+                
                 sequence.Append(_textMesh.DOFade(0f, 0f));
-                sequence.AppendCallback(() =>
-                {
-                    var image = GetComponentInChildren(typeof(Image), false) as Image;
-                    sequence.Append(image.DOFade(1f, 3.24f).SetEase(Ease.InSine));
-                });
+                sequence.Append(shortcutImage.DOFade(1f, 3.24f).SetEase(Ease.InSine));
+
                 sequence.Play();
-
-
-                //idea move the g image here
-                // foreach (var text in textGroup)
-                // {
-                //     // text.DOText("Learning Mode", 3f, scrambleMode: ScrambleMode.Uppercase);
-                //     text.DOFade(1, 2f);
-                //     text.DOGlowColor(Color.blue, 5f);
-                // }
             }
             else
             {

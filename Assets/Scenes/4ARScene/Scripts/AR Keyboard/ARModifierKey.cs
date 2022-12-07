@@ -32,6 +32,7 @@ namespace AR_Keyboard
             LEARNING_WELCOME,
             LEARNING_SHOWCASE,
             LEARNING_AVAILABLE,
+            LEARNING_STATE_ENTRY,
             LEARNING_SELECTED,
             LEARNING_ACTIVE_MENU_BUTTON
         }
@@ -70,6 +71,9 @@ namespace AR_Keyboard
                  case EModifierKeyState.LEARNING_SHOWCASE:
                      LearningShowcase();
                      break;
+                 case EModifierKeyState.LEARNING_STATE_ENTRY:
+                     LearningStateEntry();
+                     break;
                  case EModifierKeyState.LEARNING_AVAILABLE:
                      LearningAvailable();
                      break;
@@ -79,9 +83,23 @@ namespace AR_Keyboard
                  case EModifierKeyState.LEARNING_ACTIVE_MENU_BUTTON:
                      LearningActiveMenuButton();
                      break;
-                 
-                 default:
-                     break;
+             }
+         }
+
+         private void LearningStateEntry()
+         {
+             var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+
+             foreach (var text in textGroup)
+             {
+                 text.DOFade(0, 1.4f);
+             }
+                
+                  
+             if (GetComponentInChildren<Image>() != null)
+             {
+                 var image = GetComponentInChildren<Image>();
+                 image.DOFade(.1f, 1.3f);
              }
          }
 

@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &135382481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 780034726868001934, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+  m_PrefabInstance: {fileID: 1068141683}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &489413113
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +505,10 @@ PrefabInstance:
       propertyPath: learningStateShortcut
       value: 
       objectReference: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
+    - target: {fileID: 2202238653972478001, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: learningStateWelcomeShortcut
+      value: 
+      objectReference: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
     - target: {fileID: 2234075790212335025, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyName
       value: F5
@@ -552,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4184453916323538771, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyName
-      value: '::'
+      value: '>'
       objectReference: {fileID: 0}
     - target: {fileID: 4310356789856018718, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyPressedState
@@ -624,7 +639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6238165417758551257, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyName
-      value: '::'
+      value: <
       objectReference: {fileID: 0}
     - target: {fileID: 6519344695342142326, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: primaryKeyState
@@ -754,6 +769,14 @@ PrefabInstance:
       propertyPath: primaryKeyState
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 9200355769283338465, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: 954000883357265787, guid: 0f149c005f29448dd9d7e2c5bfbf98cf, type: 3}
+    - target: {fileID: 9200355769283338465, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: referenceKeyForMultikeyShortcuts
+      value: 
+      objectReference: {fileID: 135382481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
 --- !u!1 &1113842250 stripped
@@ -773,6 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840f05790a4644adf9730ea7a098646c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenState: 0
 --- !u!1 &1502763814
 GameObject:
   m_ObjectHideFlags: 0

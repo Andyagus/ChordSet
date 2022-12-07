@@ -32,6 +32,8 @@ public class UndoShortcutState : ARKeyboardState
         keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
 
         
+        
+        
         videoPlayer = Instantiate(videoPlayer, this.transform);
         videoPlayer.transform.position = Vector3.zero;
         
@@ -42,61 +44,88 @@ public class UndoShortcutState : ARKeyboardState
         
         foreach (var modifierKey in keyboard.modifierKeys)
         {
+            
+            modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_STATE_ENTRY);
+            
             foreach (var shortcutKey in undoShortcut.keysToAccess)
             {
                 
-                if (modifierKey.KeyName == shortcutKey)
-                {
-                    _modifierKeysForChanging = new List<ARModifierKey>();
-                    _modifierKeysForChanging.Add(modifierKey);
-                    
-                    _showcaseSequence.AppendInterval(0.5f);
-
-                    _showcaseSequence.AppendCallback(() =>
-                        modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_SHOWCASE));
-                    _showcaseSequence.AppendInterval(1f);
-                }
-                else
-                {
-                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.UNAVAILABLE);
-                }
+                // if (modifierKey.KeyName == shortcutKey)
+                // {
+                //     _modifierKeysForChanging = new List<ARModifierKey>();
+                //     _modifierKeysForChanging.Add(modifierKey);
+                //     
+                //     _showcaseSequence.AppendInterval(0.5f);
+                //
+                //     _showcaseSequence.AppendCallback(() =>
+                //         modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_SHOWCASE));
+                //     _showcaseSequence.AppendInterval(1f);
+                // }
+                // else
+                // {
+                //     modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.UNAVAILABLE);
+                // }
             }
         }
         foreach (var primaryKey in keyboard.primaryKeys)
         {
+
+            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTRY);
+
+            
             foreach (var shortcutKey in undoShortcut.keysToAccess)
             {
-                if (primaryKey.KeyName == shortcutKey)
-                {
-                    _primaryKeysForChanging = new List<ARPrimaryKey>();
-
-                    _primaryKeysForChanging.Add(primaryKey);
-
-                    _showcaseSequence.AppendInterval(0.5f);
-                    _showcaseSequence.AppendCallback(() => 
-                        primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_SHOWCASE));
-                }else if (primaryKey.KeyName == "arrow-left" || primaryKey.KeyName == "arrow-right" 
-                                                             || primaryKey.KeyName == "Return"
-                                                             || primaryKey.KeyName == "Escape")
-                {
-                    primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_HELPER);
-                }
-                else
-                {
-                    primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.UNAVAILABLE);
-                }
+                // if (primaryKey.KeyName == shortcutKey)
+                // {
+                //     _primaryKeysForChanging = new List<ARPrimaryKey>();
+                //
+                //     _primaryKeysForChanging.Add(primaryKey);
+                //
+                //     _showcaseSequence.AppendInterval(0.5f);
+                //     _showcaseSequence.AppendCallback(() => 
+                //         primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_SHOWCASE));
+                // }else if (primaryKey.KeyName == "arrow-left" || primaryKey.KeyName == "arrow-right" 
+                //                                              || primaryKey.KeyName == "Return"
+                //                                              || primaryKey.KeyName == "Escape")
+                // {
+                //     primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_HELPER);
+                // }
+                // else
+                // {
+                //     primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.UNAVAILABLE);
+                // }
             }
         }
     }
 
     public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
     {
+        // List<string> namesToKeep = new List<string>
+        // {
+        //     "Q",
+        //     "W",
+        //     "S",
+        //     "<",
+        //     ">"
+        // };
+        //
+
         foreach (var primaryKey in keyboard.primaryKeys)
         {
-            if (primaryKey.KeyName == "Return" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
-            {
-                _entryMode = true;
-            }
+            
+            
+            // foreach (var nameKeep in namesToKeep)
+            // {
+            //     if (primaryKey.KeyName == nameKeep)
+            //     {
+            //         
+            //     }
+            // }
+
+            // if (primaryKey.KeyName == "Return" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
+            // {
+            //     _entryMode = true;
+            // }
         }
 
         if (_entryMode)

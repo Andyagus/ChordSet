@@ -31,10 +31,13 @@ namespace Effects
         }
 
 
-        public static void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
+        public static Shortcut InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
         {
             
             //this could all tie in 
+
+
+            Vector3 offset;
             
             if (primaryKey.GetComponentInChildren<Shortcut>() != null)
             {
@@ -45,8 +48,11 @@ namespace Effects
             var newShortcut = Instantiate(shortcut, primaryKey.transform);
             // primaryKey.currentShortcut = newShortcut;
 
-            var offset = new Vector3(0, 0.0007f, 0f);
+            offset = shortcut.shortcutName == "Back To Keyboard" ? new Vector3(.0098f, 0.0001f, 0f) : new Vector3(0, 0.0007f, 0f);
+            
             newShortcut.transform.position = primaryKey.transform.position + offset;
+
+            return newShortcut;
 
         }
         
