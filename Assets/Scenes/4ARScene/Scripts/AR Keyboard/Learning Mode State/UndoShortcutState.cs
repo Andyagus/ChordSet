@@ -7,19 +7,15 @@ using DG.Tweening;
 using Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UndoShortcutState : ARKeyboardState
 {
-
-    // [SerializeField] private GameObject shortcutNameCanvas;
-    // shortcutNameCanvas = GameObject.Find("sample State Canvas");
-    // var text = shortcutNameCanvas.GetComponentInChildren<TextMeshProUGUI>();
-    // text.text = undoShortcut.shortcutName;
-    // shortcutNameCanvas.SetActive(true);
-
     
-    
-    //show required keys
+    //video
+    [SerializeField] private GameObject videoPlayer;
+    [SerializeField] private RenderTexture renderTexture;
+
     [SerializeField] private UndoShortcut undoShortcut;
     private Sequence _showcaseSequence;
 
@@ -32,7 +28,15 @@ public class UndoShortcutState : ARKeyboardState
     
     public override void Entry(ARKeyboard keyboard)
     {
+
+        keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
+
         
+        videoPlayer = Instantiate(videoPlayer, this.transform);
+        videoPlayer.transform.position = Vector3.zero;
+        
+        var rawImage = keyboard.ARScreen.GetComponentInChildren<RawImage>();
+        rawImage.texture = renderTexture;
 
         _showcaseSequence = DOTween.Sequence();
         

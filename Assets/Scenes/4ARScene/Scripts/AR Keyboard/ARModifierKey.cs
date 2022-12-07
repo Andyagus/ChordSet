@@ -29,9 +29,11 @@ namespace AR_Keyboard
             ACTIVE,
             UNAVAILABLE,
             DEFAULT,
+            LEARNING_WELCOME,
             LEARNING_SHOWCASE,
             LEARNING_AVAILABLE,
-            LEARNING_SELECTED
+            LEARNING_SELECTED,
+            LEARNING_ACTIVE_MENU_BUTTON
         }
 
         public EModifierKeyState modifierState;
@@ -62,6 +64,9 @@ namespace AR_Keyboard
                  case EModifierKeyState.DEFAULT:
                      DefaultState();
                      break;
+                 case EModifierKeyState.LEARNING_WELCOME:
+                     LearningWelcome();
+                     break;
                  case EModifierKeyState.LEARNING_SHOWCASE:
                      LearningShowcase();
                      break;
@@ -71,10 +76,40 @@ namespace AR_Keyboard
                  case EModifierKeyState.LEARNING_SELECTED:
                      LearningSelected();
                      break;
+                 case EModifierKeyState.LEARNING_ACTIVE_MENU_BUTTON:
+                     LearningActiveMenuButton();
+                     break;
                  
                  default:
                      break;
              }
+         }
+
+         private void LearningActiveMenuButton()
+         {
+             modifierState = EModifierKeyState.LEARNING_ACTIVE_MENU_BUTTON;
+         }
+
+         private void LearningWelcome()
+         {
+             modifierState = EModifierKeyState.LEARNING_WELCOME;
+            
+             var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+             
+             if (textGroup != null)
+             {
+                 foreach(var text in textGroup)
+                 {
+                     text.DOText(keyName, 4f, scrambleMode: ScrambleMode.Uppercase);
+                     text.DOFade(.1f, 2.3f);
+                 } 
+             }
+
+             if (GetComponentInChildren<Image>() != null)
+             {
+                 var image = GetComponentInChildren<Image>();
+                 image.DOFade(.1f, 1.3f);
+             }         
          }
 
          private void LearningSelected()

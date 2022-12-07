@@ -28,8 +28,11 @@ namespace AR_Keyboard
 
         //learning mode state 
         private ARKeyboardState _learningModeState;
+        public ARKeyboardState learningModeWelcome;
         public ARKeyboardState undoShortcutState;
         
+        //screen 
+        public ARKeyboardScreen ARScreen;
         
         [NonSerialized] public List<ARPrimaryKey> primaryKeys;
         [NonSerialized] public List<ARModifierKey> modifierKeys;
@@ -50,7 +53,7 @@ namespace AR_Keyboard
             _ambientModeState = Instantiate(typingState, this.transform, true);
             _ambientModeState.Entry(this);
 
-            _learningModeState = Instantiate(undoShortcutState, this.transform, true);
+            _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
 
         }
 

@@ -20,7 +20,8 @@ namespace AR_Keyboard
 
         [SerializeField] public Shortcut typingStateShortcut;
         [SerializeField] public Shortcut commandStateShortcut;
-
+        [SerializeField] public Shortcut learningStateShortcut; 
+        
         private TextMeshProUGUI _textMesh;
 
         public string KeyName
@@ -43,10 +44,12 @@ namespace AR_Keyboard
             TYPING_ON,
             TYPING_OFF,
             DEFAULT,
+            LEARNING_WELCOME,
             LEARNING_SHOWCASE,
             LEARNING_AVAILABLE,
             LEARNING_SELECTED,
-            LEARNING_HELPER
+            LEARNING_HELPER,
+            LEARNING_ACTIVE_MENU_BUTTON
             // SELECTED
         }
         
@@ -89,6 +92,9 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.LEARNING_SHOWCASE:
                     LearningShowcase();
                     break;
+                case EPrimaryKeyState.LEARNING_WELCOME:
+                    LearningWelcome();
+                    break;
                 case EPrimaryKeyState.LEARNING_HELPER:
                     LearningHelper();
                     break;
@@ -98,7 +104,89 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.LEARNING_SELECTED:
                     LearningSelected();
                     break;
+                case EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON:
+                    LearningActiveMenuButton();
+                    break;
+                
             }
+        }
+
+        private void LearningActiveMenuButton()
+        {
+            primaryKeyState = EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON;
+            var rend = GetComponentInChildren<Renderer>();
+            rend.material.DOColor(Color.white, 0.2f);
+
+            
+            
+        }
+
+        private void LearningWelcome()
+        {
+
+            primaryKeyState = EPrimaryKeyState.LEARNING_WELCOME;
+            
+            var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+
+            if (keyName == "Space")
+            {
+                foreach (var text in textGroup)
+                {
+                    // text.DOText("Learning Mode", 3f, scrambleMode: ScrambleMode.Uppercase);
+                    text.DOFade(1, 4f);
+                }
+            }else if (keyName == "G")
+            {
+                var sequence = DOTween.Sequence();
+                sequence.Pause();
+                sequence.AppendCallback(() =>
+                {
+                    KeyColorManager.InstantiateShortcut(this, learningStateShortcut);
+                });
+
+                
+                //i know the issue is callbacks in callbacks
+                sequence.AppendCallback(() =>
+                {
+                    if (GetComponentsInChildren<Image>() != null)
+                    {
+                        foreach (var image in GetComponentsInChildren<Image>())
+                        {
+                            sequence.Append(_textMesh.DOFade(0f, 0f));
+                            sequence.Append(image.DOFade(1f, 3.24f).SetEase(Ease.InSine));
+                        }
+                    }
+                });
+                sequence.Play();
+
+
+                //idea move the g image here
+                // foreach (var text in textGroup)
+                // {
+                //     // text.DOText("Learning Mode", 3f, scrambleMode: ScrambleMode.Uppercase);
+                //     text.DOFade(1, 2f);
+                //     text.DOGlowColor(Color.blue, 5f);
+                // }
+            }
+            else
+            {
+                if (textGroup != null)
+                {
+                    foreach(var text in textGroup)
+                    {
+                        text.DOText(keyName, 4f, scrambleMode: ScrambleMode.Uppercase);
+                        text.DOFade(.1f, 2.3f);
+                    } 
+                }
+            }
+            
+            
+            if (GetComponentInChildren<Image>() != null)
+            {
+                var image = GetComponentInChildren<Image>();
+                image.DOFade(.1f, 1.3f);
+            }
+            
         }
 
         private void LearningSelected()
@@ -155,11 +243,21 @@ namespace AR_Keyboard
         {
             primaryKeyState = EPrimaryKeyState.UNAVAILABLE;
             var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
-            
-            foreach(var text in textGroup)
+
+            if (textGroup != null)
             {
-                text.DOFade(.1f, 1.3f);
+                foreach(var text in textGroup)
+                {
+                    text.DOFade(.1f, 1.3f);
+                } 
             }
+
+            //this is in learning mode welcome
+            
+
+            
+            
+            
 
             if (GetComponentInChildren<Image>() != null)
             {

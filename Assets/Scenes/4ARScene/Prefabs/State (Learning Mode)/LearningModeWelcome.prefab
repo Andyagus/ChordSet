@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8124751000441499384
+--- !u!1 &7345165143175808872
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5655893517645924464}
-  - component: {fileID: 5890930768839383548}
+  - component: {fileID: 3295132762954626327}
+  - component: {fileID: 8523045543048905708}
   m_Layer: 0
-  m_Name: Undo Shortcut State
+  m_Name: LearningModeWelcome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5655893517645924464
+--- !u!4 &3295132762954626327
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8124751000441499384}
+  m_GameObject: {fileID: 7345165143175808872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.07800007}
+  m_LocalPosition: {x: 1747, y: 120, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5890930768839383548
+--- !u!114 &8523045543048905708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8124751000441499384}
+  m_GameObject: {fileID: 7345165143175808872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61d7921e781b4b7aa399f0d7f0e1fb0, type: 3}
+  m_Script: {fileID: 11500000, guid: cdf67561c737a45789769559ddff9065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateName: UndoShortcutState
-  videoPlayer: {fileID: 7116471655577830276, guid: e2770a8c9409a475baf8d174948d37e0, type: 3}
-  renderTexture: {fileID: 8400000, guid: b161c9a45eae941399f8774775d42325, type: 2}
-  undoShortcut: {fileID: 4767926295433023761, guid: 004cd95221d684cd7849b76a77af8122, type: 3}
+  stateName: 
+  goShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}

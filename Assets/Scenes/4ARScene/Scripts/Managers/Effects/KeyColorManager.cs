@@ -30,6 +30,26 @@ namespace Effects
             };
         }
 
+
+        public static void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
+        {
+            
+            //this could all tie in 
+            
+            if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+            {
+                primaryKey.currentShortcut.StopSequence(primaryKey);
+                Destroy(primaryKey.currentShortcut.gameObject);
+            }
+
+            var newShortcut = Instantiate(shortcut, primaryKey.transform);
+            // primaryKey.currentShortcut = newShortcut;
+
+            var offset = new Vector3(0, 0.0007f, 0f);
+            newShortcut.transform.position = primaryKey.transform.position + offset;
+
+        }
+        
         public static Color ColorRequest(string colorRequest)
         {
             var color = _colorPalette[colorRequest];
