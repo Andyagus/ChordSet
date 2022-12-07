@@ -12,7 +12,7 @@ public class ARKeyboardScreen : MonoBehaviour
         ACTIVE
     }
 
-    private EScreenState _screenState;
+    public EScreenState screenState;
 
     public void ChangeScreenState(EScreenState state)
     {
@@ -26,7 +26,7 @@ public class ARKeyboardScreen : MonoBehaviour
 
     private void ActivateScreen()
     {
-        _screenState = EScreenState.ACTIVE;
+        screenState = EScreenState.ACTIVE;
         var rawImage = GetComponentInChildren<RawImage>();
         rawImage.DOFade(1, 3f);
     }

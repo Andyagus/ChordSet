@@ -10,9 +10,8 @@ using UnityEngine.UI;
 
 public class LearningModeWelcome : ARKeyboardState
 {
-    [SerializeField] private Shortcut goShortcut;
     private Image _positioningArea;
-    
+    public ARKeyboardState undoShortcutState; 
     
     public override void Entry(ARKeyboard keyboard)
     {
@@ -39,6 +38,10 @@ public class LearningModeWelcome : ARKeyboardState
             if (primaryKey.KeyName == "G" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
             {
                 primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
+
+                var state = Instantiate(undoShortcutState);
+                return state;
+
             }
         }
 

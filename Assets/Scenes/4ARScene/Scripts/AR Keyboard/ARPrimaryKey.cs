@@ -144,18 +144,12 @@ namespace AR_Keyboard
                     KeyColorManager.InstantiateShortcut(this, learningStateShortcut);
                 });
 
-                
-                //i know the issue is callbacks in callbacks
+                //bug here, double append
+                sequence.Append(_textMesh.DOFade(0f, 0f));
                 sequence.AppendCallback(() =>
                 {
-                    if (GetComponentsInChildren<Image>() != null)
-                    {
-                        foreach (var image in GetComponentsInChildren<Image>())
-                        {
-                            sequence.Append(_textMesh.DOFade(0f, 0f));
-                            sequence.Append(image.DOFade(1f, 3.24f).SetEase(Ease.InSine));
-                        }
-                    }
+                    var image = GetComponentInChildren(typeof(Image), false) as Image;
+                    sequence.Append(image.DOFade(1f, 3.24f).SetEase(Ease.InSine));
                 });
                 sequence.Play();
 

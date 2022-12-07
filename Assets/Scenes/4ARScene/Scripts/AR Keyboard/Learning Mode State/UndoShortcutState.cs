@@ -40,7 +40,6 @@ public class UndoShortcutState : ARKeyboardState
 
         _showcaseSequence = DOTween.Sequence();
         
-        //make this for each key, and inherit name;;;;;
         foreach (var modifierKey in keyboard.modifierKeys)
         {
             foreach (var shortcutKey in undoShortcut.keysToAccess)

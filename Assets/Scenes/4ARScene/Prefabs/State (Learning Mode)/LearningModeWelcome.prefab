@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf67561c737a45789769559ddff9065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateName: 
+  stateName: Learning Mode welcome
   goShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
+  undoShortcutState: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}
