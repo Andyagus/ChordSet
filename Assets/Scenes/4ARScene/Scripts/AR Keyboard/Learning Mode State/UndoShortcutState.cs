@@ -187,6 +187,7 @@ public class UndoShortcutState : ARKeyboardState
                 _fullscreenPanel.DOFade(0.0f, 3f);
                 keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
 
+                
                 if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_PRESSED)
                 {
                     //play sound
