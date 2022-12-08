@@ -42,7 +42,6 @@ namespace AR_Keyboard
         private void Awake()
         {
 
-            DOTween.SetTweensCapacity(500, 125);
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
 
@@ -62,6 +61,9 @@ namespace AR_Keyboard
 
         private void Start()
         {
+            
+            DOTween.SetTweensCapacity(500, 125);
+            
             if (onStateChanged != null)
             {
                 onStateChanged(_ambientModeState);

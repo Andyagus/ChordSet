@@ -23,6 +23,8 @@ namespace AR_Keyboard
 
         public TextMeshProUGUI[] modifierTexts;
 
+        private KeyOutline _keyOutline;
+        
         public enum EModifierKeyState
         {
             AVAILABLE,
@@ -44,6 +46,7 @@ namespace AR_Keyboard
             modifierTexts = GetComponentsInChildren<TextMeshProUGUI>();
             _meshRenderer = GetComponentInChildren<MeshRenderer>();
             _originalColor = _meshRenderer.material.color;
+            _keyOutline = GetComponentInChildren<KeyOutline>(true);
         }
         
          public GameObject activeGlowGameObject;
@@ -88,19 +91,39 @@ namespace AR_Keyboard
 
          private void LearningStateEntry()
          {
-             var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
 
-             foreach (var text in textGroup)
+             if (KeyName == "command-left")
              {
-                 text.DOFade(0, 1.4f);
+                 var sequence = DOTween.Sequence();
+                 sequence.AppendInterval(3);
+                 sequence.AppendCallback(SetOutline);
              }
-                
-                  
-             if (GetComponentInChildren<Image>() != null)
+             else
              {
-                 var image = GetComponentInChildren<Image>();
-                 image.DOFade(.1f, 1.3f);
+                 var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+
+                 // FadeText(TextMeshProUGUI text);
+                 foreach (var text in textGroup)
+                 {
+                     text.DOFade(0, 1.4f);
+                 }
+                 
+                 // FadeImage(Image image);
+                 if (GetComponentInChildren<Image>() != null)
+                 {
+                     var image = GetComponentInChildren<Image>();
+                     image.DOFade(.1f, 1.3f);
+                 }
              }
+             
+         }
+
+         private void SetOutline()
+         {
+             _keyOutline.gameObject.SetActive(true);
+             // _keyOutline.GetComponentInChildren<MeshRenderer>().material.DOFade(1, 2f);
+             //fade it in
+
          }
 
          private void LearningActiveMenuButton()

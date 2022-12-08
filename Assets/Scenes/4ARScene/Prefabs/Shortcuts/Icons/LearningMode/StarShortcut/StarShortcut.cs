@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
@@ -11,12 +12,42 @@ public class StarShortcut : Shortcut
     [SerializeField] private Sprite starOutline;
     [SerializeField] private Sprite starFill;
     [SerializeField] private ParticleSystem starSuccess;
+    [SerializeField] private AudioClip starSound;
+    
     
     public enum eStarState
     {
         PRESSED,
         UNPRESSED
     }
-    
-    
+
+    public eStarState starState;
+    public eStarState previousState;
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.S))
+    //     {
+    //         if (starState == eStarState.UNPRESSED)
+    //         {
+    //             SetStarState(eStarState.PRESSED);
+    //         }
+    //     }
+    // }
+
+    public void SetStarState(eStarState state)
+    {
+        switch (state)
+        {
+            case eStarState.PRESSED:
+                starState = eStarState.PRESSED;
+                starImage.sprite = starFill;
+                break;
+            case eStarState.UNPRESSED:
+                starState = eStarState.UNPRESSED;
+                Debug.Log("UNPressed");
+                starImage.sprite = starOutline;
+                break;
+        }
+    }
 }

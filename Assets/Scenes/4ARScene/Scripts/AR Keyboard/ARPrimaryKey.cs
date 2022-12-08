@@ -24,6 +24,8 @@ namespace AR_Keyboard
         [SerializeField] public Shortcut learningStateWelcomeShortcut;
         [SerializeField] public Shortcut learningStateUndoShortcut;
         [SerializeField] public ARPrimaryKey referenceKeyForMultikeyShortcuts;
+
+        public KeyOutline keyOutline;
         
         private TextMeshProUGUI _textMesh;
 
@@ -66,6 +68,7 @@ namespace AR_Keyboard
             DOTween.Clear();
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
+            keyOutline = GetComponentInChildren<KeyOutline>(true);
         }
         
         
@@ -121,55 +124,42 @@ namespace AR_Keyboard
 
         private void LearningStateEntry()
         {
-            
-            // if (learningStateUndoShortcut != null)
-            // {
-            //     
-            // }
-            
-            if (KeyName == "Q")
+
+            var sequence = DOTween.Sequence();
+
+            if (learningStateUndoShortcut != null)
             {
-                AnimationManager.AnimateLearningModeShortcut(this, learningStateUndoShortcut);
-                // KeyColorManager.InstantiateShortcut(this, learningStateUndoShortcut);
-            }else if (KeyName == "W")
+                sequence.AppendCallback(() =>
+                {
+                    AnimationManager.AnimateLearningModeShortcut(this, learningStateUndoShortcut);
+                });
+            }else if (KeyName == "Z")
             {
-                // KeyColorManager.InstantiateShortcut(this, learningStateUndoShortcut);
-            }else if (KeyName == "S")
-            {
-                
-            }else if (KeyName == "<")
-            {
-                
-            }else if (KeyName == ">")
-            {
-                
-            }
-            else if (KeyName == "P")
-            {
-                //play/pause
+                sequence.AppendInterval(4);
+                sequence.AppendCallback(() =>
+                {
+                    AnimationManager.ApplyKeyOutlineToPrimary(this);
+                });
             }
             else
             {
                 var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+                sequence.AppendCallback(() =>
+                { 
+                    AnimationManager.FadeTextMeshPro(textGroup);
+                });
 
-                foreach (var text in textGroup)
-                {
-                    text.DOFade(0, 1.4f);
-                }
-                
-                  
                 if (GetComponentInChildren<Image>() != null)
                 {
-                    var image = GetComponentInChildren<Image>();
-                    image.DOFade(.1f, 1.3f);
+                    var images = GetComponentsInChildren<Image>();
+                    sequence.AppendCallback(() =>  AnimationManager.FadeImages(images));
                 }
 
-                
-                // primaryKey.SetPrimaryKeyState(learning);
             }
 
         }
-
+        
+        
         private void LearningActiveMenuButton()
         {
             primaryKeyState = EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON;
@@ -238,9 +228,9 @@ namespace AR_Keyboard
         private void LearningAvailable()
         {
             primaryKeyState = EPrimaryKeyState.LEARNING_AVAILABLE;
-
-            var rend = GetComponentInChildren<Renderer>();
-            rend.material.DOColor(Color.white, 2f);
+            keyOutline.gameObject.SetActive(true);        
+            // var rend = GetComponentInChildren<Renderer>();
+            // rend.material.DOColor(Color.white, 2f);
         }
 
         private void LearningHelper()

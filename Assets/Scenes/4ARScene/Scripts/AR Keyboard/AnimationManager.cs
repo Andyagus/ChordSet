@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AR_Keyboard;
 using DG.Tweening;
 using Effects;
@@ -9,9 +10,30 @@ namespace Scenes._4ARScene.Scripts.AR_Keyboard
 {
     public class AnimationManager : MonoBehaviour
     {
-        public static void AnimateLearningModeShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
-        {
 
+        public static void FadeTextMeshPro(TextMeshProUGUI[] textGroup)
+        {
+            foreach (var text in textGroup)
+            {
+                text.DOFade(0, 1.4f);
+            }
+        }
+
+        public static void FadeImages(Image[] images)
+        {
+            foreach (var image in images)
+            {
+                image.DOFade(.1f, 1.3f);
+            }
+        }
+
+        public static void ApplyKeyOutlineToPrimary(ARPrimaryKey primaryKey)
+        {
+            primaryKey.keyOutline.gameObject.SetActive(true);
+        }
+        
+        public static void AnimateLearningModeShortcut(ARPrimaryKey primaryKey, Shortcut shortcut, float fadeAmt = 0)
+        {
             var sequence = DOTween.Sequence();
             // sequence.Pause();
 
@@ -43,15 +65,20 @@ namespace Scenes._4ARScene.Scripts.AR_Keyboard
             {
                 foreach (var text in shortcutTexts)
                 {
-                    sequence.Append(text.DOFade(1, 0.5f));
+                    sequence.Append(text.DOFade(0.35f, 0.5f));
                 }
             }
 
             if (shortcutImages != null)
             {
+                
                 foreach (var image in shortcutImages)
                 {
-                    sequence.Append(image.DOFade(1, 0.5f));
+                    if (image.name == "Panel")
+                    {
+                        return;
+                    }
+                    sequence.Append(image.DOFade(0.35f, 0.5f));
                 }  
             }
 
