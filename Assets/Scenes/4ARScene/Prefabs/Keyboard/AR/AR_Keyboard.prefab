@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552005701194958789}
+  - component: {fileID: 1113842252}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 8403880990647718867}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113842252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506018746588790529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840f05790a4644adf9730ea7a098646c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenState: 0
 --- !u!1 &510705932057933062
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,9 +708,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typingState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
-  learningModeWelcome: {fileID: 0}
-  undoShortcutState: {fileID: 0}
-  ARScreen: {fileID: 0}
+  learningModeWelcome: {fileID: 8523045543048905708, guid: 01ad6f7606e4b4a73a751e30de72e8ab, type: 3}
+  undoShortcutState: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}
+  ARScreen: {fileID: 1113842252}
 --- !u!1 &8616960296350390076
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -817,6 +831,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: L
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -888,6 +906,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4530673228657043403}
     m_Modifications:
+    - target: {fileID: 991291722452855300, guid: bca7bf00041e64f93b373408a7787683, type: 3}
+      propertyPath: keyName
+      value: arrow-left
+      objectReference: {fileID: 0}
     - target: {fileID: 2430036746714983436, guid: bca7bf00041e64f93b373408a7787683, type: 3}
       propertyPath: m_Name
       value: Arrow Left Varient
@@ -1025,6 +1047,10 @@ PrefabInstance:
       value: V
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -1097,6 +1123,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: X
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -1174,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -1247,6 +1277,10 @@ PrefabInstance:
       value: G
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -1254,6 +1288,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: learningStateWelcomeShortcut
+      value: 
+      objectReference: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: G
@@ -1319,6 +1357,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -1536,8 +1578,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '>'
       objectReference: {fileID: 0}
+    - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: 222692663159213153, guid: d226e4a5d53394d4ba617b4b4c542093, type: 3}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
       value: '>'
@@ -1607,6 +1653,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: O
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -1682,6 +1732,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Return Varient
       objectReference: {fileID: 0}
+    - target: {fileID: 3422770903587438105, guid: 29cb35cee354a4389a884121dce40598, type: 3}
+      propertyPath: keyName
+      value: Return
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422770903587438105, guid: 29cb35cee354a4389a884121dce40598, type: 3}
+      propertyPath: keycode
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422770903587438105, guid: 29cb35cee354a4389a884121dce40598, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: -691428374600333361, guid: 782281be9fcfc48f0ae49a4ba83525aa, type: 3}
     - target: {fileID: 5503984961214991363, guid: 29cb35cee354a4389a884121dce40598, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1951,6 +2013,10 @@ PrefabInstance:
       value: W
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -2008,6 +2074,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+--- !u!114 &780034726868001934 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+  m_PrefabInstance: {fileID: 2129359850184054414}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb6460c3aa004446b98f7b26ec06b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7579848831135602324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8411609037468876826, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
@@ -2088,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -2162,7 +2239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -2300,6 +2377,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1238537055343691955}
     m_Modifications:
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
@@ -2445,6 +2526,10 @@ PrefabInstance:
       value: I
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -2517,6 +2602,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: J
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -3125,6 +3214,10 @@ PrefabInstance:
       value: P
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -3132,6 +3225,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: -5264983123736317956, guid: a146a696aefa741b280161b26ef15fb0, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: 1705632071668936343, guid: 3cd02d557f80d4bef8f71ee68dfb6928, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: P
@@ -3197,6 +3294,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: M
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -3271,6 +3372,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: T
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -3477,6 +3582,10 @@ PrefabInstance:
     - target: {fileID: 831007064534209594, guid: 3162f810ebed54525be4657c484abbdc, type: 3}
       propertyPath: m_Name
       value: f5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2877988864128389682, guid: 3162f810ebed54525be4657c484abbdc, type: 3}
+      propertyPath: keyName
+      value: F5
       objectReference: {fileID: 0}
     - target: {fileID: 4905157448823201832, guid: 3162f810ebed54525be4657c484abbdc, type: 3}
       propertyPath: m_RootOrder
@@ -3689,6 +3798,10 @@ PrefabInstance:
       value: Y
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -3831,6 +3944,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: N
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -4109,6 +4226,10 @@ PrefabInstance:
       value: Z
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -4181,6 +4302,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -4258,7 +4383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -4471,6 +4596,10 @@ PrefabInstance:
       value: U
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -4676,6 +4805,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escape Varient
       objectReference: {fileID: 0}
+    - target: {fileID: 3422770903587438105, guid: 928338bcbc7b642ea90164e11571a6a9, type: 3}
+      propertyPath: keyName
+      value: Escape
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422770903587438105, guid: 928338bcbc7b642ea90164e11571a6a9, type: 3}
+      propertyPath: keycode
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 5503984961214991363, guid: 928338bcbc7b642ea90164e11571a6a9, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4809,6 +4946,10 @@ PrefabInstance:
       value: S
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -4816,6 +4957,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: -4822712413543423844, guid: 6c760462c83814a24b5a15cb543402c2, type: 3}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: S
@@ -4884,7 +5029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -5160,8 +5305,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: <
       objectReference: {fileID: 0}
+    - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: 1705632071668936343, guid: df64510145a62459689c10cdc1e47476, type: 3}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
       value: <
@@ -5295,6 +5444,10 @@ PrefabInstance:
       value: C
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -5367,6 +5520,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -5505,6 +5662,10 @@ PrefabInstance:
       value: Q
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -5512,6 +5673,14 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: learningStateUndoShortcut
+      value: 
+      objectReference: {fileID: 954000883357265787, guid: 0f149c005f29448dd9d7e2c5bfbf98cf, type: 3}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: referenceKeyForMultikeyShortcuts
+      value: 
+      objectReference: {fileID: 780034726868001934}
     - target: {fileID: 4262309506687267848, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: m_Name
       value: Q
@@ -5645,6 +5814,10 @@ PrefabInstance:
       value: R
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -5717,6 +5890,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: H
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
@@ -5794,7 +5971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -5924,6 +6101,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4530673228657043403}
     m_Modifications:
+    - target: {fileID: 991291722452855300, guid: caa1234a182b042e6bf1dba19ee0c832, type: 3}
+      propertyPath: keyName
+      value: arrow-right
+      objectReference: {fileID: 0}
     - target: {fileID: 2430036746714983436, guid: caa1234a182b042e6bf1dba19ee0c832, type: 3}
       propertyPath: m_Name
       value: Arrow Right Varient
@@ -5986,9 +6167,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4530673228657043403}
     m_Modifications:
+    - target: {fileID: 597356729343430599, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1482764305781822884, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
       propertyPath: m_Name
       value: Space Varient
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101417367966372780, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: keyName
+      value: Space
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101417367966372780, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: keycode
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384030908516466098, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_text
+      value: LEARNING MODE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384030908516466098, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_fontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384030908516466098, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384030908516466098, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384030908516466098, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 16777215
       objectReference: {fileID: 0}
     - target: {fileID: 6559805616998588854, guid: 02f726e9de4634b4cb66dde4ce63ba6f, type: 3}
       propertyPath: m_RootOrder
@@ -6123,6 +6336,10 @@ PrefabInstance:
       value: K
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut
       value: 
       objectReference: {fileID: 8597254038094365117, guid: 68c72bf82196640fbbe2a73c37a80c01, type: 3}
@@ -6198,7 +6415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967414371440315024, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: keyName
-      value: colon
+      value: '::'
       objectReference: {fileID: 0}
     - target: {fileID: 5744571332422212192, guid: 668f500034c1a45448c55f1d0aa58a39, type: 3}
       propertyPath: topSymbol
@@ -6269,6 +6486,10 @@ PrefabInstance:
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: keyName
       value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
+      propertyPath: primaryKeyState
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1683850329258242560, guid: 8be0402d7579e4afdbd26a1bd548ec09, type: 3}
       propertyPath: typingStateShortcut

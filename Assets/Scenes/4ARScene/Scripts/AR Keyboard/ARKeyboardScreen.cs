@@ -21,6 +21,9 @@ public class ARKeyboardScreen : MonoBehaviour
             case EScreenState.ACTIVE:
                 ActivateScreen();
                 break;
+            case EScreenState.INACTIVE:
+                DeactivateScreen();
+                break;
         }
     }
 
@@ -29,5 +32,13 @@ public class ARKeyboardScreen : MonoBehaviour
         screenState = EScreenState.ACTIVE;
         var rawImage = GetComponentInChildren<RawImage>();
         rawImage.DOFade(1, 3f);
+    }
+    
+    private void DeactivateScreen()
+    {
+        screenState = EScreenState.INACTIVE;
+        var rawImage = GetComponentInChildren<RawImage>();
+        rawImage.DOFade(0, 3f);
+
     }
 }

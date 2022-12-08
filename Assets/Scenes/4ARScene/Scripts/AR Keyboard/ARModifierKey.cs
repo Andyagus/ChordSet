@@ -36,7 +36,8 @@ namespace AR_Keyboard
             LEARNING_AVAILABLE,
             LEARNING_STATE_ENTRY,
             LEARNING_SELECTED,
-            LEARNING_ACTIVE_MENU_BUTTON
+            LEARNING_ACTIVE_MENU_BUTTON,
+            LEARNING_ENTER_MODE
         }
 
         public EModifierKeyState modifierState;
@@ -86,7 +87,15 @@ namespace AR_Keyboard
                  case EModifierKeyState.LEARNING_ACTIVE_MENU_BUTTON:
                      LearningActiveMenuButton();
                      break;
+                 case EModifierKeyState.LEARNING_ENTER_MODE:
+                     LearningEnterMode();
+                     break;
              }
+         }
+
+         private void LearningEnterMode()
+         {
+             throw new NotImplementedException();
          }
 
          private void LearningStateEntry()

@@ -28,6 +28,8 @@ public class UndoShortcutState : ARKeyboardState
     [SerializeField] private GameObject screenspaceUI;
 
     private Image _fullscreenPanel;
+
+    private bool enterMode;
     
     // [SerializeField] private GameObject primaryOutline;
     // [SerializeField] private GameObject o;
@@ -86,6 +88,9 @@ public class UndoShortcutState : ARKeyboardState
                 var rend = modifierKey.GetComponentInChildren<MeshRenderer>();
         
                 _showcaseSequence.Append(rend.material.DOColor(Color.white, 1.1f));
+                _showcaseSequence.AppendInterval(2f);
+                _showcaseSequence.Append(rend.material.DOColor(Color.black, 1.2f));
+
                 //move to key itself
             }            
         }
@@ -165,77 +170,51 @@ public class UndoShortcutState : ARKeyboardState
 
     public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
     {
-        
-        
-        // // List<string> namesToKeep = new List<string>
-        // // {
-        // //     "Q",
-        // //     "W",
-        // //     "S",
-        // //     "<",
-        // //     ">"
-        // // };
-        // //
-        //
-        // foreach (var primaryKey in keyboard.primaryKeys)
-        // {
-        //
-        //     if (primaryKey.KeyName == "S" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
-        //     {
-        //         var star = primaryKey.GetComponentInChildren<StarShortcut>();
-        //         star.SetStarState(StarShortcut.eStarState.PRESSED);
-        //     }
-        //     // foreach (var nameKeep in namesToKeep)
-        //     // {
-        //     //     if (primaryKey.KeyName == nameKeep)
-        //     //     {
-        //     //         
-        //     //     }
-        //     // }
-        //
-        //     // if (primaryKey.KeyName == "Return" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
-        //     // {
-        //     //     _entryMode = true;
-        //     // }
-        // }
-        //
-        // if (_entryMode)
-        // {
-        //     
-        //     //both need to be pressed at same time
-        //     foreach (var key in _modifierKeysForChanging)
-        //     {
-        //         if (key.modifierState == ARModifierKey.EModifierKeyState.LEARNING_SHOWCASE)
-        //         {
-        //             key.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_AVAILABLE);
-        //         }
-        //         
-        //
-        //         if (key.keyPressedState == EKeyState.KEY_PRESSED)
-        //         {
-        //             key.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_SELECTED);
-        //         }
-        //         
-        //     }
-        //
-        //     foreach (var key in _primaryKeysForChanging)
-        //     {
-        //         if (key.primaryKeyState == ARPrimaryKey.EPrimaryKeyState.LEARNING_SHOWCASE)
-        //         {
-        //             key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_AVAILABLE);
-        //         }
-        //
-        //         if (key.keyPressedState == EKeyState.KEY_PRESSED)
-        //         {
-        //             key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_SELECTED);
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     return null;
-        // }
 
+        
+        foreach (var key in keyboard.primaryKeys)
+        {
+            if (key.KeyName == "Return" && key.keyPressedState == EKeyState.KEY_PRESSED)
+            {
+                enterMode = true;
+            }
+
+            if (enterMode)
+            {
+                key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTER_MODE);
+                _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
+                    .transform.Find("Fullscreen-panel").GetComponent<Image>();
+                _fullscreenPanel.DOFade(0.0f, 3f);
+                keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
+
+                if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_PRESSED)
+                {
+                    //play sound
+                    key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
+                } 
+                if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_UNPRESSED)
+                {
+                    key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
+                }
+                
+                
+                
+            }
+
+        }
+
+        foreach (var modifierKey in keyboard.modifierKeys)
+        {
+            if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
+            {
+                modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
+            }  
+            if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
+            {
+                modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
+            }   
+        }
+        
         return null;
     }
 }

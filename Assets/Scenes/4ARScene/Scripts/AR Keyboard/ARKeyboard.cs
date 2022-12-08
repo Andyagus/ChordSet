@@ -55,7 +55,7 @@ namespace AR_Keyboard
             _ambientModeState.Entry(this);
 
             // _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
-            _learningModeState = Instantiate(undoShortcutState, this.transform, true);
+            _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
 
         }
 

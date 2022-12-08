@@ -55,7 +55,8 @@ namespace AR_Keyboard
             LEARNING_AVAILABLE,
             LEARNING_SELECTED,
             LEARNING_HELPER,
-            LEARNING_ACTIVE_MENU_BUTTON
+            LEARNING_ACTIVE_MENU_BUTTON,
+            LEARNING_STATE_ENTER_MODE
             // SELECTED
         }
         
@@ -118,8 +119,44 @@ namespace AR_Keyboard
                 case EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON:
                     LearningActiveMenuButton();
                     break;
+                case EPrimaryKeyState.LEARNING_STATE_ENTER_MODE:
+                    LearningStateEnterMode();
+                    break;
 
             }
+        }
+
+        private void LearningStateEnterMode()
+        {
+
+            primaryKeyState = EPrimaryKeyState.LEARNING_STATE_ENTER_MODE;
+            
+            if (learningStateUndoShortcut != null)
+            {
+                if (KeyName != "Q")
+                {
+                    var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+
+                    AnimationManager.FadeTextMeshPro(textGroup);
+
+                    if (GetComponentInChildren<Image>() != null)
+                    {
+                        var images = GetComponentsInChildren<Image>();
+                        AnimationManager.FadeImages(images);
+                    }
+                }
+                else
+                {
+                    var textGroup = GetComponentsInChildren<TextMeshProUGUI>();
+                    foreach (var text in textGroup)
+                    {
+                        text.DOText("Back to Shortcut", 1f);
+                        // text.DOFade(0.75f, 1f);
+                    }
+                }
+            }
+            
+            
         }
 
         private void LearningStateEntry()
@@ -127,6 +164,17 @@ namespace AR_Keyboard
 
             var sequence = DOTween.Sequence();
 
+
+            if (keyName == "G")
+            {
+                var renderers = GetComponentsInChildren<MeshRenderer>();
+
+                foreach (var rend in renderers)
+                {
+                    rend.material.DOColor(Color.black, 1f);
+                }
+            }
+            
             if (learningStateUndoShortcut != null)
             {
                 sequence.AppendCallback(() =>
@@ -156,7 +204,6 @@ namespace AR_Keyboard
                 }
 
             }
-
         }
         
         
