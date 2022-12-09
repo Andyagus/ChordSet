@@ -29,7 +29,7 @@ namespace Scenes._4ARScene.Scripts.AR_Keyboard
 
         public static void ApplyKeyOutlineToPrimary(ARPrimaryKey primaryKey)
         {
-            primaryKey.keyOutline.gameObject.SetActive(true);
+            // primaryKey.keyOutline.gameObject.SetActive(true);
         }
         
         public static void AnimateLearningModeShortcut(ARPrimaryKey primaryKey, Shortcut shortcut, float fadeAmt = 0)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using DG.Tweening;
 using Effects;
 using Enums;
 using UnityEngine;
@@ -13,80 +14,71 @@ namespace AR_Keyboard.State
 
         public override void Entry(ARKeyboard keyboard)
         {
-            PrimaryKeysEntry(keyboard);
-            
-            foreach (var modifierKey in keyboard.modifierKeys)
+            foreach (var modifier in keyboard.modifierKeys)
             {
-                //this is accessing the modifier keys
-                if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
+                if (modifier.KeyName == "command-left")
                 {
-                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.AVAILABLE);
+                    modifier.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
                 }
                 else
                 {
-                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.UNAVAILABLE);
+                    modifier.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
                 }
             }
+
         }
 
         private void PrimaryKeysEntry(ARKeyboard keyboard)
         {
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                if (primaryKey.typingStateShortcut != null)
-                {
-                    
-                    if (primaryKey.GetComponentInChildren<Shortcut>() != null)
-                    {
-                        primaryKey.currentShortcut.StopSequence(primaryKey);
-                        Destroy(primaryKey.currentShortcut.gameObject);
-                    }
-                    
-                    var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
-                    primaryKey.currentShortcut = shortcut;
-                    var offset = new Vector3(0f, 0.0007f, 0f);
-                    primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
-                    primaryKey.currentShortcut.SetGraphics(primaryKey);
-                }
-            }
+            // foreach (var primaryKey in keyboard.primaryKeys)
+            // {
+            //     if (primaryKey.typingStateShortcut != null)
+            //     {
+            //         
+            //         if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+            //         {
+            //             primaryKey.currentShortcut.StopSequence(primaryKey);
+            //             Destroy(primaryKey.currentShortcut.gameObject);
+            //         }
+            //         
+            //         var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
+            //         primaryKey.currentShortcut = shortcut;
+            //         var offset = new Vector3(0f, 0.0007f, 0f);
+            //         primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
+            //         primaryKey.currentShortcut.SetGraphics(primaryKey);
+            //     }
+            // }
         }
         
-        public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
+        public override ARKeyboardState HandleInput(Key key)
         {
-            HandleInputPrimaryKey(keyName, keyState, keyboard);
-            return HandleInputModifierKey(keyName, keyState, keyboard);
-        }
-
-        private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
-        {
-            foreach (var modifierKey in keyboard.modifierKeys)
+            if (key.KeyName == "command-left" || key.KeyName == "command-right" )
             {
-                if (modifierKey.KeyName == "command-left" || modifierKey.KeyName == "command-right")
+                if (key.keyPressed == EKeyState.KEY_PRESSED)
                 {
-                    if (modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
-                    {
-                        var state = Instantiate(commandState);
-                        return state;
-                    }
+                    Debug.Log("Returning new state");
+                    var state = Instantiate(commandState);
+                    return state;
                 }
             }
+            
+            //TODO BAD NEWS BEARS
+            if(key.GetComponent<ARPrimaryKey>()!=null)
+            {
+                var primaryKey = key.GetComponent<ARPrimaryKey>();
+                if (primaryKey.typingStateShortcut != null)
+                {
+                    primaryKey.currentShortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
+                    primaryKey.currentShortcut.Execute(primaryKey);
+                }
+                
+            }
+            
             return null;
+            
         }
-
-        private void HandleInputPrimaryKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
-        {
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                if (primaryKey.KeyName == inputKeyName)
-                {
-                    if (primaryKey.currentShortcut != null)
-                    {
-                        primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
-                    }
-                }
-            }
-        }
-
+        
+        
         private void MoveToNextState()
         {
             throw new System.NotImplementedException();

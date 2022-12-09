@@ -24,19 +24,19 @@ namespace AR_Keyboard
         }
 
 
-        public virtual void Execute(EKeyState keyState, ARPrimaryKey key)
+        public virtual void Execute(ARPrimaryKey key)
         {
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
+            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
         }
 
         public virtual void SetGraphics(ARPrimaryKey key)
         {
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
         }
 
         public virtual void StopSequence(ARPrimaryKey key)
         {
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
         }
     }
 }

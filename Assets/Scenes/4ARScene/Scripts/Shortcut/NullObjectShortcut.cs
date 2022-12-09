@@ -10,8 +10,8 @@ public class NullObjectShortcut : Shortcut
 {
     public override void SetGraphics(ARPrimaryKey key)
     {
-        key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.UNAVAILABLE);
+        // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.UNAVAILABLE);
     }
 
-    public override void Execute(EKeyState keyState, ARPrimaryKey key) {}
+    public override void Execute(ARPrimaryKey key) {}
 }

@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour, IObserver
         _arKeyboard = FindObjectOfType<ARKeyboard>();
         _primaryKeys = FindObjectOfType<ARKeyboard>().GetComponentsInChildren<ARPrimaryKey>().ToList();
 
-        _arKeyboard.onStateChanged += OnStateChanged;
+        _arKeyboard.onAmbientStateChanged += OnStateChanged;
     }
 
     private void OnStateChanged(ARKeyboardState obj)

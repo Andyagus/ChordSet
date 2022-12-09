@@ -18,7 +18,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
 
         [SerializeField] private float amountToMoveScissors = 0.1f;
         
-        public override void Execute(EKeyState keyState, ARPrimaryKey key)
+        public override void Execute(ARPrimaryKey key)
         {
             
             _executeSequence = DOTween.Sequence();
@@ -38,7 +38,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
             _executeSequence.Insert(1.2f, xBottom.DOFade(0, 1f));
             // _executeSequence.SetAutoKill(false);
 
-            base.Execute(keyState, key);
+            base.Execute(key);
         }
 
         public override void SetGraphics(ARPrimaryKey key)

@@ -21,29 +21,29 @@ public class LearningModeWelcome : ARKeyboardState
         
         _positioningArea.DOFade(1, 2f);
         
-        foreach (var key in keyboard.primaryKeys)
-        {
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_WELCOME);
-        }
-        foreach (var modifierKey in keyboard.modifierKeys)
-        {
-            modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_WELCOME);
-        }
+        // foreach (var key in keyboard.primaryKeys)
+        // {
+        //     // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_WELCOME);
+        // }
+        // foreach (var modifierKey in keyboard.modifierKeys)
+        // {
+        //     // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_WELCOME);
+        // }
     }
 
-    public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
+    public override ARKeyboardState HandleInput(Key key)
     {
-        foreach (var primaryKey in keyboard.primaryKeys)
-        {
-            if (primaryKey.KeyName == "G" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
-            {
-                primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
-
-                var state = Instantiate(undoShortcutState);
-                return state;
-
-            }
-        }
+        // foreach (var primaryKey in keyboard.primaryKeys)
+        // {
+        //     if (primaryKey.KeyName == "G" && primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
+        //     {
+        //         // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
+        //
+        //         var state = Instantiate(undoShortcutState);
+        //         return state;
+        //
+        //     }
+        // }
 
         return null;
     }

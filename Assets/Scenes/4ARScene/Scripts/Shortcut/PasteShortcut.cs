@@ -38,7 +38,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
          // keyText.DOFade(0f, 1f);
       }
 
-      public override void Execute(EKeyState keyState, ARPrimaryKey key)
+      public override void Execute(ARPrimaryKey key)
       {
 
 
@@ -53,7 +53,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
                .Append(cLetterText.DOFade(1, 0f))
                .Append(_copyShortcut.stamp.DOLocalMove(postPos, 0.2f).SetEase(Ease.InSine));
          }
-         base.Execute(keyState, key);
+         base.Execute(key);
       }
 
       public override void StopSequence(ARPrimaryKey key)

@@ -68,7 +68,7 @@ public class UndoShortcut : Shortcut
         _sequence.Insert(arrowFadeInTime, arrowIcon.DOFade(1, 2f));
         _sequence.onComplete += () =>
         {
-            key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
+            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
         };
         
         base.SetGraphics(key);
@@ -76,12 +76,12 @@ public class UndoShortcut : Shortcut
 
 
  
-    public override void Execute(EKeyState keyState, ARPrimaryKey key)
+    public override void Execute(ARPrimaryKey key)
     {
 
         onShortcutExecuted.Notify(this);
         Debug.Log("Undo Shortcut Called");
-        base.Execute(keyState, key);
+        base.Execute(key);
     }
 }
 

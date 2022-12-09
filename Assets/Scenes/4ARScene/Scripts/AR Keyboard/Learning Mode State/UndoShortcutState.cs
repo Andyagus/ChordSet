@@ -81,39 +81,39 @@ public class UndoShortcutState : ARKeyboardState
         _showcaseSequence = DOTween.Sequence();
         _showcaseSequence.Pause();
         _showcaseSequence.AppendInterval(1f);
-        foreach (var modifierKey in keyboard.modifierKeys)
-        {
-            if (modifierKey.KeyName == "command-left")
-            {
-                var rend = modifierKey.GetComponentInChildren<MeshRenderer>();
+        // foreach (var modifierKey in keyboard.modifierKeys)
+        // {
+        //     if (modifierKey.KeyName == "command-left")
+        //     {
+        //         var rend = modifierKey.GetComponentInChildren<MeshRenderer>();
+        //
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 1.1f));
+        //         _showcaseSequence.AppendInterval(2f);
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 1.2f));
+        //
+        //         //move to key itself
+        //     }            
+        // }
         
-                _showcaseSequence.Append(rend.material.DOColor(Color.white, 1.1f));
-                _showcaseSequence.AppendInterval(2f);
-                _showcaseSequence.Append(rend.material.DOColor(Color.black, 1.2f));
-
-                //move to key itself
-            }            
-        }
-        
-        foreach (var primaryKey in keyboard.primaryKeys)
-        {
-            if (primaryKey.KeyName == "Z")
-            {
-                var rend = primaryKey.GetComponentInChildren<MeshRenderer>();
-                _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-                _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-                _showcaseSequence.AppendInterval(1f);
-                _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-                _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-                _showcaseSequence.AppendInterval(1f);
-                _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-                _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-                _showcaseSequence.AppendInterval(1f);
-                _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-                _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-            }
-        }
-        
+        // foreach (var primaryKey in keyboard.primaryKeys)
+        // {
+        //     if (primaryKey.KeyName == "Z")
+        //     {
+        //         var rend = primaryKey.GetComponentInChildren<MeshRenderer>();
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
+        //         _showcaseSequence.AppendInterval(1f);
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
+        //         _showcaseSequence.AppendInterval(1f);
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
+        //         _showcaseSequence.AppendInterval(1f);
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
+        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
+        //     }
+        // }
+        //
         _showcaseSequence.Play();
     }
 
@@ -153,68 +153,67 @@ public class UndoShortcutState : ARKeyboardState
 
     private void FadeOutAndKeep(ARKeyboard keyboard)
     {
-        foreach (var modifierKey in keyboard.modifierKeys)
-        {
-            modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_STATE_ENTRY);
-            
-        }
-        foreach (var primaryKey in keyboard.primaryKeys)
-        {
-
-            primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTRY);
-        }    
+        // foreach (var modifierKey in keyboard.modifierKeys)
+        // {
+        //     // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_STATE_ENTRY);
+        // }
+        // foreach (var primaryKey in keyboard.primaryKeys)
+        // {
+        //
+        //     // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTRY);
+        // }    
     }
     
 
     
 
-    public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
+    public override ARKeyboardState HandleInput(Key key)
     {
 
         
-        foreach (var key in keyboard.primaryKeys)
-        {
-            if (key.KeyName == "Return" && key.keyPressedState == EKeyState.KEY_PRESSED)
-            {
-                enterMode = true;
-            }
+        // foreach (var key in keyboard.primaryKeys)
+        // {
+        //     if (key.KeyName == "Return" && key.keyPressedState == EKeyState.KEY_PRESSED)
+        //     {
+        //         enterMode = true;
+        //     }
+        //
+        //     if (enterMode)
+        //     {
+        //         // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTER_MODE);
+        //         _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
+        //             .transform.Find("Fullscreen-panel").GetComponent<Image>();
+        //         _fullscreenPanel.DOFade(0.0f, 3f);
+        //         keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
+        //
+        //         
+        //         if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_PRESSED)
+        //         {
+        //             //play sound
+        //             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
+        //         } 
+        //         if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_UNPRESSED)
+        //         {
+        //             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
+        //         }
+        //         
+        //         
+        //         
+        //     }
+        //
+        // }
 
-            if (enterMode)
-            {
-                key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTER_MODE);
-                _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
-                    .transform.Find("Fullscreen-panel").GetComponent<Image>();
-                _fullscreenPanel.DOFade(0.0f, 3f);
-                keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
-
-                
-                if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_PRESSED)
-                {
-                    //play sound
-                    key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
-                } 
-                if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_UNPRESSED)
-                {
-                    key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
-                }
-                
-                
-                
-            }
-
-        }
-
-        foreach (var modifierKey in keyboard.modifierKeys)
-        {
-            if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
-            {
-                modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
-            }  
-            if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
-            {
-                modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
-            }   
-        }
+        // foreach (var modifierKey in keyboard.modifierKeys)
+        // {
+        //     if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
+        //     {
+        //         // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
+        //     }  
+        //     if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
+        //     {
+        //         // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
+        //     }   
+        // }
         
         return null;
     }

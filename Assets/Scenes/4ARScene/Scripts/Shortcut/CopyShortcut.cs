@@ -34,7 +34,7 @@ public class CopyShortcut : Shortcut
         base.SetGraphics(key);
     }
 
-    public override void Execute(EKeyState keyState, ARPrimaryKey key)
+    public override void Execute(ARPrimaryKey key)
     {
         _executeSequence = DOTween.Sequence();
         var newPos = new Vector3(0.0001f, .0025f, -0.002f);
@@ -52,7 +52,7 @@ public class CopyShortcut : Shortcut
             onGraphicCopied();
         }
         
-        base.Execute(keyState, key);
+        base.Execute(key);
     }
 
     public override void StopSequence(ARPrimaryKey key)

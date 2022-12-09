@@ -19,7 +19,7 @@ namespace AR_Keyboard
         //ambient mode state
         private ARKeyboardState _ambientModeState;
         public ARKeyboardState typingState;
-        public Action<ARKeyboardState> onStateChanged;
+        public Action<ARKeyboardState> onAmbientStateChanged;
 
         //decision bool
         private bool _ambientModeActive = true;
@@ -33,17 +33,20 @@ namespace AR_Keyboard
         
         //screen 
         public ARKeyboardScreen ARScreen;
-        
-        [NonSerialized] public List<ARPrimaryKey> primaryKeys;
-        [NonSerialized] public List<ARModifierKey> modifierKeys;
 
+        public List<Key> keys;
+        public List<ARModifierKey> modifierKeys;
+        public List<ARPrimaryKey> primaryKeys;
+        
         private KeySyncDictionary _keySyncDictionary;
 
         private void Awake()
         {
 
-            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
+            keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
+            primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
+            
 
             InstantiateModes();
      
@@ -64,29 +67,16 @@ namespace AR_Keyboard
             
             DOTween.SetTweensCapacity(500, 125);
             
-            if (onStateChanged != null)
+            if (onAmbientStateChanged != null)
             {
-                onStateChanged(_ambientModeState);
+                onAmbientStateChanged(_ambientModeState);
             }
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
         }
-
-        private void Update()
-        {
-
-            foreach (var key in primaryKeys)
-            {
-                if (key.keyPressedState == EKeyState.KEY_PRESSED)
-                {
-                    Debug.Log(key.KeyName);
-                }
-                
-            }   
-        }
-
+        
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
-            Debug.Log("dictionary count: " + dict.Count);
+            //Debug.Log("dictionary count: " + dict.Count);
             foreach (var kvp in dict)
             {
                 var keyName = kvp.Value.keyName;
@@ -98,74 +88,54 @@ namespace AR_Keyboard
         
         private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
         {
-            //setting values of 'physical' keys
-            foreach (var primaryKey in primaryKeys)
+
+            foreach (var key in keys)
             {
-                if (inputKeyName == primaryKey.KeyName)
+                if (inputKeyName == key.KeyName)
                 {
-                    if (primaryKey.keyPressedState == EKeyState.KEY_UNPRESSED)
+                    if (key.keyPressed == EKeyState.KEY_UNPRESSED)
                     {
                         if (inputKeyState == EKeyState.KEY_PRESSED)
                         {
-                            primaryKey.SetPressedState(EKeyState.KEY_PRESSED);
-                            HandleInput(inputKeyName, inputKeyState, primaryKey);
+                            key.keyPressed = EKeyState.KEY_PRESSED;
+                            HandleInput(inputKeyName, inputKeyState, key);
                         }
                     }
-                    if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
+
+                    if (key.keyPressed == EKeyState.KEY_PRESSED)
                     {
                         if (inputKeyState == EKeyState.KEY_UNPRESSED)
                         {
-                            primaryKey.SetPressedState(EKeyState.KEY_UNPRESSED);
-                            HandleInput(inputKeyName, inputKeyState, primaryKey);
+                            key.keyPressed = EKeyState.KEY_UNPRESSED;
+                            HandleInput(inputKeyName, inputKeyState, key);
 
                         }
                     }
-                }    
-            }
-            foreach (var modifierKey in modifierKeys)
-            {
-                if (inputKeyName == modifierKey.KeyName)
-                {
-                    if (modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
-                    {
-                        if (inputKeyState == EKeyState.KEY_PRESSED)
-                        {
-                            modifierKey.SetPressedState(EKeyState.KEY_PRESSED);
-                            HandleInput(inputKeyName, inputKeyState, modifierKey);
-                        }
-                    }
-                    if (modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
-                    {
-                        if (inputKeyState == EKeyState.KEY_UNPRESSED)
-                        {
-                            modifierKey.SetPressedState(EKeyState.KEY_UNPRESSED);
-                            HandleInput(inputKeyName, inputKeyState, modifierKey);
-
-                        }
-                    }
-                }    
+                }
             }
             
         }
+            
+          
         
-        private void HandleInput(string keyName, EKeyState keyState, Key physicalKey)
+        private void HandleInput(string keyName, EKeyState keyState, Key key)
         {
-            if (keyName == "F5")
-            {
-                if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-                {
-                    _ambientModeActive = false;
-                    Debug.Log(_ambientModeActive);
-                }
-            }
+            // if (keyName == "F5")
+            // {
+            //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
+            //     {
+            //         _ambientModeActive = false;
+            //         Debug.Log(_ambientModeActive);
+            //     }
+            // }
 
-            if (keyName == "Escape")
-            {
-                if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-                {
-                    _ambientModeActive = true;
-                }
-            }
+            // if (keyName == "Escape")
+            // {
+            //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
+            //     {
+            //         _ambientModeActive = true;
+            //     }
+            // }
             
             if (_ambientModeActive)
             {
@@ -175,7 +145,7 @@ namespace AR_Keyboard
                     _learningModeActive = false;
                 }
                 
-                var state = _ambientModeState.HandleInput(keyName, keyState, this);
+                var state = _ambientModeState.HandleInput(key);
                 
                 if (state != null)
                 {
@@ -184,21 +154,21 @@ namespace AR_Keyboard
                     _ambientModeState = state;
                     _ambientModeState.transform.SetParent(this.transform);
                     _ambientModeState.Entry(this);
-                    onStateChanged(_ambientModeState);
+                    onAmbientStateChanged(_ambientModeState);
                 }
             }
             else
             {
                 if (_learningModeActive == false)
                 {
-                    foreach (var primaryKey in primaryKeys)
-                    {
-                        primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
-                    }
-                    foreach (var modifierKey in modifierKeys)
-                    {
-                        modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
-                    }
+                    // foreach (var primaryKey in primaryKeys)
+                    // {
+                    //     // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
+                    // }
+                    // foreach (var modifierKey in modifierKeys)
+                    // {
+                    //     // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
+                    // }
                     
                     _learningModeState.Entry(this);
                     _learningModeActive = true;
@@ -206,7 +176,7 @@ namespace AR_Keyboard
                 //will need additional bools for switching back and fourth 
                 // _learningModeState.Entry(this);
 
-                var state = _learningModeState.HandleInput(keyName, keyState, this);
+                var state = _learningModeState.HandleInput(key);
                 if (state != null)
                 {
                     _learningModeState.Exit(this);

@@ -11,31 +11,20 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-            ModifierKeyEntry(keyboard);
-            PrimaryKeysEntry(keyboard);
+            // ModifierKeyEntry(keyboard);
+            // PrimaryKeysEntry(keyboard);
            
-        }
-
-        private void ModifierKeyEntry(ARKeyboard keyboard)
-        {
-            foreach (var modifierKey in keyboard.modifierKeys)
-            {
-                if(modifierKey.KeyName == "command-left")
-                {
-                    modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
-                }
-            }
         }
 
         private void PrimaryKeysEntry(ARKeyboard keyboard)
         {
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                if (primaryKey.commandStateShortcut != null)
-                {
-                    InitiateShortcut(primaryKey);
-                }
-            }
+            // foreach (var primaryKey in keyboard.primaryKeys)
+            // {
+            //     if (primaryKey.commandStateShortcut != null)
+             //     {
+            //         InitiateShortcut(primaryKey);
+            //     }
+            // }
         }
 
         private void InitiateShortcut(ARPrimaryKey primaryKey)
@@ -55,38 +44,39 @@ namespace AR_Keyboard.State
             
         }
         
-        public override ARKeyboardState HandleInput(string keyName, EKeyState keyState, ARKeyboard keyboard)
+        public override ARKeyboardState HandleInput(Key key)
         {
-            HandleInputPrimaryKey(keyName, keyState, keyboard);
-            return HandleInputModifierKey(keyName, keyState, keyboard);
+            // HandleInputPrimaryKey(keyName, keyState, keyboard);
+            // return HandleInputModifierKey(keyName, keyState, keyboard);
+            return null;
         }
 
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
             
-            foreach (var modifierKey in keyboard.modifierKeys)
-            {
-                if (modifierKey.KeyName == "command-left")
-                {
-                    if (modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
-                    {
-                        var state = Instantiate(typingState);
-                        return state;
-                    }
-                }
-            }
+            // foreach (var modifierKey in keyboard.modifierKeys)
+            // {
+            //     if (modifierKey.KeyName == "command-left")
+            //     {
+            //         // if (modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
+            //         // {
+            //         //     var state = Instantiate(typingState);
+            //         //     return state;
+            //         // }
+            //     }
+            // }
             return null;
         }
 
         private void HandleInputPrimaryKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)
         {
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
-                {
-                    primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
-                }
-            }
+            // foreach (var primaryKey in keyboard.primaryKeys)
+            // {
+            //     // if (primaryKey.keyPressedState == EKeyState.KEY_PRESSED)
+            //     // {
+            //     //     primaryKey.currentShortcut.Execute(inputKeyState, primaryKey);
+            //     // }
+            // }
         }
         
 
