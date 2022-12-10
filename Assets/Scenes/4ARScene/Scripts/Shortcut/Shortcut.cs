@@ -17,13 +17,54 @@ namespace AR_Keyboard
         public Subject onShortcutExecuted;
         public EShortcuts eShortcut;
         public string shortcutName;
+        //
+        // [Header("Shortcut Micro State")] 
+        // private ShortcutMicroState _shortcutMicroState;
+        // public ShortcutMicroState.EShortcutMicroState shortcutMicro = ShortcutMicroState.EShortcutMicroState.UNPRESSED;
+        // private ShortcutMicroState.EShortcutMicroState _prevShortcutMicro;
 
+        [Header("Shortcut Availability State")]
+        private ShortcutAvailabilityState _availabilityState;
+
+        public ShortcutAvailabilityState.EShortcutAvailability shortcutAvailability;
+        private ShortcutAvailabilityState.EShortcutAvailability _prevAvailability = ShortcutAvailabilityState.EShortcutAvailability.UNAVAILABLE;
+
+        [Header("Shortcut Activity State")] 
+        private ShortutActivityState _activityState;
+
+        public ShortutActivityState.EShortcutActivity shortcutActivity;
+        private ShortutActivityState.EShortcutActivity _prevShortcutActivity = ShortutActivityState.EShortcutActivity.INACTIVE; 
+        
         public virtual void Awake()
         {
+            // _shortcutMicroState = GetComponent<ShortcutMicroState>();   
+            _availabilityState = GetComponent<ShortcutAvailabilityState>();
+            _activityState = GetComponent<ShortutActivityState>();
             onShortcutExecuted = new Subject();
         }
 
+        public virtual void Update()
+        {
+            // if (shortcutMicro != _prevShortcutMicro)
+            // {
+            //     _shortcutMicroState.SetShortcutMicroState(shortcutMicro, this);
+            //     _prevShortcutMicro = shortcutMicro;
+            // }
 
+            if (shortcutAvailability != _prevAvailability)
+            {
+                _availabilityState.SetShortcutAvailability(shortcutAvailability, this);
+                _prevAvailability = shortcutAvailability;
+            }
+
+            if (shortcutActivity != _prevShortcutActivity)
+            {
+                _activityState.SetShortcutActivity(shortcutActivity, this);
+                _prevShortcutActivity = shortcutActivity;
+            }
+        }
+        
+        
         public virtual void Execute(ARPrimaryKey key)
         {
             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
@@ -38,5 +79,7 @@ namespace AR_Keyboard
         {
             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
         }
+        
+        
     }
 }

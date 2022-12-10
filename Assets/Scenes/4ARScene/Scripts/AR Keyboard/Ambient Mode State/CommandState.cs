@@ -11,8 +11,19 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-            // ModifierKeyEntry(keyboard);
-            // PrimaryKeysEntry(keyboard);
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (primaryKey.commandStateShortcut != null)
+                {
+                    primaryKey.currentShortcut = primaryKey.commandStateShortcut;
+                    primaryKey.keyShortcut = KeyShortcutState.EKeyShortcutState.SHORTCUT;
+                }
+                else
+                {
+                    primaryKey.currentShortcut = primaryKey.commandStateShortcut;
+                    primaryKey.keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                }
+            }
            
         }
 
@@ -46,9 +57,14 @@ namespace AR_Keyboard.State
         
         public override ARKeyboardState HandleInput(Key key)
         {
-            // HandleInputPrimaryKey(keyName, keyState, keyboard);
-            // return HandleInputModifierKey(keyName, keyState, keyboard);
-            return null;
+            if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+                return typingState;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private ARKeyboardState HandleInputModifierKey(string inputKeyName, EKeyState inputKeyState, ARKeyboard keyboard)

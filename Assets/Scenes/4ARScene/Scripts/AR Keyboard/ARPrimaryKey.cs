@@ -27,20 +27,32 @@ namespace AR_Keyboard
         
         private TextMeshProUGUI _textMesh;
 
-        
-
+        [Tooltip("Primary Key Shortcut State")]
+        private KeyShortcutState _keyShortcutState;
+        public KeyShortcutState.EKeyShortcutState keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
 
 
 
         public override void Awake()
         {
+            _keyShortcutState = GetComponent<KeyShortcutState>();
+
             DOTween.Clear();
             _textMesh = GetComponentInChildren<TextMeshProUGUI>();
             _arKeyboard = GetComponentInParent<ARKeyboard>();
             base.Awake();
         }
 
-
+        public override void Update()
+        {
+            if (keyShortcut != _prevShortcut)
+            {
+                _keyShortcutState.SetKeyShortcutState(keyShortcut, this);
+                _prevShortcut = keyShortcut;
+            }
+            base.Update();
+        }
 
         //     
         //     public void SetPrimaryKeyState(EPrimaryKeyState state)

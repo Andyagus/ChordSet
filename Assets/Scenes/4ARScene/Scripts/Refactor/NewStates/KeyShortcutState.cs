@@ -1,38 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AR_Keyboard;
 using UnityEngine;
 
 public class KeyShortcutState : MonoBehaviour
 {
+
     public enum EKeyShortcutState
     {
         SHORTCUT,
         NO_SHORTCUT
     }
 
-    public void SetKeyShortcutState(EKeyShortcutState state, Key key)
+    public void SetKeyShortcutState(EKeyShortcutState state, ARPrimaryKey primaryKey)
     {
         switch (state)
         {
             case EKeyShortcutState.SHORTCUT:
-                Shortcut();
+                Shortcut(primaryKey);
                 break;
             case EKeyShortcutState.NO_SHORTCUT:
-                NoShortcut();
+                NoShortcut(primaryKey);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
 
-    private void Shortcut()
+    private void Shortcut(ARPrimaryKey primaryKey)
     {
-        throw new NotImplementedException();
+        var shortcut = Instantiate(primaryKey.currentShortcut, primaryKey.transform);
+        var offset = new Vector3(0f, 0.0007f, 0f);
+        shortcut.transform.position = primaryKey.transform.position + offset;
+        
     }
     
-    private void NoShortcut()
+    private void NoShortcut(ARPrimaryKey primaryKey)
     {
-        throw new NotImplementedException();
+        if (primaryKey.GetComponentInChildren<Shortcut>()!= null)
+        {
+            Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
+        }
     }
 }

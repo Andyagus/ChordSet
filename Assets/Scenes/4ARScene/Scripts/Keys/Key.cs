@@ -58,17 +58,12 @@ public class Key : MonoBehaviour
     public KeyOutlineState.EKeyOutline keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     private KeyOutlineState.EKeyOutline _prevOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     
-    [Tooltip("Key Shortcut State")]
-    private KeyShortcutState _keyShortcutState;
-    public KeyShortcutState.EKeyShortcutState keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-    private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-    
+   
     public virtual void Awake()
     {
         _keyPressedState = GetComponent<KeyPressedState>();
         _keyOutlineState = GetComponent<KeyOutlineState>();
         _keyAvailabilityState = GetComponent<KeyAvailabilityState>();
-        _keyShortcutState = GetComponent<KeyShortcutState>();
     }
 
     public virtual void Update()
@@ -91,10 +86,6 @@ public class Key : MonoBehaviour
             _prevAvailability = keyAvailability;
         }
 
-        if (keyShortcut != _prevShortcut)
-        {
-            _keyShortcutState.SetKeyShortcutState(keyShortcut, this);
-            _prevShortcut = keyShortcut;
-        }
+      
     }
 }

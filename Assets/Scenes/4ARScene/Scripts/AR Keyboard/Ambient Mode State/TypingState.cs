@@ -26,6 +26,16 @@ namespace AR_Keyboard.State
                 }
             }
 
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                primaryKey.keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+
+                if (primaryKey.currentShortcut != null)
+                {
+                    primaryKey.keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                }
+            }
+            
         }
 
         private void PrimaryKeysEntry(ARKeyboard keyboard)
@@ -63,16 +73,16 @@ namespace AR_Keyboard.State
             }
             
             //TODO BAD NEWS BEARS
-            if(key.GetComponent<ARPrimaryKey>()!=null)
-            {
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                if (primaryKey.typingStateShortcut != null)
-                {
-                    primaryKey.currentShortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
-                    primaryKey.currentShortcut.Execute(primaryKey);
-                }
-                
-            }
+            // if(key.GetComponent<ARPrimaryKey>()!=null)
+            // {
+            //     var primaryKey = key.GetComponent<ARPrimaryKey>();
+            //     if (primaryKey.typingStateShortcut != null)
+            //     {
+            //         primaryKey.currentShortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
+            //         primaryKey.currentShortcut.Execute(primaryKey);
+            //     }
+            //     
+            // }
             
             return null;
             

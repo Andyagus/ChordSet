@@ -27,7 +27,7 @@ namespace AR_Keyboard.Shortcuts.Scripts
 
       private void Start()
       {
-         _copyShortcut.onGraphicCopied += OnGraphicCopied;
+         // _copyShortcut.onGraphicCopied += OnGraphicCopied;
       }
 
       private void OnGraphicCopied()
