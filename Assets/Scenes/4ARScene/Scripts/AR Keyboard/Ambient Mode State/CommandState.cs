@@ -11,7 +11,18 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-            Debug.Log("Entered Command State");
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (primaryKey.commandStateShortcut != null)
+                {
+                    if (primaryKey.commandStateShortcut.shortcutName != "null object")
+                    {
+                        primaryKey.currentShortcut = primaryKey.commandStateShortcut;
+                        primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.SHORTCUT;
+                    }
+                }
+            }
+            
 
         }
 

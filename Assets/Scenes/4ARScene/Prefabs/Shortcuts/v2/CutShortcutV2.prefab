@@ -182,6 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eShortcut: 2
   shortcutName: Cut
+  shortcutAvailability: 0
+  shortcutActivity: 0
   xFull: {fileID: 1569274540044582232}
   xTop: {fileID: 7303875164751692948}
   xBottom: {fileID: 1343474071510279234}

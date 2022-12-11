@@ -26,7 +26,14 @@ namespace AR_Keyboard.State
                 }
             }
 
-           Debug.Log("Entered Typing State");
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+                {
+                    primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
+                }
+            }
+
         }
 
         private void PrimaryKeysEntry(ARKeyboard keyboard)

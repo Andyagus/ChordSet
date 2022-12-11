@@ -29,8 +29,8 @@ namespace AR_Keyboard
 
         [Tooltip("Primary Key Shortcut State")]
         private KeyShortcutState _keyShortcutState;
-        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
+        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
 
 
 
