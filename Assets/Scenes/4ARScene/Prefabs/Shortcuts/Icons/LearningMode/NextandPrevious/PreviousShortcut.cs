@@ -10,10 +10,5 @@ public class PreviousShortcut : Shortcut
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

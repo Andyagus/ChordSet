@@ -30,17 +30,19 @@ public class KeyShortcutState : MonoBehaviour
 
     private void Shortcut(ARPrimaryKey primaryKey)
     {
+        Debug.Log(primaryKey.KeyName);
         var shortcut = Instantiate(primaryKey.currentShortcut, primaryKey.transform);
         var offset = new Vector3(0f, 0.0007f, 0f);
         shortcut.transform.position = primaryKey.transform.position + offset;
-        
+
     }
     
     private void NoShortcut(ARPrimaryKey primaryKey)
     {
-        if (primaryKey.GetComponentInChildren<Shortcut>()!= null)
+        if (primaryKey.currentShortcut)
         {
-            Destroy(primaryKey.GetComponentInChildren<Shortcut>().gameObject);
+            primaryKey.currentShortcut.gameObject.SetActive(false);
+            Debug.Log("NO shortcut on this primary key");
         }
     }
 }

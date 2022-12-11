@@ -29,7 +29,7 @@ namespace AR_Keyboard
 
         [Tooltip("Primary Key Shortcut State")]
         private KeyShortcutState _keyShortcutState;
-        public KeyShortcutState.EKeyShortcutState keyShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
         private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
 
 
@@ -46,10 +46,10 @@ namespace AR_Keyboard
 
         public override void Update()
         {
-            if (keyShortcut != _prevShortcut)
+            if (keyShortcutState != _prevShortcut)
             {
-                _keyShortcutState.SetKeyShortcutState(keyShortcut, this);
-                _prevShortcut = keyShortcut;
+                _keyShortcutState.SetKeyShortcutState(keyShortcutState, this);
+                _prevShortcut = keyShortcutState;
             }
             base.Update();
         }

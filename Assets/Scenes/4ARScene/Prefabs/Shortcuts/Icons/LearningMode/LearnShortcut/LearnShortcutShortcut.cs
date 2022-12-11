@@ -11,9 +11,4 @@ public class LearnShortcutShortcut : Shortcut
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
