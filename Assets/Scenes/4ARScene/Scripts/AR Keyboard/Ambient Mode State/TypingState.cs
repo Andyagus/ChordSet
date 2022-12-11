@@ -30,7 +30,7 @@ namespace AR_Keyboard.State
             {
                 if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                 {
-                    primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
+                    // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
                 }
             }
 

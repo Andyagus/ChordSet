@@ -41,8 +41,8 @@ namespace Effects
             
             if (primaryKey.GetComponentInChildren<Shortcut>() != null)
             {
-                primaryKey.currentShortcut.StopSequence(primaryKey);
-                Destroy(primaryKey.currentShortcut.gameObject);
+                // primaryKey.currentShortcut.StopSequence(primaryKey);
+                // Destroy(primaryKey.currentShortcut.gameObject);
             }
 
             var newShortcut = Instantiate(shortcut, primaryKey.transform);

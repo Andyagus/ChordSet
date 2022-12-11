@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AR_Keyboard.State;
@@ -25,7 +26,8 @@ namespace AR_Keyboard
         private bool _ambientModeActive = true;
         private bool _learningModeActive = false;
         // private bool _ambientWasActive = false;
-
+        
+        
         //learning mode state 
         private ARKeyboardState _learningModeState;
         public ARKeyboardState learningModeWelcome;
@@ -154,7 +156,8 @@ namespace AR_Keyboard
                     _ambientModeState = state;
                     _ambientModeState.transform.SetParent(this.transform);
                     _ambientModeState.Entry(this);
-                    onAmbientStateChanged(_ambientModeState);
+                    //Coroutine//to fix.
+                    StartCoroutine(AmbientStateChangeCoroutine());
                 }
             }
             else
@@ -188,7 +191,13 @@ namespace AR_Keyboard
                 }
             }
         }
-        
+
+        private IEnumerator AmbientStateChangeCoroutine()
+        {
+            //better to wait if returned shortcut 
+            yield return new WaitForSeconds(0.4f);
+            onAmbientStateChanged(_ambientModeState);
         }
+    }
 }
 

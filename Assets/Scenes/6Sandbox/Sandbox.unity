@@ -484,7 +484,7 @@ PrefabInstance:
     - target: {fileID: 1315341640515562691, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandStateShortcut
       value: 
-      objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+      objectReference: {fileID: -8703117834673624987, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
     - target: {fileID: 1383454313952767984, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName
       value: V
@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: commandStateShortcut
       value: 
       objectReference: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+    - target: {fileID: 3642232425559532193, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandStateShortcut
+      value: 
+      objectReference: {fileID: -8703117834673624987, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
     - target: {fileID: 3729096670973726584, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName
       value: caps-lock

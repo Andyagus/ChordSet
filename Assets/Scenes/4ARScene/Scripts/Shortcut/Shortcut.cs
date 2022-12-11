@@ -17,12 +17,7 @@ namespace AR_Keyboard
         public Subject onShortcutExecuted;
         public EShortcuts eShortcut;
         public string shortcutName;
-        //
-        // [Header("Shortcut Micro State")] 
-        // private ShortcutMicroState _shortcutMicroState;
-        // public ShortcutMicroState.EShortcutMicroState shortcutMicro = ShortcutMicroState.EShortcutMicroState.UNPRESSED;
-        // private ShortcutMicroState.EShortcutMicroState _prevShortcutMicro;
-
+        
         [Header("Shortcut Availability State")]
         private ShortcutAvailabilityState _availabilityState;
 

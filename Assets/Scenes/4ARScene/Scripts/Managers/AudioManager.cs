@@ -27,9 +27,11 @@ public class AudioManager : MonoBehaviour, IObserver
 
     private void OnStateChanged(ARKeyboardState obj)
     {
+        
         var shortcuts = _arKeyboard.GetComponentsInChildren<Shortcut>();
         foreach (var shortcut in shortcuts)
         {
+            shortcut.onShortcutExecuted.RemoveObserver(this);
             shortcut.onShortcutExecuted.AddObserver(this);
         }
     }

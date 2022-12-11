@@ -30,6 +30,7 @@ public class ShortutActivityState : MonoBehaviour
     private void Active(Shortcut shortcut)
     {
         Debug.Log("Shortcut Active");
+        shortcut.onShortcutExecuted.Notify(shortcut);
     }
 
     private void Inactive(Shortcut shortcut)

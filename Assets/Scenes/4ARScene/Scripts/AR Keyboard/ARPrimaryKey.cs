@@ -15,22 +15,20 @@ namespace AR_Keyboard
     public class ARPrimaryKey : Key
     {
         private ARKeyboard _arKeyboard;
-
-        [Header("Shortcuts")]
-        public Shortcut currentShortcut;
-        [SerializeField] public Shortcut typingStateShortcut;
-        [SerializeField] public Shortcut commandStateShortcut;
-        [SerializeField] public Shortcut learningStateWelcomeShortcut;
-        [SerializeField] public Shortcut learningStateUndoShortcut;
+        
+        // [SerializeField] public Shortcut learningStateWelcomeShortcut;
+        // [SerializeField] public Shortcut learningStateUndoShortcut;
         [Tooltip("for G only right now")]
         [SerializeField] public ARPrimaryKey referenceKeyForMultikeyShortcuts;
+        public TextMeshProUGUI keyText;
+        
         
         private TextMeshProUGUI _textMesh;
 
         [Tooltip("Primary Key Shortcut State")]
         private KeyShortcutState _keyShortcutState;
-        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
-        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
+        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
 
 
 

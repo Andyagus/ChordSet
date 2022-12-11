@@ -269,13 +269,9 @@ MonoBehaviour:
   keyAvailability: 0
   keyOutlineObject: {fileID: 5031834268896439589}
   keyOutline: 1
-  keyShortcut: 1
-  currentShortcut: {fileID: 0}
-  typingStateShortcut: {fileID: 0}
-  commandStateShortcut: {fileID: 0}
-  learningStateWelcomeShortcut: {fileID: 0}
-  learningStateUndoShortcut: {fileID: 0}
   referenceKeyForMultikeyShortcuts: {fileID: 0}
+  keyText: {fileID: 8864110013499526539}
+  keyShortcutState: 0
 --- !u!114 &2790172014376396931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typingStateShortcut: {fileID: 0}
+  commandStateShortcut: {fileID: 0}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0
