@@ -15,7 +15,9 @@ public class ShortutActivityState : MonoBehaviour
     public enum EShortcutActivity
     {
         ACTIVE,
-        INACTIVE
+        INACTIVE,
+        UI_ACTIVE,
+        UI_INACTIVE
     }
 
     public void SetShortcutActivity(EShortcutActivity state, Shortcut shortcut)
@@ -28,19 +30,43 @@ public class ShortutActivityState : MonoBehaviour
             case EShortcutActivity.INACTIVE:
                 Inactive(shortcut);
                 break;
+            case EShortcutActivity.UI_ACTIVE:
+                UIActive(shortcut);
+                break;
+            case EShortcutActivity.UI_INACTIVE:
+                UIInactive(shortcut);
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
 
+    
+    private void UIActive(Shortcut shortcut)
+    {
+        Debug.Log(shortcut.shortcutName + " is active");
+        throw new NotImplementedException();
+    }
+    
+    private void UIInactive(Shortcut shortcut)
+    {
+        throw new NotImplementedException();
+    }
+
     private void Active(Shortcut shortcut)
     {
-        shortcutIconImage.sprite = spriteActive;
+        if (spriteActive != null)
+        {
+            shortcutIconImage.sprite = spriteActive;
+        }
         shortcut.onShortcutExecuted.Notify(shortcut);
     }
 
     private void Inactive(Shortcut shortcut)
     {
-        shortcutIconImage.sprite = spriteInactive;
+        if (spriteInactive != null)
+        {
+            shortcutIconImage.sprite = spriteInactive;
+        }
     }
 }

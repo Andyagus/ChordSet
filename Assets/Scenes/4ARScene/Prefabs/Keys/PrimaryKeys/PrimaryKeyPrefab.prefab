@@ -76,6 +76,82 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &508555875832527490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2928629537441118043}
+  - component: {fileID: 5196521202456856683}
+  - component: {fileID: 6393698691957035382}
+  m_Layer: 0
+  m_Name: UI Display Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2928629537441118043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508555875832527490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000000029103835}
+  m_LocalScale: {x: 0.61993, y: 0.61993, z: 0.61993}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5517630724818972083}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5196521202456856683
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508555875832527490}
+  m_CullTransparentMesh: 1
+--- !u!114 &6393698691957035382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508555875832527490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9a357fc1e46644ed28f2df5b86334ac6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5737213406354604030
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +301,7 @@ GameObject:
   - component: {fileID: 5390138273056669916}
   - component: {fileID: 4220605525559712987}
   - component: {fileID: 2300177129925292218}
+  - component: {fileID: 8303176327665375246}
   m_Layer: 0
   m_Name: PrimaryKeyPrefab
   m_TagString: Untagged
@@ -264,7 +341,8 @@ MonoBehaviour:
   KeyName: 
   KeyCode: 0
   secondaryImage: {fileID: 0}
-  secondaryText: {fileID: 0}
+  displayImage: {fileID: 0}
+  displayText: {fileID: 0}
   keyPressed: 1
   keyAvailability: 0
   keyOutlineObject: {fileID: 5031834268896439589}
@@ -272,6 +350,7 @@ MonoBehaviour:
   referenceKeyForMultikeyShortcuts: {fileID: 0}
   keyText: {fileID: 8864110013499526539}
   keyShortcutState: 0
+  uiShortcutState: 0
 --- !u!114 &2790172014376396931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,8 +399,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  welcomeStateShortcut: {fileID: 0}
   typingStateShortcut: {fileID: 0}
   commandStateShortcut: {fileID: 0}
+--- !u!114 &8303176327665375246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000843859753084317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61dca94a3cab47c395abaf2f0463384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  favoriteShortcut: {fileID: 3903125696475866220, guid: 5991896312d4142e6ac8279579267fcc, type: 3}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +533,7 @@ RectTransform:
   - {fileID: 8731979174837644062}
   - {fileID: 5901417901362699296}
   - {fileID: 5586154258007998399}
+  - {fileID: 2928629537441118043}
   m_Father: {fileID: 2079974192035107215}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

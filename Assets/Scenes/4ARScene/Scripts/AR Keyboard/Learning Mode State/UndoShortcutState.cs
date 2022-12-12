@@ -7,6 +7,7 @@ using DG.Tweening;
 using Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -38,49 +39,206 @@ public class UndoShortcutState : ARKeyboardState
     public override void Entry(ARKeyboard keyboard)
     {
 
-        var entrySequence = DOTween.Sequence();
-        
-        entrySequence.AppendCallback(PlaceScreenSpaceUI);
-        entrySequence.AppendInterval(3f);
-        entrySequence.AppendCallback(() =>
+        _showcaseSequence = DOTween.Sequence();
+
+        _showcaseSequence.AppendCallback(() =>
         {
-            FadeOutAndKeep(keyboard);
-        }); 
-       
-        entrySequence.AppendInterval(1f);
+            ResetKeys(keyboard);
+        });
+        _showcaseSequence.AppendInterval(3f);
+        _showcaseSequence.AppendCallback(() =>
+        {
+            PlaceScreenSpaceUI();
+        });
+
+        _showcaseSequence.AppendInterval(3f);
+
         
-        entrySequence.AppendCallback(() =>
+        _showcaseSequence.AppendCallback(() =>
+        {
+            FadeOutKeysExpectShortcut(keyboard);
+        });
+
+        _showcaseSequence.AppendInterval(3f);
+
+        _showcaseSequence.AppendCallback(() =>
+        {
+            ShowcaseImportantKeys(keyboard);
+        });
+
+        _showcaseSequence.AppendInterval(3f);
+
+
+        _showcaseSequence.AppendCallback(() =>
         {
             ScreenFade(keyboard);
         });
-
-        entrySequence.AppendInterval(1f);
-        entrySequence.AppendCallback(() =>
+        
+        _showcaseSequence.AppendCallback(() =>
         {
             DisplayVideoPlayer(keyboard);
         });
         
-        entrySequence.AppendInterval(3f);
-        entrySequence.AppendCallback(() =>
+        _showcaseSequence.AppendCallback(() =>
         {
             videoPlayer.GetComponent<VideoPlayer>().Play();
         });
         
-        entrySequence.AppendCallback(() =>
+        _showcaseSequence.AppendInterval(7f);
+        
+        _showcaseSequence.AppendCallback(() =>
         {
-            AnimateDisplaySequence(keyboard);
+            ScreenFadeOut(keyboard);
         });
+        _showcaseSequence.AppendCallback(() =>
+        {
+            HideVideoPlayer(keyboard);
+        });
+        
+        
+        // _showcaseSequence.AppendCallback(()=>
+        // {
+        //     // PlaceScreenSpaceUI();
+        // });
+
+        // var entrySequence = DOTween.Sequence();
+        //
+        // entrySequence.AppendCallback(PlaceScreenSpaceUI);
+        // entrySequence.AppendInterval(3f);
+        // entrySequence.AppendCallback(() =>
+        // {
+        //     FadeOutAndKeep(keyboard);
+        // }); 
+        //
+        // entrySequence.AppendInterval(1f);
+        //
+        // entrySequence.AppendCallback(() =>
+        // {
+        //     ScreenFade(keyboard);
+        // });
+        //
+        // entrySequence.AppendInterval(1f);
+        // entrySequence.AppendCallback(() =>
+        // {
+        //     DisplayVideoPlayer(keyboard);
+        // });
+        //
+        // entrySequence.AppendInterval(3f);
+        // entrySequence.AppendCallback(() =>
+        // {
+        //     videoPlayer.GetComponent<VideoPlayer>().Play();
+        // });
+        //
+        // entrySequence.AppendCallback(() =>
+        // {
+        //     AnimateDisplaySequence(keyboard);
+        // });
 
         // entrySequence.AppendCallback(() => LearnShortcutButton(keyboard));
     }
 
     
+    private void ScreenFade(ARKeyboard keyboard)
+    {
+        _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
+            .transform.Find("Fullscreen-panel").GetComponent<Image>();
+        _fullscreenPanel.DOFade(0.5f, 3f);
+    }
     
+    private void ScreenFadeOut(ARKeyboard keyboard)
+    {
+        _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
+            .transform.Find("Fullscreen-panel").GetComponent<Image>();
+        _fullscreenPanel.DOFade(0f, 3f);
+    }
+
+    
+    private void DisplayVideoPlayer(ARKeyboard keyboard)
+    {
+        keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
+
+        videoPlayer = Instantiate(videoPlayer, this.transform);
+        videoPlayer.transform.position = Vector3.zero;
+        var rawImage = keyboard.ARScreen.GetComponentInChildren<RawImage>();
+        rawImage.texture = renderTexture;
+    }
+    
+    private void HideVideoPlayer(ARKeyboard keyboard)
+    {
+        keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
+
+        videoPlayer = Instantiate(videoPlayer, this.transform);
+        videoPlayer.transform.position = Vector3.zero;
+        var rawImage = keyboard.ARScreen.GetComponentInChildren<RawImage>();
+        rawImage.texture = renderTexture;
+    }
+
+    private void ShowcaseImportantKeys(ARKeyboard arKeyboard)
+    {
+        foreach (var primaryKey in arKeyboard.primaryKeys)
+        {
+            if (primaryKey.KeyName == "Z")
+            {
+                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                primaryKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            }
+        }
+        
+        foreach (var modifierKey in arKeyboard.modifierKeys)
+        {
+            if (modifierKey.KeyName == "command-left")
+            {
+                modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            }
+        }
+        
+    }
+
+    private void FadeOutKeysExpectShortcut(ARKeyboard keyboard)
+    {
+        foreach (var key in keyboard.keys)
+        {
+
+            if (key.KeyName != "Z" || key.KeyName != "command-left")
+            {
+                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+            }
+        }
+    }
+
+    private void ResetKeys(ARKeyboard keyboard)
+    {
+        foreach (var key in keyboard.primaryKeys)
+        {
+            key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+
+            if (key.KeyName == "G")
+            {
+                //this probably needs to be a state
+                key.displayImage.DOFade(0, 2f);
+                key.keyText.DOFade(1, 2);
+            }
+
+            if (key.KeyName == "space")
+            {
+                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
+            }
+        }
+
+        foreach (var modifierKey in keyboard.modifierKeys)
+        {
+            modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        }
+
+    }
+
+
     private void AnimateDisplaySequence(ARKeyboard keyboard)
     {
-        _showcaseSequence = DOTween.Sequence();
-        _showcaseSequence.Pause();
-        _showcaseSequence.AppendInterval(1f);
+        // _showcaseSequence = DOTween.Sequence();
+        // _showcaseSequence.Pause();
+        // _showcaseSequence.AppendInterval(1f);
         // foreach (var modifierKey in keyboard.modifierKeys)
         // {
         //     if (modifierKey.KeyName == "command-left")
@@ -114,25 +272,10 @@ public class UndoShortcutState : ARKeyboardState
         //     }
         // }
         //
-        _showcaseSequence.Play();
+        // _showcaseSequence.Play();
     }
 
-    private void DisplayVideoPlayer(ARKeyboard keyboard)
-    {
-        keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
 
-        videoPlayer = Instantiate(videoPlayer, this.transform);
-        videoPlayer.transform.position = Vector3.zero;
-        var rawImage = keyboard.ARScreen.GetComponentInChildren<RawImage>();
-        rawImage.texture = renderTexture;
-    }
-
-    private void ScreenFade(ARKeyboard keyboard)
-    {
-        _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
-            .transform.Find("Fullscreen-panel").GetComponent<Image>();
-        _fullscreenPanel.DOFade(0.5f, 3f);
-    }
     
     private void PlaceScreenSpaceUI()
     {
@@ -150,21 +293,6 @@ public class UndoShortcutState : ARKeyboardState
 
         sequenceScreenspaceUI.Play();
     }
-
-    private void FadeOutAndKeep(ARKeyboard keyboard)
-    {
-        // foreach (var modifierKey in keyboard.modifierKeys)
-        // {
-        //     // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.LEARNING_STATE_ENTRY);
-        // }
-        // foreach (var primaryKey in keyboard.primaryKeys)
-        // {
-        //
-        //     // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTRY);
-        // }    
-    }
-    
-
     
 
     public override ARKeyboardState HandleInput(Key key)

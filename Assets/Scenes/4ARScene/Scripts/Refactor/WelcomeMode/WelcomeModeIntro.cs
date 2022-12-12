@@ -150,9 +150,9 @@ public class WelcomeModeIntro : ARKeyboardState
             {
                 yield return new WaitForSeconds(2);
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.secondaryText.DOText("START", 0.5f);
-                key.secondaryText.DOFade(1, 2.0f);
-                key.additionalImage.DOFade(1, 3.24f);
+                key.displayText.DOText("START", 0.5f);
+                key.displayText.DOFade(1, 2.0f);
+                key.displayImage.DOFade(1, 3.24f);
             } 
 
         }

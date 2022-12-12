@@ -187,9 +187,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2814401515733318669}
-  - component: {fileID: -4822712413543423844}
+  - component: {fileID: -4975829727571030406}
   m_Layer: 0
-  m_Name: StarIcon
+  m_Name: GoShortcut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +211,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4822712413543423844
+--- !u!114 &-4975829727571030406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,20 +220,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3940203648880875102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e190cc3bb225419badb71c8aa7963cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 667253660775143e1a62041eeba0a5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eShortcut: 0
-  shortcutName: 
+  shortcutName: GO Forward
   shortcutAvailability: 0
   shortcutActivity: 0
-  starImage: {fileID: 4262449748644943294}
-  starOutline: {fileID: 21300000, guid: 7528fb6910705424da155b5ee476a2d1, type: 3}
-  starFill: {fileID: 21300000, guid: 7cee2e8651699499b93cc9943b8a3f5d, type: 3}
-  starSuccess: {fileID: 5454217404750606384, guid: ea58037b49e0e4c91824916d05bf04ec, type: 3}
-  starSound: {fileID: 0}
-  starState: 0
-  previousState: 0
 --- !u!1 &7247585613673346215
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +239,7 @@ GameObject:
   - component: {fileID: 6256719334527061348}
   - component: {fileID: 4262449748644943294}
   m_Layer: 0
-  m_Name: Image
+  m_Name: GoIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7528fb6910705424da155b5ee476a2d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a357fc1e46644ed28f2df5b86334ac6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -65,7 +65,7 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
+            keyboardMode = EKeyboardMode.LEARNING_MODE;
             
         }
 
@@ -101,24 +101,17 @@ namespace AR_Keyboard
 
         private void AmbientMode()
         {
+            // onKeyboardWelcomeModeStateChanged(false);
             _ambientModeState = Instantiate(typingState, this.transform, true);
             _ambientModeState.Entry(this);
         }
 
         private void LearningMode()
         {
-            throw new NotImplementedException();
-        }
-
-        private void InstantiateModes()
-        {
-
-
-            // _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
             _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
-
+            _learningModeState.Entry(this);
         }
-
+        
         private void Start()
         {
             
@@ -184,11 +177,43 @@ namespace AR_Keyboard
                     HandleInputWelcomeMode(keyName, keyState, key);
                     break;
                 case EKeyboardMode.AMBIENT_MODE:
+                    AmbientModeHandleInput(keyName, keyState, key);
                     break;
                 case EKeyboardMode.LEARNING_MODE:
+                    LearningModeHandleInput(keyName, keyState, key);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void LearningModeHandleInput(string keyName, EKeyState keyState, Key key)
+        {
+            
+            var state = _learningModeState.HandleInput(key);
+            if (state != null)
+            {
+                _learningModeState.Exit(this);
+                Destroy(_learningModeState.gameObject);
+                _learningModeState = state;
+                _learningModeState.transform.SetParent(this.transform);
+                _learningModeState.Entry(this);
+            }
+            
+        }
+
+        private void AmbientModeHandleInput(string keyName, EKeyState keyState, Key key)
+        {
+            var state = _ambientModeState.HandleInput(key);
+            //         
+            if (state != null)
+            {
+                _ambientModeState.Exit(this);
+                Destroy(_ambientModeState.gameObject);
+                _ambientModeState = state;
+                _ambientModeState.transform.SetParent(this.transform);
+                _ambientModeState.Entry(this);
+                StartCoroutine(AmbientStateChangeCoroutine());
             }
         }
 

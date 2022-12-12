@@ -19,7 +19,9 @@ public class KeyAvailabilityState : MonoBehaviour
     {
         AVAILABLE,
         UNAVAILABLE,
-        RESTORE
+        RESTORE,
+        DISPLAY_TEXT_IMAGE,
+        DISABLE_DISPLAY_TEXT_IMAGE
     }
 
     public void SetKeyAvailability(EKeyAvailability state, Key key)
@@ -35,11 +37,16 @@ public class KeyAvailabilityState : MonoBehaviour
             case EKeyAvailability.RESTORE:
                 Restore(key);
                 break;
+            case EKeyAvailability.DISPLAY_TEXT_IMAGE:
+                DisplayTextImage(key);
+                break;
+            case EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE:
+                DisableDisplay(key);
+                break;
         }
     }
 
-    
-
+ 
     private void Available(Key key)
     {
         var textMeshProMultiple = key.GetComponentsInChildren<TextMeshProUGUI>();
@@ -61,14 +68,16 @@ public class KeyAvailabilityState : MonoBehaviour
 
         foreach (var text in textMeshProMultiple)
         {
-            text.DOFade(0.1f, 0.793f);
+            text.DOFade(0.1f, 1.793f);
+            // text.DOFade(0.1f, 0.793f);
         }
 
         if (key.secondaryImage != null)
         {
-            key.secondaryImage.DOFade(0, 0.973f);
+            key.secondaryImage.DOFade(0, 1.9347568329f);
+            // key.secondaryImage.DOFade(0, 0.973f);
         }
-          
+
     }
     
     private void Restore(Key key)
@@ -76,4 +85,31 @@ public class KeyAvailabilityState : MonoBehaviour
         var primaryKey = key.GetComponent<ARPrimaryKey>();
         primaryKey.keyText.DOText(primaryKey.KeyName, 0.5f);
     }
+    
+    private void DisplayTextImage(Key key)
+    {
+        if (key.displayImage != null)
+        {
+            // key.displayImage.DOFade(1, 3f);
+        }
+        if (key.displayText != null)
+        {
+            key.displayText.DOFade(1, 3f);
+        }
+    }
+
+    
+    private void DisableDisplay(Key key)
+    {
+        if (key.displayText != null)
+        {
+            key.displayText.DOFade(0, 1f);
+        }
+
+        if (key.displayImage != null)
+        {
+            key.displayImage.DOFade(0, 1f);
+        }
+    }
+
 }

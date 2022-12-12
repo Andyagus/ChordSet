@@ -10,6 +10,7 @@ public class KeyShortcutState : MonoBehaviour
 {
     [Header("Key Shortcut State Shortcuts: ")]
     private Shortcut _currentShortcut;
+    public Shortcut welcomeStateShortcut;
     public Shortcut typingStateShortcut;
     public Shortcut commandStateShortcut;
 
@@ -19,6 +20,7 @@ public class KeyShortcutState : MonoBehaviour
     public enum EKeyShortcutState
     {
         NO_SHORTCUT,
+        WELCOME_STATE_SHORTCUT,
         TYPING_STATE_SHORTCUT,
         COMMAND_STATE_SHORTCUT
         // SHORTCUT,
@@ -32,6 +34,9 @@ public class KeyShortcutState : MonoBehaviour
             case EKeyShortcutState.NO_SHORTCUT:
                 NoShortcut(primaryKey);
                 break;
+            case EKeyShortcutState.WELCOME_STATE_SHORTCUT:
+                // WelcomeStateShortcut(primaryKey);
+                break;
             case EKeyShortcutState.TYPING_STATE_SHORTCUT:
                 TypingStateShortcut(primaryKey);
                 break;
@@ -43,6 +48,8 @@ public class KeyShortcutState : MonoBehaviour
         }
     }
 
+    
+
     private void NoShortcut(ARPrimaryKey primaryKey)
     {
         primaryKey.keyText.DOFade(1, 0.8f);
@@ -53,6 +60,22 @@ public class KeyShortcutState : MonoBehaviour
         }
     }
 
+    private void WelcomeStateShortcut(ARPrimaryKey primaryKey)
+    {
+        if (_currentShortcut)
+        {
+            Destroy(_currentShortcut.gameObject);
+        }
+        
+        if (welcomeStateShortcut != null)
+        {
+            primaryKey.keyText.DOFade(0, 0.8f);
+            _currentShortcut = Instantiate(welcomeStateShortcut, primaryKey.transform);
+            var offset = new Vector3(0f, 0.0007f, 0f);
+            _currentShortcut.transform.position = primaryKey.transform.position + offset;
+        }    
+    }
+    
     private void TypingStateShortcut(ARPrimaryKey primaryKey)
     {
 
