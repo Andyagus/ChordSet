@@ -6,6 +6,7 @@ using AR_Keyboard;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Effects
 {
@@ -14,52 +15,64 @@ namespace Effects
         private Color originalShortcutColor;
         
         private List<ARPrimaryKey> _primaryKeys;
-        //could switch to other………
+        // private static Dictionary<string, Color> _colorPalette;
 
-        private static Dictionary<string, Color> _colorPalette;
+        public Color red;
+        public Color yellow;
+        public Color blue;
+        public Color darkGray;
+        public Color lightGray;
+
+        private static List<Color> _colorPalette;
+
         
-
         private void Awake()
         {
-            _primaryKeys = GameObject.Find("AR Keyboard").GetComponentsInChildren<ARPrimaryKey>().ToList();
-
-            _colorPalette = new Dictionary<string, Color>()
+            _primaryKeys = GameObject.Find("AR_Keyboard").GetComponentsInChildren<ARPrimaryKey>().ToList();
+            
+            _colorPalette = new List<Color>
             {
-                {"white", Color.white},
-                {"black", Color.black}
+                red,
+                yellow,
+                blue,
+                darkGray,
+                lightGray
             };
         }
 
 
-        public static Shortcut InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
+        // public static Shortcut InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
+        // {
+        //     
+        //
+        //     Vector3 offset;
+        //     
+        //     var newShortcut = Instantiate(shortcut, primaryKey.transform);
+        //     // primaryKey.currentShortcut = newShortcut;
+        //
+        //     offset = shortcut.shortcutName == "Back To Keyboard" ? new Vector3(.0098f, 0.0001f, 0f) : new Vector3(0, 0.0007f, 0f);
+        //     
+        //     newShortcut.transform.position = primaryKey.transform.position + offset;
+        //
+        //     return newShortcut;
+        //
+        // }
+        
+        
+        public static Color PickRandomColor()
         {
-            
-            //this could all tie in 
+            var i = Random.Range(0, _colorPalette.Count);
+            var randomColor = _colorPalette[i];
 
-
-            Vector3 offset;
-            
-            if (primaryKey.GetComponentInChildren<Shortcut>() != null)
-            {
-                // primaryKey.currentShortcut.StopSequence(primaryKey);
-                // Destroy(primaryKey.currentShortcut.gameObject);
-            }
-
-            var newShortcut = Instantiate(shortcut, primaryKey.transform);
-            // primaryKey.currentShortcut = newShortcut;
-
-            offset = shortcut.shortcutName == "Back To Keyboard" ? new Vector3(.0098f, 0.0001f, 0f) : new Vector3(0, 0.0007f, 0f);
-            
-            newShortcut.transform.position = primaryKey.transform.position + offset;
-
-            return newShortcut;
-
+            return randomColor;
         }
+        
         
         public static Color ColorRequest(string colorRequest)
         {
-            var color = _colorPalette[colorRequest];
-            return color;
+            // var color = _colorPalette[colorRequest];
+            // return color;
+            return Color.white;
         }
 
         private void Start()

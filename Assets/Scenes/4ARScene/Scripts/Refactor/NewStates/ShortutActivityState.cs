@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShortutActivityState : MonoBehaviour
 {
+
+    public Image shortcutIconImage;
+    public Sprite spriteInactive;
+    public Sprite spriteActive;
+    
     public enum EShortcutActivity
     {
         ACTIVE,
@@ -29,12 +35,12 @@ public class ShortutActivityState : MonoBehaviour
 
     private void Active(Shortcut shortcut)
     {
-        Debug.Log("Shortcut Active");
+        shortcutIconImage.sprite = spriteActive;
         shortcut.onShortcutExecuted.Notify(shortcut);
     }
 
     private void Inactive(Shortcut shortcut)
     {
-        Debug.Log("Shortcut Active");
+        shortcutIconImage.sprite = spriteInactive;
     }
 }

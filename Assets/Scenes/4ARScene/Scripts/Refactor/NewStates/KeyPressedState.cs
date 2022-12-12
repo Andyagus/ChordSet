@@ -1,11 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using AR_Keyboard;
 using DG.Tweening;
+using Effects;
 using Enums;
 using UnityEngine;
 
 public class KeyPressedState : MonoBehaviour
 {
+    private ARKeyboard _keyboard;
+    private bool _welcomeState;
+
+    private void Awake()
+    {
+        _keyboard = GameObject.Find("AR_Keyboard").GetComponent<ARKeyboard>();
+        _keyboard.onKeyboardWelcomeModeStateChanged += (x) =>
+        {
+            _welcomeState = x;
+        };
+    }
+    
     public void SetPressedState(EKeyState state, Key key)
     {
         switch (state)
@@ -21,8 +35,13 @@ public class KeyPressedState : MonoBehaviour
 
     private void Pressed(Key key)
     {
+        var color = Color.white;
+        if (_welcomeState)
+        {
+            color = KeyColorManager.PickRandomColor();
+        }
         var rend = key.GetComponentInChildren<MeshRenderer>();
-        rend.material.DOColor(Color.white, 0.524f);
+        rend.material.DOColor(color, 0.524f);
     }
     
     private void Unpressed(Key key)

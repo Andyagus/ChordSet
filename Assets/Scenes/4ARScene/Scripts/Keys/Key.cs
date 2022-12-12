@@ -39,7 +39,7 @@ public class Key : MonoBehaviour
     public string KeyName;
     public KeyCode KeyCode;
     [SerializeField] public Image secondaryImage;
-    [SerializeField] private TextMeshProUGUI secondaryText;
+    [SerializeField] public TextMeshProUGUI secondaryText;
     
     
     [Tooltip("Key Pressed State")]

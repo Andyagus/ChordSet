@@ -28,10 +28,11 @@ namespace AR_Keyboard.State
 
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                if (primaryKey.GetComponentInChildren<Shortcut>() != null)
-                {
-                    // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
-                }
+                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                // if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+                // {
+                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
+                // }
             }
 
         }

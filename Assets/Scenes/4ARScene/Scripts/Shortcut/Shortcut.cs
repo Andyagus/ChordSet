@@ -40,11 +40,7 @@ namespace AR_Keyboard
 
         public virtual void Update()
         {
-            // if (shortcutMicro != _prevShortcutMicro)
-            // {
-            //     _shortcutMicroState.SetShortcutMicroState(shortcutMicro, this);
-            //     _prevShortcutMicro = shortcutMicro;
-            // }
+            
 
             if (shortcutAvailability != _prevAvailability)
             {

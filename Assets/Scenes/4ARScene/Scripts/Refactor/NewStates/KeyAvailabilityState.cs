@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AR_Keyboard;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -7,10 +9,17 @@ using UnityEngine.UI;
 
 public class KeyAvailabilityState : MonoBehaviour
 {
+    private ARKeyboard _keyboard;
+    private bool _welcomeState; 
+    
+    
+    
+
     public enum EKeyAvailability
     {
         AVAILABLE,
-        UNAVAILABLE
+        UNAVAILABLE,
+        RESTORE
     }
 
     public void SetKeyAvailability(EKeyAvailability state, Key key)
@@ -23,9 +32,14 @@ public class KeyAvailabilityState : MonoBehaviour
             case EKeyAvailability.UNAVAILABLE:
                 Unavailable(key);
                 break;
+            case EKeyAvailability.RESTORE:
+                Restore(key);
+                break;
         }
     }
+
     
+
     private void Available(Key key)
     {
         var textMeshProMultiple = key.GetComponentsInChildren<TextMeshProUGUI>();
@@ -55,5 +69,11 @@ public class KeyAvailabilityState : MonoBehaviour
             key.secondaryImage.DOFade(0, 0.973f);
         }
           
+    }
+    
+    private void Restore(Key key)
+    {
+        var primaryKey = key.GetComponent<ARPrimaryKey>();
+        primaryKey.keyText.DOText(primaryKey.KeyName, 0.5f);
     }
 }

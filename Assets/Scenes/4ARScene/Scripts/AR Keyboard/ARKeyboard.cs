@@ -33,6 +33,10 @@ namespace AR_Keyboard
         public ARKeyboardState learningModeWelcome;
         public ARKeyboardState undoShortcutState;
         
+        //welcome mode state
+        public ARKeyboardState welcomeModeState;
+        
+        
         //screen 
         public ARKeyboardScreen ARScreen;
 
@@ -42,16 +46,67 @@ namespace AR_Keyboard
         
         private KeySyncDictionary _keySyncDictionary;
 
+        public enum EKeyboardMode
+        {
+            NO_MODE,
+            WELCOME_MODE,
+            AMBIENT_MODE,
+            LEARNING_MODE
+        }
+
+        public EKeyboardMode keyboardMode = EKeyboardMode.WELCOME_MODE;
+        private EKeyboardMode prevMode = EKeyboardMode.NO_MODE;
+
+        public Action<bool> onKeyboardWelcomeModeStateChanged;
+        
         private void Awake()
         {
 
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
+            keyboardMode = EKeyboardMode.WELCOME_MODE;
             
+        }
 
-            InstantiateModes();
-     
+        private void Update()
+        {
+            if (keyboardMode != prevMode)
+            {
+                switch (keyboardMode)
+                {
+                    case EKeyboardMode.WELCOME_MODE:
+                        WelcomeMode();
+                        break;
+                    case EKeyboardMode.AMBIENT_MODE:
+                        AmbientMode();
+                        break;
+                    case EKeyboardMode.LEARNING_MODE:
+                        LearningMode();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                prevMode = keyboardMode;
+            }
+        }
+
+        private void WelcomeMode()
+        {
+            welcomeModeState = Instantiate(welcomeModeState);
+            welcomeModeState.Entry(this);
+            onKeyboardWelcomeModeStateChanged(true);
+        }
+
+        private void AmbientMode()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void LearningMode()
+        {
+            throw new NotImplementedException();
         }
 
         private void InstantiateModes()
@@ -100,7 +155,7 @@ namespace AR_Keyboard
                         if (inputKeyState == EKeyState.KEY_PRESSED)
                         {
                             key.keyPressed = EKeyState.KEY_PRESSED;
-                            HandleInput(inputKeyName, inputKeyState, key);
+                            // HandleInput(inputKeyName, inputKeyState, key);
                         }
                     }
 
@@ -109,7 +164,7 @@ namespace AR_Keyboard
                         if (inputKeyState == EKeyState.KEY_UNPRESSED)
                         {
                             key.keyPressed = EKeyState.KEY_UNPRESSED;
-                            HandleInput(inputKeyName, inputKeyState, key);
+                            // HandleInput(inputKeyName, inputKeyState, key);
 
                         }
                     }
@@ -120,81 +175,68 @@ namespace AR_Keyboard
             
           
         
-        private void HandleInput(string keyName, EKeyState keyState, Key key)
-        {
-            // if (keyName == "F5")
-            // {
-            //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-            //     {
-            //         _ambientModeActive = false;
-            //         Debug.Log(_ambientModeActive);
-            //     }
-            // }
-
-            // if (keyName == "Escape")
-            // {
-            //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-            //     {
-            //         _ambientModeActive = true;
-            //     }
-            // }
-            
-            if (_ambientModeActive)
-            {
-                if (_learningModeActive)
-                {
-                    _ambientModeState.Entry(this);
-                    _learningModeActive = false;
-                }
-                
-                var state = _ambientModeState.HandleInput(key);
-                
-                if (state != null)
-                {
-                    _ambientModeState.Exit(this);
-                    Destroy(_ambientModeState.gameObject);
-                    _ambientModeState = state;
-                    _ambientModeState.transform.SetParent(this.transform);
-                    _ambientModeState.Entry(this);
-                    //Coroutine//to fix.
-                    StartCoroutine(AmbientStateChangeCoroutine());
-                }
-            }
-            else
-            {
-                if (_learningModeActive == false)
-                {
-                    // foreach (var primaryKey in primaryKeys)
-                    // {
-                    //     // primaryKey.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
-                    // }
-                    // foreach (var modifierKey in modifierKeys)
-                    // {
-                    //     // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
-                    // }
-                    
-                    _learningModeState.Entry(this);
-                    _learningModeActive = true;
-                }
-                //will need additional bools for switching back and fourth 
-                // _learningModeState.Entry(this);
-
-                var state = _learningModeState.HandleInput(key);
-                if (state != null)
-                {
-                    _learningModeState.Exit(this);
-                    Destroy(_learningModeState.gameObject);
-                    _learningModeState = state;
-                    _learningModeState.transform.SetParent(this.transform);
-                    _learningModeState.Entry(this);
-
-                }
-            }
-        }
+        // private void HandleInput(string keyName, EKeyState keyState, Key key)
+        // {
+        //     // if (keyName == "F5")
+        //     // {
+        //     //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
+        //     //     {
+        //     //         _ambientModeActive = false;
+        //     //         Debug.Log(_ambientModeActive);
+        //     //     }
+        //     // }
+        //
+        //     // if (keyName == "Escape")
+        //     // {
+        //     //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
+        //     //     {
+        //     //         _ambientModeActive = true;
+        //     //     }
+        //     // }
+        //     
+        //     if (_ambientModeActive)
+        //     {
+        //         if (_learningModeActive)
+        //         {
+        //             _ambientModeState.Entry(this);
+        //             _learningModeActive = false;
+        //         }
+        //         
+        //         var state = _ambientModeState.HandleInput(key);
+        //         
+        //         if (state != null)
+        //         {
+        //             _ambientModeState.Exit(this);
+        //             Destroy(_ambientModeState.gameObject);
+        //             _ambientModeState = state;
+        //             _ambientModeState.transform.SetParent(this.transform);
+        //             _ambientModeState.Entry(this);
+        //             StartCoroutine(AmbientStateChangeCoroutine());
+        //         }
+        //     }
+        //     else
+        //     {
+        //         if (_learningModeActive == false)
+        //         {
+        //             _learningModeState.Entry(this);
+        //             _learningModeActive = true;
+        //         }
+        //         var state = _learningModeState.HandleInput(key);
+        //         if (state != null)
+        //         {
+        //             _learningModeState.Exit(this);
+        //             Destroy(_learningModeState.gameObject);
+        //             _learningModeState = state;
+        //             _learningModeState.transform.SetParent(this.transform);
+        //             _learningModeState.Entry(this);
+        //
+        //         }
+        //     }
+        // }
 
         private IEnumerator AmbientStateChangeCoroutine()
         {
-            //better to wait if returned shortcut 
+            //better to wait if returned shortcut t
             yield return new WaitForSeconds(0.4f);
             onAmbientStateChanged(_ambientModeState);
         }
