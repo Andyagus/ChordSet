@@ -39,6 +39,7 @@ public class Key : MonoBehaviour
     public string KeyName;
     public KeyCode KeyCode;
     [SerializeField] public Image secondaryImage;
+    [SerializeField] public Image additionalImage;
     [SerializeField] public TextMeshProUGUI secondaryText;
     
     

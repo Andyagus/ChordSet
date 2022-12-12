@@ -101,7 +101,8 @@ namespace AR_Keyboard
 
         private void AmbientMode()
         {
-            throw new NotImplementedException();
+            _ambientModeState = Instantiate(typingState, this.transform, true);
+            _ambientModeState.Entry(this);
         }
 
         private void LearningMode()
@@ -111,8 +112,7 @@ namespace AR_Keyboard
 
         private void InstantiateModes()
         {
-            _ambientModeState = Instantiate(typingState, this.transform, true);
-            _ambientModeState.Entry(this);
+
 
             // _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
             _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
@@ -155,7 +155,7 @@ namespace AR_Keyboard
                         if (inputKeyState == EKeyState.KEY_PRESSED)
                         {
                             key.keyPressed = EKeyState.KEY_PRESSED;
-                            // HandleInput(inputKeyName, inputKeyState, key);
+                            HandleInput(inputKeyName, inputKeyState, key);
                         }
                     }
 
@@ -164,7 +164,7 @@ namespace AR_Keyboard
                         if (inputKeyState == EKeyState.KEY_UNPRESSED)
                         {
                             key.keyPressed = EKeyState.KEY_UNPRESSED;
-                            // HandleInput(inputKeyName, inputKeyState, key);
+                            HandleInput(inputKeyName, inputKeyState, key);
 
                         }
                     }
@@ -172,9 +172,39 @@ namespace AR_Keyboard
             }
             
         }
-            
-          
-        
+
+
+        private void HandleInput(string keyName, EKeyState keyState, Key key)
+        {
+            switch (keyboardMode)
+            {
+                case EKeyboardMode.NO_MODE:
+                    break;
+                case EKeyboardMode.WELCOME_MODE:
+                    HandleInputWelcomeMode(keyName, keyState, key);
+                    break;
+                case EKeyboardMode.AMBIENT_MODE:
+                    break;
+                case EKeyboardMode.LEARNING_MODE:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void HandleInputWelcomeMode(string keyName, EKeyState keyState, Key key)
+        {
+            var state = welcomeModeState.HandleInput(key);
+            if (state.stateName == "Welcome Mode Out")
+            {
+                keyboardMode = EKeyboardMode.AMBIENT_MODE;
+            }
+            // if (state != null)
+            // {
+            //     
+            // }
+        }
+
         // private void HandleInput(string keyName, EKeyState keyState, Key key)
         // {
         //     // if (keyName == "F5")

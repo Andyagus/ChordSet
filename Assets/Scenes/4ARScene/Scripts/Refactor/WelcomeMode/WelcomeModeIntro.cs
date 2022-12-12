@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class WelcomeModeIntro : ARKeyboardState
 {
+    [SerializeField] private ARKeyboardState welcomeModeOut;
+    
     public override void Entry(ARKeyboard keyboard)
     {
         StartCoroutine(LightUpKeys(keyboard));
@@ -139,17 +141,33 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
+                        
+        }
 
-
-            
+        foreach (var key in keyboard.keys)
+        {
             if (key.KeyName == "space")
             {
+                yield return new WaitForSeconds(2);
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.secondaryText.DOText("START", 0.5f);
                 key.secondaryText.DOFade(1, 2.0f);
+                key.additionalImage.DOFade(1, 3.24f);
             } 
-            
+
         }
+        
         yield return null;
+    }
+
+    public override ARKeyboardState HandleInput(Key key)
+    {
+        if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
+        {
+            var state = Instantiate(welcomeModeOut);
+            return state;
+        }
+
+        return null;
     }
 }
