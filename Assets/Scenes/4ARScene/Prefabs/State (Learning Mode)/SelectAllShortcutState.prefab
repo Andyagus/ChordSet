@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: Select All Shortcut
+  videoPlayer: {fileID: 7116471655577830276, guid: 913cedd65ae364f1ca428a067f82f524, type: 3}
+  renderTexture: {fileID: 8400000, guid: 8cfda84795d4043e78450b53d4dd64d4, type: 2}
+  selectAllSprite: {fileID: 21300000, guid: 1080957588b7e4ba8a8bb856c88d6131, type: 3}

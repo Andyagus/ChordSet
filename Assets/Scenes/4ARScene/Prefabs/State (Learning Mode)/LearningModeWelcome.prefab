@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: Learning Mode welcome
-  goShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
   undoShortcutState: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}

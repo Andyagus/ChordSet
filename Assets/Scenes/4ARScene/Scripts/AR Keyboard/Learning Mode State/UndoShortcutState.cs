@@ -14,9 +14,8 @@ using UnityEngine.Video;
 public class UndoShortcutState : ARKeyboardState
 {
 
-    private bool _zPressed;
-    private bool _cmdPressed;
-    private bool _shortcutComplete;
+
+    private Image _positioningArea;
 
     [SerializeField] private ARKeyboardState selectAllShortcutState;
     //video
@@ -34,18 +33,37 @@ public class UndoShortcutState : ARKeyboardState
     [SerializeField] private GameObject screenspaceUI;
 
     private Image _fullscreenPanel;
+    [SerializeField] private Sprite undoSprite;
 
     private bool _enterMode;
-    
+
+    private Transform _localCanvas;
+    private ShortcutSuccessPanel _shortcutSuccessPanel;
+
+    private bool _zPressed;
+    private bool _cmdPressed;
+    private bool _shortcutComplete;
     // [SerializeField] private GameObject primaryOutline;
     // [SerializeField] private GameObject o;
     
     //display those keys in highlight -
     public override void Entry(ARKeyboard keyboard)
     {
+        _localCanvas = keyboard.ARScreen.gameObject.transform.Find("Canvas");
+        _shortcutSuccessPanel = _localCanvas.GetComponentInChildren<ShortcutSuccessPanel>();
 
+        
         _showcaseSequence = DOTween.Sequence();
 
+
+        _showcaseSequence.AppendCallback(() =>
+        {
+            var positioningArea = keyboard.GetComponentInChildren<ScreenPositioningArea>();
+            _positioningArea = positioningArea.GetComponentInChildren<Image>();
+
+            _positioningArea.DOFade(0, 3f);
+        });
+        
         _showcaseSequence.AppendCallback(() =>
         {
             ResetKeys(keyboard);
@@ -76,7 +94,7 @@ public class UndoShortcutState : ARKeyboardState
 
         _showcaseSequence.AppendCallback(() =>
         {
-            ScreenFade(keyboard);
+            ScreenFadeIn(keyboard);
         });
         
         _showcaseSequence.AppendCallback(() =>
@@ -172,7 +190,7 @@ public class UndoShortcutState : ARKeyboardState
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.uiShortcutState = UIShortcutState.EuiShortcutState.NEXT_SHORTCUT;
-            }else if (key.KeyName == "I")
+            }else if (key.KeyName == "U")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.uiShortcutState = UIShortcutState.EuiShortcutState.LOOP;
@@ -186,10 +204,9 @@ public class UndoShortcutState : ARKeyboardState
     }
 
 
-    private void ScreenFade(ARKeyboard keyboard)
+    private void ScreenFadeIn(ARKeyboard keyboard)
     {
-        _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
-            .transform.Find("Fullscreen-panel").GetComponent<Image>();
+        _fullscreenPanel = _localCanvas.gameObject.transform.Find("Fullscreen-panel").GetComponent<Image>();
         _fullscreenPanel.DOFade(0.5f, 3f);
     }
     
@@ -285,6 +302,7 @@ public class UndoShortcutState : ARKeyboardState
         sequenceScreenspaceUI.Pause();
         
         var ui = Instantiate(screenspaceUI);
+        ui.name = "ScreenSpaceUI";
         var uiText = ui.GetComponentInChildren<TextMeshProUGUI>();
         var uiPanel = ui.GetComponentInChildren<Image>();
         uiText.text = undoShortcut.shortcutName;
@@ -311,8 +329,20 @@ public class UndoShortcutState : ARKeyboardState
         {
             if (!_shortcutComplete)
             {
-                Debug.Log("Shortcut Complete");
-            }
+                var completionSequence = DOTween.Sequence();
+                completionSequence.Pause();
+                completionSequence.AppendCallback(() =>
+                {
+                    _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.AVAILABLE,
+                        undoSprite, "UNDO");
+                });
+                completionSequence.AppendInterval(2f);
+                completionSequence.AppendCallback(() =>
+                {
+                    _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
+                });
+            
+                completionSequence.Play();            }
         }
 
         if (key.KeyName == "M" && key.keyPressed == EKeyState.KEY_PRESSED)
