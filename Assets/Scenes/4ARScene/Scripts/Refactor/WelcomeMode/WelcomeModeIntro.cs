@@ -61,6 +61,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 primaryKey.keyText.DOText("C", 0.2f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
+                
             }
             if (key.KeyName == "W")
             {
@@ -152,7 +153,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.displayText.DOText("START", 0.5f);
                 key.displayText.DOFade(1, 2.0f);
-                key.displayImage.DOFade(1, 3.24f);
+                key.displayImage.DOFade(1, 2.1f);
             } 
 
         }

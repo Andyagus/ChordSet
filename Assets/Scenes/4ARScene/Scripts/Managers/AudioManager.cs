@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour, IObserver
                 _audioSource.clip = bellClip;
                 _audioSource.Play();
                 break;
+            //add print sound here
         }
         // entity.
     }

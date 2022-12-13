@@ -64,6 +64,12 @@ namespace AR_Keyboard
             base.Update();
         }
 
+        public void ResetCharacter()
+        {
+            var tmp = GetComponentInChildren<TextMeshProUGUI>();
+            tmp.text = KeyName;
+        }
+
         
     }
 }

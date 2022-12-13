@@ -17,11 +17,13 @@ public class KeyAvailabilityState : MonoBehaviour
 
     public enum EKeyAvailability
     {
+        NONE,
         AVAILABLE,
         UNAVAILABLE,
         RESTORE,
         DISPLAY_TEXT_IMAGE,
-        DISABLE_DISPLAY_TEXT_IMAGE
+        DISABLE_DISPLAY_TEXT_IMAGE,
+        FROM_INTRO
     }
 
     public void SetKeyAvailability(EKeyAvailability state, Key key)
@@ -49,6 +51,8 @@ public class KeyAvailabilityState : MonoBehaviour
  
     private void Available(Key key)
     {
+        
+        
         var textMeshProMultiple = key.GetComponentsInChildren<TextMeshProUGUI>();
 
         foreach (var text in textMeshProMultiple)
@@ -60,6 +64,10 @@ public class KeyAvailabilityState : MonoBehaviour
         {
             key.secondaryImage.DOFade(1, .973f);
         }
+        
+        
+        // var primaryKey = key.GetComponent<ARPrimaryKey>();
+        // primaryKey.keyText.DOFade(1, 0.973f);
     }
     
     private void Unavailable(Key key)

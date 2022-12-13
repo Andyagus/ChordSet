@@ -12,7 +12,7 @@ namespace AR_Keyboard.State
     public class TypingState : ARKeyboardState
     {
         public ARKeyboardState commandState;
-
+        
         public override void Entry(ARKeyboard keyboard)
         {
             foreach (var modifier in keyboard.modifierKeys)
@@ -33,9 +33,9 @@ namespace AR_Keyboard.State
 
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.RESTORE;
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+
                 // if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                 // {
                 // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
@@ -48,9 +48,19 @@ namespace AR_Keyboard.State
                 if (primaryKey.KeyName == "Q" || primaryKey.KeyName == "W" || primaryKey.KeyName == "E" || primaryKey.KeyName == "R" 
                     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
                 {
-                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.RESTORE;
+                    primaryKey.ResetCharacter();
+                    //TODO
+                    // if (keyboard._wasWelcomeScreen)
+                    // {
+                    //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.RESTORE;
+                    //     keyboard._wasWelcomeScreen = false;
+                    // }
+                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
+                
+
             }
+       
 
         }
 

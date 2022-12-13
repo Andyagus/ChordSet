@@ -47,6 +47,7 @@ public class LearningModeWelcome : ARKeyboardState
         foreach (var modifierKey in keyboard.modifierKeys)
         {
             modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+            modifierKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
         }
         
     }

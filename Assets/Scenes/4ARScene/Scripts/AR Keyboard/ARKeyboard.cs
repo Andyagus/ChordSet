@@ -25,6 +25,8 @@ namespace AR_Keyboard
         //decision bool
         private bool _ambientModeActive = true;
         private bool _learningModeActive = false;
+
+        public bool _wasWelcomeScreen = true;
         // private bool _ambientWasActive = false;
         
         
@@ -55,7 +57,7 @@ namespace AR_Keyboard
         }
 
         public EKeyboardMode keyboardMode = EKeyboardMode.WELCOME_MODE;
-        private EKeyboardMode prevMode = EKeyboardMode.NO_MODE;
+        private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
 
         // public Action<bool> onKeyboardWelcomeModeStateChanged;
         
@@ -65,13 +67,13 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.LEARNING_MODE;
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
             
         }
 
         private void Update()
         {
-            if (keyboardMode != prevMode)
+            if (keyboardMode != _prevMode)
             {
                 switch (keyboardMode)
                 {
@@ -88,7 +90,7 @@ namespace AR_Keyboard
                         throw new ArgumentOutOfRangeException();
                 }
 
-                prevMode = keyboardMode;
+                _prevMode = keyboardMode;
             }
         }
 
@@ -190,6 +192,13 @@ namespace AR_Keyboard
         private void LearningModeHandleInput(string keyName, EKeyState keyState, Key key)
         {
             
+            if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+                _learningModeState.Exit(this);
+                Destroy(GameObject.Find("ScreenSpaceUI").gameObject);
+                keyboardMode = EKeyboardMode.AMBIENT_MODE;
+            }
+
             var state = _learningModeState.HandleInput(key, this);
             if (state != null)
             {
@@ -204,6 +213,12 @@ namespace AR_Keyboard
 
         private void AmbientModeHandleInput(string keyName, EKeyState keyState, Key key)
         {
+
+            if (key.KeyName == "F5" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+                keyboardMode = EKeyboardMode.LEARNING_MODE;
+            }
+            
             var state = _ambientModeState.HandleInput(key, this);
             //         
             if (state != null)

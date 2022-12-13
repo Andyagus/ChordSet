@@ -227,8 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eShortcut: 0
   shortcutName: GO Forward
-  shortcutAvailability: 0
-  shortcutActivity: 0
+  shortcutAvailability: 1
+  shortcutActivity: 1
 --- !u!114 &7556697965522312551
 MonoBehaviour:
   m_ObjectHideFlags: 0

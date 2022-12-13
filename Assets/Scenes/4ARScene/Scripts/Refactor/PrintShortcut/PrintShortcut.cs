@@ -1,17 +1,11 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
-using DG.Tweening;
 using Enums;
-using Interfaces;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-public class UndoShortcut : Shortcut
+public class PrintShortcut : Shortcut
 {
-
     public override void Execute(ARPrimaryKey key)
     {
         shortcutActivity = ShortutActivityState.EShortcutActivity.ACTIVE;
@@ -23,4 +17,3 @@ public class UndoShortcut : Shortcut
         
     }
 }
-

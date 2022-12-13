@@ -281,6 +281,20 @@ public class SelectAllShortcutState : ARKeyboardState
       {
          _aPressed = true;
       }
+      
+      if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
+      {
+         _cmdPressed = false;
+      }
+      if (key.KeyName == "shift-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
+      {
+         _shiftPressed = false;
+      }
+      if (key.KeyName == "A" && key.keyPressed == EKeyState.KEY_UNPRESSED)
+      {
+         _aPressed = false;
+      }
+
 
       if (_cmdPressed && _shiftPressed && _aPressed)
       {
@@ -298,7 +312,11 @@ public class SelectAllShortcutState : ARKeyboardState
             {
                _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
             });
-            
+            completionSequence.AppendInterval(2f);
+            completionSequence.AppendCallback(() =>
+            {
+               _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
+            });
             completionSequence.Play();
          }
          

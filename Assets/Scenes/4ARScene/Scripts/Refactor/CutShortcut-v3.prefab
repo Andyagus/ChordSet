@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: spriteInactive
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e8e2df72bcac4535beadd0571c3e36a, type: 3}
+    - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: shortcutIconImage
+      value: 
+      objectReference: {fileID: 8288777048797716805}
     - target: {fileID: 3265326762609721358, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -94,7 +102,14 @@ MonoBehaviour:
   shortcutName: Cut
   shortcutAvailability: 1
   shortcutActivity: 1
-  keysToAccess: []
-  distanceToMoveRectTransform: -0.3
-  iconFadeOutOffset: 1
-  arrowFadeInTime: 1.12
+--- !u!114 &8288777048797716805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+  m_PrefabInstance: {fileID: 5602698562205239865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

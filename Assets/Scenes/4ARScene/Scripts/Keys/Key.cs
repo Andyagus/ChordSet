@@ -50,7 +50,7 @@ public class Key : MonoBehaviour
     [Tooltip("Key Availability State")] 
     private KeyAvailabilityState _keyAvailabilityState;
     public KeyAvailabilityState.EKeyAvailability keyAvailability;
-    private KeyAvailabilityState.EKeyAvailability _prevAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+    private KeyAvailabilityState.EKeyAvailability _prevAvailability = KeyAvailabilityState.EKeyAvailability.NONE;
     
     [Tooltip("Key Outline State")]
     [SerializeField] private KeyOutline keyOutlineObject;

@@ -45,6 +45,9 @@ public class UndoShortcutState : ARKeyboardState
     private bool _shortcutComplete;
     // [SerializeField] private GameObject primaryOutline;
     // [SerializeField] private GameObject o;
+
+    private GameObject _uiPanel;
+    
     
     //display those keys in highlight -
     public override void Entry(ARKeyboard keyboard)
@@ -195,7 +198,7 @@ public class UndoShortcutState : ARKeyboardState
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.uiShortcutState = UIShortcutState.EuiShortcutState.LOOP;
             }
-            else if (key.KeyName == "W")
+            else if (key.KeyName == "Q")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.uiShortcutState = UIShortcutState.EuiShortcutState.QUIT;
@@ -301,10 +304,10 @@ public class UndoShortcutState : ARKeyboardState
 
         sequenceScreenspaceUI.Pause();
         
-        var ui = Instantiate(screenspaceUI);
-        ui.name = "ScreenSpaceUI";
-        var uiText = ui.GetComponentInChildren<TextMeshProUGUI>();
-        var uiPanel = ui.GetComponentInChildren<Image>();
+        _uiPanel = Instantiate(screenspaceUI);
+        _uiPanel.name = "ScreenSpaceUI";
+        var uiText = _uiPanel.GetComponentInChildren<TextMeshProUGUI>();
+        var uiPanel = _uiPanel.GetComponentInChildren<Image>();
         uiText.text = undoShortcut.shortcutName;
 
         sequenceScreenspaceUI.Append(uiText.DOFade(1, 3.234f));
@@ -323,6 +326,14 @@ public class UndoShortcutState : ARKeyboardState
         if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_PRESSED)
         {
             _cmdPressed = true;
+        }
+        if (key.KeyName == "Z" && key.keyPressed == EKeyState.KEY_UNPRESSED)
+        {
+            _zPressed = false;
+        }
+        if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
+        {
+            _cmdPressed = false;
         }
 
         if (_zPressed && _cmdPressed)
@@ -353,4 +364,20 @@ public class UndoShortcutState : ARKeyboardState
         
         return null;
     }
+
+    public override void Exit(ARKeyboard keyboard)
+    {
+        var uiText = _uiPanel.GetComponentInChildren<TextMeshProUGUI>();
+        var uiPanel = _uiPanel.GetComponentInChildren<Image>();
+
+        uiText.DOFade(1, 3.234f);
+        uiPanel.DOFade(1, 3.234f);
+
+
+        foreach (var key in keyboard.primaryKeys)
+        {
+            key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
+        }
+    }
+    
 }

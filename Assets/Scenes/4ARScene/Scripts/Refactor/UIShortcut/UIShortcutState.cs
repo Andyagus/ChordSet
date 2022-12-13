@@ -25,7 +25,8 @@ public class UIShortcutState : MonoBehaviour
         NEXT_SHORTCUT,
         PREVIOUS_SHORTCUT,
         LOOP,
-        QUIT
+        QUIT,
+        REMOVE_SHORTCUT
     }
 
     public void SetUIState(EuiShortcutState state, ARPrimaryKey key)
@@ -53,8 +54,19 @@ public class UIShortcutState : MonoBehaviour
             case EuiShortcutState.QUIT:
                 Quit(key);
                 break;
+            case EuiShortcutState.REMOVE_SHORTCUT:
+                RemoveShortcut(key);
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+
+    private void RemoveShortcut(ARPrimaryKey key)
+    {
+        if (_currentShortcut != null)
+        {
+            Destroy(_currentShortcut.gameObject);
         }
     }
 
