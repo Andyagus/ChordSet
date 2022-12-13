@@ -414,7 +414,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61dca94a3cab47c395abaf2f0463384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  learningModeStartShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
   favoriteShortcut: {fileID: 3903125696475866220, guid: 5991896312d4142e6ac8279579267fcc, type: 3}
+  previousShortcut: {fileID: 1705632071668936343, guid: df64510145a62459689c10cdc1e47476, type: 3}
+  nextShortcut: {fileID: 222692663159213153, guid: d226e4a5d53394d4ba617b4b4c542093, type: 3}
+  loopShortcut: {fileID: 1705632071668936343, guid: 3cd02d557f80d4bef8f71ee68dfb6928, type: 3}
+  quitShortcut: {fileID: 954000883357265787, guid: 0f149c005f29448dd9d7e2c5bfbf98cf, type: 3}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0

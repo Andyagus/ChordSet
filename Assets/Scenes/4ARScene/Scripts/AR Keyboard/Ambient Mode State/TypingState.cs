@@ -81,7 +81,7 @@ namespace AR_Keyboard.State
             // }
         }
         
-        public override ARKeyboardState HandleInput(Key key)
+        public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
             if (key.KeyName == "command-left" || key.KeyName == "command-right" )
             {

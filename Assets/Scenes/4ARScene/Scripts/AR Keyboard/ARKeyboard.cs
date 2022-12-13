@@ -57,7 +57,7 @@ namespace AR_Keyboard
         public EKeyboardMode keyboardMode = EKeyboardMode.WELCOME_MODE;
         private EKeyboardMode prevMode = EKeyboardMode.NO_MODE;
 
-        public Action<bool> onKeyboardWelcomeModeStateChanged;
+        // public Action<bool> onKeyboardWelcomeModeStateChanged;
         
         private void Awake()
         {
@@ -96,7 +96,7 @@ namespace AR_Keyboard
         {
             welcomeModeState = Instantiate(welcomeModeState);
             welcomeModeState.Entry(this);
-            onKeyboardWelcomeModeStateChanged(true);
+            // onKeyboardWelcomeModeStateChanged(true);
         }
 
         private void AmbientMode()
@@ -190,7 +190,7 @@ namespace AR_Keyboard
         private void LearningModeHandleInput(string keyName, EKeyState keyState, Key key)
         {
             
-            var state = _learningModeState.HandleInput(key);
+            var state = _learningModeState.HandleInput(key, this);
             if (state != null)
             {
                 _learningModeState.Exit(this);
@@ -204,7 +204,7 @@ namespace AR_Keyboard
 
         private void AmbientModeHandleInput(string keyName, EKeyState keyState, Key key)
         {
-            var state = _ambientModeState.HandleInput(key);
+            var state = _ambientModeState.HandleInput(key, this);
             //         
             if (state != null)
             {
@@ -219,7 +219,7 @@ namespace AR_Keyboard
 
         private void HandleInputWelcomeMode(string keyName, EKeyState keyState, Key key)
         {
-            var state = welcomeModeState.HandleInput(key);
+            var state = welcomeModeState.HandleInput(key, this);
             if (state.stateName == "Welcome Mode Out")
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;

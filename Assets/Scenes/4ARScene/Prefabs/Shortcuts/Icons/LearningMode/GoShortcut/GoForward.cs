@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class GoForward : Shortcut
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Execute(ARPrimaryKey key)
     {
-        
+        shortcutActivity = ShortutActivityState.EShortcutActivity.UI_ACTIVE;
     }
-
-  
 }

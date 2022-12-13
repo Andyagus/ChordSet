@@ -18,7 +18,7 @@ namespace AR_Keyboard.State
             }
         }
         
-        public override ARKeyboardState HandleInput(Key key)
+        public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
             if (key.GetComponentInChildren<ARPrimaryKey>() != null)
             {

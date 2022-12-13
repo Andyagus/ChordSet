@@ -160,7 +160,7 @@ public class WelcomeModeIntro : ARKeyboardState
         yield return null;
     }
 
-    public override ARKeyboardState HandleInput(Key key)
+    public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
     {
         if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
         {

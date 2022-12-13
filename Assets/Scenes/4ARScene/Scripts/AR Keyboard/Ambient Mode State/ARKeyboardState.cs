@@ -9,7 +9,7 @@ namespace AR_Keyboard.State
     {
         public string stateName;
         public virtual void Entry(ARKeyboard keyboard){}
-        public virtual ARKeyboardState HandleInput(Key key)
+        public virtual ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
             return null;
         }

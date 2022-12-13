@@ -13,7 +13,12 @@ using UnityEngine.Video;
 
 public class UndoShortcutState : ARKeyboardState
 {
-    
+
+    private bool _zPressed;
+    private bool _cmdPressed;
+    private bool _shortcutComplete;
+
+    [SerializeField] private ARKeyboardState selectAllShortcutState;
     //video
     [SerializeField] private GameObject videoPlayer;
     [SerializeField] private RenderTexture renderTexture;
@@ -30,7 +35,7 @@ public class UndoShortcutState : ARKeyboardState
 
     private Image _fullscreenPanel;
 
-    private bool enterMode;
+    private bool _enterMode;
     
     // [SerializeField] private GameObject primaryOutline;
     // [SerializeField] private GameObject o;
@@ -84,60 +89,103 @@ public class UndoShortcutState : ARKeyboardState
             videoPlayer.GetComponent<VideoPlayer>().Play();
         });
         
+        // key follow
+        _showcaseSequence.AppendCallback(() =>
+        {
+            KeyFollow(keyboard);
+        });
+        
         _showcaseSequence.AppendInterval(7f);
         
         _showcaseSequence.AppendCallback(() =>
         {
             ScreenFadeOut(keyboard);
         });
+        
+        _showcaseSequence.AppendCallback(() =>
+        {
+            DisplayKeyUIControls(keyboard);
+        });
+        
         _showcaseSequence.AppendCallback(() =>
         {
             HideVideoPlayer(keyboard);
         });
-        
-        
-        // _showcaseSequence.AppendCallback(()=>
-        // {
-        //     // PlaceScreenSpaceUI();
-        // });
-
-        // var entrySequence = DOTween.Sequence();
-        //
-        // entrySequence.AppendCallback(PlaceScreenSpaceUI);
-        // entrySequence.AppendInterval(3f);
-        // entrySequence.AppendCallback(() =>
-        // {
-        //     FadeOutAndKeep(keyboard);
-        // }); 
-        //
-        // entrySequence.AppendInterval(1f);
-        //
-        // entrySequence.AppendCallback(() =>
-        // {
-        //     ScreenFade(keyboard);
-        // });
-        //
-        // entrySequence.AppendInterval(1f);
-        // entrySequence.AppendCallback(() =>
-        // {
-        //     DisplayVideoPlayer(keyboard);
-        // });
-        //
-        // entrySequence.AppendInterval(3f);
-        // entrySequence.AppendCallback(() =>
-        // {
-        //     videoPlayer.GetComponent<VideoPlayer>().Play();
-        // });
-        //
-        // entrySequence.AppendCallback(() =>
-        // {
-        //     AnimateDisplaySequence(keyboard);
-        // });
-
-        // entrySequence.AppendCallback(() => LearnShortcutButton(keyboard));
     }
 
+    private void KeyFollow(ARKeyboard keyboard)
+    {
+        
+        var localSequence = DOTween.Sequence();
+        localSequence.Pause();
+        localSequence.AppendInterval(1f);
+
+        foreach (var modifierKey in keyboard.modifierKeys )
+        {
+            if (modifierKey.KeyName == "command-left")
+            {
+                localSequence.AppendCallback(() => modifierKey.keyPressed = EKeyState.KEY_PRESSED);
+                // localSequence.AppendInterval(5f);
+                // localSequence.AppendCallback(() => modifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+            }
+        }
+
+        foreach (var primaryKey in keyboard.primaryKeys)
+        {
+            if (primaryKey.KeyName == "Z")
+            {
+                localSequence.AppendInterval(3f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_PRESSED);
+                localSequence.AppendInterval(1f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+                localSequence.AppendInterval(0.5f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_PRESSED);
+                localSequence.AppendInterval(0.5f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+                localSequence.AppendInterval(0.5f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_PRESSED);
+                localSequence.AppendInterval(0.5f);
+                localSequence.AppendCallback(() => primaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+            }
+        }
+        foreach (var modifierKey in keyboard.modifierKeys )
+        {
+            if (modifierKey.KeyName == "command-left")
+            {
+                localSequence.AppendCallback(() => modifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+                // localSequence.AppendInterval(5f);
+                // localSequence.AppendCallback(() => modifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+            }
+        }
+        localSequence.Play();
+    }
     
+    private void DisplayKeyUIControls(ARKeyboard keyboard)
+    {
+        foreach (var key in keyboard.primaryKeys)
+        {
+            if (key.KeyName == "N")
+            {
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                key.uiShortcutState = UIShortcutState.EuiShortcutState.PREVIOUS_SHORTCUT;
+            }else if (key.KeyName == "M")
+            {
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                key.uiShortcutState = UIShortcutState.EuiShortcutState.NEXT_SHORTCUT;
+            }else if (key.KeyName == "I")
+            {
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                key.uiShortcutState = UIShortcutState.EuiShortcutState.LOOP;
+            }
+            else if (key.KeyName == "W")
+            {
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                key.uiShortcutState = UIShortcutState.EuiShortcutState.QUIT;
+            }
+        }
+    }
+
+
     private void ScreenFade(ARKeyboard keyboard)
     {
         _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
@@ -151,7 +199,6 @@ public class UndoShortcutState : ARKeyboardState
             .transform.Find("Fullscreen-panel").GetComponent<Image>();
         _fullscreenPanel.DOFade(0f, 3f);
     }
-
     
     private void DisplayVideoPlayer(ARKeyboard keyboard)
     {
@@ -215,9 +262,7 @@ public class UndoShortcutState : ARKeyboardState
 
             if (key.KeyName == "G")
             {
-                //this probably needs to be a state
-                key.displayImage.DOFade(0, 2f);
-                key.keyText.DOFade(1, 2);
+                key.uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
             }
 
             if (key.KeyName == "space")
@@ -233,57 +278,13 @@ public class UndoShortcutState : ARKeyboardState
 
     }
 
-
-    private void AnimateDisplaySequence(ARKeyboard keyboard)
-    {
-        // _showcaseSequence = DOTween.Sequence();
-        // _showcaseSequence.Pause();
-        // _showcaseSequence.AppendInterval(1f);
-        // foreach (var modifierKey in keyboard.modifierKeys)
-        // {
-        //     if (modifierKey.KeyName == "command-left")
-        //     {
-        //         var rend = modifierKey.GetComponentInChildren<MeshRenderer>();
-        //
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 1.1f));
-        //         _showcaseSequence.AppendInterval(2f);
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 1.2f));
-        //
-        //         //move to key itself
-        //     }            
-        // }
-        
-        // foreach (var primaryKey in keyboard.primaryKeys)
-        // {
-        //     if (primaryKey.KeyName == "Z")
-        //     {
-        //         var rend = primaryKey.GetComponentInChildren<MeshRenderer>();
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-        //         _showcaseSequence.AppendInterval(1f);
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-        //         _showcaseSequence.AppendInterval(1f);
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-        //         _showcaseSequence.AppendInterval(1f);
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.white, 0.2f));
-        //         _showcaseSequence.Append(rend.material.DOColor(Color.black, 0.25f));
-        //     }
-        // }
-        //
-        // _showcaseSequence.Play();
-    }
-
-
-    
     private void PlaceScreenSpaceUI()
     {
         var sequenceScreenspaceUI = DOTween.Sequence();
 
         sequenceScreenspaceUI.Pause();
         
-        var ui = Instantiate(screenspaceUI, this.transform);
+        var ui = Instantiate(screenspaceUI);
         var uiText = ui.GetComponentInChildren<TextMeshProUGUI>();
         var uiPanel = ui.GetComponentInChildren<Image>();
         uiText.text = undoShortcut.shortcutName;
@@ -295,53 +296,30 @@ public class UndoShortcutState : ARKeyboardState
     }
     
 
-    public override ARKeyboardState HandleInput(Key key)
+    public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
     {
+        if (key.KeyName == "Z" && key.keyPressed == EKeyState.KEY_PRESSED)
+        {
+            _zPressed = true;
+        }
+        if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_PRESSED)
+        {
+            _cmdPressed = true;
+        }
 
-        
-        // foreach (var key in keyboard.primaryKeys)
-        // {
-        //     if (key.KeyName == "Return" && key.keyPressedState == EKeyState.KEY_PRESSED)
-        //     {
-        //         enterMode = true;
-        //     }
-        //
-        //     if (enterMode)
-        //     {
-        //         // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_STATE_ENTER_MODE);
-        //         _fullscreenPanel = keyboard.ARScreen.gameObject.transform.Find("Canvas").gameObject
-        //             .transform.Find("Fullscreen-panel").GetComponent<Image>();
-        //         _fullscreenPanel.DOFade(0.0f, 3f);
-        //         keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
-        //
-        //         
-        //         if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_PRESSED)
-        //         {
-        //             //play sound
-        //             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.LEARNING_ACTIVE_MENU_BUTTON);
-        //         } 
-        //         if (key.KeyName == "Z" && key.keyPressedState == EKeyState.KEY_UNPRESSED)
-        //         {
-        //             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.DEFAULT);
-        //         }
-        //         
-        //         
-        //         
-        //     }
-        //
-        // }
+        if (_zPressed && _cmdPressed)
+        {
+            if (!_shortcutComplete)
+            {
+                Debug.Log("Shortcut Complete");
+            }
+        }
 
-        // foreach (var modifierKey in keyboard.modifierKeys)
-        // {
-        //     if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_PRESSED)
-        //     {
-        //         // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.ACTIVE);
-        //     }  
-        //     if (modifierKey.KeyName == "command-left" && modifierKey.keyPressedState == EKeyState.KEY_UNPRESSED)
-        //     {
-        //         // modifierKey.ChangeLocalState(ARModifierKey.EModifierKeyState.DEFAULT);
-        //     }   
-        // }
+        if (key.KeyName == "M" && key.keyPressed == EKeyState.KEY_PRESSED)
+        {
+            var nextState = Instantiate(selectAllShortcutState);
+            return nextState;
+        }
         
         return null;
     }

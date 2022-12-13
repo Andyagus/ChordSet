@@ -13,11 +13,11 @@ public class KeyPressedState : MonoBehaviour
 
     private void Awake()
     {
-        _keyboard = GameObject.Find("AR_Keyboard").GetComponent<ARKeyboard>();
-        _keyboard.onKeyboardWelcomeModeStateChanged += (x) =>
-        {
-            _welcomeState = x;
-        };
+        // _keyboard = GameObject.Find("AR_Keyboard").GetComponent<ARKeyboard>();
+        // _keyboard.onKeyboardWelcomeModeStateChanged += (x) =>
+        // {
+        //     _welcomeState = x;
+        // };
     }
     
     public void SetPressedState(EKeyState state, Key key)

@@ -68,14 +68,14 @@ public class KeyAvailabilityState : MonoBehaviour
 
         foreach (var text in textMeshProMultiple)
         {
-            text.DOFade(0.1f, 1.793f);
-            // text.DOFade(0.1f, 0.793f);
+            // text.DOFade(0.1f, 1.793f);
+            text.DOFade(0.1f, 0.793f);
         }
 
         if (key.secondaryImage != null)
         {
-            key.secondaryImage.DOFade(0, 1.9347568329f);
-            // key.secondaryImage.DOFade(0, 0.973f);
+            // key.secondaryImage.DOFade(0, 1.9347568329f);
+            key.secondaryImage.DOFade(0, 0.973f);
         }
 
     }
