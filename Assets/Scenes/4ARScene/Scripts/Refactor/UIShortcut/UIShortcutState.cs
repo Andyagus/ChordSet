@@ -7,9 +7,8 @@ using DG.Tweening;
 
 public class UIShortcutState : MonoBehaviour
 {
-   
- 
-    private Shortcut _currentShortcut;
+    
+    public Shortcut currentUIShortcut;
     public Shortcut learningModeStartShortcut;
     public Shortcut favoriteShortcut;
     public Shortcut previousShortcut;
@@ -64,9 +63,9 @@ public class UIShortcutState : MonoBehaviour
 
     private void RemoveShortcut(ARPrimaryKey key)
     {
-        if (_currentShortcut != null)
+        if (currentUIShortcut != null)
         {
-            Destroy(_currentShortcut.gameObject);
+            Destroy(currentUIShortcut.gameObject);
         }
     }
 
@@ -75,9 +74,9 @@ public class UIShortcutState : MonoBehaviour
         if (quitShortcut != null)
         {
             key.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(quitShortcut, key.transform);
+            currentUIShortcut = Instantiate(quitShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = key.transform.position + offset;
+            currentUIShortcut.transform.position = key.transform.position + offset;
         }          
     }
 
@@ -86,9 +85,9 @@ public class UIShortcutState : MonoBehaviour
         if (loopShortcut != null)
         {
             key.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(loopShortcut, key.transform);
+            currentUIShortcut = Instantiate(loopShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = key.transform.position + offset;
+            currentUIShortcut.transform.position = key.transform.position + offset;
         }      
     }
 
@@ -97,9 +96,9 @@ public class UIShortcutState : MonoBehaviour
         if (previousShortcut != null)
         {
             key.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(previousShortcut, key.transform);
+            currentUIShortcut = Instantiate(previousShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = key.transform.position + offset;
+            currentUIShortcut.transform.position = key.transform.position + offset;
         }        
     }
 
@@ -108,9 +107,9 @@ public class UIShortcutState : MonoBehaviour
         if (nextShortcut != null)
         {
             key.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(nextShortcut, key.transform);
+            currentUIShortcut = Instantiate(nextShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = key.transform.position + offset;
+            currentUIShortcut.transform.position = key.transform.position + offset;
         }    
     }
 
@@ -118,9 +117,9 @@ public class UIShortcutState : MonoBehaviour
     {
         key.keyText.DOFade(1, 0.8f);
         
-        if (_currentShortcut)
+        if (currentUIShortcut)
         {
-            Destroy(_currentShortcut.gameObject);
+            Destroy(currentUIShortcut.gameObject);
         }
     }
 
@@ -129,9 +128,9 @@ public class UIShortcutState : MonoBehaviour
         if (favoriteShortcut != null)
         {
             key.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(learningModeStartShortcut, key.transform);
+            currentUIShortcut = Instantiate(learningModeStartShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = key.transform.position + offset;
+            currentUIShortcut.transform.position = key.transform.position + offset;
         }
     }
 
@@ -140,9 +139,9 @@ public class UIShortcutState : MonoBehaviour
         if (favoriteShortcut != null)
         {
             primaryKey.keyText.DOFade(0, 0.8f);
-            _currentShortcut = Instantiate(favoriteShortcut, primaryKey.transform);
+            currentUIShortcut = Instantiate(favoriteShortcut, primaryKey.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
-            _currentShortcut.transform.position = primaryKey.transform.position + offset;
+            currentUIShortcut.transform.position = primaryKey.transform.position + offset;
         }
         
     }

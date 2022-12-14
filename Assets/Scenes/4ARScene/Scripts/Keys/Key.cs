@@ -8,33 +8,6 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-
-    [Header("Inherited")]
-    // public EKeyStatusState keyStatusState = EKeyStatusState.AMBIENT_INACTIVE;
-
-    // public enum EKeyStatusState
-    // {
-    //     // AMBIENT_ACTIVE,
-    //     // AMBIENT_INACTIVE
-    //     // AVAILABLE,
-    //     // UNAVAILABLE,
-    //     // ANIMATION_PAUSE,
-    //     // ANIMATION_PLAY,
-    //     // TYPING_ON,
-    //     // TYPING_OFF,
-    //     // DEFAULT,
-    //     // LEARNING_WELCOME,
-    //     // LEARNING_SHOWCASE,
-    //     // LEARNING_STATE_ENTRY,
-    //     // LEARNING_AVAILABLE,
-    //     // LEARNING_SELECTED,
-    //     // LEARNING_HELPER,
-    //     // LEARNING_ACTIVE_MENU_BUTTON,
-    //     // LEARNING_STATE_ENTER_MODE
-    // }
-    
-    // public EKeyState keyPressedState = EKeyState.KEY_UNPRESSED;
-    
     [Header("Attributes")]
     public string KeyName;
     public KeyCode KeyCode;
@@ -42,17 +15,17 @@ public class Key : MonoBehaviour
     [SerializeField] public Image displayImage;
     [SerializeField] public TextMeshProUGUI displayText;
     
-    [Tooltip("Key Pressed State")]
+    [Header("Key Pressed State")]
     private KeyPressedState _keyPressedState;
     public EKeyState keyPressed = EKeyState.KEY_UNPRESSED;
     private EKeyState _prevPressed = EKeyState.KEY_UNPRESSED;
 
-    [Tooltip("Key Availability State")] 
+    [Header("Key Availability State")] 
     private KeyAvailabilityState _keyAvailabilityState;
     public KeyAvailabilityState.EKeyAvailability keyAvailability;
     private KeyAvailabilityState.EKeyAvailability _prevAvailability = KeyAvailabilityState.EKeyAvailability.NONE;
     
-    [Tooltip("Key Outline State")]
+    [Header("Key Outline State")]
     [SerializeField] private KeyOutline keyOutlineObject;
     private KeyOutlineState _keyOutlineState;
     public KeyOutlineState.EKeyOutline keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;

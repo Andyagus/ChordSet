@@ -189,6 +189,7 @@ public class UndoShortcutState : ARKeyboardState
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 key.uiShortcutState = UIShortcutState.EuiShortcutState.PREVIOUS_SHORTCUT;
+                // key.uiShortcutState.
             }else if (key.KeyName == "M")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;

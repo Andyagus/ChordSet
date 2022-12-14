@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: commandShiftStateShortcut
       value: 
       objectReference: {fileID: -633961957430547315, guid: 7bdd91aea44d249d08b2ef3db8de127f, type: 3}
+    - target: {fileID: 3841900074320617131, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: uiShortcutState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4553423459543104033, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

@@ -14,11 +14,6 @@ public class WelcomeModeIntro : ARKeyboardState
     public override void Entry(ARKeyboard keyboard)
     {
         StartCoroutine(LightUpKeys(keyboard));
-        // Debug.Log("Coroutine Finished");
-        // foreach (var keys in keyboard.keys)
-        // {
-        //     
-        // }
     }
 
     private IEnumerator LightUpKeys(ARKeyboard keyboard)

@@ -66,7 +66,7 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
+            keyboardMode = EKeyboardMode.LEARNING_MODE;
         }
 
         private void Update()
@@ -139,6 +139,7 @@ namespace AR_Keyboard
         private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
         {
 
+            //could be a dictionary search//string key...
             foreach (var key in keys)
             {
                 if (inputKeyName == key.KeyName)
@@ -184,6 +185,17 @@ namespace AR_Keyboard
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+        
+        private void HandleInputWelcomeMode(string keyName, EKeyState keyState, Key key)
+        {
+            var state = welcomeModeState.HandleInput(key, this);
+            
+            //instead just wait for the space to be pressed here..
+            if (state.stateName == "Welcome Mode Out")
+            {
+                keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }
         }
 
@@ -235,15 +247,7 @@ namespace AR_Keyboard
             }
         }
 
-        private void HandleInputWelcomeMode(string keyName, EKeyState keyState, Key key)
-        {
-            var state = welcomeModeState.HandleInput(key, this);
-            if (state.stateName == "Welcome Mode Out")
-            {
-                keyboardMode = EKeyboardMode.AMBIENT_MODE;
-            }
-            
-        }
+      
 
         
 

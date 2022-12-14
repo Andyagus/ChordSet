@@ -30,6 +30,7 @@ namespace AR_Keyboard.State
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
 
                 var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
+                
                 if (shortcutState.commandStateShortcut != null)
                 {
                     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.COMMAND_STATE_SHORTCUT;
@@ -60,7 +61,6 @@ namespace AR_Keyboard.State
             {
                 var cmdShiftState = Instantiate(this.commandShiftState);
                 return cmdShiftState;
-                //instantiate shift state;
             }
             else
             {
@@ -71,5 +71,6 @@ namespace AR_Keyboard.State
         public override void Exit(ARKeyboard keyboard)
         {
         }
+        
     }
 }

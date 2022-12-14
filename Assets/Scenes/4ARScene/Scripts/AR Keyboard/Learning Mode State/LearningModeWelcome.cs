@@ -56,6 +56,11 @@ public class LearningModeWelcome : ARKeyboardState
     {
         if (key.KeyName == "G" && key.keyPressed == EKeyState.KEY_PRESSED)
         {
+
+            var primaryKey = key.GetComponentInChildren<ARPrimaryKey>();
+            var uiShortcut = primaryKey.GetComponentInChildren<Shortcut>();
+            uiShortcut.shortcutActivity = ShortutActivityState.EShortcutActivity.ACTIVE;
+            
             var state = Instantiate(undoShortcutState);
             return state;
         }

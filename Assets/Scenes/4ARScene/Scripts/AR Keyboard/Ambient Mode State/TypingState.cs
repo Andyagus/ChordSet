@@ -17,7 +17,6 @@ namespace AR_Keyboard.State
         {
             foreach (var modifier in keyboard.modifierKeys)
             {
-                
                 modifier.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 modifier.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 
@@ -36,10 +35,7 @@ namespace AR_Keyboard.State
                 primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-                // if (primaryKey.GetComponentInChildren<Shortcut>() != null)
-                // {
-                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
-                // }
+
                 if (primaryKey.KeyName == "space")
                 {
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
@@ -52,38 +48,7 @@ namespace AR_Keyboard.State
       
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
-                
-
             }
-       
-
-        }
-
-        private IEnumerator FadeOutOtherModifierKeys(ARModifierKey arModifierKey)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PrimaryKeysEntry(ARKeyboard keyboard)
-        {
-            // foreach (var primaryKey in keyboard.primaryKeys)
-            // {
-            //     if (primaryKey.typingStateShortcut != null)
-            //     {
-            //         
-            //         if (primaryKey.GetComponentInChildren<Shortcut>() != null)
-            //         {
-            //             primaryKey.currentShortcut.StopSequence(primaryKey);
-            //             Destroy(primaryKey.currentShortcut.gameObject);
-            //         }
-            //         
-            //         var shortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
-            //         primaryKey.currentShortcut = shortcut;
-            //         var offset = new Vector3(0f, 0.0007f, 0f);
-            //         primaryKey.currentShortcut.transform.position = primaryKey.transform.position + offset;
-            //         primaryKey.currentShortcut.SetGraphics(primaryKey);
-            //     }
-            // }
         }
         
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
@@ -97,27 +62,7 @@ namespace AR_Keyboard.State
                     return state;
                 }
             }
-            
-            //TODO BAD NEWS BEARS
-            // if(key.GetComponent<ARPrimaryKey>()!=null)
-            // {
-            //     var primaryKey = key.GetComponent<ARPrimaryKey>();
-            //     if (primaryKey.typingStateShortcut != null)
-            //     {
-            //         primaryKey.currentShortcut = Instantiate(primaryKey.typingStateShortcut, primaryKey.transform);
-            //         primaryKey.currentShortcut.Execute(primaryKey);
-            //     }
-            //     
-            // }
-            
             return null;
-            
-        }
-        
-        
-        private void MoveToNextState()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
