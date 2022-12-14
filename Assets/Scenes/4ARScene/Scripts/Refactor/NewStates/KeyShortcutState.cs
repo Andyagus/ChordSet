@@ -13,7 +13,9 @@ public class KeyShortcutState : MonoBehaviour
     public Shortcut welcomeStateShortcut;
     public Shortcut typingStateShortcut;
     public Shortcut commandStateShortcut;
-
+    public Shortcut commandShiftStateShortcut;
+    
+    
     public Action OnNewShortcutActive;
     
     
@@ -22,7 +24,8 @@ public class KeyShortcutState : MonoBehaviour
         NO_SHORTCUT,
         WELCOME_STATE_SHORTCUT,
         TYPING_STATE_SHORTCUT,
-        COMMAND_STATE_SHORTCUT
+        COMMAND_STATE_SHORTCUT,
+        COMMAND_SHIFT_STATE_SHORTCUT
         // SHORTCUT,
         // REMOVE_SHORTCUT
     }
@@ -43,12 +46,16 @@ public class KeyShortcutState : MonoBehaviour
             case EKeyShortcutState.COMMAND_STATE_SHORTCUT:
                 CommandStateShortcut(primaryKey);
                 break;
+            case EKeyShortcutState.COMMAND_SHIFT_STATE_SHORTCUT:
+                CommandShiftStateShortcut(primaryKey);
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
 
-    
+ 
+
 
     private void NoShortcut(ARPrimaryKey primaryKey)
     {
@@ -107,14 +114,25 @@ public class KeyShortcutState : MonoBehaviour
             _currentShortcut = Instantiate(commandStateShortcut, primaryKey.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
             _currentShortcut.transform.position = primaryKey.transform.position + offset;
-
-            // OnNewShortcutActive();
-
         }
-        
-
     }
 
+    private void CommandShiftStateShortcut(ARPrimaryKey primaryKey)
+    {
+        if (_currentShortcut)
+        {
+            Destroy(_currentShortcut.gameObject);
+        }
+
+        if (commandShiftStateShortcut != null)
+        {
+            primaryKey.keyText.DOFade(0, 0.8f);
+            _currentShortcut = Instantiate(commandShiftStateShortcut, primaryKey.transform);
+            var offset = new Vector3(0f, 0.0007f, 0f);
+            _currentShortcut.transform.position = primaryKey.transform.position + offset;
+        }
+    }
+    
     private void Shortcut(ARPrimaryKey primaryKey)
     {
        

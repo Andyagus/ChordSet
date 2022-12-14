@@ -9,6 +9,7 @@ namespace AR_Keyboard.State
     public class CommandState : ARKeyboardState
     {
         public ARKeyboardState typingState;
+        public ARKeyboardState commandShiftState;
         
         public override void Entry(ARKeyboard keyboard)
         {
@@ -17,6 +18,7 @@ namespace AR_Keyboard.State
             {
                 if (modifierKey.KeyName == "shift-left")
                 {
+                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                     modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
                 }
             }
@@ -24,6 +26,9 @@ namespace AR_Keyboard.State
             
             foreach (var primaryKey in keyboard.primaryKeys)
             {
+                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+
                 var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
                 if (shortcutState.commandStateShortcut != null)
                 {
@@ -53,7 +58,8 @@ namespace AR_Keyboard.State
                 return Instantiate(typingState);
             }else if (key.KeyName == "shift-left" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
-                return null;
+                var cmdShiftState = Instantiate(this.commandShiftState);
+                return cmdShiftState;
                 //instantiate shift state;
             }
             else

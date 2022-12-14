@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1785352829330358200
+--- !u!1 &3854159400692658861
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1785352829330358201}
-  - component: {fileID: 1785352829330358206}
+  - component: {fileID: 3854159400692658858}
+  - component: {fileID: 3854159400692658859}
   m_Layer: 0
-  m_Name: 2CommandState
+  m_Name: 3CommandShiftState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1785352829330358201
+--- !u!4 &3854159400692658858
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785352829330358200}
+  m_GameObject: {fileID: 3854159400692658861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -95.766045, y: -35.620415, z: 26.137337}
+  m_LocalPosition: {x: 1224.2815, y: 471.21875, z: -7.461555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1785352829330358206
+--- !u!114 &3854159400692658859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785352829330358200}
+  m_GameObject: {fileID: 3854159400692658861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b439ac9a34c5546489d15dade54b0d80, type: 3}
+  m_Script: {fileID: 11500000, guid: ed3ed7e10b1b44208a54345c02aa43e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateName: Command
-  typingState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
-  commandShiftState: {fileID: 3854159400692658859, guid: 2d496c9026c2945f2b66492bb828d31c, type: 3}
+  stateName: Command-Shift
+  CommandState: {fileID: 1785352829330358206, guid: bd31f069e8df848f494212880dd4580c, type: 3}

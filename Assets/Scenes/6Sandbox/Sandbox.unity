@@ -434,6 +434,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 631770812076349648, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005190174209978599, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265866020060278026, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310097670744409768, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351256396626904451, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandShiftStateShortcut
+      value: 
+      objectReference: {fileID: -8703117834673624987, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
+    - target: {fileID: 2909054319628889994, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandShiftStateShortcut
+      value: 
+      objectReference: {fileID: -633961957430547315, guid: 7bdd91aea44d249d08b2ef3db8de127f, type: 3}
+    - target: {fileID: 4553423459543104033, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1eecb83f58d1f4e8f9a1edad2eab832d, type: 2}
+    - target: {fileID: 4553423459543104035, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553423459543104047, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.015609821
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227394097321114789, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6162416889330568580, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandShiftStateShortcut
+      value: 
+      objectReference: {fileID: -8703117834673624987, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
+    - target: {fileID: 7360598968711126609, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956276234370067903, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Name
       value: AR_Keyboard
@@ -480,6 +532,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403880990647718867, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617782489612311163, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742439800997400761, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077576560183720040, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
