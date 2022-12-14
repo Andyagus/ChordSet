@@ -63,12 +63,10 @@ namespace AR_Keyboard
         
         private void Awake()
         {
-
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             keyboardMode = EKeyboardMode.WELCOME_MODE;
-            // keyboardMode = EKeyboardMode.AMBIENT_MODE;
         }
 
         private void Update()
