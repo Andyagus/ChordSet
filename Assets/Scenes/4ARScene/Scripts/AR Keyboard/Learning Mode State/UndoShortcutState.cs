@@ -367,12 +367,6 @@ public class UndoShortcutState : ARKeyboardState
 
     public override void Exit(ARKeyboard keyboard)
     {
-        var uiText = _uiPanel.GetComponentInChildren<TextMeshProUGUI>();
-        var uiPanel = _uiPanel.GetComponentInChildren<Image>();
-
-        uiText.DOFade(1, 3.234f);
-        uiPanel.DOFade(1, 3.234f);
-
 
         foreach (var key in keyboard.primaryKeys)
         {

@@ -19,8 +19,8 @@ namespace AR_Keyboard.State
             {
                 
                 modifier.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                modifier.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 
-                
                 if (modifier.KeyName == "command-left")
                 {
                     modifier.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
@@ -35,7 +35,7 @@ namespace AR_Keyboard.State
             {
                 primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-
+                primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
                 // if (primaryKey.GetComponentInChildren<Shortcut>() != null)
                 // {
                 // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.REMOVE_SHORTCUT;
@@ -49,12 +49,7 @@ namespace AR_Keyboard.State
                     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
                 {
                     primaryKey.ResetCharacter();
-                    //TODO
-                    // if (keyboard._wasWelcomeScreen)
-                    // {
-                    //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.RESTORE;
-                    //     keyboard._wasWelcomeScreen = false;
-                    // }
+      
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
                 

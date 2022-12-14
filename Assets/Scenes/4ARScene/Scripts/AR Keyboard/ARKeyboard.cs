@@ -56,7 +56,7 @@ namespace AR_Keyboard
             LEARNING_MODE
         }
 
-        public EKeyboardMode keyboardMode = EKeyboardMode.WELCOME_MODE;
+        public EKeyboardMode keyboardMode = EKeyboardMode.NO_MODE;
         private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
 
         // public Action<bool> onKeyboardWelcomeModeStateChanged;
@@ -67,7 +67,7 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+            keyboardMode = EKeyboardMode.WELCOME_MODE;
             
         }
 
@@ -195,14 +195,19 @@ namespace AR_Keyboard
             if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 _learningModeState.Exit(this);
-                Destroy(GameObject.Find("ScreenSpaceUI").gameObject);
+
+                var screenSpaceUI = GameObject.Find("ScreenSpaceUI");
+                if (screenSpaceUI != null)
+                {
+                    Destroy(screenSpaceUI.gameObject);
+                }
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }
 
             var state = _learningModeState.HandleInput(key, this);
             if (state != null)
             {
-                _learningModeState.Exit(this);
+                // _learningModeState.Exit(this);
                 Destroy(_learningModeState.gameObject);
                 _learningModeState = state;
                 _learningModeState.transform.SetParent(this.transform);
@@ -239,70 +244,10 @@ namespace AR_Keyboard
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }
-            // if (state != null)
-            // {
-            //     
-            // }
+            
         }
 
-        // private void HandleInput(string keyName, EKeyState keyState, Key key)
-        // {
-        //     // if (keyName == "F5")
-        //     // {
-        //     //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-        //     //     {
-        //     //         _ambientModeActive = false;
-        //     //         Debug.Log(_ambientModeActive);
-        //     //     }
-        //     // }
-        //
-        //     // if (keyName == "Escape")
-        //     // {
-        //     //     if (physicalKey.keyPressedState == EKeyState.KEY_PRESSED)
-        //     //     {
-        //     //         _ambientModeActive = true;
-        //     //     }
-        //     // }
-        //     
-        //     if (_ambientModeActive)
-        //     {
-        //         if (_learningModeActive)
-        //         {
-        //             _ambientModeState.Entry(this);
-        //             _learningModeActive = false;
-        //         }
-        //         
-        //         var state = _ambientModeState.HandleInput(key);
-        //         
-        //         if (state != null)
-        //         {
-        //             _ambientModeState.Exit(this);
-        //             Destroy(_ambientModeState.gameObject);
-        //             _ambientModeState = state;
-        //             _ambientModeState.transform.SetParent(this.transform);
-        //             _ambientModeState.Entry(this);
-        //             StartCoroutine(AmbientStateChangeCoroutine());
-        //         }
-        //     }
-        //     else
-        //     {
-        //         if (_learningModeActive == false)
-        //         {
-        //             _learningModeState.Entry(this);
-        //             _learningModeActive = true;
-        //         }
-        //         var state = _learningModeState.HandleInput(key);
-        //         if (state != null)
-        //         {
-        //             _learningModeState.Exit(this);
-        //             Destroy(_learningModeState.gameObject);
-        //             _learningModeState = state;
-        //             _learningModeState.transform.SetParent(this.transform);
-        //             _learningModeState.Entry(this);
-        //
-        //         }
-        //     }
-        // }
+        
 
         private IEnumerator AmbientStateChangeCoroutine()
         {

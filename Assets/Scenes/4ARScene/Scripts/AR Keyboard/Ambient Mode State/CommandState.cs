@@ -12,6 +12,16 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
+
+            foreach (var modifierKey in keyboard.modifierKeys)
+            {
+                if (modifierKey.KeyName == "shift-left")
+                {
+                    modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                }
+            }
+            
+            
             foreach (var primaryKey in keyboard.primaryKeys)
             {
                 var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
@@ -41,6 +51,10 @@ namespace AR_Keyboard.State
             if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
             {
                 return Instantiate(typingState);
+            }else if (key.KeyName == "shift-left" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+                return null;
+                //instantiate shift state;
             }
             else
             {

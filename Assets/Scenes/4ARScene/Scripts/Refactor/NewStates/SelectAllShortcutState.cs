@@ -330,4 +330,12 @@ public class SelectAllShortcutState : ARKeyboardState
 
       return null;
    }
+
+   public override void Exit(ARKeyboard keyboard)
+   {
+      foreach (var key in keyboard.primaryKeys)
+      {
+         key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
+      }
+   }
 }
