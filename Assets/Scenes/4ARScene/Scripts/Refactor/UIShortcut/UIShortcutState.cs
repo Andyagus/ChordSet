@@ -77,6 +77,7 @@ public class UIShortcutState : MonoBehaviour
             currentUIShortcut = Instantiate(quitShortcut, key.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
             currentUIShortcut.transform.position = key.transform.position + offset;
+            // key.current
         }          
     }
 

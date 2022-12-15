@@ -462,6 +462,10 @@ PrefabInstance:
       propertyPath: commandShiftStateShortcut
       value: 
       objectReference: {fileID: -2964151953571861164, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
+    - target: {fileID: 3004438987790172994, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: typingStateShortcut
+      value: 
+      objectReference: {fileID: 4462968230826355334, guid: 5b98b2443230844509156ab3d9d09744, type: 3}
     - target: {fileID: 3841900074320617131, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: uiShortcutState
       value: 0

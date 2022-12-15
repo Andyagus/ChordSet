@@ -25,6 +25,7 @@ namespace AR_Keyboard
         
         private TextMeshProUGUI _textMesh;
 
+        public Shortcut primaryCurrentShortcut;
         [Tooltip("Primary Key Shortcut State")]
         private KeyShortcutState _keyShortcutState;
         public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;

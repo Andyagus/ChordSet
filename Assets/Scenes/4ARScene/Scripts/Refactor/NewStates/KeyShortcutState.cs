@@ -115,6 +115,7 @@ public class KeyShortcutState : MonoBehaviour
             _currentShortcut = Instantiate(commandStateShortcut, primaryKey.transform);
             var offset = new Vector3(0f, 0.0007f, 0f);
             _currentShortcut.transform.position = primaryKey.transform.position + offset;
+            primaryKey.primaryCurrentShortcut = commandShiftStateShortcut;;
         }
     }
 
