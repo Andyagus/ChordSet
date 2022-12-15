@@ -69,15 +69,22 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
-            // primaryKeyDictionary.
-            
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+
+            InitializeDictionary();
+        }
+
+        private void InitializeDictionary()
+        {
+            primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
             
             foreach (var primaryKey in primaryKeys)
             {
-                
+                if (!primaryKeyDictionary.ContainsKey(primaryKey.KeyName))
+                {
+                    primaryKeyDictionary.Add(primaryKey.KeyName, primaryKey);
+                }
             }
-            
         }
 
         private void Update()
@@ -107,12 +114,10 @@ namespace AR_Keyboard
         {
             welcomeModeState = Instantiate(welcomeModeState);
             welcomeModeState.Entry(this);
-            // onKeyboardWelcomeModeStateChanged(true);
         }
 
         private void AmbientMode()
         {
-            // onKeyboardWelcomeModeStateChanged(false);
             _ambientModeState = Instantiate(typingState, this.transform, true);
             _ambientModeState.Entry(this);
         }
@@ -137,12 +142,16 @@ namespace AR_Keyboard
         
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
-            //Debug.Log("dictionary count: " + dict.Count);
+            
             foreach (var kvp in dict)
             {
                 var keyName = kvp.Value.keyName;
                 var keyState = kvp.Value.keyState;
-                DelegateInput(keyName, keyState);
+            
+                Debug.Log(kvp.Value.keyName);
+                // primaryKeyDictionary[keyName].keyPressed = keyState;
+            
+                // DelegateInput(keyName, keyState);
             }
         }
         
@@ -150,32 +159,60 @@ namespace AR_Keyboard
         private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
         {
 
+
+            // // if (primaryKeyDictionary.ContainsKey(inputKeyName))
+            // // {
+            //     var activePrimaryKey = primaryKeyDictionary[inputKeyName];
+            //     
+            //     if (activePrimaryKey)
+            //     {
+            //         if (activePrimaryKey.keyPressed == EKeyState.KEY_UNPRESSED)
+            //         {
+            //             if (inputKeyState == EKeyState.KEY_PRESSED)
+            //             {
+            //                 // Debug.Log("Pressed the " + activePrimaryKey.KeyName + " key");
+            //             }
+            //         }
+            //         
+            //         if (activePrimaryKey.keyPressed == EKeyState.KEY_PRESSED)
+            //         {
+            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
+            //             {
+            //                 // Debug.Log("Unpressed the " + activePrimaryKey.KeyName + " key");                        
+            //             }
+            //         }
+                // }
+                
+            // }
+            // Debug.Log("Delegate input called");
+
+
             //could be a dictionary search//string key...
-            foreach (var key in keys)
-            {
-                if (inputKeyName == key.KeyName)
-                {
-                    if (key.keyPressed == EKeyState.KEY_UNPRESSED)
-                    {
-                        if (inputKeyState == EKeyState.KEY_PRESSED)
-                        {
-                            key.keyPressed = EKeyState.KEY_PRESSED;
-                            HandleInput(inputKeyName, inputKeyState, key);
-                        }
-                    }
+            // foreach (var key in keys)
+            // {
+            //     if (inputKeyName == key.KeyName)
+            //     {
+            //         if (key.keyPressed == EKeyState.KEY_UNPRESSED)
+            //         {
+            //             if (inputKeyState == EKeyState.KEY_PRESSED)
+            //             {
+            //                 key.keyPressed = EKeyState.KEY_PRESSED;
+            //                 HandleInput(inputKeyName, inputKeyState, key);
+            //             }
+            //         }
+            //
+            //         if (key.keyPressed == EKeyState.KEY_PRESSED)
+            //         {
+            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
+            //             {
+            //                 key.keyPressed = EKeyState.KEY_UNPRESSED;
+            //                 HandleInput(inputKeyName, inputKeyState, key);
+            //
+            //             }
+            //         }
+            //     }
+            // }
 
-                    if (key.keyPressed == EKeyState.KEY_PRESSED)
-                    {
-                        if (inputKeyState == EKeyState.KEY_UNPRESSED)
-                        {
-                            key.keyPressed = EKeyState.KEY_UNPRESSED;
-                            HandleInput(inputKeyName, inputKeyState, key);
-
-                        }
-                    }
-                }
-            }
-            
         }
 
 
