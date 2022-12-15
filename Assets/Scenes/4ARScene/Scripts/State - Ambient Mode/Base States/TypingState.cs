@@ -15,7 +15,6 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-
             foreach (var modifierKey in keyboard.modifierKeys)
             {
                 modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
@@ -60,8 +59,10 @@ namespace AR_Keyboard.State
         
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
+            
             if (key.KeyName == "command-left" || key.KeyName == "command-right" )
             {
+
                 if (key.keyPressed == EKeyState.KEY_PRESSED)
                 {
                     var state = Instantiate(commandState);
