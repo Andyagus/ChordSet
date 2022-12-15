@@ -60,6 +60,9 @@ namespace AR_Keyboard
         private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
 
         // public Action<bool> onKeyboardWelcomeModeStateChanged;
+
+        public Dictionary<string, ARPrimaryKey> primaryKeyDictionary; 
+        
         
         private void Awake()
         {
@@ -67,6 +70,14 @@ namespace AR_Keyboard
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             keyboardMode = EKeyboardMode.WELCOME_MODE;
+            // primaryKeyDictionary.
+            
+            
+            foreach (var primaryKey in primaryKeys)
+            {
+                
+            }
+            
         }
 
         private void Update()
@@ -246,15 +257,13 @@ namespace AR_Keyboard
                 StartCoroutine(AmbientStateChangeCoroutine());
             }
         }
-
-      
-
         
 
         private IEnumerator AmbientStateChangeCoroutine()
         {
             //better to wait if returned shortcut t
             yield return new WaitForSeconds(0.4f);
+            //this is for subscribers of the shortcut;;;;;take out of coroutine--
             onAmbientStateChanged(_ambientModeState);
         }
     }
