@@ -354,7 +354,8 @@ public class UndoShortcutState : ARKeyboardState
                     _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
                 });
             
-                completionSequence.Play();            }
+                completionSequence.Play();            
+            }
         }
 
         if (key.KeyName == "M" && key.keyPressed == EKeyState.KEY_PRESSED)
