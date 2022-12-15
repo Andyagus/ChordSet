@@ -154,13 +154,23 @@ namespace AR_Keyboard
 
                 if (_primaryKeyDictionary.ContainsKey(keyName))
                 {
-                    _primaryKeyDictionary[keyName].keyPressed = keyState;
+                    if (_primaryKeyDictionary[keyName].keyPressed == EKeyState.KEY_UNPRESSED)
+                    {
+                        if (keyState == EKeyState.KEY_PRESSED)
+                        {
+                            _primaryKeyDictionary[keyName].keyPressed = keyState;
+                        }
+                        
+                    }
                     HandleInput(_primaryKeyDictionary[keyName]);
                 }
                 
                 if (_modifierKeyDictionary.ContainsKey(keyName))
                 {
-                    _modifierKeyDictionary[keyName].keyPressed = keyState;
+                    if(_modifierKeyDictionary[keyName].keyPressed != keyState)
+                    {
+                        _modifierKeyDictionary[keyName].keyPressed = keyState;
+                    }
                     HandleInput(_modifierKeyDictionary[keyName]);
                 }
             }

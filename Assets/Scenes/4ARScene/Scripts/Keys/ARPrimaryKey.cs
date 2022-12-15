@@ -16,10 +16,7 @@ namespace AR_Keyboard
     {
         private ARKeyboard _arKeyboard;
         
-        // [SerializeField] public Shortcut learningStateWelcomeShortcut;
-        // [SerializeField] public Shortcut learningStateUndoShortcut;
-        [Tooltip("for G only right now")]
-        [SerializeField] public ARPrimaryKey referenceKeyForMultikeyShortcuts;
+        
         public TextMeshProUGUI keyText;
         
         
