@@ -15,21 +15,22 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-            foreach (var modifier in keyboard.modifierKeys)
-            {
-                modifier.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                modifier.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 
-                if (modifier.KeyName == "command-left")
+            foreach (var modifierKey in keyboard.modifierKeys)
+            {
+                modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                modifierKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+
+                if (modifierKey.KeyName == "command-left")
                 {
-                    modifier.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                    modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
                 }
                 else
                 {
-                    modifier.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
                 }
             }
-
+            
             foreach (var primaryKey in keyboard.primaryKeys)
             {
                 primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
@@ -63,7 +64,6 @@ namespace AR_Keyboard.State
             {
                 if (key.keyPressed == EKeyState.KEY_PRESSED)
                 {
-                    Debug.Log("Returning new state");
                     var state = Instantiate(commandState);
                     return state;
                 }

@@ -21,14 +21,6 @@ namespace AR_Keyboard
         private ARKeyboardState _ambientModeState;
         public ARKeyboardState typingState;
         public Action<ARKeyboardState> onAmbientStateChanged;
-
-        //decision bool
-        private bool _ambientModeActive = true;
-        private bool _learningModeActive = false;
-
-        public bool _wasWelcomeScreen = true;
-        // private bool _ambientWasActive = false;
-        
         
         //learning mode state 
         private ARKeyboardState _learningModeState;
@@ -45,6 +37,8 @@ namespace AR_Keyboard
         public List<Key> keys;
         public List<ARModifierKey> modifierKeys;
         public List<ARPrimaryKey> primaryKeys;
+        private Dictionary<string, ARPrimaryKey> _primaryKeyDictionary; 
+        private Dictionary<string, ARModifierKey> _modifierKeyDictionary;
         
         private KeySyncDictionary _keySyncDictionary;
 
@@ -61,7 +55,6 @@ namespace AR_Keyboard
 
         // public Action<bool> onKeyboardWelcomeModeStateChanged;
 
-        public Dictionary<string, ARPrimaryKey> primaryKeyDictionary; 
         
         
         private void Awake()
@@ -73,20 +66,17 @@ namespace AR_Keyboard
 
             InitializeDictionary();
         }
-
-        private void InitializeDictionary()
+        
+        private void Start()
         {
-            primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
-            
-            foreach (var primaryKey in primaryKeys)
+            DOTween.SetTweensCapacity(500, 125);
+            if (onAmbientStateChanged != null)
             {
-                if (!primaryKeyDictionary.ContainsKey(primaryKey.KeyName))
-                {
-                    primaryKeyDictionary.Add(primaryKey.KeyName, primaryKey);
-                }
+                onAmbientStateChanged(_ambientModeState);
             }
+            _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
         }
-
+        
         private void Update()
         {
             if (keyboardMode != _prevMode)
@@ -128,17 +118,31 @@ namespace AR_Keyboard
             _learningModeState.Entry(this);
         }
         
-        private void Start()
+        
+        private void InitializeDictionary()
         {
-            
-            DOTween.SetTweensCapacity(500, 125);
-            
-            if (onAmbientStateChanged != null)
+            _primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
+            _modifierKeyDictionary = new Dictionary<string, ARModifierKey>();
+
+            foreach (var primaryKey in primaryKeys)
             {
-                onAmbientStateChanged(_ambientModeState);
+                if (!_primaryKeyDictionary.ContainsKey(primaryKey.KeyName))
+                {
+                    _primaryKeyDictionary.Add(primaryKey.KeyName, primaryKey);
+                }
             }
-            _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
+
+            foreach (var modifierKey in modifierKeys)
+            {
+                
+                if (!_modifierKeyDictionary.ContainsKey(modifierKey.KeyName))
+                {
+                    _modifierKeyDictionary.Add(modifierKey.KeyName, modifierKey);
+                }
+            }
         }
+
+       
         
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
@@ -147,96 +151,42 @@ namespace AR_Keyboard
             {
                 var keyName = kvp.Value.keyName;
                 var keyState = kvp.Value.keyState;
-            
-                Debug.Log(kvp.Value.keyName);
-                // primaryKeyDictionary[keyName].keyPressed = keyState;
-            
-                // DelegateInput(keyName, keyState);
+
+                if (_primaryKeyDictionary.ContainsKey(keyName))
+                {
+                    _primaryKeyDictionary[keyName].keyPressed = keyState;
+                    HandleInput(_primaryKeyDictionary[keyName]);
+                }
+                
+                if (_modifierKeyDictionary.ContainsKey(keyName))
+                {
+                    _modifierKeyDictionary[keyName].keyPressed = keyState;
+                    HandleInput(_modifierKeyDictionary[keyName]);
+                }
             }
         }
-        
-        
-        private void DelegateInput(string inputKeyName, EKeyState inputKeyState)
-        {
 
-
-            // // if (primaryKeyDictionary.ContainsKey(inputKeyName))
-            // // {
-            //     var activePrimaryKey = primaryKeyDictionary[inputKeyName];
-            //     
-            //     if (activePrimaryKey)
-            //     {
-            //         if (activePrimaryKey.keyPressed == EKeyState.KEY_UNPRESSED)
-            //         {
-            //             if (inputKeyState == EKeyState.KEY_PRESSED)
-            //             {
-            //                 // Debug.Log("Pressed the " + activePrimaryKey.KeyName + " key");
-            //             }
-            //         }
-            //         
-            //         if (activePrimaryKey.keyPressed == EKeyState.KEY_PRESSED)
-            //         {
-            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
-            //             {
-            //                 // Debug.Log("Unpressed the " + activePrimaryKey.KeyName + " key");                        
-            //             }
-            //         }
-                // }
-                
-            // }
-            // Debug.Log("Delegate input called");
-
-
-            //could be a dictionary search//string key...
-            // foreach (var key in keys)
-            // {
-            //     if (inputKeyName == key.KeyName)
-            //     {
-            //         if (key.keyPressed == EKeyState.KEY_UNPRESSED)
-            //         {
-            //             if (inputKeyState == EKeyState.KEY_PRESSED)
-            //             {
-            //                 key.keyPressed = EKeyState.KEY_PRESSED;
-            //                 HandleInput(inputKeyName, inputKeyState, key);
-            //             }
-            //         }
-            //
-            //         if (key.keyPressed == EKeyState.KEY_PRESSED)
-            //         {
-            //             if (inputKeyState == EKeyState.KEY_UNPRESSED)
-            //             {
-            //                 key.keyPressed = EKeyState.KEY_UNPRESSED;
-            //                 HandleInput(inputKeyName, inputKeyState, key);
-            //
-            //             }
-            //         }
-            //     }
-            // }
-
-        }
-
-
-        private void HandleInput(string keyName, EKeyState keyState, Key key)
+        private void HandleInput(Key key)
         {
             switch (keyboardMode)
             {
                 case EKeyboardMode.NO_MODE:
                     break;
                 case EKeyboardMode.WELCOME_MODE:
-                    HandleInputWelcomeMode(keyName, keyState, key);
+                    HandleInputWelcomeMode(key);
                     break;
                 case EKeyboardMode.AMBIENT_MODE:
-                    AmbientModeHandleInput(keyName, keyState, key);
+                    AmbientModeHandleInput(key);
                     break;
                 case EKeyboardMode.LEARNING_MODE:
-                    LearningModeHandleInput(keyName, keyState, key);
+                    LearningModeHandleInput(key);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
         
-        private void HandleInputWelcomeMode(string keyName, EKeyState keyState, Key key)
+        private void HandleInputWelcomeMode(Key key)
         {
             var state = welcomeModeState.HandleInput(key, this);
             
@@ -247,7 +197,7 @@ namespace AR_Keyboard
             }
         }
 
-        private void LearningModeHandleInput(string keyName, EKeyState keyState, Key key)
+        private void LearningModeHandleInput(Key key)
         {
             
             if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
@@ -274,7 +224,7 @@ namespace AR_Keyboard
             
         }
 
-        private void AmbientModeHandleInput(string keyName, EKeyState keyState, Key key)
+        private void AmbientModeHandleInput(Key key)
         {
 
             if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
