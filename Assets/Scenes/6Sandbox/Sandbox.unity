@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: KeyName
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2073371341755196171, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: commandShiftStateShortcut
+      value: 
+      objectReference: {fileID: -1910589529542477384, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
     - target: {fileID: 2265866020060278026, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName
       value: 1
@@ -453,11 +457,11 @@ PrefabInstance:
     - target: {fileID: 2351256396626904451, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandShiftStateShortcut
       value: 
-      objectReference: {fileID: -8703117834673624987, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2909054319628889994, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandShiftStateShortcut
       value: 
-      objectReference: {fileID: -633961957430547315, guid: 7bdd91aea44d249d08b2ef3db8de127f, type: 3}
+      objectReference: {fileID: -2964151953571861164, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
     - target: {fileID: 3841900074320617131, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: uiShortcutState
       value: 0
@@ -478,10 +482,18 @@ PrefabInstance:
       propertyPath: KeyName
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5288790665266106477, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyCode
+      value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288790665266106477, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: back-quote
+      objectReference: {fileID: 0}
     - target: {fileID: 6162416889330568580, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: commandShiftStateShortcut
       value: 
-      objectReference: {fileID: -8703117834673624987, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
+      objectReference: {fileID: -631142824499982072, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
     - target: {fileID: 7360598968711126609, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName
       value: 7

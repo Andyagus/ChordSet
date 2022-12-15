@@ -13,8 +13,9 @@ public class CommandShiftState : ARKeyboardState
     {
         foreach (var primaryKey in keyboard.primaryKeys)
         {
+            
             primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-            primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+            // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
 
             var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
             if (shortcutState.commandShiftStateShortcut != null)
@@ -23,7 +24,7 @@ public class CommandShiftState : ARKeyboardState
             }
             else
             {
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
             }
             
         }

@@ -66,7 +66,7 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.LEARNING_MODE;
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
         }
 
         private void Update()
@@ -229,7 +229,7 @@ namespace AR_Keyboard
         private void AmbientModeHandleInput(string keyName, EKeyState keyState, Key key)
         {
 
-            if (key.KeyName == "F5" && key.keyPressed == EKeyState.KEY_PRESSED)
+            if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 keyboardMode = EKeyboardMode.LEARNING_MODE;
             }

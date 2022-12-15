@@ -24,6 +24,8 @@ public class LearningModeWelcome : ARKeyboardState
 
         foreach (var key in keyboard.primaryKeys)
         {
+            key.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+
             if (key.KeyName == "space")
             {
                 key.displayText.DOText("Learning Mode", 2.4f);
@@ -40,6 +42,7 @@ public class LearningModeWelcome : ARKeyboardState
             {
                 //Could be learning mode unavailable and have the letter scramble 
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                
             }
             
         }

@@ -48,6 +48,12 @@ namespace AR_Keyboard.State
       
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
+                
+                var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
+                if (shortcutState.typingStateShortcut != null)
+                {
+                    primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.TYPING_STATE_SHORTCUT;
+                }
             }
         }
         

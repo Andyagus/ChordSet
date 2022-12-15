@@ -21,6 +21,7 @@ public class KeyShortcutState : MonoBehaviour
     
     public enum EKeyShortcutState
     {
+        
         NO_SHORTCUT,
         WELCOME_STATE_SHORTCUT,
         TYPING_STATE_SHORTCUT,
@@ -59,7 +60,7 @@ public class KeyShortcutState : MonoBehaviour
 
     private void NoShortcut(ARPrimaryKey primaryKey)
     {
-        primaryKey.keyText.DOFade(1, 0.8f);
+        // primaryKey.keyText.DOFade(1, 0.8f);
         
         if (_currentShortcut)
         {
@@ -133,30 +134,5 @@ public class KeyShortcutState : MonoBehaviour
         }
     }
     
-    private void Shortcut(ARPrimaryKey primaryKey)
-    {
-       
-        //
-        // foreach (var texts in primaryKey.GetComponentsInChildren<TextMeshProUGUI>())
-        // {
-        //     texts.DOFade(0, 0.5f);
-        // }
-        // _shortcut = Instantiate(primaryKey.currentShortcut, primaryKey.transform);
-        // var offset = new Vector3(0f, 0.0007f, 0f);
-        // _shortcut.transform.position = primaryKey.transform.position + offset;
-
-    }
     
-    private void RemoveShortcut(ARPrimaryKey primaryKey)
-    {
-        // if (primaryKey.GetComponentInChildren<Shortcut>())
-        // {
-        //     foreach (var texts in primaryKey.GetComponentsInChildren<TextMeshProUGUI>())
-        //     {
-        //         texts.DOFade(1, 0.5f);
-        //     }
-        //     
-        //     Destroy(_shortcut.gameObject);
-        // }
-    }
 }
