@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eShortcut: 0
-  shortcutName: 
+  shortcutName: Cut
   shortcutAvailability: 1
   shortcutActivity: 1
 --- !u!114 &8288777048797716805 stripped

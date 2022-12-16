@@ -22,7 +22,8 @@ namespace AR_Keyboard.State
                     modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
                 }
             }
-            
+
+            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
             
             foreach (var primaryKey in keyboard.primaryKeys)
             {
@@ -41,7 +42,12 @@ namespace AR_Keyboard.State
                 // }
             }
         }
-        
+
+        private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
+        {
+            keyboardPrimaryKeyDictionary["Z"].keyShortcutState = KeyShortcutState.EKeyShortcutState.UNDO_SHORTCUT;
+        }
+
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
             if (key.GetComponentInChildren<ARPrimaryKey>() != null)

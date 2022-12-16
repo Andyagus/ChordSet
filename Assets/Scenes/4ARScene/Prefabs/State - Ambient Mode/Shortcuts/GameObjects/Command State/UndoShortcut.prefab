@@ -8,9 +8,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: spriteActive
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c814fb5da160470e9aca95b6d090db4, type: 3}
+    - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: spriteInactive
       value: 
-      objectReference: {fileID: 21300000, guid: a83c5ac9c465641119d86806d91dc888, type: 3}
+      objectReference: {fileID: 21300000, guid: a502745b1c4c345039b9c15941aa0c0e, type: 3}
     - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: shortcutIconImage
       value: 
@@ -66,10 +70,14 @@ PrefabInstance:
     - target: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a83c5ac9c465641119d86806d91dc888, type: 3}
+      objectReference: {fileID: 21300000, guid: a502745b1c4c345039b9c15941aa0c0e, type: 3}
+    - target: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_Name
-      value: SelectAllShortcut
+      value: UndoShortcut
       objectReference: {fileID: 0}
     - target: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_IsActive
@@ -79,6 +87,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92148936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.92148936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.92148936
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
 --- !u!1 &812451871337514481 stripped
@@ -86,7 +106,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
   m_PrefabInstance: {fileID: 5602698562205239865}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-631142824499982072
+--- !u!114 &-8703117834673624987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,13 +115,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 812451871337514481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4000cd3ff71044aeda30fc28df8eb02b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ac9f8806af9f48c682293268ececfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eShortcut: 0
-  shortcutName: SelectAll
-  shortcutAvailability: 0
-  shortcutActivity: 0
+  eShortcut: 3
+  shortcutName: Undo
+  shortcutAvailability: 1
+  shortcutActivity: 1
 --- !u!114 &8288777048797716805 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}

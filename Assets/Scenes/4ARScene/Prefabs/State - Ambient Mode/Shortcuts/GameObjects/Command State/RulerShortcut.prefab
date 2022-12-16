@@ -7,10 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 318715077732873269, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_text
+      value: Ruler
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: spriteActive
+      value: 
+      objectReference: {fileID: 21300000, guid: e1c48afa10c5b410b928f72ba036228d, type: 3}
     - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: spriteInactive
       value: 
-      objectReference: {fileID: 21300000, guid: 50a0fadc8412a48ceb9c7450c429eefc, type: 3}
+      objectReference: {fileID: 21300000, guid: e1c48afa10c5b410b928f72ba036228d, type: 3}
     - target: {fileID: 2289264651046323398, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: shortcutIconImage
       value: 
@@ -66,10 +74,10 @@ PrefabInstance:
     - target: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 50a0fadc8412a48ceb9c7450c429eefc, type: 3}
+      objectReference: {fileID: 21300000, guid: e1c48afa10c5b410b928f72ba036228d, type: 3}
     - target: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_Name
-      value: SaveAsShortcut
+      value: RulerShortcut
       objectReference: {fileID: 0}
     - target: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: m_IsActive
@@ -79,6 +87,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92148936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.92148936
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744661982564245938, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.92148936
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
 --- !u!1 &812451871337514481 stripped
@@ -86,7 +106,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5081925169849126856, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
   m_PrefabInstance: {fileID: 5602698562205239865}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-1910589529542477384
+--- !u!114 &3759931460173573832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,13 +115,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 812451871337514481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a3467b3696d4b05961579141560ec4, type: 3}
+  m_Script: {fileID: 11500000, guid: 418eead76505a4192be2a9e69b760fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eShortcut: 3
-  shortcutName: Save As
-  shortcutAvailability: 0
-  shortcutActivity: 0
+  eShortcut: 0
+  shortcutName: Ruler
+  shortcutAvailability: 1
+  shortcutActivity: 1
 --- !u!114 &8288777048797716805 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4523705740185725820, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}

@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyName: 
-  letterText: {fileID: 0}
+  letterText: {fileID: 8864110013499526539}
   secondaryText: {fileID: 0}
   letterImage: {fileID: 0}
   keyOutlineObject: {fileID: 5031834268896439589}
@@ -331,7 +331,7 @@ MonoBehaviour:
   keyOutline: 1
   uiShortcutState: 0
   currentShortcut: {fileID: 0}
-  keyShortcutState: 8
+  keyShortcutState: 9
 --- !u!114 &2790172014376396931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,15 +380,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  copyShortcut: {fileID: 0}
+  undoShortcut: {fileID: -8703117834673624987, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
   cutShortcut: {fileID: 8895951738921756728, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
-  pasteShortcut: {fileID: 0}
-  printShortcut: {fileID: 0}
-  rulerShortcut: {fileID: 0}
-  undoShortcut: {fileID: 0}
-  saveAsShortcut: {fileID: 0}
-  screenshotShortcut: {fileID: 0}
-  selectAllShortcut: {fileID: 0}
+  copyShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+  pasteShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
+  printShortcut: {fileID: -8817291923460461496, guid: f7ef3545e68de40feaa64d42b709944a, type: 3}
+  rulerShortcut: {fileID: 3759931460173573832, guid: d129344ae80aa41ba8171c55c059fa59, type: 3}
+  saveAsShortcut: {fileID: -1910589529542477384, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
+  screenshotShortcut: {fileID: -2964151953571861164, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
+  selectAllShortcut: {fileID: -631142824499982072, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
 --- !u!114 &8303176327665375246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c61dca94a3cab47c395abaf2f0463384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentUIShortcut: {fileID: 0}
+  currentUIShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   learningModeStartShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
   favoriteShortcut: {fileID: 3903125696475866220, guid: 5991896312d4142e6ac8279579267fcc, type: 3}
   previousShortcut: {fileID: 1705632071668936343, guid: df64510145a62459689c10cdc1e47476, type: 3}

@@ -34,7 +34,11 @@ namespace AR_Keyboard.State
             foreach (var kvp in keyboard.primaryKeyDictionary)
             {
                 var primaryKey = kvp.Value;
-                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                
+                //ADDITION
+                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+                //
+                
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 

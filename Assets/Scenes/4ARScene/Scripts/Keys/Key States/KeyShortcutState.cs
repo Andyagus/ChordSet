@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using AR_Keyboard;
 using DG.Tweening;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyShortcutState : MonoBehaviour
 {
     
     [Header("Command State Shortcuts")]
+    public Shortcut undoShortcut;
     public Shortcut cutShortcut;
+    public Shortcut copyShortcut;
     public Shortcut pasteShortcut;
     public Shortcut printShortcut;
     public Shortcut rulerShortcut;
-    public Shortcut undoShortcut;
     
     [Header("Command-Shift State Shortcuts")]
     public Shortcut saveAsShortcut;
@@ -23,11 +26,12 @@ public class KeyShortcutState : MonoBehaviour
     
     public enum EKeyShortcutState
     {
+        UNDO_SHORTCUT,
         CUT_SHORTCUT,
+        COPY_SHORTCUT,
         PASTE_SHORTCUT,
         PRINT_SHORTCUT,
         RULER_SHORTCUT,
-        UNDO_SHORTCUT,
         SAVE_AS_SHORTCUT,
         SCREENSHOT_SHORTCUT,
         SELECT_ALL_SHORTCUT,
@@ -39,126 +43,93 @@ public class KeyShortcutState : MonoBehaviour
 
         switch (state)
         {
+            case EKeyShortcutState.UNDO_SHORTCUT:
+                InstantiateShortcut(primaryKey, undoShortcut);
+                break;
             case EKeyShortcutState.CUT_SHORTCUT:
-                Cut(primaryKey);
+                InstantiateShortcut(primaryKey, cutShortcut);
+                break;
+            case EKeyShortcutState.COPY_SHORTCUT:
+                InstantiateShortcut(primaryKey, copyShortcut);
                 break;
             case EKeyShortcutState.PASTE_SHORTCUT:
+                InstantiateShortcut(primaryKey, pasteShortcut);
                 break;
             case EKeyShortcutState.PRINT_SHORTCUT:
+                InstantiateShortcut(primaryKey, printShortcut);
                 break;
             case EKeyShortcutState.RULER_SHORTCUT:
-                break;
-            case EKeyShortcutState.UNDO_SHORTCUT:
+                InstantiateShortcut(primaryKey, rulerShortcut);
                 break;
             case EKeyShortcutState.SAVE_AS_SHORTCUT:
+                InstantiateShortcut(primaryKey, saveAsShortcut);
                 break;
             case EKeyShortcutState.SCREENSHOT_SHORTCUT:
+                InstantiateShortcut(primaryKey, screenshotShortcut);
                 break;
             case EKeyShortcutState.SELECT_ALL_SHORTCUT:
+                InstantiateShortcut(primaryKey, selectAllShortcut);
                 break;
             case EKeyShortcutState.NONE:
-                None(primaryKey);
+                EraseShortcut(primaryKey);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
     }
-    
 
-    private void Cut(ARPrimaryKey primaryKey)
+
+    private void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
     {
-        if (cutShortcut != null)
+        var sequence = DOTween.Sequence();
+
+        sequence.Pause();
+        
+        if (shortcut != null)
         {
-            var shortcut = Instantiate(cutShortcut, primaryKey.transform);
-            var offset = new Vector3(0f, 0.0007f, 0f);
-            shortcut.transform.position = primaryKey.transform.position + offset;
-            primaryKey.currentShortcut = shortcut;
+            sequence.AppendCallback(() =>
+            {
+                if (primaryKey.currentShortcut != null)
+                {
+                    Destroy(primaryKey.currentShortcut.gameObject);
+                }
+            }); 
+            
+            sequence.Append(primaryKey.letterText.DOFade(0, 1f));
+
+            sequence.InsertCallback(0, () =>
+            {
+                var newShortcut = Instantiate(shortcut, primaryKey.transform);
+                var offset = new Vector3(0f, 0.0007f, 0f);
+                newShortcut.transform.position = primaryKey.transform.position + offset;
+                primaryKey.currentShortcut = newShortcut;
+                newShortcut.GetComponentInChildren<Image>().DOFade(1, 1f);
+            });
+            
+            sequence.Play();
         }
-
     }
-
-    private void None(ARPrimaryKey primaryKey)
+    
+    private void EraseShortcut(ARPrimaryKey primaryKey)
     {
-        Destroy(primaryKey.currentShortcut.gameObject);
+
+        var sequence = DOTween.Sequence();
+
+        sequence.Pause();
+        
+        sequence.Append(primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0, 1f));
+        sequence.Insert(0, primaryKey.letterText.DOFade(1, 1f));
+
+        sequence.AppendCallback(() =>
+        {
+            if (primaryKey.currentShortcut != null)
+            {
+                Destroy(primaryKey.currentShortcut.gameObject);
+            }
+        });
+
+        sequence.Play();
     }
-
-
-    // private void NoShortcut(ARPrimaryKey primaryKey)
-    // {
-    //     // primaryKey.keyText.DOFade(1, 0.8f);
-    //     
-    //     if (_currentShortcut)
-    //     {
-    //         Destroy(_currentShortcut.gameObject);
-    //     }
-    // }
-    //
-    // private void WelcomeStateShortcut(ARPrimaryKey primaryKey)
-    // {
-    //     if (_currentShortcut)
-    //     {
-    //         Destroy(_currentShortcut.gameObject);
-    //     }
-    //     
-    //     if (welcomeStateShortcut != null)
-    //     {
-    //         // primaryKey.keyText.DOFade(0, 0.8f);
-    //         _currentShortcut = Instantiate(welcomeStateShortcut, primaryKey.transform);
-    //         var offset = new Vector3(0f, 0.0007f, 0f);
-    //         _currentShortcut.transform.position = primaryKey.transform.position + offset;
-    //     }    
-    // }
-    //
-    // private void TypingStateShortcut(ARPrimaryKey primaryKey)
-    // {
-    //
-    //     if (_currentShortcut)
-    //     {
-    //         Destroy(_currentShortcut.gameObject);
-    //     }
-    //     
-    //     if (typingStateShortcut != null)
-    //     {
-    //         // primaryKey.keyText.DOFade(0, 0.8f);
-    //         _currentShortcut = Instantiate(typingStateShortcut, primaryKey.transform);
-    //         var offset = new Vector3(0f, 0.0007f, 0f);
-    //         _currentShortcut.transform.position = primaryKey.transform.position + offset;
-    //     }
-    // }
-    //
-    // private void CommandStateShortcut(ARPrimaryKey primaryKey)
-    // {
-    //
-    //     if (_currentShortcut)
-    //     {
-    //         Destroy(_currentShortcut.gameObject);
-    //     }
-    //
-    //     if (commandStateShortcut != null)
-    //     {
-    //         // primaryKey.keyText.DOFade(0, 0.8f);
-    //         _currentShortcut = Instantiate(commandStateShortcut, primaryKey.transform);
-    //         var offset = new Vector3(0f, 0.0007f, 0f);
-    //         _currentShortcut.transform.position = primaryKey.transform.position + offset;
-    //         primaryKey.primaryCurrentShortcut = commandShiftStateShortcut;
-    //     }
-    // }
-    //
-    // private void CommandShiftStateShortcut(ARPrimaryKey primaryKey)
-    // {
-    //     if (_currentShortcut)
-    //     {
-    //         Destroy(_currentShortcut.gameObject);
-    //     }
-    //
-    //     if (commandShiftStateShortcut != null)
-    //     {
-    //         // primaryKey.keyText.DOFade(0, 0.8f);
-    //         _currentShortcut = Instantiate(commandShiftStateShortcut, primaryKey.transform);
-    //         var offset = new Vector3(0f, 0.0007f, 0f);
-    //         _currentShortcut.transform.position = primaryKey.transform.position + offset;
-    //     }
-    // }
     
     
 }
