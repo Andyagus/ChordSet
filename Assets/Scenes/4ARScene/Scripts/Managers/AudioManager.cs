@@ -42,11 +42,11 @@ public class AudioManager : MonoBehaviour, IObserver
         Shortcut shortcut = (Shortcut)entity;
         switch (shortcut.eShortcut)
         {
-            case EShortcuts.CUT_SHORTCUT:
+            case Shortcut.EShortcuts.CUT_SHORTCUT:
                 _audioSource.clip = bellClip;
                 _audioSource.Play();
                 break;
-            case EShortcuts.UNDO_SHORTCUT:
+            case Shortcut.EShortcuts.UNDO_SHORTCUT:
                 _audioSource.clip = bellClip;
                 _audioSource.Play();
                 break;

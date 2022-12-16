@@ -24,11 +24,11 @@ public class LearningModeWelcome : ARKeyboardState
 
         foreach (var key in keyboard.primaryKeys)
         {
-            key.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+            // key.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
 
             if (key.KeyName == "space")
             {
-                key.displayText.DOText("Learning Mode", 2.4f);
+                // key.displayText.DOText("Learning Mode", 2.4f);
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISPLAY_TEXT_IMAGE;
             }else if (key.KeyName == "G")
             {

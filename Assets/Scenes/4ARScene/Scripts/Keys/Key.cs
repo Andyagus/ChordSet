@@ -8,35 +8,37 @@ using UnityEngine.UI;
 
 public class Key : MonoBehaviour
 {
-    [Header("Attributes")]
     public string KeyName;
-    public KeyCode KeyCode;
-    [SerializeField] public Image secondaryImage;
-    [SerializeField] public Image displayImage;
-    [SerializeField] public TextMeshProUGUI displayText;
+    public TextMeshProUGUI letterText;
+    public TextMeshProUGUI secondaryText;
+    public Image letterImage;
+    [SerializeField] private KeyOutline keyOutlineObject;
     
-    [Header("Key Pressed State")]
-    private KeyPressedState _keyPressedState;
+    [Header("Parent Key States")]
     public EKeyState keyPressed = EKeyState.KEY_UNPRESSED;
     private EKeyState _prevPressed = EKeyState.KEY_UNPRESSED;
-
-    [Header("Key Availability State")] 
+    private KeyPressedState _keyPressedState;
+    
     private KeyAvailabilityState _keyAvailabilityState;
     public KeyAvailabilityState.EKeyAvailability keyAvailability;
     private KeyAvailabilityState.EKeyAvailability _prevAvailability = KeyAvailabilityState.EKeyAvailability.NONE;
-    
-    [Header("Key Outline State")]
-    [SerializeField] private KeyOutline keyOutlineObject;
     private KeyOutlineState _keyOutlineState;
     public KeyOutlineState.EKeyOutline keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     private KeyOutlineState.EKeyOutline _prevOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     
+    [Header("UI Shortcut State")] 
+    private UIShortcutState _uiShortcutState;
+    public UIShortcutState.EuiShortcutState uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
+    private UIShortcutState.EuiShortcutState _prevUiShortcutState = UIShortcutState.EuiShortcutState.NONE;
+
    
     public virtual void Awake()
     {
         _keyPressedState = GetComponent<KeyPressedState>();
         _keyOutlineState = GetComponent<KeyOutlineState>();
         _keyAvailabilityState = GetComponent<KeyAvailabilityState>();
+        _uiShortcutState = GetComponent<UIShortcutState>();
+
     }
 
     public virtual void Update()
@@ -59,6 +61,10 @@ public class Key : MonoBehaviour
             _prevAvailability = keyAvailability;
         }
 
+        if (uiShortcutState != _prevUiShortcutState)
+        {
+            _uiShortcutState.SetUIState(uiShortcutState, this);
+        }
       
     }
 }

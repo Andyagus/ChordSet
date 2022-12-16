@@ -53,7 +53,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("C", 0.2f);
+                // primaryKey.keyText.DOText("C", 0.2f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
                 
@@ -65,7 +65,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("H", 0.5f);
+                // primaryKey.keyText.DOText("H", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -76,7 +76,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("O", 0.5f);
+                // primaryKey.keyText.DOText("O", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -87,7 +87,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("R", 0.5f);
+                // primaryKey.keyText.DOText("R", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -98,7 +98,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("D", 0.5f);
+                // primaryKey.keyText.DOText("D", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -110,7 +110,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("S", 0.5f);
+                // primaryKey.keyText.DOText("S", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
 
@@ -122,7 +122,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("E", 0.5f);
+                // primaryKey.keyText.DOText("E", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -133,7 +133,7 @@ public class WelcomeModeIntro : ARKeyboardState
                 yield return new WaitForSeconds(0.02f);
                 var primaryKey = key.GetComponent<ARPrimaryKey>();
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyText.DOText("T", 0.5f);
+                // primaryKey.keyText.DOText("T", 0.5f);
                 yield return new WaitForSeconds(0.2f);
                 key.keyPressed = EKeyState.KEY_UNPRESSED;
             }
@@ -146,9 +146,9 @@ public class WelcomeModeIntro : ARKeyboardState
             {
                 yield return new WaitForSeconds(2);
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.displayText.DOText("START", 0.5f);
-                key.displayText.DOFade(1, 2.0f);
-                key.displayImage.DOFade(1, 2.1f);
+                // key.displayText.DOText("START", 0.5f);
+                // key.displayText.DOFade(1, 2.0f);
+                // key.displayImage.DOFade(1, 2.1f);
             } 
 
         }

@@ -37,8 +37,8 @@ namespace AR_Keyboard
         public List<Key> keys;
         public List<ARModifierKey> modifierKeys;
         public List<ARPrimaryKey> primaryKeys;
-        private Dictionary<string, ARPrimaryKey> _primaryKeyDictionary; 
-        private Dictionary<string, ARModifierKey> _modifierKeyDictionary;
+        public Dictionary<string, ARPrimaryKey> primaryKeyDictionary; 
+        public Dictionary<string, ARModifierKey> modifierKeyDictionary;
         
         private KeySyncDictionary _keySyncDictionary;
 
@@ -121,23 +121,23 @@ namespace AR_Keyboard
         
         private void InitializeDictionary()
         {
-            _primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
-            _modifierKeyDictionary = new Dictionary<string, ARModifierKey>();
+            primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
+            modifierKeyDictionary = new Dictionary<string, ARModifierKey>();
 
             foreach (var primaryKey in primaryKeys)
             {
-                if (!_primaryKeyDictionary.ContainsKey(primaryKey.KeyName))
+                if (!primaryKeyDictionary.ContainsKey(primaryKey.KeyName))
                 {
-                    _primaryKeyDictionary.Add(primaryKey.KeyName, primaryKey);
+                    primaryKeyDictionary.Add(primaryKey.KeyName, primaryKey);
                 }
             }
 
             foreach (var modifierKey in modifierKeys)
             {
                 
-                if (!_modifierKeyDictionary.ContainsKey(modifierKey.KeyName))
+                if (!modifierKeyDictionary.ContainsKey(modifierKey.KeyName))
                 {
-                    _modifierKeyDictionary.Add(modifierKey.KeyName, modifierKey);
+                    modifierKeyDictionary.Add(modifierKey.KeyName, modifierKey);
                 }
             }
         }
@@ -152,26 +152,49 @@ namespace AR_Keyboard
                 var keyName = kvp.Value.keyName;
                 var keyState = kvp.Value.keyState;
 
-                if (_primaryKeyDictionary.ContainsKey(keyName))
+                if (primaryKeyDictionary.ContainsKey(keyName))
                 {
-                    if (_primaryKeyDictionary[keyName].keyPressed == EKeyState.KEY_UNPRESSED)
+                    if (primaryKeyDictionary[keyName].keyPressed == EKeyState.KEY_UNPRESSED)
                     {
                         if (keyState == EKeyState.KEY_PRESSED)
                         {
-                            _primaryKeyDictionary[keyName].keyPressed = keyState;
+                            primaryKeyDictionary[keyName].keyPressed = keyState;
+                            HandleInput(primaryKeyDictionary[keyName]);
                         }
-                        
                     }
-                    HandleInput(_primaryKeyDictionary[keyName]);
+
+                    if (primaryKeyDictionary[keyName].keyPressed == EKeyState.KEY_PRESSED)
+                    {
+                        if (keyState == EKeyState.KEY_UNPRESSED)
+                        {
+                            primaryKeyDictionary[keyName].keyPressed = keyState;
+                            HandleInput(primaryKeyDictionary[keyName]);
+                        }
+                    }
                 }
                 
-                if (_modifierKeyDictionary.ContainsKey(keyName))
+                if (modifierKeyDictionary.ContainsKey(keyName))
                 {
-                    if(_modifierKeyDictionary[keyName].keyPressed != keyState)
+                    
+                    if (modifierKeyDictionary[keyName].keyPressed == EKeyState.KEY_UNPRESSED)
                     {
-                        _modifierKeyDictionary[keyName].keyPressed = keyState;
+                        if (keyState == EKeyState.KEY_PRESSED)
+                        {
+                            modifierKeyDictionary[keyName].keyPressed = keyState;
+                            HandleInput(modifierKeyDictionary[keyName]);
+                        }
                     }
-                    HandleInput(_modifierKeyDictionary[keyName]);
+                    
+                    if (modifierKeyDictionary[keyName].keyPressed == EKeyState.KEY_PRESSED)
+                    {
+                        if (keyState == EKeyState.KEY_UNPRESSED)
+                        {
+                            modifierKeyDictionary[keyName].keyPressed = keyState;
+                            HandleInput(modifierKeyDictionary[keyName]);
+                        }
+                    }
+                    
+                    
                 }
             }
         }

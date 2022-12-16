@@ -15,8 +15,9 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-            foreach (var modifierKey in keyboard.modifierKeys)
+            foreach (var kvp in keyboard.modifierKeyDictionary)
             {
+                var modifierKey = kvp.Value;
                 modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 modifierKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 
@@ -29,10 +30,11 @@ namespace AR_Keyboard.State
                     modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
                 }
             }
-            
-            foreach (var primaryKey in keyboard.primaryKeys)
+
+            foreach (var kvp in keyboard.primaryKeyDictionary)
             {
-                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                var primaryKey = kvp.Value;
+                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
 
@@ -45,15 +47,16 @@ namespace AR_Keyboard.State
                     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
                 {
                     primaryKey.ResetCharacter();
-      
+  
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
-                
+            
                 var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
-                if (shortcutState.typingStateShortcut != null)
-                {
-                    primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.TYPING_STATE_SHORTCUT;
-                }
+                // if (shortcutState.typingStateShortcut != null)
+                // {
+                //     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.TYPING_STATE_SHORTCUT;
+                // }
+            
             }
         }
         

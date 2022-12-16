@@ -15,24 +15,32 @@ namespace AR_Keyboard
     {
         
         public Subject onShortcutExecuted;
+
+        public enum EShortcuts
+        {
+            COPY_SHORTCUT,
+            PAST_SHORTCUT,
+            UNDO_SHORTCUT,
+            CUT_SHORTCUT
+            
+        }
         public EShortcuts eShortcut;
         public string shortcutName;
         
         [Header("Shortcut Availability State")]
         private ShortcutAvailabilityState _availabilityState;
-
+        
         public ShortcutAvailabilityState.EShortcutAvailability shortcutAvailability;
         private ShortcutAvailabilityState.EShortcutAvailability _prevAvailability = ShortcutAvailabilityState.EShortcutAvailability.UNAVAILABLE;
-
+        
         [Header("Shortcut Activity State")] 
         private ShortutActivityState _activityState;
-
+        
         public ShortutActivityState.EShortcutActivity shortcutActivity;
         private ShortutActivityState.EShortcutActivity _prevShortcutActivity = ShortutActivityState.EShortcutActivity.INACTIVE; 
         
         public virtual void Awake()
         {
-            // _shortcutMicroState = GetComponent<ShortcutMicroState>();   
             _availabilityState = GetComponent<ShortcutAvailabilityState>();
             _activityState = GetComponent<ShortutActivityState>();
             onShortcutExecuted = new Subject();
@@ -40,7 +48,6 @@ namespace AR_Keyboard
 
         public virtual void Update()
         {
-            
 
             if (shortcutAvailability != _prevAvailability)
             {

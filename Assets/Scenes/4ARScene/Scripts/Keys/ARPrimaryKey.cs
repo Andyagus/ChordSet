@@ -14,34 +14,17 @@ namespace AR_Keyboard
 {
     public class ARPrimaryKey : Key
     {
-        private ARKeyboard _arKeyboard;
-        
-        
-        public TextMeshProUGUI keyText;
-        
-        
-        private TextMeshProUGUI _textMesh;
-
-        public Shortcut primaryCurrentShortcut;
-        [Tooltip("Primary Key Shortcut State")]
+        [Header("Primary Key State")]
+        public Shortcut currentShortcut;
         private KeyShortcutState _keyShortcutState;
-        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-
-        [Header("UI Shortcut State")] 
-        private UIShortcutState _uiShortcutState;
-
-        public UIShortcutState.EuiShortcutState uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
-        private UIShortcutState.EuiShortcutState _prevUiShortcutState = UIShortcutState.EuiShortcutState.NONE;
-
+        public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NONE;
+        
         public override void Awake()
         {
             _keyShortcutState = GetComponent<KeyShortcutState>();
-            _uiShortcutState = GetComponent<UIShortcutState>();
             
             DOTween.Clear();
-            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
-            _arKeyboard = GetComponentInParent<ARKeyboard>();
             base.Awake();
         }
 
@@ -52,13 +35,6 @@ namespace AR_Keyboard
                 _keyShortcutState.SetKeyShortcutState(keyShortcutState, this);
                 _prevShortcut = keyShortcutState;
             }
-
-            if (uiShortcutState != _prevUiShortcutState)
-            {
-                _uiShortcutState.SetUIState(uiShortcutState, this);
-                _prevUiShortcutState = uiShortcutState;
-            }
-            
             base.Update();
         }
 

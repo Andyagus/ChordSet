@@ -26,19 +26,19 @@ namespace AR_Keyboard.State
             
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
+                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
 
                 var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
                 
-                if (shortcutState.commandStateShortcut != null)
-                {
-                    primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.COMMAND_STATE_SHORTCUT;
-                }
-                else
-                {
-                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-                }
+                // if (shortcutState.commandStateShortcut != null)
+                // {
+                //     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.COMMAND_STATE_SHORTCUT;
+                // }
+                // else
+                // {
+                //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                // }
             }
         }
         
