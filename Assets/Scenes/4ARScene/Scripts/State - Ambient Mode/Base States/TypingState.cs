@@ -47,6 +47,7 @@ namespace AR_Keyboard.State
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
                 }
 
+                //should be states
                 if (primaryKey.KeyName == "Q" || primaryKey.KeyName == "W" || primaryKey.KeyName == "E" || primaryKey.KeyName == "R" 
                     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
                 {
@@ -54,13 +55,7 @@ namespace AR_Keyboard.State
   
                     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
                 }
-            
-                var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
-                // if (shortcutState.typingStateShortcut != null)
-                // {
-                //     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.TYPING_STATE_SHORTCUT;
-                // }
-            
+
             }
         }
         

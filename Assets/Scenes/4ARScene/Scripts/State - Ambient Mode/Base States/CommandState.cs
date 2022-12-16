@@ -22,25 +22,13 @@ namespace AR_Keyboard.State
                     modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
                 }
             }
-
-            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
             
             foreach (var primaryKey in keyboard.primaryKeys)
             {
-                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-
-                var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
-                
-                // if (shortcutState.commandStateShortcut != null)
-                // {
-                //     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.COMMAND_STATE_SHORTCUT;
-                // }
-                // else
-                // {
-                //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-                // }
             }
+            
+            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
         }
 
         private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)

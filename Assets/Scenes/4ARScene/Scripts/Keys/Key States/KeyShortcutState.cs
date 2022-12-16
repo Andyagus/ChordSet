@@ -100,9 +100,9 @@ public class KeyShortcutState : MonoBehaviour
             sequence.InsertCallback(0, () =>
             {
                 var newShortcut = Instantiate(shortcut, primaryKey.transform);
+                primaryKey.currentShortcut = newShortcut;
                 var offset = new Vector3(0f, 0.0007f, 0f);
                 newShortcut.transform.position = primaryKey.transform.position + offset;
-                primaryKey.currentShortcut = newShortcut;
                 newShortcut.GetComponentInChildren<Image>().DOFade(1, 1f);
             });
             
@@ -116,9 +116,12 @@ public class KeyShortcutState : MonoBehaviour
         var sequence = DOTween.Sequence();
 
         sequence.Pause();
-        
-        sequence.Append(primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0, 1f));
-        sequence.Insert(0, primaryKey.letterText.DOFade(1, 1f));
+        //TODO: Problem is key is already deleted and then running this.
+        // if (primaryKey.currentShortcut != null)
+        // {
+            sequence.Append(primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0, 1f));
+            sequence.Insert(0, primaryKey.letterText.DOFade(1, 1f));
+        // }
 
         sequence.AppendCallback(() =>
         {
