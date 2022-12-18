@@ -8,10 +8,5 @@ using UnityEngine;
 
 public class NullObjectShortcut : Shortcut
 {
-    public override void SetGraphics(ARPrimaryKey key)
-    {
-        // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.UNAVAILABLE);
-    }
-
     public override void Execute(ARPrimaryKey key) {}
 }

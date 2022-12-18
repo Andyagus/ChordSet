@@ -48,22 +48,12 @@ namespace AR_Keyboard
                 _prevShortcutActivity = shortcutActivity;
             }
         }
-        
-        
+
         public virtual void Execute(ARPrimaryKey key)
         {
             // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
         }
-
-        public virtual void SetGraphics(ARPrimaryKey key)
-        {
-            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
-        }
-
-        public virtual void StopSequence(ARPrimaryKey key)
-        {
-            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PAUSE);
-        }
+        
         
         
     }
