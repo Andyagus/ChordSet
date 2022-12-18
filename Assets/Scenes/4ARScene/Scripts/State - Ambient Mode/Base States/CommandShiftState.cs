@@ -7,43 +7,35 @@ using UnityEngine;
 
 public class CommandShiftState : ARKeyboardState
 {
-    public ARKeyboardState CommandState;
+    public ARKeyboardState commandState;
     
     public override void Entry(ARKeyboard keyboard)
     {
         foreach (var primaryKey in keyboard.primaryKeys)
         {
-            
-            // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NO_SHORTCUT;
-            // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-
-            var shortcutState = primaryKey.GetComponentInChildren<KeyShortcutState>();
-            // if (shortcutState.commandShiftStateShortcut != null)
-            // {
-            //     primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.COMMAND_SHIFT_STATE_SHORTCUT;
-            // }
-            // else
-            // {
-            //     // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-            // }
-            
+            primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
         }
+    }
 
-        foreach (var modifierKey in keyboard.modifierKeys)
-        {
-            
-        }
-
+    private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
+    {
+        // keyboardPrimaryKeyDictionary["A"].keyShortcutState = KeyShortcutState.EKeyShortcutState.SELECT_ALL_SHORTCUT;
+        // keyboardPrimaryKeyDictionary["H"].keyShortcutState = KeyShortcutState.EKeyShortcutState.SAVE_AS_SHORTCUT;
+        // keyboardPrimaryKeyDictionary["4"].keyShortcutState = KeyShortcutState.EKeyShortcutState.SCREENSHOT_SHORTCUT;
     }
 
     public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
     {
         if (key.KeyName == "shift-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
         {
-            var commandState = Instantiate(CommandState);
-            return commandState;
+            var newState = Instantiate(this.commandState);
+            return newState;
         }
 
+        //TODO: add command-left shortcut, requires regular shift state
+        //if(key.KeyName=="command-left" && key.keyPressed == EKeyState.UNPRESSED){}
+        
         return null;
     }
 }

@@ -10,7 +10,11 @@ using UnityEngine.UI;
 
 public class KeyShortcutState : MonoBehaviour
 {
-    
+
+    private Sequence _instantiateSequence;
+    private Sequence _destroySequence;
+    private Vector3 _placementOffset =  new Vector3(0f, 0.0007f, 0f);
+
     [Header("Command State Shortcuts")]
     public Shortcut undoShortcut;
     public Shortcut cutShortcut;
@@ -81,58 +85,28 @@ public class KeyShortcutState : MonoBehaviour
 
     private void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
     {
-        var sequence = DOTween.Sequence();
-
-        sequence.Pause();
+        //killing other sequence so they don't interfere 
+        _destroySequence.Kill();
+        _instantiateSequence = DOTween.Sequence();
         
-        if (shortcut != null)
-        {
-            sequence.AppendCallback(() =>
-            {
-                if (primaryKey.currentShortcut != null)
-                {
-                    Destroy(primaryKey.currentShortcut.gameObject);
-                }
-            }); 
-            
-            sequence.Append(primaryKey.letterText.DOFade(0, 1f));
-
-            sequence.InsertCallback(0, () =>
-            {
-                var newShortcut = Instantiate(shortcut, primaryKey.transform);
-                primaryKey.currentShortcut = newShortcut;
-                var offset = new Vector3(0f, 0.0007f, 0f);
-                newShortcut.transform.position = primaryKey.transform.position + offset;
-                newShortcut.GetComponentInChildren<Image>().DOFade(1, 1f);
-            });
-            
-            sequence.Play();
-        }
+        //TODO: Add text state within the shortcut state machine 
+        
+        var newShortcut = Instantiate(shortcut, primaryKey.transform);
+        primaryKey.currentShortcut = newShortcut;
+        newShortcut.transform.position = primaryKey.transform.position + _placementOffset;
+        _instantiateSequence.Append(newShortcut.GetComponentInChildren<Image>().DOFade(1, 1f));
     }
     
     private void EraseShortcut(ARPrimaryKey primaryKey)
     {
-
-        var sequence = DOTween.Sequence();
-
-        sequence.Pause();
-        //TODO: Problem is key is already deleted and then running this.
-        // if (primaryKey.currentShortcut != null)
-        // {
-            sequence.Append(primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0, 1f));
-            sequence.Insert(0, primaryKey.letterText.DOFade(1, 1f));
-        // }
-
-        sequence.AppendCallback(() =>
+        _instantiateSequence.Kill();
+        _destroySequence = DOTween.Sequence();
+        
+        _destroySequence.Append(primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0, 1f));
+        _destroySequence.OnKill(() =>
         {
-            if (primaryKey.currentShortcut != null)
-            {
-                Destroy(primaryKey.currentShortcut.gameObject);
-            }
+            Destroy(primaryKey.currentShortcut.gameObject);
         });
 
-        sequence.Play();
     }
-    
-    
 }

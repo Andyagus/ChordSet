@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: Command-Shift
-  CommandState: {fileID: 1785352829330358206, guid: bd31f069e8df848f494212880dd4580c, type: 3}
+  commandState: {fileID: 1785352829330358206, guid: bd31f069e8df848f494212880dd4580c, type: 3}

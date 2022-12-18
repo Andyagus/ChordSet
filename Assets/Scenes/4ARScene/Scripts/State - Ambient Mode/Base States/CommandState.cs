@@ -25,6 +25,7 @@ namespace AR_Keyboard.State
             
             foreach (var primaryKey in keyboard.primaryKeys)
             {
+                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
                 primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
             }
             
@@ -34,6 +35,9 @@ namespace AR_Keyboard.State
         private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
         {
             keyboardPrimaryKeyDictionary["Z"].keyShortcutState = KeyShortcutState.EKeyShortcutState.UNDO_SHORTCUT;
+            // keyboardPrimaryKeyDictionary["X"].keyShortcutState = KeyShortcutState.EKeyShortcutState.CUT_SHORTCUT;
+            // keyboardPrimaryKeyDictionary["P"].keyShortcutState = KeyShortcutState.EKeyShortcutState.PRINT_SHORTCUT;
+            // keyboardPrimaryKeyDictionary["R"].keyShortcutState = KeyShortcutState.EKeyShortcutState.RULER_SHORTCUT;
         }
 
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
@@ -53,8 +57,8 @@ namespace AR_Keyboard.State
                 return Instantiate(typingState);
             }else if (key.KeyName == "shift-left" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
-                var cmdShiftState = Instantiate(this.commandShiftState);
-                return cmdShiftState;
+                var newState = Instantiate(commandShiftState);
+                return newState;
             }
             else
             {
