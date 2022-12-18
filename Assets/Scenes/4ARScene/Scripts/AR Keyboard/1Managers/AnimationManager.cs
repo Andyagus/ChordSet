@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using AR_Keyboard;
 using DG.Tweening;
-using Effects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

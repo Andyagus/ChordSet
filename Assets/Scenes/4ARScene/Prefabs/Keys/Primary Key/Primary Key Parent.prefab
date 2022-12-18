@@ -380,15 +380,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  undoShortcut: {fileID: -8703117834673624987, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
-  cutShortcut: {fileID: 8895951738921756728, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
+  undoShortcut: {fileID: 4448066114975224257, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
+  cutShortcut: {fileID: 4448066114975224257, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
   copyShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   pasteShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-  printShortcut: {fileID: -8817291923460461496, guid: f7ef3545e68de40feaa64d42b709944a, type: 3}
-  rulerShortcut: {fileID: 3759931460173573832, guid: d129344ae80aa41ba8171c55c059fa59, type: 3}
-  saveAsShortcut: {fileID: -1910589529542477384, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
-  screenshotShortcut: {fileID: -2964151953571861164, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
-  selectAllShortcut: {fileID: -631142824499982072, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
+  printShortcut: {fileID: 4448066114975224257, guid: f7ef3545e68de40feaa64d42b709944a, type: 3}
+  rulerShortcut: {fileID: 4448066114975224257, guid: d129344ae80aa41ba8171c55c059fa59, type: 3}
+  saveAsShortcut: {fileID: 4448066114975224257, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
+  screenshotShortcut: {fileID: 4448066114975224257, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
+  selectAllShortcut: {fileID: 4448066114975224257, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
 --- !u!114 &8303176327665375246
 MonoBehaviour:
   m_ObjectHideFlags: 0

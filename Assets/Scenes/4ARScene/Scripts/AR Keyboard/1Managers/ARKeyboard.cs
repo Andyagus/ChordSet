@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AR_Keyboard.State;
-using Desktop;
 using DG.Tweening;
 using Enums;
-using Interfaces;
 using Normal.Realtime.Serialization;
-using Normcore;
 using UnityEngine;
 
 
@@ -70,10 +67,7 @@ namespace AR_Keyboard
         private void Start()
         {
             DOTween.SetTweensCapacity(500, 125);
-            if (onAmbientStateChanged != null)
-            {
-                onAmbientStateChanged(_ambientModeState);
-            }
+            
             _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
         }
         
@@ -266,7 +260,7 @@ namespace AR_Keyboard
             }
             
             var state = _ambientModeState.HandleInput(key, this);
-            //         
+            
             if (state != null)
             {
                 _ambientModeState.Exit(this);
@@ -274,6 +268,7 @@ namespace AR_Keyboard
                 _ambientModeState = state;
                 _ambientModeState.transform.SetParent(this.transform);
                 _ambientModeState.Entry(this);
+                
                 StartCoroutine(AmbientStateChangeCoroutine());
             }
         }
@@ -281,9 +276,9 @@ namespace AR_Keyboard
 
         private IEnumerator AmbientStateChangeCoroutine()
         {
-            //better to wait if returned shortcut t
+            //TODO review this portion, maybe make coroutine not time based, and shortcut returned based.
+            //Delaying so that shortcuts are instantiated before calling event
             yield return new WaitForSeconds(0.4f);
-            //this is for subscribers of the shortcut;;;;;take out of coroutine--
             onAmbientStateChanged(_ambientModeState);
         }
     }

@@ -1,14 +1,6 @@
-using System;
-using System.Net.Mime;
-using AR_Keyboard.State;
 using DG.Tweening;
-using Effects;
-using Enums;
-using Interfaces;
-using Scenes._4ARScene.Scripts.AR_Keyboard;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AR_Keyboard
 {

@@ -1,14 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using AR_Keyboard;
 using AR_Keyboard.State;
-using Enums;
 using Interfaces;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour, IObserver
+public class AudioManager : MonoBehaviour
 {
     private AudioSource _audioSource;
     private ARKeyboard _arKeyboard;
@@ -20,38 +16,34 @@ public class AudioManager : MonoBehaviour, IObserver
     {
         _audioSource = GetComponent<AudioSource>();
         _arKeyboard = FindObjectOfType<ARKeyboard>();
-        _primaryKeys = FindObjectOfType<ARKeyboard>().GetComponentsInChildren<ARPrimaryKey>().ToList();
 
         _arKeyboard.onAmbientStateChanged += OnStateChanged;
     }
 
-    private void OnStateChanged(ARKeyboardState obj)
+    private void OnStateChanged(ARKeyboardState arKeyboardState)
     {
-        
-        var shortcuts = _arKeyboard.GetComponentsInChildren<Shortcut>();
-        foreach (var shortcut in shortcuts)
+        foreach (var primaryKey in _arKeyboard.primaryKeys)
         {
-            shortcut.onShortcutExecuted.RemoveObserver(this);
-            shortcut.onShortcutExecuted.AddObserver(this);
+            if (primaryKey.currentShortcut != null)
+            {
+                primaryKey.currentShortcut.onShortcutExecuted += OnShortcutExecuted;
+            }
         }
     }
-    
-    
-    public void OnNotify(object entity)
+
+    private void OnShortcutExecuted(Shortcut shortcut)
     {
-        Shortcut shortcut = (Shortcut)entity;
         switch (shortcut.eShortcut)
         {
-            case Shortcut.EShortcuts.CUT_SHORTCUT:
+            case Shortcut.EShortcuts.CUT:
                 _audioSource.clip = bellClip;
                 _audioSource.Play();
                 break;
-            case Shortcut.EShortcuts.UNDO_SHORTCUT:
+            case Shortcut.EShortcuts.UNDO:
                 _audioSource.clip = bellClip;
                 _audioSource.Play();
                 break;
             //add print sound here
-        }
-        // entity.
+        }    
     }
 }

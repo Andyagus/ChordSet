@@ -1,11 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using DG.Tweening;
-using Effects;
 using Enums;
-using UnityEngine;
 
 namespace AR_Keyboard.State
 {

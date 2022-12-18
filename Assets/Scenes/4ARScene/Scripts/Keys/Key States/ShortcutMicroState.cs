@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using AR_Keyboard;
-using UnityEditor;
 using UnityEngine;
 
 public class ShortcutMicroState : MonoBehaviour

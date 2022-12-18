@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
 using DG.Tweening;
-using Effects;
 using Enums;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class LearningModeWelcome : ARKeyboardState
@@ -62,7 +58,7 @@ public class LearningModeWelcome : ARKeyboardState
 
             var primaryKey = key.GetComponentInChildren<ARPrimaryKey>();
             var uiShortcut = primaryKey.GetComponentInChildren<Shortcut>();
-            uiShortcut.shortcutActivity = ShortutActivityState.EShortcutActivity.ACTIVE;
+            // uiShortcut.shortcutActivity = ShortutActivityState.EShortcutActivity.ACTIVE;
             
             var state = Instantiate(undoShortcutState);
             return state;

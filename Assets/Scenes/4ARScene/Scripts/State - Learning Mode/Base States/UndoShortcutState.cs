@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
@@ -7,7 +5,6 @@ using DG.Tweening;
 using Enums;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -22,7 +19,7 @@ public class UndoShortcutState : ARKeyboardState
     [SerializeField] private GameObject videoPlayer;
     [SerializeField] private RenderTexture renderTexture;
 
-    [SerializeField] private UndoShortcut undoShortcut;
+    // [SerializeField] private UndoShortcut undoShortcut;
     private Sequence _showcaseSequence;
 
     private bool _entryMode;
@@ -309,7 +306,6 @@ public class UndoShortcutState : ARKeyboardState
         _uiPanel.name = "ScreenSpaceUI";
         var uiText = _uiPanel.GetComponentInChildren<TextMeshProUGUI>();
         var uiPanel = _uiPanel.GetComponentInChildren<Image>();
-        uiText.text = undoShortcut.shortcutName;
 
         sequenceScreenspaceUI.Append(uiText.DOFade(1, 3.234f));
         sequenceScreenspaceUI.Insert(0, uiPanel.DOFade(1, 3.234f));

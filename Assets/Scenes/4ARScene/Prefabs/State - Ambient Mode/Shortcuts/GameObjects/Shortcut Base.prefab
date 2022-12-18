@@ -187,8 +187,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4193612602237096083}
   - component: {fileID: 4068888227524210369}
-  - component: {fileID: 1017594270226871137}
-  - component: {fileID: 2289264651046323398}
+  - component: {fileID: 7325362868691539313}
+  - component: {fileID: -1118444973204104200}
   m_Layer: 0
   m_Name: Shortcut Base
   m_TagString: Untagged
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32c39aae97a9f4704b366ba720a397e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1017594270226871137
+--- !u!114 &7325362868691539313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +233,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5081925169849126856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80de425af602c4bb998a53e124468529, type: 3}
+  m_Script: {fileID: 11500000, guid: 986d8913577c942e1b10a886f9660497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2289264651046323398
+--- !u!114 &-1118444973204104200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5081925169849126856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f136f7937bb486fad896cb9fd00065, type: 3}
+  m_Script: {fileID: 11500000, guid: 77587ca2d496d4cc89ea731dfc0126c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shortcutIconImage: {fileID: 0}
-  spriteInactive: {fileID: 0}
-  spriteActive: {fileID: 0}
+  eShortcut: 0
+  shortcutName: 
+  shortcutActivity: 1

@@ -1,27 +1,23 @@
 using System;
-using System.Collections.Generic;
-using AR_Keyboard.State;
-using Interfaces;
-using TMPro;
 using UnityEngine;
-using Enums;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.UI;
 
 namespace AR_Keyboard
 {
     //maybe implement subscriber observer here
     public class Shortcut : MonoBehaviour
     {
+        public Action<Shortcut> onShortcutExecuted;
         
-        public Subject onShortcutExecuted;
-
         public enum EShortcuts
         {
-            COPY_SHORTCUT,
-            PAST_SHORTCUT,
-            UNDO_SHORTCUT,
-            CUT_SHORTCUT
+            UNDO,
+            CUT,
+            PRINT,
+            RULER,
+            SAVE_AS,
+            SELECT_ALL,
+            SCREENSHOT,
+            NONE
             
         }
         public EShortcuts eShortcut;
@@ -29,15 +25,14 @@ namespace AR_Keyboard
         
         
         [Header("Shortcut Activity State")] 
-        private ShortutActivityState _activityState;
+        private ShortcutActivityState _activityState;
         
-        public ShortutActivityState.EShortcutActivity shortcutActivity;
-        private ShortutActivityState.EShortcutActivity _prevShortcutActivity = ShortutActivityState.EShortcutActivity.INACTIVE; 
+        public ShortcutActivityState.EShortcutActivity shortcutActivity;
+        private ShortcutActivityState.EShortcutActivity _prevShortcutActivity = ShortcutActivityState.EShortcutActivity.INACTIVE; 
         
         public virtual void Awake()
         {
-            _activityState = GetComponent<ShortutActivityState>();
-            onShortcutExecuted = new Subject();
+            _activityState = GetComponent<ShortcutActivityState>();
         }
 
         public virtual void Update()
@@ -48,13 +43,5 @@ namespace AR_Keyboard
                 _prevShortcutActivity = shortcutActivity;
             }
         }
-
-        public virtual void Execute(ARPrimaryKey key)
-        {
-            // key.SetPrimaryKeyState(ARPrimaryKey.EPrimaryKeyState.ANIMATION_PLAY);
-        }
-        
-        
-        
     }
 }

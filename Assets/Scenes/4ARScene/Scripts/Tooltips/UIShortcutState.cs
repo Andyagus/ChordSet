@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using AR_Keyboard;
 using UnityEngine;
-using DG.Tweening;
 
 public class UIShortcutState : MonoBehaviour
 {

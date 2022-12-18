@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Effects;
 using Enums;
-using UnityEngine;
 
 namespace AR_Keyboard.State
 {
@@ -35,21 +32,28 @@ namespace AR_Keyboard.State
         private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
         {
             keyboardPrimaryKeyDictionary["Z"].keyShortcutState = KeyShortcutState.EKeyShortcutState.UNDO_SHORTCUT;
-            // keyboardPrimaryKeyDictionary["X"].keyShortcutState = KeyShortcutState.EKeyShortcutState.CUT_SHORTCUT;
-            // keyboardPrimaryKeyDictionary["P"].keyShortcutState = KeyShortcutState.EKeyShortcutState.PRINT_SHORTCUT;
-            // keyboardPrimaryKeyDictionary["R"].keyShortcutState = KeyShortcutState.EKeyShortcutState.RULER_SHORTCUT;
+            keyboardPrimaryKeyDictionary["X"].keyShortcutState = KeyShortcutState.EKeyShortcutState.CUT_SHORTCUT;
+            keyboardPrimaryKeyDictionary["P"].keyShortcutState = KeyShortcutState.EKeyShortcutState.PRINT_SHORTCUT;
+            keyboardPrimaryKeyDictionary["R"].keyShortcutState = KeyShortcutState.EKeyShortcutState.RULER_SHORTCUT;
         }
 
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
+            //TODO: Look into passing primary key to method instead of getting component
             if (key.GetComponentInChildren<ARPrimaryKey>() != null)
             {
                 var primaryKey = key.GetComponentInChildren<ARPrimaryKey>();
-                    if (primaryKey.GetComponentInChildren<Shortcut>() != null)
+                if (primaryKey.currentShortcut != null)
+                {
+                    if (primaryKey.keyPressed == EKeyState.KEY_PRESSED)
                     {
-                        var currentShortcut = primaryKey.GetComponentInChildren<Shortcut>();
-                        currentShortcut.Execute(primaryKey);
+                        primaryKey.currentShortcut.shortcutActivity = ShortcutActivityState.EShortcutActivity.ACTIVE;
                     }
+                    if (primaryKey.keyPressed == EKeyState.KEY_UNPRESSED)
+                    {
+                        primaryKey.currentShortcut.shortcutActivity = ShortcutActivityState.EShortcutActivity.INACTIVE;
+                    }
+                }
             }
             
             if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
@@ -62,7 +66,7 @@ namespace AR_Keyboard.State
             }
             else
             {
-                return null;
+                return base.HandleInput(key, keyboard);
             }
         }
         
