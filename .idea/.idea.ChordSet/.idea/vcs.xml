@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Assets/Packages/arfoundation-samples" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/Plugins/Packages/arfoundation-samples" vcs="Git" />
   </component>
 </project>

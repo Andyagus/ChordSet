@@ -424,8 +424,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTooltip: {fileID: 8637786866391875250, guid: d411205d35d0845c89cbcc910c290ccb, type: 3}
+  goToLearningModeTooltip: {fileID: 2431698708711492497, guid: cea3b49909b5f4689a6273b396bc34ac, type: 3}
+  learningModeTitleTooltip: {fileID: 8637786866391875250, guid: 4baf28f86ea3c4c08892c8b36afe6064, type: 3}
+  playTooltip: {fileID: 8637786866391875250, guid: ef27b8ff51c044e99b632f92aa8f6b85, type: 3}
+  backToAmbientModeTooltip: {fileID: 2431698708711492497, guid: e72872b0af3984cd7ad7b069d2c3c098, type: 3}
+  loopTooltip: {fileID: 8637786866391875250, guid: 379e40735c713443880bf157f0bb2a4e, type: 3}
   nextShortcutTooltip: {fileID: 8637786866391875250, guid: 87877c91cd27f4023a1630a20625cf8c, type: 3}
-  prevShortcutTooltip: {fileID: 0}
+  previousShortcutTooltip: {fileID: 8637786866391875250, guid: 7d501cba5b4ca4d1c8124e06a84fab2c, type: 3}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0
