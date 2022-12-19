@@ -332,7 +332,7 @@ public class SelectAllShortcutState : ARKeyboardState
    {
       foreach (var key in keyboard.primaryKeys)
       {
-         key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
+         // key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
       }
    }
 }

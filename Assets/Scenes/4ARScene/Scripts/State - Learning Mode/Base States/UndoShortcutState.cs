@@ -185,21 +185,21 @@ public class UndoShortcutState : ARKeyboardState
             if (key.KeyName == "N")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.PREVIOUS_SHORTCUT;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.PREVIOUS_SHORTCUT;
                 // key.uiShortcutState.
             }else if (key.KeyName == "M")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.NEXT_SHORTCUT;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.NEXT_SHORTCUT;
             }else if (key.KeyName == "U")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.LOOP;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.LOOP;
             }
             else if (key.KeyName == "Q")
             {
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.QUIT;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.QUIT;
             }
         }
     }
@@ -280,7 +280,7 @@ public class UndoShortcutState : ARKeyboardState
 
             if (key.KeyName == "G")
             {
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
             }
 
             if (key.KeyName == "space")
@@ -368,7 +368,7 @@ public class UndoShortcutState : ARKeyboardState
 
         foreach (var key in keyboard.primaryKeys)
         {
-            key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
+            // key.uiShortcutState = UIShortcutState.EuiShortcutState.REMOVE_SHORTCUT;
         }
     }
     

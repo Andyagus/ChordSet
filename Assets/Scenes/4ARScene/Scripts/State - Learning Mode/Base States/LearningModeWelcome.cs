@@ -28,7 +28,7 @@ public class LearningModeWelcome : ARKeyboardState
                 key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISPLAY_TEXT_IMAGE;
             }else if (key.KeyName == "G")
             {
-                key.uiShortcutState = UIShortcutState.EuiShortcutState.LEARNING_MODE_START;
+                // key.uiShortcutState = UIShortcutState.EuiShortcutState.LEARNING_MODE_START;
                 // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISPLAY_TEXT_IMAGE;
                 // key.displayImage.DOFade(1, 2f);
                 // key.keyText.DOFade(0, 2);

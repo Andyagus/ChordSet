@@ -23,18 +23,12 @@ public class Key : MonoBehaviour
     public KeyOutlineState.EKeyOutline keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     private KeyOutlineState.EKeyOutline _prevOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     
-    [Header("UI Shortcut State")] 
-    private UIShortcutState _uiShortcutState;
-    public UIShortcutState.EuiShortcutState uiShortcutState = UIShortcutState.EuiShortcutState.NONE;
-    private UIShortcutState.EuiShortcutState _prevUiShortcutState = UIShortcutState.EuiShortcutState.NONE;
-
    
     public virtual void Awake()
     {
         _keyPressedState = GetComponent<KeyPressedState>();
         _keyOutlineState = GetComponent<KeyOutlineState>();
         _keyAvailabilityState = GetComponent<KeyAvailabilityState>();
-        _uiShortcutState = GetComponent<UIShortcutState>();
 
     }
 
@@ -58,10 +52,6 @@ public class Key : MonoBehaviour
             _prevAvailability = keyAvailability;
         }
 
-        if (uiShortcutState != _prevUiShortcutState)
-        {
-            _uiShortcutState.SetUIState(uiShortcutState, this);
-        }
       
     }
 }
