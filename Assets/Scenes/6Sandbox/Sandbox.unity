@@ -671,6 +671,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6111837794893667542, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: tooltipState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111837794893667542, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyShortcutState
       value: 9
       objectReference: {fileID: 0}
@@ -1056,52 +1060,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1953603449
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1953603450}
-  - component: {fileID: 1953603451}
-  m_Layer: 0
-  m_Name: TestColorManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1953603450
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953603449}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02760713, y: 0.022134293, z: 0.005678799}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1953603451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953603449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f61bd0cec5ef54e88b66807c0b81a13c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  red: {r: 0.7647059, g: 0.18039216, b: 0.15686275, a: 1}
-  yellow: {r: 0.8980392, g: 0.7882353, b: 0.23137255, a: 1}
-  blue: {r: 0, g: 0.3529412, b: 0.6509804, a: 1}
-  darkGray: {r: 0.77254903, g: 0.7764706, b: 0.7529412, a: 1}
-  lightGray: {r: 0.9137255, g: 0.91764706, b: 0.9137255, a: 1}

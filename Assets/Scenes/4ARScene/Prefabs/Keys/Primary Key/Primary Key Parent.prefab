@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 4220605525559712987}
   - component: {fileID: 2300177129925292218}
   - component: {fileID: 8303176327665375246}
+  - component: {fileID: 1450718847318376512}
   m_Layer: 0
   m_Name: Primary Key Parent
   m_TagString: Untagged
@@ -332,6 +333,8 @@ MonoBehaviour:
   uiShortcutState: 0
   currentShortcut: {fileID: 0}
   keyShortcutState: 9
+  currentTooltip: {fileID: 0}
+  tooltipState: 0
 --- !u!114 &2790172014376396931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,15 +383,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  undoShortcut: {fileID: 4448066114975224257, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
-  cutShortcut: {fileID: 4448066114975224257, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
+  undoShortcut: {fileID: 1648146909937062396, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
+  cutShortcut: {fileID: 1648146909937062396, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
   copyShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
   pasteShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-  printShortcut: {fileID: 4448066114975224257, guid: f7ef3545e68de40feaa64d42b709944a, type: 3}
-  rulerShortcut: {fileID: 4448066114975224257, guid: d129344ae80aa41ba8171c55c059fa59, type: 3}
-  saveAsShortcut: {fileID: 4448066114975224257, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
-  screenshotShortcut: {fileID: 4448066114975224257, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
-  selectAllShortcut: {fileID: 4448066114975224257, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
+  printShortcut: {fileID: 1648146909937062396, guid: f7ef3545e68de40feaa64d42b709944a, type: 3}
+  rulerShortcut: {fileID: 1648146909937062396, guid: d129344ae80aa41ba8171c55c059fa59, type: 3}
+  saveAsShortcut: {fileID: 1648146909937062396, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
+  screenshotShortcut: {fileID: 1648146909937062396, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
+  selectAllShortcut: {fileID: 1648146909937062396, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
 --- !u!114 &8303176327665375246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +411,21 @@ MonoBehaviour:
   nextShortcut: {fileID: 222692663159213153, guid: d226e4a5d53394d4ba617b4b4c542093, type: 3}
   loopShortcut: {fileID: 1705632071668936343, guid: 3cd02d557f80d4bef8f71ee68dfb6928, type: 3}
   quitShortcut: {fileID: 954000883357265787, guid: 0f149c005f29448dd9d7e2c5bfbf98cf, type: 3}
+--- !u!114 &1450718847318376512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000843859753084317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77609fc134a94bc8a7b35e1a7eb562d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTooltip: {fileID: 8637786866391875250, guid: d411205d35d0845c89cbcc910c290ccb, type: 3}
+  nextShortcutTooltip: {fileID: 8637786866391875250, guid: 87877c91cd27f4023a1630a20625cf8c, type: 3}
+  prevShortcutTooltip: {fileID: 0}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0

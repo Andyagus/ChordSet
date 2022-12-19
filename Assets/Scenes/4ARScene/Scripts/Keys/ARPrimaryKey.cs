@@ -6,15 +6,25 @@ namespace AR_Keyboard
 {
     public class ARPrimaryKey : Key
     {
-        [Header("Primary Key State")]
+        
+        [Header("Primary Key Shortcut State")]
         public Shortcut currentShortcut;
-        private KeyShortcutState _keyShortcutState;
         public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
         private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NONE;
+        private KeyShortcutState _keyShortcutState;
+
+        [Header("Primary Key Tooltip State")] 
+        public Tooltip currentTooltip;
+        public TooltipState.ETooltip tooltipState;
+        private TooltipState.ETooltip _prevTooltipState;
+        private TooltipState _tooltipState;
+        
+        
         
         public override void Awake()
         {
             _keyShortcutState = GetComponent<KeyShortcutState>();
+            _tooltipState = GetComponent<TooltipState>();
             
             DOTween.Clear();
             base.Awake();
@@ -27,6 +37,13 @@ namespace AR_Keyboard
                 _keyShortcutState.SetKeyShortcutState(keyShortcutState, this);
                 _prevShortcut = keyShortcutState;
             }
+            
+            if (tooltipState != _prevTooltipState)
+            {
+                _tooltipState.SetTooltipState(tooltipState, this);
+                _prevTooltipState = tooltipState;
+            }
+            
             base.Update();
         }
 
