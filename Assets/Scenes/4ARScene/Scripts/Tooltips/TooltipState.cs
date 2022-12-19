@@ -98,7 +98,7 @@ public class TooltipState : MonoBehaviour
         _destroySequence.Kill();
         _instantiateSequence = DOTween.Sequence();
         
-        var newTooltip = Instantiate(tooltip);
+        var newTooltip = Instantiate(tooltip, primaryKey.transform);
         primaryKey.currentTooltip = newTooltip;
 
         newTooltip.transform.position = primaryKey.transform.position + _placementOffset;

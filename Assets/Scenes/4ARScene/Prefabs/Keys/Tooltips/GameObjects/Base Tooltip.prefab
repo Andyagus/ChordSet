@@ -304,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072137116519518406}
   - component: {fileID: 9188992709238738510}
+  - component: {fileID: 6737466488259670693}
   m_Layer: 0
   m_Name: Base Tooltip
   m_TagString: Untagged
@@ -337,6 +338,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b541821164c2412b94570eaef262f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipActivityState: 1
+--- !u!114 &6737466488259670693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299042032898390057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b52a4a6dbd24db8af0095373a72bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7930121956113225686

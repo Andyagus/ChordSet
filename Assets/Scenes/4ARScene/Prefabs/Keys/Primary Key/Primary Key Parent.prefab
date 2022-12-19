@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 5390138273056669916}
   - component: {fileID: 4220605525559712987}
   - component: {fileID: 2300177129925292218}
-  - component: {fileID: 8303176327665375246}
   - component: {fileID: 1450718847318376512}
   m_Layer: 0
   m_Name: Primary Key Parent
@@ -330,7 +329,6 @@ MonoBehaviour:
   keyPressed: 1
   keyAvailability: 0
   keyOutline: 1
-  uiShortcutState: 0
   currentShortcut: {fileID: 0}
   keyShortcutState: 9
   currentTooltip: {fileID: 0}
@@ -392,25 +390,6 @@ MonoBehaviour:
   saveAsShortcut: {fileID: 1648146909937062396, guid: aea0de1c151dc4b6799b96bf5f1e9982, type: 3}
   screenshotShortcut: {fileID: 1648146909937062396, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
   selectAllShortcut: {fileID: 1648146909937062396, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
---- !u!114 &8303176327665375246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6000843859753084317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c61dca94a3cab47c395abaf2f0463384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentUIShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}
-  learningModeStartShortcut: {fileID: -4975829727571030406, guid: 3ec71c5e79fc945a8a1993c1e5a653e7, type: 3}
-  favoriteShortcut: {fileID: 3903125696475866220, guid: 5991896312d4142e6ac8279579267fcc, type: 3}
-  previousShortcut: {fileID: 1705632071668936343, guid: df64510145a62459689c10cdc1e47476, type: 3}
-  nextShortcut: {fileID: 222692663159213153, guid: d226e4a5d53394d4ba617b4b4c542093, type: 3}
-  loopShortcut: {fileID: 1705632071668936343, guid: 3cd02d557f80d4bef8f71ee68dfb6928, type: 3}
-  quitShortcut: {fileID: 954000883357265787, guid: 0f149c005f29448dd9d7e2c5bfbf98cf, type: 3}
 --- !u!114 &1450718847318376512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +410,7 @@ MonoBehaviour:
   loopTooltip: {fileID: 8637786866391875250, guid: 379e40735c713443880bf157f0bb2a4e, type: 3}
   nextShortcutTooltip: {fileID: 8637786866391875250, guid: 87877c91cd27f4023a1630a20625cf8c, type: 3}
   previousShortcutTooltip: {fileID: 8637786866391875250, guid: 7d501cba5b4ca4d1c8124e06a84fab2c, type: 3}
+  favoriteTooltip: {fileID: 0}
 --- !u!1 &6669695619058803378
 GameObject:
   m_ObjectHideFlags: 0

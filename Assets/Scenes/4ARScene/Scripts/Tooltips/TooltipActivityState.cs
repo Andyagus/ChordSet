@@ -1,18 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using AR_Keyboard;
 using UnityEngine;
 
 public class TooltipActivityState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum ETooltipActivity
     {
-        
+        ACTIVE,
+        INACTIVE
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetShortcutActivity(ETooltipActivity state, Tooltip tooltip)
     {
-        
+        switch (state)
+        {
+            case ETooltipActivity.ACTIVE:
+                Active(tooltip);
+                break;
+            case ETooltipActivity.INACTIVE:
+                Inactive(tooltip);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+    
+    private void Active(Tooltip tooltip)
+    {
+        Debug.Log("Tooltip activity state - active");
+    }
+    
+    private void Inactive(Tooltip tooltip)
+    {
+        Debug.Log("Tooltip activity state - inactive");
     }
 }
