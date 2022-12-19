@@ -25,18 +25,18 @@ public class KeyPressedState : MonoBehaviour
 
     private void Pressed(Key key)
     {
-        var color = Color.white;
-        if (_welcomeState)
-        {
-            color = KeyColorManager.PickRandomColor();
-        }
-        var rend = key.GetComponentInChildren<MeshRenderer>();
-        rend.material.DOColor(color, 0.524f);
+        // var color = Color.white;
+        // if (_welcomeState)
+        // {
+        //     color = KeyColorManager.PickRandomColor();
+        // }
+        // var rend = key.GetComponentInChildren<MeshRenderer>();
+        // rend.material.DOColor(color, 0.524f);
     }
     
     private void Unpressed(Key key)
     {
-        var rend = key.GetComponentInChildren<MeshRenderer>();
-        rend.material.DOColor(Color.black, 0.524f);
+        // var rend = key.GetComponentInChildren<MeshRenderer>();
+        // rend.material.DOColor(Color.black, 0.524f);
     }
 }

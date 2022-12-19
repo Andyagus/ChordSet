@@ -49,17 +49,13 @@ namespace AR_Keyboard
 
         public EKeyboardMode keyboardMode = EKeyboardMode.NO_MODE;
         private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
-
-        // public Action<bool> onKeyboardWelcomeModeStateChanged;
-
-        
         
         private void Awake()
         {
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+            keyboardMode = EKeyboardMode.WELCOME_MODE;
 
             InitializeDictionary();
         }
@@ -188,7 +184,7 @@ namespace AR_Keyboard
                         }
                     }
                     
-                    
+                  
                 }
             }
         }
@@ -215,13 +211,13 @@ namespace AR_Keyboard
         
         private void HandleInputWelcomeMode(Key key)
         {
-            var state = welcomeModeState.HandleInput(key, this);
+            welcomeModeState.HandleInput(key, this);
             
-            //instead just wait for the space to be pressed here..
-            if (state.stateName == "Welcome Mode Out")
+            if (key.KeyName == "Space" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }
+            
         }
 
         private void LearningModeHandleInput(Key key)

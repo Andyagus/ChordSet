@@ -22,14 +22,18 @@ public class Key : MonoBehaviour
     private KeyOutlineState _keyOutlineState;
     public KeyOutlineState.EKeyOutline keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
     private KeyOutlineState.EKeyOutline _prevOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+
+    [Header("Key Color State")] 
+    public KeyColorState.EKeyColorState keyColorState;
+    private KeyColorState.EKeyColorState _previousKeyColorState = KeyColorState.EKeyColorState.BLACK;
+    private KeyColorState _keyColorState;
     
-   
     public virtual void Awake()
     {
         _keyPressedState = GetComponent<KeyPressedState>();
         _keyOutlineState = GetComponent<KeyOutlineState>();
         _keyAvailabilityState = GetComponent<KeyAvailabilityState>();
-
+        _keyColorState = GetComponent<KeyColorState>();
     }
 
     public virtual void Update()
@@ -50,6 +54,35 @@ public class Key : MonoBehaviour
         {
             _keyAvailabilityState.SetKeyAvailability(keyAvailability, this);
             _prevAvailability = keyAvailability;
+        }
+
+
+        if (keyColorState != _previousKeyColorState)
+        {
+            _keyColorState.SetKeyColorState(keyColorState, this);
+            _previousKeyColorState = keyColorState;
+        }
+        
+        //Setting the key color to change when key pressed changes 
+        if (keyPressed == EKeyState.KEY_PRESSED)
+        {
+            keyColorState = KeyColorState.EKeyColorState.WHITE;
+            if (keyColorState != _previousKeyColorState)
+            {
+                _keyColorState.SetKeyColorState(keyColorState, this);
+                _previousKeyColorState = keyColorState;
+            }
+            
+        }else if (keyPressed == EKeyState.KEY_UNPRESSED)
+        {
+            keyColorState = KeyColorState.EKeyColorState.BLACK;
+            
+            if (keyColorState != _previousKeyColorState)
+            {
+                _keyColorState.SetKeyColorState(keyColorState, this);
+                _previousKeyColorState = keyColorState;
+            }
+            
         }
 
       

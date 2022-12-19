@@ -623,6 +623,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4771814676320528980, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: KeyName
+      value: Space
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771814676320528980, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyShortcutState
       value: 9
       objectReference: {fileID: 0}

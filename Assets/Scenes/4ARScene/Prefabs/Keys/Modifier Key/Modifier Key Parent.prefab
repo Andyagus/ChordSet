@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6222320189212240409}
   - component: {fileID: 3786458289271759782}
   - component: {fileID: 3065779001249387587}
+  - component: {fileID: 3746303309587433481}
   m_Layer: 0
   m_Name: Modifier Key Parent
   m_TagString: Untagged
@@ -51,11 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyName: 
-  KeyCode: 0
+  letterText: {fileID: 0}
+  secondaryText: {fileID: 0}
+  letterImage: {fileID: 0}
+  keyOutlineObject: {fileID: 1693601557644879783}
   keyPressed: 1
   keyAvailability: 0
-  keyOutlineObject: {fileID: 1693601557644879783}
   keyOutline: 1
+  keyColorState: 0
   modifierTexts: []
   activeGlowGameObject: {fileID: 0}
 --- !u!114 &6222320189212240409
@@ -92,6 +96,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e1e6889a342146969c8057a937339db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3746303309587433481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386085147069109749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9455f26fb5b3b415cb9b1d116eb3e349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4867929628544056754

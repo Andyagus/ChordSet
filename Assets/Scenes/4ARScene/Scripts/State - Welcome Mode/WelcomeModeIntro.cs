@@ -1,167 +1,123 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
+using DG.Tweening;
 using Enums;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WelcomeModeIntro : ARKeyboardState
 {
-    [SerializeField] private ARKeyboardState welcomeModeOut;
-    
+    private Sequence _sequence;
+    private List<Key> _selectedKeys;
+
+    private void Awake()
+    {
+        _selectedKeys = new List<Key>();
+    }
+
     public override void Entry(ARKeyboard keyboard)
     {
-        StartCoroutine(LightUpKeys(keyboard));
+        LightUpKeys(keyboard);
+        // OutlineLetters(keyboard);
     }
 
-    private IEnumerator LightUpKeys(ARKeyboard keyboard)
+    private void LightUpKeys(ARKeyboard keyboard)
     {
-        // while()
-        var count = keyboard.keys.Count;
-        var i = 0;
-         
-        List<Key> selectedKeys = new List<Key>(); 
+        var localSequence = DOTween.Sequence();
+        localSequence.Pause();
         
-        while (i < count)
+        var keyCount = keyboard.keys.Count - 1; 
+        var randomKeyIndex = Random.Range(0, keyCount);
+        var index = 0;
+
+        while (index <= keyCount)
         {
-            var randomKeyIndex = Random.Range(0, count);
-            var selectedKey = keyboard.keys[randomKeyIndex];
-            selectedKeys.Add(selectedKey);
-            selectedKey.keyPressed = EKeyState.KEY_PRESSED;
-            yield return new WaitForSeconds(.03f);
-            i++;
-        }
-        
-        yield return new WaitForSeconds(0.9f);
-        
-        foreach (var key in selectedKeys)
-        {
-            key.keyPressed = EKeyState.KEY_UNPRESSED;
-            yield return new WaitForSeconds(.01f);
+            var selectedKey = keyboard.keys[index];
+            if (selectedKey.keyPressed != EKeyState.KEY_PRESSED)
+            {
+                localSequence.AppendCallback(() =>
+                {
+                    selectedKey.keyPressed = EKeyState.KEY_PRESSED;
+                    _selectedKeys.Add(selectedKey);
+                });
+                localSequence.AppendInterval(0.06743f);
+            }   
+            index++;
         }
 
-        foreach (var key in keyboard.keys)
+        localSequence.Play();
+        localSequence.OnComplete(() =>
         {
-            key.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-            
-            if (key.KeyName == "Q")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("C", 0.2f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-                
-            }
-            if (key.KeyName == "W")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("H", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-            if (key.KeyName == "E")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("O", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-            if (key.KeyName == "R")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("R", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-            if (key.KeyName == "T")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("D", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-
-            if (key.KeyName == "A")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("S", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-
-            }
-            if (key.KeyName == "S")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("E", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-            if (key.KeyName == "D")
-            {
-                yield return new WaitForSeconds(0.02f);
-                key.keyPressed = EKeyState.KEY_PRESSED;
-                yield return new WaitForSeconds(0.02f);
-                var primaryKey = key.GetComponent<ARPrimaryKey>();
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyText.DOText("T", 0.5f);
-                yield return new WaitForSeconds(0.2f);
-                key.keyPressed = EKeyState.KEY_UNPRESSED;
-            }
-                        
-        }
-
-        foreach (var key in keyboard.keys)
-        {
-            if (key.KeyName == "space")
-            {
-                yield return new WaitForSeconds(2);
-                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // key.displayText.DOText("START", 0.5f);
-                // key.displayText.DOFade(1, 2.0f);
-                // key.displayImage.DOFade(1, 2.1f);
-            } 
-
-        }
-        
-        yield return null;
+            DimKeys(keyboard);
+        });
     }
 
+    private void DimKeys(ARKeyboard keyboard)
+    {
+        var localSequence = DOTween.Sequence();
+        localSequence.Pause();
+        
+        foreach (var key in _selectedKeys)
+        {
+            localSequence.AppendCallback(() =>
+            {
+                
+                key.keyPressed = EKeyState.KEY_UNPRESSED;
+                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+            });
+        }
+        
+        localSequence.Play();
+        localSequence.OnComplete(() =>
+        {
+            OutlineLetters(keyboard);
+        });
+    }
+
+    private void OutlineLetters(ARKeyboard keyboard)
+    {
+        var localSequence = DOTween.Sequence();
+        localSequence.Pause();
+
+        //editor hiccups
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "Q", KeyLetterState.EKeyLetter.C));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "W", KeyLetterState.EKeyLetter.H));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "E", KeyLetterState.EKeyLetter.O));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "R", KeyLetterState.EKeyLetter.R));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "T", KeyLetterState.EKeyLetter.D));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "A", KeyLetterState.EKeyLetter.S));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "S", KeyLetterState.EKeyLetter.E));
+        localSequence.AppendInterval(1f);
+        localSequence.AppendCallback(() => TextSwapSequence(keyboard, "D", KeyLetterState.EKeyLetter.T));
+        localSequence.Play();
+    }
+
+    private void TextSwapSequence(ARKeyboard keyboard, string letter, KeyLetterState.EKeyLetter state)
+    {
+        var innerSequence = DOTween.Sequence();
+        innerSequence.Pause();
+        var innerKey = keyboard.primaryKeyDictionary[letter];
+        innerSequence.AppendCallback(() => innerKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE);
+        innerSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_PRESSED);
+        innerSequence.AppendInterval(0.045f);
+        innerSequence.AppendCallback(() => innerKey.keyLetterState = state);
+        innerSequence.AppendInterval(0.045f);
+        innerSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        innerSequence.Play();
+    }
+    
     public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
     {
-        if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
-        {
-            var state = Instantiate(welcomeModeOut);
-            return state;
-        }
-
         return null;
     }
 }
