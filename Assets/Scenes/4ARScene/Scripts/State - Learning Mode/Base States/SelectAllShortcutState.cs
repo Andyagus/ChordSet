@@ -21,7 +21,7 @@ public class SelectAllShortcutState : ARKeyboardState
    private Sequence _showcaseSequence;
 
    private Transform _localCanvas;
-   private ShortcutSuccessPanel _shortcutSuccessPanel;
+   // private ShortcutSuccessPanel _shortcutSuccessPanel;
    private bool _cmdPressed;
    private bool _shiftPressed;
    private bool _aPressed;
@@ -31,7 +31,7 @@ public class SelectAllShortcutState : ARKeyboardState
    {
 
       _localCanvas = keyboard.ARScreen.gameObject.transform.Find("Canvas");
-      _shortcutSuccessPanel = _localCanvas.GetComponentInChildren<ShortcutSuccessPanel>();
+      // _shortcutSuccessPanel = _localCanvas.GetComponentInChildren<ShortcutSuccessPanel>();
 
       DisplaySequence(keyboard);
       
@@ -301,18 +301,18 @@ public class SelectAllShortcutState : ARKeyboardState
             completionSequence.Pause();
             completionSequence.AppendCallback(() =>
             {
-               _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.AVAILABLE,
-                  selectAllSprite, "Select All");
+               // _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.AVAILABLE,
+               //    selectAllSprite, "Select All");
             });
             completionSequence.AppendInterval(2f);
             completionSequence.AppendCallback(() =>
             {
-               _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
+               // _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
             });
             completionSequence.AppendInterval(2f);
             completionSequence.AppendCallback(() =>
             {
-               _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
+               // _shortcutSuccessPanel.SetShortcutSuccessPopUpState(ShortcutSuccessPanel.EShortcutSuccessPopUp.UNAVAILABLE, null, null);
             });
             completionSequence.Play();
          }
