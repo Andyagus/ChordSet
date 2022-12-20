@@ -25,7 +25,7 @@ public class LearningModeWelcome : ARKeyboardState
             if (key.KeyName == "space")
             {
                 // key.displayText.DOText("Learning Mode", 2.4f);
-                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISPLAY_TEXT_IMAGE;
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISPLAY_TEXT_IMAGE;
             }else if (key.KeyName == "G")
             {
                 // key.uiShortcutState = UIShortcutState.EuiShortcutState.LEARNING_MODE_START;

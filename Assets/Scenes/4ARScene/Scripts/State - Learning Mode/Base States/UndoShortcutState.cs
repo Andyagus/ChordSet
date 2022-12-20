@@ -285,7 +285,7 @@ public class UndoShortcutState : ARKeyboardState
 
             if (key.KeyName == "space")
             {
-                key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
+                // key.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
             }
         }
 

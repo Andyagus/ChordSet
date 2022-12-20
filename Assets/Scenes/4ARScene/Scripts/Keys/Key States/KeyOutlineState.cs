@@ -1,33 +1,37 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyOutlineState : MonoBehaviour
 {
+    
+    [SerializeField] private Image outline;
     public enum EKeyOutline
     {
         OUTLINE,
         NO_OUTLINE
     }
 
-    public void SetOutlineState(EKeyOutline state, KeyOutline outline)
+    public void SetOutlineState(EKeyOutline state, Key key)
     {
         switch (state)
         {
             case EKeyOutline.OUTLINE:
-                Outline(outline);
+                Outline();
                 break;
             case EKeyOutline.NO_OUTLINE:
-                NoOutline(outline);
+                NoOutline();
                 break;
         }
     }
-    private void Outline(KeyOutline outline)
+    private void Outline()
     {
-        outline.gameObject.SetActive(true);
+        outline.DOFade(1, 1.2f);
     }
     
-    private void NoOutline(KeyOutline outline)
+    private void NoOutline()
     {
-        outline.gameObject.SetActive(false);
+        outline.DOFade(0, 1.2f);    
     }
 
     

@@ -55,7 +55,9 @@ namespace AR_Keyboard
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
+            // keyboardMode = EKeyboardMode.WELCOME_MODE;
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+
 
             InitializeDictionary();
         }
@@ -213,7 +215,8 @@ namespace AR_Keyboard
         {
             welcomeModeState.HandleInput(key, this);
             
-            if (key.KeyName == "Space" && key.keyPressed == EKeyState.KEY_PRESSED)
+            //TODO Lock to only work when sequence is complete.
+            if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }

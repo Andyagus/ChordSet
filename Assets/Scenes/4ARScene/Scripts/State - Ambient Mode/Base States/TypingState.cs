@@ -1,4 +1,6 @@
+using DG.Tweening;
 using Enums;
+using UnityEngine;
 
 namespace AR_Keyboard.State
 {
@@ -8,12 +10,14 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
+        
+            Debug.Log("In Ambient Mode: Typing State");
+            
             foreach (var kvp in keyboard.modifierKeyDictionary)
             {
                 var modifierKey = kvp.Value;
-                modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                modifierKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-
+                modifierKey.ResetAllState();
+                
                 if (modifierKey.KeyName == "command-left")
                 {
                     modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
@@ -27,27 +31,28 @@ namespace AR_Keyboard.State
             foreach (var kvp in keyboard.primaryKeyDictionary)
             {
                 var primaryKey = kvp.Value;
-                
-                //ADDITION
-                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+                primaryKey.ResetAllState();
+
+                // //ADDITION
+                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+                // //
                 //
-                
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-
-                if (primaryKey.KeyName == "space")
-                {
-                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
-                }
-
-                //should be states
-                if (primaryKey.KeyName == "Q" || primaryKey.KeyName == "W" || primaryKey.KeyName == "E" || primaryKey.KeyName == "R" 
-                    || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
-                {
-                    primaryKey.ResetCharacter();
-  
-                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                }
+                // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                // primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+                //
+                // if (primaryKey.KeyName == "space")
+                // {
+                //     // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
+                // }
+                //
+                // //should be states
+                // if (primaryKey.KeyName == "Q" || primaryKey.KeyName == "W" || primaryKey.KeyName == "E" || primaryKey.KeyName == "R" 
+                //     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
+                // {
+                //     // primaryKey.ResetCharacter();
+                //
+                //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                // }
 
             }
         }

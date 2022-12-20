@@ -11,15 +11,10 @@ public class MacShortcutLayout : MonoBehaviour
     public TextMeshProUGUI functionField;
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         imageField.sprite = placementImage;
         functionField.text = functionName;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

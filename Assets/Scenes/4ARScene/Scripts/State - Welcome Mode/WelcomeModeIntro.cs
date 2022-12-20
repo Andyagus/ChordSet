@@ -6,13 +6,13 @@ using AR_Keyboard.State;
 using DG.Tweening;
 using Enums;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class WelcomeModeIntro : ARKeyboardState
 {
     private Sequence _sequence;
     private List<Key> _selectedKeys;
-
+    private float _appendInterval = 1f;
+    
     private void Awake()
     {
         _selectedKeys = new List<Key>();
@@ -30,7 +30,6 @@ public class WelcomeModeIntro : ARKeyboardState
         localSequence.Pause();
         
         var keyCount = keyboard.keys.Count - 1; 
-        var randomKeyIndex = Random.Range(0, keyCount);
         var index = 0;
 
         while (index <= keyCount)
@@ -82,24 +81,27 @@ public class WelcomeModeIntro : ARKeyboardState
         var localSequence = DOTween.Sequence();
         localSequence.Pause();
 
-        //editor hiccups
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "Q", KeyLetterState.EKeyLetter.C));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "W", KeyLetterState.EKeyLetter.H));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "E", KeyLetterState.EKeyLetter.O));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "R", KeyLetterState.EKeyLetter.R));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "T", KeyLetterState.EKeyLetter.D));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "A", KeyLetterState.EKeyLetter.S));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "S", KeyLetterState.EKeyLetter.E));
-        localSequence.AppendInterval(1f);
+        localSequence.AppendInterval(_appendInterval);
         localSequence.AppendCallback(() => TextSwapSequence(keyboard, "D", KeyLetterState.EKeyLetter.T));
         localSequence.Play();
+        localSequence.OnComplete(() =>
+        {
+            DisplayStartButton(keyboard);
+        });
     }
 
     private void TextSwapSequence(ARKeyboard keyboard, string letter, KeyLetterState.EKeyLetter state)
@@ -114,6 +116,15 @@ public class WelcomeModeIntro : ARKeyboardState
         innerSequence.AppendInterval(0.045f);
         innerSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_UNPRESSED);
         innerSequence.Play();
+    }
+
+    private void DisplayStartButton(ARKeyboard keyboard)
+    {
+        var localSequence = DOTween.Sequence();
+        localSequence.AppendCallback(() =>
+        {
+            keyboard.primaryKeyDictionary["space"].tooltipState = TooltipState.ETooltip.START;
+        });
     }
     
     public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)

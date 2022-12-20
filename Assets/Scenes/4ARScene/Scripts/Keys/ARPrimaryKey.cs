@@ -58,10 +58,12 @@ namespace AR_Keyboard
             base.Update();
         }
 
-        public void ResetCharacter()
+        public override void ResetAllState()
         {
-            var tmp = GetComponentInChildren<TextMeshProUGUI>();
-            tmp.text = KeyName;
+            tooltipState = TooltipState.ETooltip.NONE;
+            keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+            keyLetterState = KeyLetterState.EKeyLetter.NONE;
+            base.ResetAllState();
         }
 
         

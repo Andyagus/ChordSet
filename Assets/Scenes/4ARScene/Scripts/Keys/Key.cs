@@ -9,7 +9,6 @@ public class Key : MonoBehaviour
     public TextMeshProUGUI letterText;
     public TextMeshProUGUI secondaryText;
     public Image letterImage;
-    [SerializeField] private KeyOutline keyOutlineObject;
     
     [Header("Parent Key States")]
     public EKeyState keyPressed = EKeyState.KEY_UNPRESSED;
@@ -46,7 +45,7 @@ public class Key : MonoBehaviour
 
         if (keyOutline != _prevOutline)
         {
-            _keyOutlineState.SetOutlineState(keyOutline, keyOutlineObject);
+            _keyOutlineState.SetOutlineState(keyOutline, this);
             _prevOutline = keyOutline;
         }
 
@@ -86,5 +85,12 @@ public class Key : MonoBehaviour
         }
 
       
+    }
+
+    public virtual void ResetAllState()
+    {
+        keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+        keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        keyColorState = KeyColorState.EKeyColorState.BLACK;
     }
 }
