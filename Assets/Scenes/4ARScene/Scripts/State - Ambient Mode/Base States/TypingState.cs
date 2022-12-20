@@ -32,29 +32,10 @@ namespace AR_Keyboard.State
             {
                 var primaryKey = kvp.Value;
                 primaryKey.ResetAllState();
-
-                // //ADDITION
-                // primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-                // //
-                //
-                // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // primaryKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-                //
-                // if (primaryKey.KeyName == "space")
-                // {
-                //     // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.DISABLE_DISPLAY_TEXT_IMAGE;
-                // }
-                //
-                // //should be states
-                // if (primaryKey.KeyName == "Q" || primaryKey.KeyName == "W" || primaryKey.KeyName == "E" || primaryKey.KeyName == "R" 
-                //     || primaryKey.KeyName == "T" || primaryKey.KeyName == "A" || primaryKey.KeyName == "S" || primaryKey.KeyName == "D" )
-                // {
-                //     // primaryKey.ResetCharacter();
-                //
-                //     primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                // }
-
             }
+
+            var backQuote = keyboard.primaryKeyDictionary["back-quote"];
+            backQuote.tooltipState = TooltipState.ETooltip.GO_TO_LEARNING_MODE;
         }
         
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)

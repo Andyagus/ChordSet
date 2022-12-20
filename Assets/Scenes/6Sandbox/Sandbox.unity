@@ -434,6 +434,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1113842252, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: positioningAreaState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113842252, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: shortcutSuccessPanelState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 246704333376927487, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName
       value: Tab
@@ -489,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 1315341640515562691, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyShortcutState
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329874907986888942, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Name
+      value: Background Panel
       objectReference: {fileID: 0}
     - target: {fileID: 1383454313952767984, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyShortcutState
@@ -662,6 +674,10 @@ PrefabInstance:
       propertyPath: keyShortcutState
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3895535960830714941, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4118516811620731870, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: functionName
       value: f5
@@ -701,6 +717,10 @@ PrefabInstance:
     - target: {fileID: 4553423459543104047, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.015609821
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583805660857568034, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Name
+      value: Video - Player
       objectReference: {fileID: 0}
     - target: {fileID: 4644673007380862636, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: keyShortcutState
@@ -941,6 +961,30 @@ PrefabInstance:
     - target: {fileID: 8403880990647718867, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8445150562694827695, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: clip2
+      value: 
+      objectReference: {fileID: 32900000, guid: a508af501f99f494eb8a9dd9e016a904, type: 3}
+    - target: {fileID: 8445150562694827695, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: texture1
+      value: 
+      objectReference: {fileID: 8400000, guid: 5d00edc5a65bf417db9a5b21d60462e9, type: 2}
+    - target: {fileID: 8445150562694827695, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: texture2
+      value: 
+      objectReference: {fileID: 8400000, guid: 8cfda84795d4043e78450b53d4dd64d4, type: 2}
+    - target: {fileID: 8485614167564374537, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485614167564374537, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616960296350390076, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
+      propertyPath: m_Name
+      value: Video - Raw Image
       objectReference: {fileID: 0}
     - target: {fileID: 8617782489612311163, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: KeyName

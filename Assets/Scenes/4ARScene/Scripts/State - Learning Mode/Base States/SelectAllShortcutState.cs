@@ -112,7 +112,7 @@ public class SelectAllShortcutState : ARKeyboardState
 
    private void HideVideoPlayer(ARKeyboard keyboard)
    {
-      keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
+      // keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.INACTIVE);
 
       videoPlayer = Instantiate(videoPlayer, this.transform);
       videoPlayer.transform.position = Vector3.zero;
@@ -247,7 +247,7 @@ public class SelectAllShortcutState : ARKeyboardState
    
    private void ShowVideoPlayer(ARKeyboard keyboard)
    {
-      keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
+      // keyboard.ARScreen.ChangeScreenState(ARKeyboardScreen.EScreenState.ACTIVE);
 
       videoPlayer = Instantiate(videoPlayer, this.transform);
       videoPlayer.transform.position = Vector3.zero;

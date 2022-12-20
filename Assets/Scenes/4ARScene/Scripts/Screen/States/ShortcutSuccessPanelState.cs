@@ -1,50 +1,28 @@
 using System;
-using AR_Keyboard;
-using AR_Keyboard.State;
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShortcutSuccessPanel : MonoBehaviour
+public class ShortcutSuccessPanelState : MonoBehaviour
 {
     
-    private ARKeyboard _arKeyboard;
-
     [SerializeField] private Image background;
     [SerializeField] private Image uiImage;
     [SerializeField] private TextMeshProUGUI textMeshPro;
 
+    
     public enum EShortcutSuccessPopUp
     {
         AVAILABLE,
         UNAVAILABLE
     }
 
-    public EShortcutSuccessPopUp shortcutSuccessPopUp = EShortcutSuccessPopUp.UNAVAILABLE;
-    
     private void Awake()
     {
-        _arKeyboard = FindObjectOfType<ARKeyboard>();
-        _arKeyboard.onAmbientStateChanged += OnStateChanged;
         Unavailable();
-
-    }
-
-    private void OnStateChanged(ARKeyboardState arKeyboardState)
-    {
-        foreach (var primaryKey in _arKeyboard.primaryKeys)
-        {
-            if (primaryKey.currentShortcut != null)
-            {
-                primaryKey.currentShortcut.onShortcutExecuted += OnShortcutExecuted;
-            }
-        }
-    }
-
-    private void OnShortcutExecuted(Shortcut shortcut)
-    {
-        SetShortcutSuccessPopUpState(EShortcutSuccessPopUp.AVAILABLE, shortcut.GetComponentInChildren<Image>().sprite, shortcut.shortcutName);
     }
 
     public void SetShortcutSuccessPopUpState(EShortcutSuccessPopUp state, Sprite sprite, string text)
@@ -62,7 +40,6 @@ public class ShortcutSuccessPanel : MonoBehaviour
         }
     }
 
-    
 
     private void Available(Sprite sprite, string text)
     {
@@ -77,9 +54,8 @@ public class ShortcutSuccessPanel : MonoBehaviour
         sequence.Append(uiImage.DOFade(1, 1f));
         sequence.AppendInterval(0.1f);
         sequence.AppendCallback(Unavailable);
-
     }
-
+    
     private void Unavailable()
     {
         var sequence = DOTween.Sequence();
@@ -87,6 +63,5 @@ public class ShortcutSuccessPanel : MonoBehaviour
             .Insert(0, uiImage.DOFade(0, 0.65f))
             .Insert(0, textMeshPro.DOFade(0, 0.65f));
         sequence.Play();
-
     }
 }
