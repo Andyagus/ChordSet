@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AR_Keyboard
@@ -22,7 +23,9 @@ namespace AR_Keyboard
         }
         public EShortcuts eShortcut;
         public string shortcutName;
-        
+
+        public List<string> modifierToAccess;
+        public string primaryKeyToAccess;
         
         [Header("Shortcut Activity State")] 
         private ShortcutActivityState _activityState;

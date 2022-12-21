@@ -15,6 +15,30 @@ PrefabInstance:
       propertyPath: shortcutActivity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: primaryKeyToAccess
+      value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: keysToAccess.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: keysToAccess.Array.data[0]
+      value: command-left
+      objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: keysToAccess.Array.data[1]
+      value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: modifierToAccess.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: modifierToAccess.Array.data[0]
+      value: command-left
+      objectReference: {fileID: 0}
     - target: {fileID: -1118444973204104200, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: shortcutName
       value: Undo

@@ -18,12 +18,12 @@ public class PanelState : MonoBehaviour
         INACTIVE
     }
 
-    public void SetPanelState(EPanelState state)
+    public void SetPanelState(EPanelState state, string shortcutName)
     {
         switch (state)
         {
             case EPanelState.ACTIVE:
-                Active();
+                Active(shortcutName);
                 break;
             case EPanelState.INACTIVE:
                 Inactive();
@@ -33,10 +33,11 @@ public class PanelState : MonoBehaviour
         }
     }
     
-    private void Active()
+    private void Active(string shortcutName)
     {
         panelBackground.DOFade(0.354f, 1f);
         panelText.DOFade(1, 1f);
+        panelText.DOText(shortcutName, 0f);
     }
     
     private void Inactive()

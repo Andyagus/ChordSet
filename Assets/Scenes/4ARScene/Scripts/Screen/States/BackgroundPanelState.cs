@@ -32,7 +32,7 @@ public class BackgroundPanelState : MonoBehaviour
     
     private void Active()
     {
-        backgroundPanel.DOFade(1, 1f);
+        backgroundPanel.DOFade(0.4f, 1f);
     }
     
     private void Inactive()

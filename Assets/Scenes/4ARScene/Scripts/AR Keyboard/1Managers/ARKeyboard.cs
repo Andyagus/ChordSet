@@ -18,6 +18,7 @@ namespace AR_Keyboard
         private ARKeyboardState _ambientModeState;
         public ARKeyboardState typingState;
         public Action<ARKeyboardState> onAmbientStateChanged;
+        public Action<ARKeyboardState> onLearningModeStateChanged;
         
         //learning mode state 
         private ARKeyboardState _learningModeState;
@@ -134,8 +135,6 @@ namespace AR_Keyboard
             }
         }
 
-       
-        
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
             
@@ -246,6 +245,7 @@ namespace AR_Keyboard
                 _learningModeState = state;
                 _learningModeState.transform.SetParent(this.transform);
                 _learningModeState.Entry(this);
+                onLearningModeStateChanged(state);
             }
             
         }

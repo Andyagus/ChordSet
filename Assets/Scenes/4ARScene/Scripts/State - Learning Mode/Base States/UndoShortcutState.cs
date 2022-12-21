@@ -10,9 +10,95 @@ using UnityEngine.Video;
 
 public class UndoShortcutState : LearningModeState
 {
+    
     public override void Entry(ARKeyboard keyboard)
     {
-        Debug.Log("Entered Undo Shortcut State");
+        keyboard.ARScreen.backgroundPanelState = BackgroundPanelState.EBackgroundPanel.INACTIVE;
+        keyboard.ARScreen.positioningAreaState = PositioningAreaState.EPositioningArea.INACTIVE;
+        
+        foreach (var primaryKey in keyboard.primaryKeys)
+        {
+            primaryKey.ResetAllState();
+            primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+        }
+
+        foreach (var modifierKey in keyboard.modifierKeys)
+        {
+            modifierKey.ResetAllState();
+            modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+        }
+
+        OutlineRequiredKeys(keyboard);
+    }
+
+    private void OutlineRequiredKeys(ARKeyboard keyboard)
+    {
+        var localSequence = DOTween.Sequence();
+
+        localSequence.Pause();
+        var modifierKeyToAccess = keyboard.modifierKeyDictionary[requiredModifierKey];
+        var primaryKeyToAccess = keyboard.primaryKeyDictionary[requiredPrimaryKey];
+
+        localSequence.AppendCallback(() =>
+        {
+            modifierKeyToAccess.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            modifierKeyToAccess.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        });
+
+        localSequence.AppendCallback(() =>
+        {
+            primaryKeyToAccess.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            primaryKeyToAccess.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        });
+
+        localSequence.Play();
+        localSequence.OnComplete(() => DisplayVideo(keyboard));
+    }
+
+    private void DisplayVideo(ARKeyboard keyboard)
+    {
+        var localSequence = DOTween.Sequence();
+
+        localSequence.AppendCallback(() =>
+        {
+            keyboard.ARScreen.backgroundPanelState = BackgroundPanelState.EBackgroundPanel.ACTIVE;
+        });
+
+        localSequence.AppendInterval(1f);
+        
+        localSequence.AppendCallback(() =>
+        {
+            keyboard.ARScreen.videoState = VideoState.EVideoState.UNDO;
+        });
+        localSequence.OnComplete(() => ShowcaseButtonClicks(keyboard));
+
+    }
+
+    private void ShowcaseButtonClicks(ARKeyboard keyboard)
+    {
+
+        var localSequence = DOTween.Sequence();
+        localSequence.Pause();
+        var modifierKeyToAccess = keyboard.modifierKeyDictionary[requiredModifierKey];
+        var primaryKeyToAccess = keyboard.primaryKeyDictionary[requiredPrimaryKey];
+
+        localSequence.AppendCallback(() =>
+        {
+            modifierKeyToAccess.keyPressed = EKeyState.KEY_PRESSED;
+            primaryKeyToAccess.keyPressed = EKeyState.KEY_PRESSED;
+        });
+
+        localSequence.AppendInterval(0.11f);
+        localSequence.AppendCallback(() => modifierKeyToAccess.keyPressed = EKeyState.KEY_UNPRESSED);
+        localSequence.AppendInterval(0.1f);
+        localSequence.AppendCallback(() => modifierKeyToAccess.keyPressed = EKeyState.KEY_PRESSED);
+        localSequence.AppendInterval(0.1f);
+        localSequence.AppendCallback(() => modifierKeyToAccess.keyPressed = EKeyState.KEY_UNPRESSED);
+        localSequence.AppendInterval(0.1f);
+        localSequence.AppendCallback(() => modifierKeyToAccess.keyPressed = EKeyState.KEY_PRESSED);
+
+        localSequence.Play();
+        
     }
 
     //
