@@ -403,7 +403,6 @@ MonoBehaviour:
   letterText: {fileID: 8864110013499526539}
   secondaryText: {fileID: 0}
   letterImage: {fileID: 0}
-  keyOutlineObject: {fileID: 0}
   keyPressed: 1
   keyAvailability: 0
   keyOutline: 1
