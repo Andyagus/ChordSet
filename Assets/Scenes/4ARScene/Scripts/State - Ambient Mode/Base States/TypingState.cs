@@ -24,7 +24,11 @@ namespace AR_Keyboard.State
                 }
                 else
                 {
-                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    //TODO move to base method
+                    if (!modifierKey.isInLearningMode)
+                    {
+                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    }
                 }
             }
 

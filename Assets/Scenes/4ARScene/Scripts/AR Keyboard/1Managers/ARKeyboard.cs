@@ -210,6 +210,7 @@ namespace AR_Keyboard
                 Destroy(_ambientModeState);
                 _ambientModeState = state;
                 _ambientModeState.Entry(this);
+                StartCoroutine(AmbientStateChangeCoroutine());
             }
 
             if (learningModeActive)

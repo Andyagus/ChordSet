@@ -10,7 +10,7 @@ using UnityEngine.Video;
 
 public class UndoShortcutState : LearningModeState
 {
-    private Sequence highlightKeySequence;
+    private Sequence _highlightKeySequence;
     
     public override void Entry(ARKeyboard keyboard)
     {
@@ -25,15 +25,15 @@ public class UndoShortcutState : LearningModeState
 
         DisplayShortcutKeys();
         
-        highlightKeySequence = DOTween.Sequence();
-        highlightKeySequence.AppendInterval(1.3742f);
-        highlightKeySequence.AppendCallback(() => commandModifierKey.keyPressed = EKeyState.KEY_PRESSED);
-        highlightKeySequence.AppendInterval(0.75f);
-        highlightKeySequence.AppendCallback(() => zPrimaryKey.keyPressed = EKeyState.KEY_PRESSED);
-        highlightKeySequence.AppendInterval(0.3f);
-        highlightKeySequence.AppendCallback(() => zPrimaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
-        highlightKeySequence.AppendInterval(0.45f);
-        highlightKeySequence.AppendCallback(() => commandModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        _highlightKeySequence = DOTween.Sequence();
+        _highlightKeySequence.AppendInterval(1.3742f);
+        _highlightKeySequence.AppendCallback(() => commandModifierKey.keyPressed = EKeyState.KEY_PRESSED);
+        _highlightKeySequence.AppendInterval(0.75f);
+        _highlightKeySequence.AppendCallback(() => zPrimaryKey.keyPressed = EKeyState.KEY_PRESSED);
+        _highlightKeySequence.AppendInterval(0.3f);
+        _highlightKeySequence.AppendCallback(() => zPrimaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        _highlightKeySequence.AppendInterval(0.45f);
+        _highlightKeySequence.AppendCallback(() => commandModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
         
     }
 
@@ -49,8 +49,7 @@ public class UndoShortcutState : LearningModeState
 
     public override void Exit(ARKeyboard keyboard)
     {
-        highlightKeySequence.Kill();
-        var zKey = keyboard.primaryKeyDictionary["Z"];
-        zKey.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+        _highlightKeySequence.Kill();
+        DiscardShortcutKeys();
     }
 }

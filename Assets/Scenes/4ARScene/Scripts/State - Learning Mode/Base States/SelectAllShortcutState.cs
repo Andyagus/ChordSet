@@ -10,7 +10,9 @@ using UnityEngine.Video;
 
 public class SelectAllShortcutState : LearningModeState
 {
-
+    
+    private Sequence _highlightKeySequence;
+    
     public override void Entry(ARKeyboard keyboard)
     {
         var cmdLeftModifierKey = keyboard.modifierKeyDictionary["command-left"];
@@ -27,6 +29,20 @@ public class SelectAllShortcutState : LearningModeState
         
         DisplayShortcutKeys();
         
+        _highlightKeySequence = DOTween.Sequence();
+        _highlightKeySequence.AppendInterval(1.3742f);
+        _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
+        _highlightKeySequence.AppendInterval(0.75f);
+        _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
+        _highlightKeySequence.AppendInterval(1f);
+        _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_PRESSED);
+        _highlightKeySequence.AppendInterval(0.25f);
+        _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        _highlightKeySequence.AppendInterval(1f);
+        _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        _highlightKeySequence.AppendInterval(0.3f);
+        _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+
     }
 
     public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
@@ -38,4 +54,10 @@ public class SelectAllShortcutState : LearningModeState
         }
         return base.HandleInput(key, keyboard);
     }
+
+    public override void Exit(ARKeyboard keyboard)
+    {
+        DiscardShortcutKeys();
+    }
 }
+

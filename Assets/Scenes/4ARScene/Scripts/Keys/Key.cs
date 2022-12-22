@@ -89,7 +89,7 @@ public class Key : MonoBehaviour
 
       
     }
-
+    
     public virtual void ResetAllState()
     {
         if (!isInLearningMode)

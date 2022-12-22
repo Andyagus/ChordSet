@@ -18,7 +18,18 @@ public class LearningModeState : ARKeyboardState
         {
             key.isInLearningMode = true;
             key.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            key.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
         }
+    }
+
+    public void DiscardShortcutKeys()
+    {
+        foreach (var key in keysInShortcut)
+        {
+            key.keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+            key.isInLearningMode = false;
+        }
+
     }
 
 }

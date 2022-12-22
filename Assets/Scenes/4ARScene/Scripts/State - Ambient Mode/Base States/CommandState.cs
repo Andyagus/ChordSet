@@ -23,7 +23,12 @@ namespace AR_Keyboard.State
             foreach (var primaryKey in keyboard.primaryKeys)
             {
                 primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                
+                //TODO Move to base state
+                if (!primaryKey.isInLearningMode)
+                {
+                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                }
             }
             
             SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
