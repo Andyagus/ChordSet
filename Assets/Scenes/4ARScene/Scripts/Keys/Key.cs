@@ -66,26 +66,26 @@ public class Key : MonoBehaviour
         }
         
         //Setting the key color to change when key pressed changes 
-        if (keyPressed == EKeyState.KEY_PRESSED)
-        {
-            keyColorState = KeyColorState.EKeyColorState.WHITE;
-            if (keyColorState != _previousKeyColorState)
-            {
-                _keyColorState.SetKeyColorState(keyColorState, this);
-                _previousKeyColorState = keyColorState;
-            }
-            
-        }else if (keyPressed == EKeyState.KEY_UNPRESSED)
-        {
-            keyColorState = KeyColorState.EKeyColorState.BLACK;
-            
-            if (keyColorState != _previousKeyColorState)
-            {
-                _keyColorState.SetKeyColorState(keyColorState, this);
-                _previousKeyColorState = keyColorState;
-            }
-            
-        }
+        // if (keyPressed == EKeyState.KEY_PRESSED)
+        // {
+        //     keyColorState = KeyColorState.EKeyColorState.WHITE;
+        //     if (keyColorState != _previousKeyColorState)
+        //     {
+        //         _keyColorState.SetKeyColorState(keyColorState, this);
+        //         _previousKeyColorState = keyColorState;
+        //     }
+        //     
+        // }else if (keyPressed == EKeyState.KEY_UNPRESSED)
+        // {
+        //     keyColorState = KeyColorState.EKeyColorState.BLACK;
+        //     
+        //     if (keyColorState != _previousKeyColorState)
+        //     {
+        //         _keyColorState.SetKeyColorState(keyColorState, this);
+        //         _previousKeyColorState = keyColorState;
+        //     }
+        //     
+        // }
 
       
     }
