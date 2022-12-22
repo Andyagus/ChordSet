@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
 using DG.Tweening;
@@ -7,13 +8,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class SelectAllShortcutState : ARKeyboardState
+public class SelectAllShortcutState : LearningModeState
 {
-    public ARKeyboardState previousState;
-    
+
     public override void Entry(ARKeyboard keyboard)
     {
-        Debug.Log("Entered Select All State");
+        var cmdLeftModifierKey = keyboard.modifierKeyDictionary["command-left"];
+        var shiftLeftModifierKey = keyboard.modifierKeyDictionary["shift-left"];
+        // shiftLeftModifierKey.ResetState();
+        var aPrimaryKey = keyboard.primaryKeyDictionary["A"];
+        
+        keysInShortcut = new List<Key>()
+        {
+            cmdLeftModifierKey,
+            shiftLeftModifierKey,
+            aPrimaryKey
+        };
+        
+        DisplayShortcutKeys();
+        
     }
 
     public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)

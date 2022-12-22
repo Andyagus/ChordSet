@@ -8,27 +8,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class UndoShortcutState : ARKeyboardState
+public class UndoShortcutState : LearningModeState
 {
     private Sequence highlightKeySequence;
-    public ARKeyboardState nextState;
     
     public override void Entry(ARKeyboard keyboard)
     {
         var zPrimaryKey = keyboard.primaryKeyDictionary["Z"];
         var commandModifierKey = keyboard.modifierKeyDictionary["command-left"];
         
-        List<Key> keysInShortcut = new List<Key>()
+        keysInShortcut = new List<Key>()
         {
             zPrimaryKey,
             commandModifierKey
         };
 
-        foreach (var key in keysInShortcut)
-        {
-            key.isInLearningMode = true;
-            key.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
-        }
+        DisplayShortcutKeys();
         
         highlightKeySequence = DOTween.Sequence();
         highlightKeySequence.AppendInterval(1.3742f);

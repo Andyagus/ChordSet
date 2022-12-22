@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateName: Select All Shortcut
+  nextState: {fileID: 0}
   previousState: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}
+  shortcutName: Select All

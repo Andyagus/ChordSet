@@ -221,6 +221,7 @@ namespace AR_Keyboard
                     Destroy(_learningModeState);
                     _learningModeState = state;
                     _learningModeState.Entry(this);
+                    onLearningModeStateChanged(_learningModeState);
                 }
             }
             
@@ -235,6 +236,7 @@ namespace AR_Keyboard
                     _learningModeState.Entry(this);
                     learningModeActive = true;
                     dotState.dotState = DotState.EDotState.ACTIVE;
+                    onLearningModeStateChanged(_learningModeState);
                 }else if (learningModeActive)
                 {
                     _learningModeState.Exit(this);
