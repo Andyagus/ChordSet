@@ -19,7 +19,6 @@ namespace AR_Keyboard
         private TooltipState.ETooltip _prevTooltipState;
         private TooltipState _tooltipState;
 
-
         [Header("Primary Key Letter State")] 
         public KeyLetterState.EKeyLetter keyLetterState;
         private KeyLetterState.EKeyLetter _previousKeyLetterState;

@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 2.27
       objectReference: {fileID: 0}
+    - target: {fileID: 5841679240909238235, guid: e9ddc60b99783477bb8b61dabbeb3ee9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.857
+      objectReference: {fileID: 0}
     - target: {fileID: 6000843859753084317, guid: e9ddc60b99783477bb8b61dabbeb3ee9, type: 3}
       propertyPath: m_Name
       value: Tab Varient

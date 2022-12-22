@@ -17,7 +17,7 @@ namespace AR_Keyboard.State
             {
                 var modifierKey = kvp.Value;
                 modifierKey.ResetAllState();
-                
+
                 if (modifierKey.KeyName == "command-left")
                 {
                     modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
@@ -32,6 +32,7 @@ namespace AR_Keyboard.State
             {
                 var primaryKey = kvp.Value;
                 primaryKey.ResetAllState();
+
             }
 
             var backQuote = keyboard.primaryKeyDictionary["back-quote"];

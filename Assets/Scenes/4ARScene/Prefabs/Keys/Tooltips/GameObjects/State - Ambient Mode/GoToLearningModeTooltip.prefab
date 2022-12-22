@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoToLearningModeTooltip
       objectReference: {fileID: 0}
+    - target: {fileID: 9188992709238738510, guid: f036b1ef46c28469ba40912b52ed0b17, type: 3}
+      propertyPath: tooltipName
+      value: Learning Mode
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f036b1ef46c28469ba40912b52ed0b17, type: 3}

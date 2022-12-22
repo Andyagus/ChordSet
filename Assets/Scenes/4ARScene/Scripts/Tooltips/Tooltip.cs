@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Tooltip : MonoBehaviour
 {
+    public string tooltipName;
+    
     public TooltipActivityState.ETooltipActivity tooltipActivityState;
     private TooltipActivityState.ETooltipActivity _previousTooltipActivityState = TooltipActivityState.ETooltipActivity.INACTIVE;
     private TooltipActivityState _tooltipActivityState;

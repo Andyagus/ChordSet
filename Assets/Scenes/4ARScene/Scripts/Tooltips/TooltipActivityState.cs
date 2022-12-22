@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TooltipActivityState : MonoBehaviour
 {
@@ -29,11 +31,11 @@ public class TooltipActivityState : MonoBehaviour
     
     private void Active(Tooltip tooltip)
     {
-        Debug.Log("Tooltip activity state - active");
+    
     }
     
     private void Inactive(Tooltip tooltip)
     {
-        Debug.Log("Tooltip activity state - inactive");
+    
     }
 }

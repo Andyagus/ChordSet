@@ -13,107 +13,52 @@ namespace AR_Keyboard
 {
     public class ARKeyboard : MonoBehaviour
     {
+        public ARKeyboardScreen ARScreen;
+        public EKeyboardMode keyboardMode = EKeyboardMode.NO_MODE;
+        private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
 
-        //ambient mode state
-        private ARKeyboardState _ambientModeState;
-        public ARKeyboardState typingState;
+
+        [Header("Events")]
         public Action<ARKeyboardState> onAmbientStateChanged;
         public Action<ARKeyboardState> onLearningModeStateChanged;
-        
-        //learning mode state 
-        private ARKeyboardState _learningModeState;
-        public ARKeyboardState learningModeWelcome;
-        public ARKeyboardState undoShortcutState;
-        
-        //welcome mode state
-        public ARKeyboardState welcomeModeState;
-        
-        
-        //screen 
-        public ARKeyboardScreen ARScreen;
 
+        [Header("Keyboard States")]
+        public ARKeyboardState welcomeModeState;
+        private ARKeyboardState _welcomeModeState;
+        private ARKeyboardState _ambientModeState;
+        public ARKeyboardState ambientModeState;
+        [SerializeField] private bool learningModeActive;
+        private ARKeyboardState _learningModeState;
+        public ARKeyboardState learningModeState;
+
+        [Header("Collections")]
         public List<Key> keys;
         public List<ARModifierKey> modifierKeys;
         public List<ARPrimaryKey> primaryKeys;
         public Dictionary<string, ARPrimaryKey> primaryKeyDictionary; 
         public Dictionary<string, ARModifierKey> modifierKeyDictionary;
         
-        private KeySyncDictionary _keySyncDictionary;
-
         public enum EKeyboardMode
         {
             NO_MODE,
             WELCOME_MODE,
-            AMBIENT_MODE,
-            LEARNING_MODE
+            AMBIENT_MODE
         }
 
-        public EKeyboardMode keyboardMode = EKeyboardMode.NO_MODE;
-        private EKeyboardMode _prevMode = EKeyboardMode.NO_MODE;
         
         private void Awake()
+        {
+            InitializeCollections();
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+        }
+        
+        private void InitializeCollections()
         {
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
-            // keyboardMode = EKeyboardMode.WELCOME_MODE;
-            keyboardMode = EKeyboardMode.AMBIENT_MODE;
 
-
-            InitializeDictionary();
-        }
-        
-        private void Start()
-        {
-            DOTween.SetTweensCapacity(500, 125);
             
-            _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
-        }
-        
-        private void Update()
-        {
-            if (keyboardMode != _prevMode)
-            {
-                switch (keyboardMode)
-                {
-                    case EKeyboardMode.WELCOME_MODE:
-                        WelcomeMode();
-                        break;
-                    case EKeyboardMode.AMBIENT_MODE:
-                        AmbientMode();
-                        break;
-                    case EKeyboardMode.LEARNING_MODE:
-                        LearningMode();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                _prevMode = keyboardMode;
-            }
-        }
-
-        private void WelcomeMode()
-        {
-            welcomeModeState = Instantiate(welcomeModeState);
-            welcomeModeState.Entry(this);
-        }
-
-        private void AmbientMode()
-        {
-            _ambientModeState = Instantiate(typingState, this.transform, true);
-            _ambientModeState.Entry(this);
-        }
-
-        private void LearningMode()
-        {
-            _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
-            _learningModeState.Entry(this);
-        }
-        
-        
-        private void InitializeDictionary()
-        {
             primaryKeyDictionary = new Dictionary<string, ARPrimaryKey>();
             modifierKeyDictionary = new Dictionary<string, ARModifierKey>();
 
@@ -134,7 +79,6 @@ namespace AR_Keyboard
                 }
             }
         }
-
         public void OnKeyDictionaryReceived(RealtimeDictionary<KeySyncModel> dict)
         {
             
@@ -184,11 +128,52 @@ namespace AR_Keyboard
                             HandleInput(modifierKeyDictionary[keyName]);
                         }
                     }
-                    
-                  
+
                 }
             }
         }
+        
+        private void Start()
+        {
+            DOTween.SetTweensCapacity(500, 125);
+        }
+        
+        private void Update()
+        {
+            if ( keyboardMode != _prevMode)
+            {
+                switch (keyboardMode)
+                {
+                    case EKeyboardMode.NO_MODE:
+                        break;
+                    case EKeyboardMode.WELCOME_MODE:
+                        InstantiateWelcomeMode();
+                        break;
+                    case EKeyboardMode.AMBIENT_MODE:
+                        InstantiateAmbientMode();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                _prevMode = keyboardMode;
+            }
+        }
+
+        private void InstantiateWelcomeMode()
+        {
+            var state = Instantiate(welcomeModeState);
+            _welcomeModeState = state;
+            _welcomeModeState.Entry(this);
+        }
+
+        private void InstantiateAmbientMode()
+        {
+            var state = Instantiate(ambientModeState, this.transform, true);
+            _ambientModeState = state; 
+            _ambientModeState.Entry(this);
+        }
+
 
         private void HandleInput(Key key)
         {
@@ -197,81 +182,68 @@ namespace AR_Keyboard
                 case EKeyboardMode.NO_MODE:
                     break;
                 case EKeyboardMode.WELCOME_MODE:
-                    HandleInputWelcomeMode(key);
+                    WelcomeModeHandleInput(key);
                     break;
                 case EKeyboardMode.AMBIENT_MODE:
                     AmbientModeHandleInput(key);
-                    break;
-                case EKeyboardMode.LEARNING_MODE:
-                    LearningModeHandleInput(key);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
-        private void HandleInputWelcomeMode(Key key)
+
+
+        private void WelcomeModeHandleInput(Key key)
         {
-            welcomeModeState.HandleInput(key, this);
-            
-            //TODO Lock to only work when sequence is complete.
-            if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
+            //TODO lock until welcome mode animation is complete
+            if (key.KeyName == "space")
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
             }
-            
-        }
-
-        private void LearningModeHandleInput(Key key)
-        {
-            
-            if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
-            {
-                _learningModeState.Exit(this);
-
-                var screenSpaceUI = GameObject.Find("ScreenSpaceUI");
-                if (screenSpaceUI != null)
-                {
-                    Destroy(screenSpaceUI.gameObject);
-                }
-                keyboardMode = EKeyboardMode.AMBIENT_MODE;
-            }
-
-            var state = _learningModeState.HandleInput(key, this);
-            if (state != null)
-            {
-                // _learningModeState.Exit(this);
-                Destroy(_learningModeState.gameObject);
-                _learningModeState = state;
-                _learningModeState.transform.SetParent(this.transform);
-                _learningModeState.Entry(this);
-                onLearningModeStateChanged(state);
-            }
-            
         }
 
         private void AmbientModeHandleInput(Key key)
         {
-
-            if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
-            {
-                keyboardMode = EKeyboardMode.LEARNING_MODE;
-            }
-            
             var state = _ambientModeState.HandleInput(key, this);
-            
             if (state != null)
             {
-                _ambientModeState.Exit(this);
-                Destroy(_ambientModeState.gameObject);
+                Destroy(_ambientModeState);
                 _ambientModeState = state;
-                _ambientModeState.transform.SetParent(this.transform);
                 _ambientModeState.Entry(this);
+            }
+
+            if (learningModeActive)
+            {
+                state = _learningModeState.HandleInput(key, this);
+                if (state != null)
+                {
+                    _learningModeState.Exit(this);
+                    Destroy(_learningModeState);
+                    _learningModeState = state;
+                    _learningModeState.Entry(this);
+                }
+            }
+            
+            if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+
+                var dotState = key.GetComponentInChildren<DotState>();
                 
-                StartCoroutine(AmbientStateChangeCoroutine());
+                if (!learningModeActive)
+                {
+                    _learningModeState = Instantiate(learningModeState);       
+                    _learningModeState.Entry(this);
+                    learningModeActive = true;
+                    dotState.dotState = DotState.EDotState.ACTIVE;
+                }else if (learningModeActive)
+                {
+                    _learningModeState.Exit(this);
+                    Destroy(_learningModeState);
+                    learningModeActive = false;
+                    dotState.dotState = DotState.EDotState.INACTIVE;
+                }
             }
         }
-        
 
         private IEnumerator AmbientStateChangeCoroutine()
         {

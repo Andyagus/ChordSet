@@ -27,6 +27,9 @@ public class Key : MonoBehaviour
     private KeyColorState.EKeyColorState _previousKeyColorState = KeyColorState.EKeyColorState.BLACK;
     private KeyColorState _keyColorState;
     
+    [Header("Learning Mode")] 
+    public bool isInLearningMode;
+
     public virtual void Awake()
     {
         _keyPressedState = GetComponent<KeyPressedState>();
@@ -89,7 +92,11 @@ public class Key : MonoBehaviour
 
     public virtual void ResetAllState()
     {
-        keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+        if (!isInLearningMode)
+        {
+            keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+        }
+        
         keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
         keyColorState = KeyColorState.EKeyColorState.BLACK;
     }
