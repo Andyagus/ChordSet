@@ -27,5 +27,29 @@ namespace AR_Keyboard.State
             return null;
         }
         public virtual void Exit(ARKeyboard keyboard){}
+
+        protected void ResetKeys(ARKeyboard keyboard)
+        {
+            foreach (var kvp in keyboard.modifierKeyDictionary)
+            {
+                var modifierKey = kvp.Value;
+                if (modifierKey.isInLearningMode)
+                {
+                    return;
+                }
+                modifierKey.ResetStateModifierKey();
+            }
+            
+            foreach (var kvp in keyboard.primaryKeyDictionary)
+            {
+                
+                var primaryKey = kvp.Value;
+                if (primaryKey.isInLearningMode)
+                {
+                    return;
+                }
+                primaryKey.ResetStatePrimaryKey(KeyAvailabilityState.EKeyAvailability.UNAVAILABLE);
+            }
+        }
     }
 }

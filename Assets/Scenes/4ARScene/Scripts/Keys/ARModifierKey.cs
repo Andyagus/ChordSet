@@ -44,9 +44,8 @@ namespace AR_Keyboard
 
          public void ResetStateModifierKey()
          {
-             keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
              keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-             
+             keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
          }
 
          public void LearningModeAvailable()

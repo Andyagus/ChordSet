@@ -12,22 +12,38 @@ namespace AR_Keyboard.State
         {
             foreach (var kvp in keyboard.modifierKeyDictionary)
             {
+                
                 var modifierKey = kvp.Value;
 
-                if (modifierKey.KeyName == "command-left")
+                if (modifierKey.isInLearningMode)
                 {
-                    modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                    
                 }
                 else
                 {
-                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    if (modifierKey.KeyName == "command-left")
+                    {
+                        modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                    }
+                    else
+                    {
+                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    }
                 }
+                
             }
 
             foreach (var kvp in keyboard.primaryKeyDictionary)
             {
                 var primaryKey = kvp.Value;
-                
+                if (primaryKey.isInLearningMode)
+                {
+                    
+                }
+                else
+                {
+                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                }
             }
 
             var backQuote = keyboard.primaryKeyDictionary["back-quote"];
@@ -51,17 +67,8 @@ namespace AR_Keyboard.State
 
         public override void Exit(ARKeyboard keyboard)
         {
-            foreach (var kvp in keyboard.modifierKeyDictionary)
-            {
-                var modifierKey = kvp.Value;
-                modifierKey.ResetStateModifierKey();
-            }
-            
-            foreach (var kvp in keyboard.primaryKeyDictionary)
-            {
-                var primaryKey = kvp.Value;
-                primaryKey.ResetStatePrimaryKey();
-            }
+            // if()
+            ResetKeys(keyboard);
         }
     }
 }

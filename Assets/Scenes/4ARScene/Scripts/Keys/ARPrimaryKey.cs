@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Enums;
 using TMPro;
 using UnityEngine;
 
@@ -58,12 +59,13 @@ namespace AR_Keyboard
         }
 
 
-        public void ResetStatePrimaryKey()
+        public void ResetStatePrimaryKey(KeyAvailabilityState.EKeyAvailability availability)
         {
-            tooltipState = TooltipState.ETooltip.NONE;
+            // tooltipState = TooltipState.ETooltip.NONE;
             keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-            keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+            keyAvailability = availability;
             keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+            keyPressed = EKeyState.KEY_UNPRESSED;
 
         }
 

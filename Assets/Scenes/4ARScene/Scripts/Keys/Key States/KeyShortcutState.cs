@@ -1,6 +1,7 @@
 using System;
 using AR_Keyboard;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,10 @@ public class KeyShortcutState : MonoBehaviour
     private Sequence _destroySequence;
     private Vector3 _placementOffset =  new Vector3(0f, 0.0007f, 0f);
 
+    [SerializeField] private TextMeshProUGUI letterText;
+    [SerializeField] private TextMeshProUGUI secondaryText;
+    [SerializeField] private Image letterImage;
+    
     [Header("Command State Shortcuts")]
     public Shortcut undoShortcut;
     public Shortcut cutShortcut;
@@ -81,11 +86,27 @@ public class KeyShortcutState : MonoBehaviour
 
     private void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
     {
+
+ 
         //killing other sequence so they don't interfere 
         _destroySequence.Kill();
         _instantiateSequence = DOTween.Sequence();
         
-        //TODO: Add text state within the shortcut state machine 
+        if (letterText != null)
+        {
+            letterText.DOFade(0, 0.1f);
+        }
+
+        if (secondaryText != null)
+        {
+            secondaryText.DOFade(0, 0.1f);
+        }
+
+        if (letterImage != null)
+        {
+            letterText.DOFade(0, 0.1f);
+        }
+        
         
         var newShortcut = Instantiate(shortcut, primaryKey.transform);
         primaryKey.currentShortcut = newShortcut;

@@ -10,21 +10,42 @@ public class CommandShiftState : ARKeyboardState
 {
     public ARKeyboardState commandState;
     
+    //put string names in inspector
+    
     public override void Entry(ARKeyboard keyboard)
     {
-        foreach (var primaryKey in keyboard.primaryKeys)
-        {
-            if (!primaryKey.isInLearningMode)
-            {
-                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-            }
-            else
-            {
-                //TODO Implement Shortcut fading and unfading in learning mode
-                // primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0.5f, 0f);
-            }
-            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
-        }
+
+       foreach (var modifierKey in keyboard.modifierKeys)
+       {
+           if (modifierKey.isInLearningMode)
+           {
+               
+           }
+           else
+           {
+               if (modifierKey.KeyName == "command-left")
+               {
+                   modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                   modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+               }else if (modifierKey.KeyName == "shift-left")
+               {
+                   modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                   modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+               }
+               else
+               {
+                   modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+               }
+           }
+       }
+       
+       foreach (var primaryKey in keyboard.primaryKeys)
+       {
+           // primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+       }
+       
+       SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
+       
     }
 
     private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
@@ -45,6 +66,10 @@ public class CommandShiftState : ARKeyboardState
         }
 
         return base.HandleInput(key, keyboard);
+    }
 
+    public override void Exit(ARKeyboard keyboard)
+    {
+        ResetKeys(keyboard);
     }
 }

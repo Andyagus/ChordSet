@@ -11,22 +11,39 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
+
+            foreach (var modifierKey in keyboard.modifierKeys)
+            {
+
+                if (modifierKey.isInLearningMode)
+                {
+                    
+                }
+                else
+                {
+                    if (modifierKey.KeyName == "command-left")
+                    {
+                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                        modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                    }else if (modifierKey.KeyName == "shift-left")
+                    {
+                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+                        modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+                    }
+                    else
+                    {
+                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+                    }
+                }
+            }
+
+            foreach (var primaryKey in keyboard.primaryKeys)
+            {
+                primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+            }
             
-            Debug.Log("Entered Command State");
-            // foreach (var primaryKey in keyboard.primaryKeys)
-            // {
-            //     
-            // }
-            //
-            // foreach (var modifierKey in keyboard.modifierKeys)
-            // {
-            //     if (modifierKey.KeyName == "shift-left")
-            //     {
-            //         modifierKey.ModifierKeyAvailable();
-            //     }
-            // }
-            //
-            // SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
+            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
+
         }
 
         private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)
@@ -72,6 +89,7 @@ namespace AR_Keyboard.State
         
         public override void Exit(ARKeyboard keyboard)
         {
+            ResetKeys(keyboard);
         }
         
     }

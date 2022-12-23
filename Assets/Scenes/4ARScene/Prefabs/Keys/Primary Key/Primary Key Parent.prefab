@@ -465,6 +465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75813602f6c241bd8e698d993ecf851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letterText: {fileID: 8864110013499526539}
+  secondaryText: {fileID: 2648754770596506215}
+  letterImage: {fileID: 2829080599917354305}
   undoShortcut: {fileID: 1648146909937062396, guid: 00d9853581c9f4946b03fbc1de220626, type: 3}
   cutShortcut: {fileID: 1648146909937062396, guid: d2f114bc2bca54b1ca923b0e99169cd2, type: 3}
   copyShortcut: {fileID: 2170690387987534747, guid: 086b4483735774c3f9d4cb6379f604d3, type: 3}

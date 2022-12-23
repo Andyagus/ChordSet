@@ -15,12 +15,14 @@ public class UndoShortcutState : LearningModeState
     
     public override void Entry(ARKeyboard keyboard)
     {
-        // var zPrimaryKey = keyboard.primaryKeyDictionary["Z"];
+        var zPrimaryKey = keyboard.primaryKeyDictionary["Z"];
+        zPrimaryKey.isInLearningMode = true;
+        zPrimaryKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+        zPrimaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        
         // zPrimaryKey.LearningModeAvailable();
         // zPrimaryKey.PrimaryKeyAvailable();
-        
-        
-        
+
         // var commandModifierKey = keyboard.modifierKeyDictionary["command-left"];
         //
         // keysInShortcut = new List<Key>()
