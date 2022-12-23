@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
+using DG.Tweening;
 using Enums;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class CommandShiftState : ARKeyboardState
 {
@@ -11,7 +14,15 @@ public class CommandShiftState : ARKeyboardState
     {
         foreach (var primaryKey in keyboard.primaryKeys)
         {
-            primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+            if (!primaryKey.isInLearningMode)
+            {
+                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
+            }
+            else
+            {
+                //TODO Implement Shortcut fading and unfading in learning mode
+                // primaryKey.currentShortcut.GetComponentInChildren<Image>().DOFade(0.5f, 0f);
+            }
             SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
         }
     }

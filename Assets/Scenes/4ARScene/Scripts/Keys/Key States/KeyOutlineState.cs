@@ -9,7 +9,8 @@ public class KeyOutlineState : MonoBehaviour
     public enum EKeyOutline
     {
         OUTLINE,
-        NO_OUTLINE
+        NO_OUTLINE,
+        HALF
     }
 
     public void SetOutlineState(EKeyOutline state, Key key)
@@ -22,8 +23,13 @@ public class KeyOutlineState : MonoBehaviour
             case EKeyOutline.NO_OUTLINE:
                 NoOutline();
                 break;
+            case EKeyOutline.HALF:
+                Half();
+                break;
         }
     }
+
+ 
     private void Outline()
     {
         outline.DOFade(1, 1.2f);
@@ -32,6 +38,11 @@ public class KeyOutlineState : MonoBehaviour
     private void NoOutline()
     {
         outline.DOFade(0, 1.2f);    
+    }
+
+    private void Half()
+    {
+        outline.DOFade(0.5f, 1.2f);    
     }
 
     

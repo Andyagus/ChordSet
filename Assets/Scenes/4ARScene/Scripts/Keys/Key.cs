@@ -92,11 +92,8 @@ public class Key : MonoBehaviour
     
     public virtual void ResetAllState()
     {
-        if (!isInLearningMode)
-        {
-            keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
-        }
         
+        keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
         keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
         keyColorState = KeyColorState.EKeyColorState.BLACK;
     }

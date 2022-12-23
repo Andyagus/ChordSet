@@ -25,9 +25,13 @@ namespace AR_Keyboard
         [Header("Keyboard States")]
         public ARKeyboardState welcomeModeState;
         private ARKeyboardState _welcomeModeState;
+        
+        //TODO Make event
+        public bool cameFromWelcomeState;
+        
         private ARKeyboardState _ambientModeState;
         public ARKeyboardState ambientModeState;
-        [SerializeField] private bool learningModeActive;
+        public bool learningModeActive;
         private ARKeyboardState _learningModeState;
         public ARKeyboardState learningModeState;
 
@@ -198,7 +202,9 @@ namespace AR_Keyboard
             //TODO lock until welcome mode animation is complete
             if (key.KeyName == "space")
             {
+                // cameFromWelcomeState = true;
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
+                // cameFromWelcomeState = false;
             }
         }
 
@@ -207,6 +213,7 @@ namespace AR_Keyboard
             var state = _ambientModeState.HandleInput(key, this);
             if (state != null)
             {
+                _ambientModeState.Exit(this);
                 Destroy(_ambientModeState);
                 _ambientModeState = state;
                 _ambientModeState.Entry(this);

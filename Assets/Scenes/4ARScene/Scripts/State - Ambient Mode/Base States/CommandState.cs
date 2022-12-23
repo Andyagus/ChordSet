@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Enums;
+using UnityEngine;
 
 namespace AR_Keyboard.State
 {
@@ -10,28 +11,22 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-
-            foreach (var modifierKey in keyboard.modifierKeys)
-            {
-                if (modifierKey.KeyName == "shift-left")
-                {
-                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
-                    modifierKey.keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
-                }
-            }
             
-            foreach (var primaryKey in keyboard.primaryKeys)
-            {
-                primaryKey.keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-                
-                //TODO Move to base state
-                if (!primaryKey.isInLearningMode)
-                {
-                    primaryKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-                }
-            }
-            
-            SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
+            Debug.Log("Entered Command State");
+            // foreach (var primaryKey in keyboard.primaryKeys)
+            // {
+            //     
+            // }
+            //
+            // foreach (var modifierKey in keyboard.modifierKeys)
+            // {
+            //     if (modifierKey.KeyName == "shift-left")
+            //     {
+            //         modifierKey.ModifierKeyAvailable();
+            //     }
+            // }
+            //
+            // SetShortcutsOnKeys(keyboard.primaryKeyDictionary);
         }
 
         private void SetShortcutsOnKeys(Dictionary<string, ARPrimaryKey> keyboardPrimaryKeyDictionary)

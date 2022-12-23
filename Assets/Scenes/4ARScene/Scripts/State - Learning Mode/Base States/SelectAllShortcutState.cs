@@ -26,22 +26,33 @@ public class SelectAllShortcutState : LearningModeState
             shiftLeftModifierKey,
             aPrimaryKey
         };
+
+
+        cmdLeftModifierKey.LearningModeAvailable();
+        shiftLeftModifierKey.LearningModeAvailable();
+        aPrimaryKey.LearningModeAvailable();
+
+        foreach (var key in keysInShortcut)
+        {
+            // key.in
+        }
+
         
-        DisplayShortcutKeys();
-        
-        _highlightKeySequence = DOTween.Sequence();
-        _highlightKeySequence.AppendInterval(1.3742f);
-        _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
-        _highlightKeySequence.AppendInterval(0.75f);
-        _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
-        _highlightKeySequence.AppendInterval(1f);
-        _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_PRESSED);
-        _highlightKeySequence.AppendInterval(0.25f);
-        _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
-        _highlightKeySequence.AppendInterval(1f);
-        _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
-        _highlightKeySequence.AppendInterval(0.3f);
-        _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        // DisplayShortcutKeys();
+
+        // _highlightKeySequence = DOTween.Sequence();
+        // _highlightKeySequence.AppendInterval(1.3742f);
+        // _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
+        // _highlightKeySequence.AppendInterval(0.75f);
+        // _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_PRESSED);
+        // _highlightKeySequence.AppendInterval(1f);
+        // _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_PRESSED);
+        // _highlightKeySequence.AppendInterval(0.25f);
+        // _highlightKeySequence.AppendCallback(() => aPrimaryKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        // _highlightKeySequence.AppendInterval(1f);
+        // _highlightKeySequence.AppendCallback(() => shiftLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        // _highlightKeySequence.AppendInterval(0.3f);
+        // _highlightKeySequence.AppendCallback(() => cmdLeftModifierKey.keyPressed = EKeyState.KEY_UNPRESSED);
 
     }
 
@@ -57,7 +68,7 @@ public class SelectAllShortcutState : LearningModeState
 
     public override void Exit(ARKeyboard keyboard)
     {
-        DiscardShortcutKeys();
+        // DiscardShortcutKeys();
     }
 }
 

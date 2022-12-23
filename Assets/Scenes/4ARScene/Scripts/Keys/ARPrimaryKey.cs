@@ -57,12 +57,32 @@ namespace AR_Keyboard
             base.Update();
         }
 
-        public override void ResetAllState()
+
+        public void ResetStatePrimaryKey()
         {
             tooltipState = TooltipState.ETooltip.NONE;
             keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-            keyLetterState = KeyLetterState.EKeyLetter.NONE;
-            base.ResetAllState();
+            keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+            keyOutline = KeyOutlineState.EKeyOutline.NO_OUTLINE;
+
+        }
+
+        public void PrimaryKeyAvailable()
+        {
+            keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+        }
+
+        public void PrimaryKeyUnavailable()
+        {
+            keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
+        }
+
+        public void LearningModeAvailable()
+        {
+            isInLearningMode = true;
+            keyOutline = KeyOutlineState.EKeyOutline.OUTLINE;
+            keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE;
+
         }
 
         

@@ -10,13 +10,9 @@ namespace AR_Keyboard.State
         
         public override void Entry(ARKeyboard keyboard)
         {
-        
-            Debug.Log("In Ambient Mode: Typing State");
-            
             foreach (var kvp in keyboard.modifierKeyDictionary)
             {
                 var modifierKey = kvp.Value;
-                modifierKey.ResetAllState();
 
                 if (modifierKey.KeyName == "command-left")
                 {
@@ -24,19 +20,14 @@ namespace AR_Keyboard.State
                 }
                 else
                 {
-                    //TODO move to base method
-                    if (!modifierKey.isInLearningMode)
-                    {
-                        modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
-                    }
+                    modifierKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.UNAVAILABLE;
                 }
             }
 
             foreach (var kvp in keyboard.primaryKeyDictionary)
             {
                 var primaryKey = kvp.Value;
-                primaryKey.ResetAllState();
-
+                
             }
 
             var backQuote = keyboard.primaryKeyDictionary["back-quote"];
@@ -56,6 +47,21 @@ namespace AR_Keyboard.State
                 }
             }
             return null;
+        }
+
+        public override void Exit(ARKeyboard keyboard)
+        {
+            foreach (var kvp in keyboard.modifierKeyDictionary)
+            {
+                var modifierKey = kvp.Value;
+                modifierKey.ResetStateModifierKey();
+            }
+            
+            foreach (var kvp in keyboard.primaryKeyDictionary)
+            {
+                var primaryKey = kvp.Value;
+                primaryKey.ResetStatePrimaryKey();
+            }
         }
     }
 }
