@@ -14,6 +14,7 @@ public class KeyAvailabilityState : MonoBehaviour
     [SerializeField] private TextMeshProUGUI secondaryText;
     [SerializeField] private Image letterImage;
 
+    private float _fadeAmt = 0.25f;
 
     public enum EKeyAvailability
     {
@@ -58,17 +59,17 @@ public class KeyAvailabilityState : MonoBehaviour
     {
         if (letterText != null)
         {
-            letterText.DOFade(0f, 0.973f);
+            letterText.DOFade(_fadeAmt, 0.973f);
         }
 
         if (secondaryText != null)
         {
-            secondaryText.DOFade(0f, 0.973f);
+            secondaryText.DOFade(_fadeAmt, 0.973f);
         }
 
         if (letterImage != null)
         {
-            letterImage.DOFade(0f, 0.34f);
+            letterImage.DOFade(_fadeAmt, 0.34f);
         }
     }
     

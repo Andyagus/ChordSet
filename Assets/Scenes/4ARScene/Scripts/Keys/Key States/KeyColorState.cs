@@ -34,14 +34,14 @@ public class KeyColorState : MonoBehaviour
     {
         var color = Color.white;
         var rend = key.GetComponentInChildren<MeshRenderer>();
-        rend.material.DOColor(color, 0.524f);
+        rend.material.DOColor(color, 0.1f);
     }
     
     private void Black(Key key)
     {
         var color = Color.black;
         var rend = key.GetComponentInChildren<MeshRenderer>();
-        rend.material.DOColor(color, 0.524f);
+        rend.material.DOColor(color, 0.1f);
     }
     
 }

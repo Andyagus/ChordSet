@@ -8,10 +8,11 @@ using UnityEngine.UI;
 
 public class ShortcutPopUpState : MonoBehaviour
 {
-    
+    [SerializeField] private Image popUpBackground;
+    [SerializeField] private TextMeshProUGUI popUpText;
+    [SerializeField] private Image popUpImage;
 
-    // [SerializeField] private Image panelBackground;
-    [SerializeField] private GameObject popUp;
+    private float _fadeTime = 0.35f;
     
     public enum EShortcutPopUp
     {
@@ -19,34 +20,34 @@ public class ShortcutPopUpState : MonoBehaviour
         INACTIVE
     }
 
-    public void TogglePanelState()
+    public void SetPopUpState(EShortcutPopUp state)
     {
-        switch (popUp.activeSelf)
+        switch (state)
         {
-            case true:
-                Inactive();
-                break;
-            case false:
+            case EShortcutPopUp.ACTIVE:
                 Active();
+                break;
+            case EShortcutPopUp.INACTIVE:
+                Inactive();
                 break;
             default:
                 break;
         }
     }
     
-    //can pass in parameters here…
     private void Active()
     {
-        popUp.SetActive(true);
-        // panelBackground.DOFade(0.354f, 1f);
-        // panelText.DOFade(1, 1f);
-        // panelText.DOText(shortcutName, 0f);
+        var sequence = DOTween.Sequence();
+        sequence.Append(popUpBackground.DOFade(0.74f, _fadeTime))
+            .Insert(0, popUpText.DOFade(1, _fadeTime))
+            .Insert(0, popUpImage.DOFade(1, _fadeTime));
+        sequence.AppendInterval(0.74f * 3);
     }
     
     private void Inactive()
     {
-        popUp.SetActive(false);
-        // panelBackground.DOFade(0, 1f);
-        // panelText.DOFade(0, 1f);
+        popUpBackground.DOFade(0, _fadeTime);
+        popUpText.DOFade(0, _fadeTime);
+        popUpImage.DOFade(0, _fadeTime);
     }
 }
