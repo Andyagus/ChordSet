@@ -23,9 +23,8 @@ namespace AR_Keyboard
         }
         public EShortcuts eShortcut;
         public string shortcutName;
-
-        public List<string> modifierToAccess;
-        public string primaryKeyToAccess;
+        public Sprite shortcutSprite;
+        public List<string> keysToAccess;
         
         [Header("Shortcut Activity State")] 
         private ShortcutActivityState _activityState;

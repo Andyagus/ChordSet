@@ -12,6 +12,10 @@ PrefabInstance:
       value: Undo
       objectReference: {fileID: 0}
     - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
+      propertyPath: shortcutSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca4da56618c0c4b409748c8521ba2a5e, type: 3}
+    - target: {fileID: -2657215823183012923, guid: 6ff23ca668c214e57a1a496f008cdcef, type: 3}
       propertyPath: shortcutActivity
       value: 1
       objectReference: {fileID: 0}
