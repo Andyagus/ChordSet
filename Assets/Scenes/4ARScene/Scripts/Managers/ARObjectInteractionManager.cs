@@ -10,7 +10,6 @@ public class ARObjectInteractionManager : MonoBehaviour
     [SerializeField] private ARGestureInteractor gestureInteractor;
     
     private bool _objectPlaced;
-
     
     // ReSharper disable once InconsistentNaming
     [SerializeField] private GameObject _ARKeyboard;

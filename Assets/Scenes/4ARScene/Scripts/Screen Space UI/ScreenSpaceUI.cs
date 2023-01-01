@@ -23,7 +23,7 @@ public class ScreenSpaceUI : MonoBehaviour
 
    private void Start()
    {
-      _arKeyboard.onLearningModeStateChanged += OnLearningModeStateChanged;
+      // _arKeyboard.onLearningModeStateChanged += OnLearningModeStateChanged;
    }
 
    private void OnLearningModeStateChanged(ARKeyboardState state)

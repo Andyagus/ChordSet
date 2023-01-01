@@ -5,16 +5,23 @@ using UnityEngine;
 public class OpenContentPanelButton : MonoBehaviour
 {
     public GameObject shortcutListObject;
+
+    public void OnContentPanelButtonClick()
+    {
+        Debug.Log("Clicked Panel Button");
+    }
     
     public void ToggleShortcutListActive()
     {
         switch (shortcutListObject.activeSelf)
         {
             case(true):
-                shortcutListObject.SetActive(false);
+                Debug.Log("Clicked, now true");
+                // shortcutListObject.SetActive(false);
                 break;
             case(false):
-                shortcutListObject.SetActive(true);
+                Debug.Log("Clicked, now false");
+                // shortcutListObject.SetActive(true);
                 break;
         }    
     }

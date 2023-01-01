@@ -53,6 +53,9 @@ namespace AR_Keyboard
         
         private void Awake()
         {
+            
+            Debug.Log("Keyboard Created");
+            
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
