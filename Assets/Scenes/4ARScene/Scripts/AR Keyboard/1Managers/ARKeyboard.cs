@@ -21,6 +21,7 @@ namespace AR_Keyboard
         public Action<ARKeyboardState> onLearningModeStateChanged;
         
         //learning mode state 
+        private ShortcutList _shortcutList;
         private ARKeyboardState _learningModeState;
         public ARKeyboardState learningModeWelcome;
         public ARKeyboardState undoShortcutState;
@@ -55,6 +56,7 @@ namespace AR_Keyboard
         {
             
             Debug.Log("Keyboard Created");
+            _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
             
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
@@ -258,7 +260,8 @@ namespace AR_Keyboard
 
             if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
-                keyboardMode = EKeyboardMode.LEARNING_MODE;
+                ToggleShortcutList();
+                // keyboardMode = EKeyboardMode.LEARNING_MODE;
             }
             
             var state = _ambientModeState.HandleInput(key, this);
@@ -274,7 +277,20 @@ namespace AR_Keyboard
                 StartCoroutine(AmbientStateChangeCoroutine());
             }
         }
-        
+
+        private void ToggleShortcutList()
+        {
+            switch (_shortcutList.gameObject.activeSelf)
+            {
+                case true:
+                    _shortcutList.gameObject.SetActive(false);
+                    break;
+                case false:
+                    _shortcutList.gameObject.SetActive(true);
+                    break;
+            }
+        }
+
 
         private IEnumerator AmbientStateChangeCoroutine()
         {
