@@ -14,6 +14,8 @@ public class ShortcutList : MonoBehaviour
     [SerializeField] private Transform contentParentObject;
 
     public Action<Shortcut> onListItemClicked;
+    public Action onListPopulated;
+    
     
     private void Awake()
     {
@@ -24,6 +26,14 @@ public class ShortcutList : MonoBehaviour
             listItem.shortcutImage.sprite = shortcut.shortcutSprite;
             listItem.shortcutKeys.text = FormatKeysToAccessString(shortcut.keysToAccess);
             listItem.GetComponentInChildren<Button>().onClick.AddListener(() => OnListItemClick(shortcut));
+        }
+    }
+
+    private void Start()
+    {
+        if (onListPopulated != null)
+        {
+            onListPopulated();
         }
     }
 
