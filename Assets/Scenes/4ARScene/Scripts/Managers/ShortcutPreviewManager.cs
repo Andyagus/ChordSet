@@ -11,80 +11,69 @@ public class ShortcutPreviewManager : MonoBehaviour
 {
     private ARKeyboard _keyboard;
     private List<Key> _sequenceKeys;
+    private ShortcutList _shortcutList;
     public Action onPreviewComplete;
     
     private void Awake()
     {
-        
-        // Debug.Log("Shortcut Preview Manager");
-        
-        // _sequenceKeys = new List<Key>();
-        // _keyboard = GetComponentInParent<ARKeyboard>();
-
-
-        var shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
-        shortcutList.onListItemClicked += TestLog;
-
+        _sequenceKeys = new List<Key>();
+        _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
+        _keyboard = GetComponentInParent<ARKeyboard>();
     }
 
-    private void TestLog(Shortcut shortcut)
-    {
-        Debug.Log("Shortcut Preview Manager: " + shortcut);
-    }
-    
     private void Start()
     {
-        // shortcutList.onListItemClicked += OnListItemClicked;
+        _shortcutList.onListItemClicked += OnListItemClicked;
     }
 
-    // private void OnListItemClicked(Shortcut shortcut)
-    // {
-    //     //conducting seperate loops so in order
-    //     foreach (var key in shortcut.keysToAccess)
-    //     {
-    //         if (_keyboard.modifierKeyDictionary.ContainsKey(key))
-    //         {
-    //             var modifierKey = _keyboard.modifierKeyDictionary[key];
-    //             _sequenceKeys.Add(modifierKey);
-    //         }
-    //     }
-    //     
-    //     foreach (var key in shortcut.keysToAccess)
-    //     {
-    //         if (_keyboard.primaryKeyDictionary.ContainsKey(key))
-    //         {
-    //             var primaryKey = _keyboard.primaryKeyDictionary[key];
-    //             _sequenceKeys.Add(primaryKey);
-    //         }
-    //     }
-    //
-    //     // CreateSequence();
-    // }
+    private void OnListItemClicked(Shortcut shortcut)
+    {
+        //conducting seperate loops so in order
+        foreach (var key in shortcut.keysToAccess)
+        {
+            if (_keyboard.modifierKeyDictionary.ContainsKey(key))
+            {
+                var modifierKey = _keyboard.modifierKeyDictionary[key];
+                _sequenceKeys.Add(modifierKey);
+            }
+        }
+        
+        foreach (var key in shortcut.keysToAccess)
+        {
+            if (_keyboard.primaryKeyDictionary.ContainsKey(key))
+            {
+                var primaryKey = _keyboard.primaryKeyDictionary[key];
+                _sequenceKeys.Add(primaryKey);
+            }
+        }
+    
+        CreateSequence();
+    }
 
-    // private void CreateSequence()
-    // {
-    //     var sequence = DOTween.Sequence();
-    //
-    //     sequence.AppendInterval(0.72f);
-    //     foreach (var sequenceKey in _sequenceKeys)
-    //     {
-    //         sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_PRESSED);
-    //         sequence.AppendInterval(0.72f);
-    //     }
-    //     
-    //     // sequence.AppendInterval(0.72f);
-    //
-    //     sequence.AppendCallback(() =>
-    //     {
-    //         onPreviewComplete();
-    //     });
-    //     
-    //     foreach (var sequenceKey in _sequenceKeys)
-    //     {
-    //         sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_UNPRESSED);
-    //     }
-    //
-    //     
-    //     _sequenceKeys.Clear();
-    // }
+    private void CreateSequence()
+    {
+        var sequence = DOTween.Sequence();
+    
+        sequence.AppendInterval(0.72f);
+        foreach (var sequenceKey in _sequenceKeys)
+        {
+            sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_PRESSED);
+            sequence.AppendInterval(0.72f);
+        }
+        
+        // sequence.AppendInterval(0.72f);
+    
+        sequence.AppendCallback(() =>
+        {
+            onPreviewComplete();
+        });
+        
+        foreach (var sequenceKey in _sequenceKeys)
+        {
+            sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_UNPRESSED);
+        }
+    
+        
+        _sequenceKeys.Clear();
+    }
 }

@@ -29,9 +29,8 @@ public class ShortcutList : MonoBehaviour
 
     private void OnListItemClick(Shortcut shortcut)
     {
-        // Debug.Log("Pressed list Item: " + shortcut.shortcutName);
         onListItemClicked(shortcut);
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
     
     private string FormatKeysToAccessString(List<string> keysToAccess)

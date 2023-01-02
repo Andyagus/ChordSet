@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -8,6 +9,8 @@ public class ARObjectInteractionManager : MonoBehaviour
     [SerializeField] private ARPlaneManager planeManager;
     [SerializeField] private ARPlacementInteractable placementInteractable;    
     [SerializeField] private ARGestureInteractor gestureInteractor;
+
+    public Action onKeyboardInstantiated;
     
     private bool _objectPlaced;
     
@@ -51,6 +54,10 @@ public class ARObjectInteractionManager : MonoBehaviour
         
         //instantiate new game obejct at the position of interactable object
 
+        if (onKeyboardInstantiated != null)
+        {
+            onKeyboardInstantiated();
+        }
         var keyboard = Instantiate(_ARKeyboard, objTransform.position, objTransform.rotation, objTransform.parent);
     }
     

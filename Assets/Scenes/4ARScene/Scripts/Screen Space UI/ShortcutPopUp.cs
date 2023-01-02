@@ -6,22 +6,23 @@ using UnityEngine;
 
 public class ShortcutPopUp : MonoBehaviour
 {
+    private ARObjectInteractionManager _interactionManager;
+    
     private ShortcutListItem _shortcutListItem;
     private ShortcutPopUpState _popUpState;
     public ShortcutPopUpState.EShortcutPopUp popUpState;
     [SerializeField] private ShortcutList shortcutList;
-    [SerializeField] private ShortcutPreviewManager shortcutPreviewManager;
+    private ShortcutPreviewManager _shortcutPreviewManager;
     
     
     private void Awake()
     {
+        _interactionManager = GameObject.FindObjectOfType<ARObjectInteractionManager>();
         _popUpState = GetComponent<ShortcutPopUpState>();
         _shortcutListItem = GetComponent<ShortcutListItem>();
         shortcutList.onListItemClicked += OnListItemClicked;
-        shortcutPreviewManager.onPreviewComplete += OnPreviewComplete;
     }
-
-
+    
     private void OnListItemClicked(Shortcut shortcut)
     {
         popUpState = ShortcutPopUpState.EShortcutPopUp.ACTIVE;
@@ -30,9 +31,9 @@ public class ShortcutPopUp : MonoBehaviour
         _shortcutListItem.shortcutImage.sprite = shortcut.shortcutSprite;
     }
     
-    private void OnPreviewComplete()
-    {
-        popUpState = ShortcutPopUpState.EShortcutPopUp.INACTIVE;
-        _popUpState.SetPopUpState(popUpState);
-    }
+    // private void OnPreviewComplete()
+    // {
+    //     popUpState = ShortcutPopUpState.EShortcutPopUp.INACTIVE;
+    //     _popUpState.SetPopUpState(popUpState);
+    // }
 }

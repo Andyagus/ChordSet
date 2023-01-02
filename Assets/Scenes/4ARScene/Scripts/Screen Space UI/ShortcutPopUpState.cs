@@ -41,7 +41,9 @@ public class ShortcutPopUpState : MonoBehaviour
         sequence.Append(popUpBackground.DOFade(0.74f, _fadeTime))
             .Insert(0, popUpText.DOFade(1, _fadeTime))
             .Insert(0, popUpImage.DOFade(1, _fadeTime));
-        sequence.AppendInterval(0.74f * 3);
+        sequence.AppendInterval(0.74f * 4);
+        //TODO OnShortcutDisplayComplete() callback from preview manager 
+        sequence.AppendCallback(Inactive);
     }
     
     private void Inactive()
