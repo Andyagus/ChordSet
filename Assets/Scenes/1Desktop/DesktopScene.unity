@@ -2614,7 +2614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe158652d7024b1289d0ded1c08f459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: up-arrow
+  _keyName: Arrow-Up
   _keyCode: 273
   keyState: 1
 --- !u!1 &1863215972
@@ -2729,7 +2729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe158652d7024b1289d0ded1c08f459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _keyName: down-arrow
+  _keyName: Arrow-Down
   _keyCode: 274
   keyState: 1
 --- !u!1 &1931092989

@@ -263,6 +263,15 @@ namespace AR_Keyboard
                 ToggleShortcutList();
                 // keyboardMode = EKeyboardMode.LEARNING_MODE;
             }
+
+            if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+                var value = Input.GetAxis("Vertical");
+                
+                Debug.Log(value);
+                
+
+            }
             
             var state = _ambientModeState.HandleInput(key, this);
             
