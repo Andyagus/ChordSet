@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 1215533149}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!4 &489413116
 Transform:
@@ -547,6 +547,18 @@ PrefabInstance:
     - target: {fileID: 1472310931677354311, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.6737718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.6737718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.9716981
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2d77096c166405a857047d43c8524a, type: 3}

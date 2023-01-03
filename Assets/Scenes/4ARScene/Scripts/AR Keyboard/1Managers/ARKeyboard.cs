@@ -22,6 +22,9 @@ namespace AR_Keyboard
         
         //learning mode state 
         private ShortcutList _shortcutList;
+        private ShortcutListInput _shortcutListInput;
+        private bool _shortcutListActive;
+        
         private ARKeyboardState _learningModeState;
         public ARKeyboardState learningModeWelcome;
         public ARKeyboardState undoShortcutState;
@@ -57,7 +60,7 @@ namespace AR_Keyboard
             
             Debug.Log("Keyboard Created");
             _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
-            
+            _shortcutListInput = _shortcutList.gameObject.GetComponent<ShortcutListInput>();
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
@@ -264,13 +267,15 @@ namespace AR_Keyboard
                 // keyboardMode = EKeyboardMode.LEARNING_MODE;
             }
 
+            if (_shortcutListActive)
+            {
+                _shortcutListInput.HandleInput(key);
+            }
+            
+
             if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 var value = Input.GetAxis("Vertical");
-                
-                Debug.Log(value);
-                
-
             }
             
             var state = _ambientModeState.HandleInput(key, this);
@@ -293,10 +298,12 @@ namespace AR_Keyboard
             {
                 case true:
                     Debug.Log("Active False");
+                    _shortcutListActive = false;
                     _shortcutList.gameObject.SetActive(false);
                     break;
                 case false:
                     Debug.Log("Active True");
+                    _shortcutListActive = true;
                     _shortcutList.gameObject.SetActive(true);
                     break;
             }

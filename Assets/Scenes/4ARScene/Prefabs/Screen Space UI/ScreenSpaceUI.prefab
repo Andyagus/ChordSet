@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 1166840723456257713}
   - component: {fileID: 5272471453816089793}
   - component: {fileID: 5623656151006317470}
+  - component: {fileID: 1561317731}
   m_Layer: 0
   m_Name: Shortcut List
   m_TagString: Untagged
@@ -866,6 +867,18 @@ MonoBehaviour:
   - {fileID: 1648146909937062396, guid: e9e20c22bb3c3472799dea064d81fbae, type: 3}
   - {fileID: 1648146909937062396, guid: d3070a417740f4bcebfde4d2722d5cb9, type: 3}
   contentParentObject: {fileID: 4440874063300388200}
+--- !u!114 &1561317731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517897936567601235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5d64274c52048d9883274ea1d7e3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6546926347971624196
 GameObject:
   m_ObjectHideFlags: 0
