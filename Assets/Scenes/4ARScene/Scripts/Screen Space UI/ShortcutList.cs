@@ -37,6 +37,12 @@ public class ShortcutList : MonoBehaviour
         }
     }
 
+
+    public void HandleInput(Key key)
+    {
+        
+    }
+
     private void OnListItemClick(Shortcut shortcut)
     {
         onListItemClicked(shortcut);

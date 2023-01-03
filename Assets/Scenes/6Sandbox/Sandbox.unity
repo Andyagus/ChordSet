@@ -154,10 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: null
+  m_VerticalAxis: null
+  m_SubmitButton: null
+  m_CancelButton: null
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -547,6 +547,26 @@ PrefabInstance:
     - target: {fileID: 1472310931677354311, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645709634756124046, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645709634756124046, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436716847702486910, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.8000488
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436716847702486910, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -72.599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440874063300388200, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2d77096c166405a857047d43c8524a, type: 3}

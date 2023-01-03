@@ -22,6 +22,7 @@ namespace AR_Keyboard
         
         //learning mode state 
         private ShortcutList _shortcutList;
+        private ShortcutListInputHandler _listInputHandler;
         private ARKeyboardState _learningModeState;
         public ARKeyboardState learningModeWelcome;
         public ARKeyboardState undoShortcutState;
@@ -41,6 +42,8 @@ namespace AR_Keyboard
         
         private KeySyncDictionary _keySyncDictionary;
 
+        private bool _shortcutListActive;
+        
         public enum EKeyboardMode
         {
             NO_MODE,
@@ -57,7 +60,7 @@ namespace AR_Keyboard
             
             Debug.Log("Keyboard Created");
             _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
-            
+            _listInputHandler = _shortcutList.gameObject.GetComponent<ShortcutListInputHandler>();
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
@@ -229,29 +232,17 @@ namespace AR_Keyboard
 
         private void LearningModeHandleInput(Key key)
         {
-            
-            if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
-            {
-                _learningModeState.Exit(this);
 
-                var screenSpaceUI = GameObject.Find("ScreenSpaceUI");
-                if (screenSpaceUI != null)
-                {
-                    Destroy(screenSpaceUI.gameObject);
-                }
-                keyboardMode = EKeyboardMode.AMBIENT_MODE;
-            }
-
-            var state = _learningModeState.HandleInput(key, this);
-            if (state != null)
-            {
-                // _learningModeState.Exit(this);
-                Destroy(_learningModeState.gameObject);
-                _learningModeState = state;
-                _learningModeState.transform.SetParent(this.transform);
-                _learningModeState.Entry(this);
-                onLearningModeStateChanged(state);
-            }
+            // var state = _learningModeState.HandleInput(key, this);
+            // if (state != null)
+            // {
+            //     // _learningModeState.Exit(this);
+            //     Destroy(_learningModeState.gameObject);
+            //     _learningModeState = state;
+            //     _learningModeState.transform.SetParent(this.transform);
+            //     _learningModeState.Entry(this);
+            //     onLearningModeStateChanged(state);
+            // }
             
         }
 
@@ -260,17 +251,15 @@ namespace AR_Keyboard
 
             if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
-                ToggleShortcutList();
-                // keyboardMode = EKeyboardMode.LEARNING_MODE;
+                // _learningModeState.HandleInput(key, this);
+                 ToggleShortcutList();
+                 // keyboardMode = EKeyboardMode.LEARNING_MODE;
             }
 
-            if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
+            if (_shortcutListActive)
             {
-                var value = Input.GetAxis("Vertical");
-                
-                Debug.Log(value);
-                
-
+                 _listInputHandler.HandleInput(key);
+                 // _shortcutList.HandleInput(key);
             }
             
             var state = _ambientModeState.HandleInput(key, this);
@@ -293,9 +282,12 @@ namespace AR_Keyboard
             {
                 case true:
                     _shortcutList.gameObject.SetActive(false);
+                    _shortcutListActive = false;
+
                     break;
                 case false:
                     _shortcutList.gameObject.SetActive(true);
+                    _shortcutListActive = true;
                     break;
             }
         }
