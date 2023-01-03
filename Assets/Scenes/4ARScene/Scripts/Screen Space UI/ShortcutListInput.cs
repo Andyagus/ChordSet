@@ -62,7 +62,8 @@ public class ShortcutListInput : MonoBehaviour
       {
          if (key.keyPressed == EKeyState.KEY_PRESSED)
          {
-            // _searchBar.text = _searchBar.text + key.KeyName;
+            _searchBar.DeactivateInputField();
+            _searchBar.text = _searchBar.text + key.KeyName;
          }
          
       }
