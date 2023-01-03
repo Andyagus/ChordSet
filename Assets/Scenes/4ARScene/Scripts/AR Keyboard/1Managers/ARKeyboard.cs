@@ -292,9 +292,11 @@ namespace AR_Keyboard
             switch (_shortcutList.gameObject.activeSelf)
             {
                 case true:
+                    Debug.Log("Active False");
                     _shortcutList.gameObject.SetActive(false);
                     break;
                 case false:
+                    Debug.Log("Active True");
                     _shortcutList.gameObject.SetActive(true);
                     break;
             }

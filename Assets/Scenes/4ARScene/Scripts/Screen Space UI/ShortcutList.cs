@@ -19,6 +19,7 @@ public class ShortcutList : MonoBehaviour
     
     private void Awake()
     {
+        
         foreach (var shortcut in shortcuts)
         {
             var listItem = Instantiate(shortcutListItem, contentParentObject);
