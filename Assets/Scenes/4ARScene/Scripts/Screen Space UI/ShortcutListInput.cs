@@ -48,53 +48,70 @@ public class ShortcutListInput : MonoBehaviour
       // currentItem.GetComponent<TMP_InputField>().Select();
    }
 
+   private void OnDisable()
+   {
+      _itemIndex = 0;
+   }
 
    public void HandleInput(Key key)
    {
-
-      // var currentItem = _listItems[_itemIndex];
-      // currentItem.GetComponent<TMP_InputField>().Select();
       
-      _searchBar.Select();
-      _searchBar.ActivateInputField();
-
-      if (_searchBar.isFocused)
+      if (key.KeyName == "Arrow-Down" && key.keyPressed == EKeyState.KEY_PRESSED)
       {
-         if (key.keyPressed == EKeyState.KEY_PRESSED)
+         _itemIndex++;
+      }
+      
+      if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
+      {
+         _itemIndex--;
+      }
+      
+      var currentItem = _listItems[_itemIndex];
+      
+      if (currentItem.GetComponent<TMP_InputField>() != null)
+      {
+         var searchBar =currentItem.GetComponent<TMP_InputField>(); 
+         searchBar.Select();
+         searchBar.ActivateInputField();
+
+         if (searchBar.isFocused)
          {
-            if (key.KeyName != "X")
+            if (key.keyPressed == EKeyState.KEY_PRESSED)
             {
+               if (key.KeyName != null)
+               {
 
-               _searchBar.text = _searchBar.text + key.KeyName;
-               _searchBar.MoveTextEnd(false);
 
-            }
-            else
-            {
-               _searchBar.text = _searchBar.text.Remove(_searchBar.text.Length - 1, 1);
+               }
+               if(key.KeyName == "X")
+               {
+                  searchBar.text = searchBar.text.Remove(searchBar.text.Length - 1, 1);
+               }
+               if (key.KeyName == "Arrow-Down" || key.KeyName == "Arrow-Up")
+               {
+                  return;
+               }
+               else
+               {
+                  searchBar.text = searchBar.text + key.KeyName;
+                  searchBar.MoveTextEnd(false);
 
+               }
             }
          }
-
-
+         
+      }else if (currentItem.GetComponent<Button>() != null)
+      {
+         var listButton = currentItem.GetComponent<Button>();
+         listButton.Select();
       }
-
-      // if (_searchBar.isFocused)
-      // {
-      //    if (key.keyPressed == EKeyState.KEY_PRESSED)
-      //    {
-      //       _searchBar.text = key.KeyName;
-      //    }
-      // }
-
-      // if (key.KeyName == "Arrow-Down" && key.keyPressed == EKeyState.KEY_PRESSED)
-      // {
-      //    _shortcutListItems[_currentItem].GetComponent<Button>().Select();
-      // }
-      //
-      // if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
-      // {
-      //    _shortcutListItems[_currentItem].GetComponent<Button>().onClick.Invoke();
-      // }
+ 
+      if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
+      {
+         if (_shortcutListItems[_itemIndex].GetComponent<Button>() != null)
+         {
+            _shortcutListItems[_itemIndex].GetComponent<Button>().onClick.Invoke();
+         }
+      }
    }
 }
