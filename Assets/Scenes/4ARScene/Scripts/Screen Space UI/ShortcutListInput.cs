@@ -156,6 +156,7 @@ public class ShortcutListInput : MonoBehaviour
    // }
 
    private ShortcutList _shortcutList;
+   private ListSearch _listSearch;
    [SerializeField] private TextMeshProUGUI searchBarPlaceholder;
    [SerializeField] private TextMeshProUGUI searchBarText;
    [SerializeField] private Selectable searchBarSelectable;
@@ -171,7 +172,8 @@ public class ShortcutListInput : MonoBehaviour
    private void Awake()
    {
       _shortcutList = GetComponent<ShortcutList>();
-      _shortcutList.onListPopulated += OnListPopulated;
+      _listSearch = GetComponentInChildren<ListSearch>(true);
+      _listSearch.onListItemUpdated += OnListItemUpdated;
       _currentListItems = new List<GameObject>();
       _initialListItems = GetComponentsInChildren<ShortcutListItem>(true).ToList();
       InitializeCurrentListItems();
@@ -185,18 +187,12 @@ public class ShortcutListInput : MonoBehaviour
          _currentListItems.Add(item.gameObject);
       }
    }
-
-   private void OnListPopulated()
-   {
-      foreach (var shortcutListItem in _initialListItems)
-      {
-         shortcutListItem.onListItemUpdated += OnListItemUpdated;
-      }
-      
-   }
+   
 
    private void OnListItemUpdated()
    {
+      _currentListItems.Clear();
+      
       var tempList = GetComponentsInChildren<ShortcutListItem>(false).ToList();
       
       _currentListItems.Add(searchBarSelectable.gameObject);
@@ -204,10 +200,14 @@ public class ShortcutListInput : MonoBehaviour
       {
          _currentListItems.Add(item.gameObject);
       }
+
+      Debug.Log(_currentListItems.Count);
    }
 
    private void OnEnable()
    {
+      _selectionIndex = 0;
+      searchBarSelectable.Select();
       searchBarText.text = string.Empty;
    }
    
@@ -237,6 +237,7 @@ public class ShortcutListInput : MonoBehaviour
       }
 
       var selectedItem = _currentListItems[_selectionIndex];
+      
       if (selectedItem.GetComponent<Button>() != null)
       {
          selectedItem.GetComponent<Button>().Select();
@@ -244,6 +245,14 @@ public class ShortcutListInput : MonoBehaviour
       else
       {
          searchBarSelectable.Select();
+      }
+      
+      if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
+      {
+         if (selectedItem.GetComponent<Button>() != null)
+         {
+            selectedItem.GetComponent<Button>().onClick.Invoke();
+         }
       }
       
       // if (_currentListItems[_selectionIndex].GetComponent<Button>() != null)
