@@ -8,15 +8,21 @@ using UnityEngine;
 
 public class ListSearch : MonoBehaviour
 {
-    // [SerializeField] private TMP_InputField tmpInput; 
-    [SerializeField] private Transform content;
 
+    private ShortcutListItem _shortcutListItem;
+    private ShortcutListInput _shortcutListInput;
     public Action onListItemChanged;
-    
-    private List<ShortcutListItem> _shortcutListItems;
+
+    private void Awake()
+    {
+        _shortcutListItem = GetComponent<ShortcutListItem>();
+        _shortcutListInput = GetComponentInParent<ShortcutListInput>();
+        // _shortcutListInput.onKeySearchChanged += SearchList;
+    }
+
     void Start()
     {
-        _shortcutListItems = content.GetComponentsInChildren<ShortcutListItem>().ToList();
+        // _shortcutListItems = content.GetComponentsInChildren<ShortcutListItem>().ToList();
         // onListItemChanged();
 
     }
@@ -30,7 +36,13 @@ public class ListSearch : MonoBehaviour
     // {
     //     tmpInput.text = "";
     // }
-
+    //
+    
+    // public void SearchList()
+    // {
+    //     // _shortcutListItem.
+    // }
+    
     // public void SearchList()
     // {
     //     var searchText = tmpInput.text;
@@ -54,9 +66,4 @@ public class ListSearch : MonoBehaviour
     //
     // }
     
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

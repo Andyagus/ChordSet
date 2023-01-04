@@ -43,12 +43,7 @@ public class ShortcutList : MonoBehaviour
         }
         
     }
-
-    // private void Update()
-    // {
-    //     Debug.Log("Shortcut List Length: " + GetComponentsInChildren<ShortcutListItem>(false).Length);
-    // }
-
+    
     private void OnListItemClick(Shortcut shortcut)
     {
         onListItemClicked(shortcut);
@@ -70,7 +65,5 @@ public class ShortcutList : MonoBehaviour
         }
         
         return updatedString;
-
-        // return string.Join(", ", keysToAccess);
     }
 }

@@ -269,7 +269,10 @@ namespace AR_Keyboard
 
             if (_shortcutListActive)
             {
-                _shortcutListInput.HandleInput(key);
+                if (key.KeyName != "back-quote")
+                {
+                    _shortcutListInput.HandleInput(key);
+                }
             }
             
 

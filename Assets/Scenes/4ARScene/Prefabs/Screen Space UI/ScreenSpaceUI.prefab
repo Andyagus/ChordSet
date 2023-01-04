@@ -802,11 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5d64274c52048d9883274ea1d7e3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSelectable: {fileID: 3485510401027532130}
-  inputText: {fileID: 1601805166099099948}
-  currentListItems: []
-  listItems: []
-  itemIndex: 0
+  searchBarSelectable: {fileID: 3485510401027532130}
+  listSearchBar: {fileID: 352634927}
 --- !u!1 &6546926347971624196
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7528471668361168980
@@ -1200,6 +1197,7 @@ GameObject:
   - component: {fileID: 4213394820422081802}
   - component: {fileID: 4392988099594936273}
   - component: {fileID: 3485510401027532130}
+  - component: {fileID: 352634927}
   m_Layer: 0
   m_Name: SearchBar
   m_TagString: Untagged
@@ -1303,7 +1301,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9716981, g: 0.6004361, b: 0.6004361, a: 1}
+    m_SelectedColor: {r: 0.6556604, g: 0.9208049, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1320,6 +1318,18 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4213394820422081802}
+--- !u!114 &352634927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216248980836576135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9513953c7cd4c83a013a16365654b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8399028110978655789
 GameObject:
   m_ObjectHideFlags: 0
