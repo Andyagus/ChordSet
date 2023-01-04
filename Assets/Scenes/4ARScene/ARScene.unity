@@ -320,6 +320,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScreenSpaceUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_ReadOnly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_HideSoftKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018699595821317131, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_isRichTextEditingAllowed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
 --- !u!1 &516802045

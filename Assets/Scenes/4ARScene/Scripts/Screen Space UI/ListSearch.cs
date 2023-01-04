@@ -8,45 +8,51 @@ using UnityEngine;
 
 public class ListSearch : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField tmpInput; 
+    // [SerializeField] private TMP_InputField tmpInput; 
     [SerializeField] private Transform content;
-    // private List<Shortcut> _shortcuts;
+
+    public Action onListItemChanged;
+    
     private List<ShortcutListItem> _shortcutListItems;
     void Start()
     {
         _shortcutListItems = content.GetComponentsInChildren<ShortcutListItem>().ToList();
-    }
+        // onListItemChanged();
 
-    private void OnEnable()
-    {
-        tmpInput.Select();
     }
+    //
+    // private void OnEnable()
+    // {
+    //     tmpInput.Select();
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     tmpInput.text = "";
+    // }
 
-    private void OnDisable()
-    {
-        tmpInput.text = "";
-    }
-
-    public void SearchList()
-    {
-        var searchText = tmpInput.text;
-        
-        foreach (var item in _shortcutListItems)
-        {
-            if (item.shortcutName.text.Length >= searchText.Length)
-            {
-                if (searchText.ToLower() == item.shortcutName.text.Substring(0, searchText.Length).ToLower())
-                {
-                    item.gameObject.SetActive(true);
-                }
-                else
-                {
-                    item.gameObject.SetActive(false);
-                }
-            }
-            
-        }
-    }
+    // public void SearchList()
+    // {
+    //     var searchText = tmpInput.text;
+    //     
+    //     foreach (var item in _shortcutListItems)
+    //     {
+    //         if (item.shortcutName.text.Length >= searchText.Length)
+    //         {
+    //             if (searchText.ToLower() == item.shortcutName.text.Substring(0, searchText.Length).ToLower())
+    //             {
+    //                 item.gameObject.SetActive(true);
+    //             }
+    //             else
+    //             {
+    //                 item.gameObject.SetActive(false);
+    //             }
+    //         }
+    //     }
+    //
+    //     onListItemChanged();
+    //
+    // }
     
     // Update is called once per frame
     void Update()

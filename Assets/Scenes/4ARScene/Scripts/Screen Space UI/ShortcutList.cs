@@ -9,16 +9,20 @@ using UnityEngine.UI;
 
 public class ShortcutList : MonoBehaviour
 {
+
     [SerializeField] private ShortcutListItem shortcutListItem;
     [SerializeField] private List<Shortcut> shortcuts;
     [SerializeField] private Transform contentParentObject;
-
+    
+    private ListSearch _listSearch;
     public Action<Shortcut> onListItemClicked;
     public Action onListPopulated;
     
     
     private void Awake()
     {
+
+        _listSearch = GetComponentInChildren<ListSearch>();
         
         foreach (var shortcut in shortcuts)
         {
@@ -30,13 +34,20 @@ public class ShortcutList : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         if (onListPopulated != null)
         {
             onListPopulated();
         }
+        
     }
+
+    // private void Update()
+    // {
+    //     Debug.Log("Shortcut List Length: " + GetComponentsInChildren<ShortcutListItem>(false).Length);
+    // }
 
     private void OnListItemClick(Shortcut shortcut)
     {
