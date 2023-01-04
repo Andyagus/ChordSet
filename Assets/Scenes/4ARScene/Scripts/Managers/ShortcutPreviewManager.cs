@@ -61,12 +61,16 @@ public class ShortcutPreviewManager : MonoBehaviour
             sequence.AppendInterval(0.72f);
         }
         
-        // sequence.AppendInterval(0.72f);
-    
-        sequence.AppendCallback(() =>
-        {
-            onPreviewComplete();
-        });
+        
+        sequence.AppendInterval(0.72f);
+        
+        //TODO Add callback in future
+        //
+        // sequence.AppendCallback(() =>
+        // {
+        //     onPreviewComplete();
+        // });
+        //
         
         foreach (var sequenceKey in _sequenceKeys)
         {

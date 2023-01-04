@@ -434,10 +434,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 19271884176407738, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: shortcutList
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Name
       value: AR_Keyboard
@@ -542,34 +538,6 @@ PrefabInstance:
     - target: {fileID: 1472310931677354311, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 3485510401027532130, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 3485510401027532130, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 3485510401027532130, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213394820422081802, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213394820422081802, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9811321
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213394820422081802, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.9811321
-      objectReference: {fileID: 0}
-    - target: {fileID: 4213394820422081802, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9811321
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
