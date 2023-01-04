@@ -204,11 +204,20 @@ public class ShortcutListInput : MonoBehaviour
       Debug.Log(_currentListItems.Count);
    }
 
+   private void OnDisable()
+   {
+      onKeySearchChanged(string.Empty);
+   }
+
    private void OnEnable()
    {
       _selectionIndex = 0;
       searchBarSelectable.Select();
       searchBarText.text = string.Empty;
+      if (!searchBarPlaceholder.gameObject.activeSelf)
+      {
+         searchBarPlaceholder.gameObject.SetActive(true);
+      }
    }
    
    public void HandleInput(Key key)
