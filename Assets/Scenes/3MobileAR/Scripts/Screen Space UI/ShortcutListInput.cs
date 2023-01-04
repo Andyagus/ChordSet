@@ -282,7 +282,10 @@ public class ShortcutListInput : MonoBehaviour
                searchBarText.text = searchBarText.text + " ";   
             }else if (key.KeyName == "Delete")
             {
-               searchBarText.text = searchBarText.text.Remove(searchBarText.text.Length - 1, 1);
+               if (searchBarText.text.Length > 0)
+               {
+                  searchBarText.text = searchBarText.text.Remove(searchBarText.text.Length - 1, 1);
+               }
             }else if (key.KeyName == "Arrow-Up" || key.KeyName == "Arrow-Down")
             {
                return;

@@ -165,7 +165,6 @@ GameObject:
   - component: {fileID: 599865566464418946}
   - component: {fileID: 8459673339545149893}
   - component: {fileID: 5233075890795291744}
-  - component: {fileID: 4674755497063509872}
   m_Layer: 0
   m_Name: Shortcut Success Panel
   m_TagString: Untagged
@@ -233,22 +232,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4674755497063509872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4227602811959104288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b9143bb56d534b65974ba16a75bf795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  background: {fileID: 5233075890795291744}
-  uiImage: {fileID: 4449628433398331282}
-  textMeshPro: {fileID: 3971972037380845821}
-  shortcutSuccessPopUp: 1
 --- !u!1 &4559354656628000798
 GameObject:
   m_ObjectHideFlags: 0

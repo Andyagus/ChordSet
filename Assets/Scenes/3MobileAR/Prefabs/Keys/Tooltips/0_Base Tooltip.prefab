@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 9188992709238738510}
   - component: {fileID: 6737466488259670693}
   m_Layer: 0
-  m_Name: Base Tooltip
+  m_Name: 0_Base Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
