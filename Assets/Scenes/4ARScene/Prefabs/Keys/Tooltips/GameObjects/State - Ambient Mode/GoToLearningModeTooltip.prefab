@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6573707851068388427, guid: f036b1ef46c28469ba40912b52ed0b17, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7299042032898390057, guid: f036b1ef46c28469ba40912b52ed0b17, type: 3}
       propertyPath: m_Name
       value: GoToLearningModeTooltip
