@@ -30,10 +30,5 @@ public class ShortcutPopUp : MonoBehaviour
         _shortcutListItem.shortcutName.text = shortcut.shortcutName;
         _shortcutListItem.shortcutImage.sprite = shortcut.shortcutSprite;
     }
-    
-    // private void OnPreviewComplete()
-    // {
-    //     popUpState = ShortcutPopUpState.EShortcutPopUp.INACTIVE;
-    //     _popUpState.SetPopUpState(popUpState);
-    // }
+   
 }
