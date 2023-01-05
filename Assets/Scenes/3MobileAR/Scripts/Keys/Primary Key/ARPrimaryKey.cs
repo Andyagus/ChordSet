@@ -1,19 +1,24 @@
+using AR_Keyboard;
 using DG.Tweening;
-using Scenes._3MobileAR.Scripts.Keys;
+using Scenes._3MobileAR.Scripts.Keys.Key_States;
+using Scenes._3MobileAR.Scripts.Keys.Shortcuts;
+using Scenes._3MobileAR.Scripts.Keys.Tooltips;
 using UnityEngine;
 
-namespace AR_Keyboard
+namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
 {
+    /// <summary>
+    /// Primary Key Class (All but modifier keys (cmd, shift, etc)) holds additional states
+    /// for shortcuts and tooltips.  GameObjects also hold different outlines, and are different shapes. 
+    /// </summary>
     public class ARPrimaryKey : Key
     {
-        /// <summary>
-        /// ARKeyboard Primary Keys.  Have three additional visualization states to base. 
-        /// </summary>
-        
         [Header("Primary Key Shortcut State")]
+        //Holds reference to currently active shortcut, this can be called through 
+        //the ambient mode state machine
         public Shortcut currentShortcut;
         public KeyShortcutState.EKeyShortcutState keyShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
-        private KeyShortcutState.EKeyShortcutState _prevShortcut = KeyShortcutState.EKeyShortcutState.NONE;
+        private KeyShortcutState.EKeyShortcutState _prevShortcutState = KeyShortcutState.EKeyShortcutState.NONE;
         private KeyShortcutState _keyShortcutState;
 
         [Header("Primary Key Tooltip State")] 
@@ -29,6 +34,7 @@ namespace AR_Keyboard
         
         public override void Awake()
         {
+            //Accessing local state machines.
             _keyShortcutState = GetComponent<KeyShortcutState>();
             _keyLetterState = GetComponent<KeyLetterState>();
             _tooltipState = GetComponent<TooltipState>();
@@ -39,10 +45,10 @@ namespace AR_Keyboard
 
         public override void Update()
         {
-            if (keyShortcutState != _prevShortcut)
+            if (keyShortcutState != _prevShortcutState)
             {
                 _keyShortcutState.SetKeyShortcutState(keyShortcutState, this);
-                _prevShortcut = keyShortcutState;
+                _prevShortcutState = keyShortcutState;
             }
             
             if (tooltipState != _prevTooltipState)

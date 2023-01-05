@@ -1,41 +1,47 @@
 using System;
-using AR_Keyboard;
 using UnityEngine;
 
-public class ShortcutActivityState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Shortcuts
 {
-    public enum EShortcutActivity
+    /// <summary>
+    /// SubState of shortcut, handles what methods and actions need to be called
+    /// depending on the current activity of a specific shortcut 
+    /// </summary>
+    public class ShortcutActivityState : MonoBehaviour
     {
-        ACTIVE,
-        INACTIVE,
-    }
-    
-    public void SetShortcutActivity(EShortcutActivity state, Shortcut shortcut)
-    {
-        switch (state)
+        public enum EShortcutActivity
         {
-            case EShortcutActivity.ACTIVE:
-                Active(shortcut);
-                break;
-            case EShortcutActivity.INACTIVE:
-                Inactive(shortcut);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            ACTIVE,
+            INACTIVE,
         }
-    }
     
-
-    private void Active(Shortcut shortcut)
-    {
-        //TODO: Set icon to filled and unfilled respectively. removed this functionality for simplicity
-        if (shortcut.onShortcutExecuted != null)
+        public void SetShortcutActivity(EShortcutActivity state, Shortcut shortcut)
         {
-            shortcut.onShortcutExecuted(shortcut);
+            switch (state)
+            {
+                case EShortcutActivity.ACTIVE:
+                    Active(shortcut);
+                    break;
+                case EShortcutActivity.INACTIVE:
+                    Inactive(shortcut);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
         }
-    }
+        
+        private void Active(Shortcut shortcut)
+        {
+            //TODO: Add additional functionality including logo filling up a color, etc
+            if (shortcut.onShortcutExecuted != null)
+            {
+                //Sends out onShortcutExecuted event to subscribers
+                shortcut.onShortcutExecuted(shortcut);
+            }
+        }
 
-    private void Inactive(Shortcut shortcut)
-    {
+        private void Inactive(Shortcut shortcut)
+        {
+        }
     }
 }

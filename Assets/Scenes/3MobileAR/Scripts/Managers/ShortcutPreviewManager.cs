@@ -5,6 +5,7 @@ using DG.Tweening;
 using Scenes._1Desktop.Scripts;
 using Scenes._3MobileAR.Scripts.Keyboard;
 using Scenes._3MobileAR.Scripts.Keys;
+using Scenes._3MobileAR.Scripts.Keys.Shortcuts;
 using UnityEngine;
 
 public class ShortcutPreviewManager : MonoBehaviour
