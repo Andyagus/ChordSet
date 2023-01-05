@@ -18,16 +18,11 @@ namespace AR_Keyboard
         private ARKeyboardState _ambientModeState;
         public ARKeyboardState typingState;
         public Action<ARKeyboardState> onAmbientStateChanged;
-        public Action<ARKeyboardState> onLearningModeStateChanged;
-        
+
         //learning mode state 
         private ShortcutList _shortcutList;
         private ShortcutListInput _shortcutListInput;
         private bool _shortcutListActive;
-        
-        private ARKeyboardState _learningModeState;
-        public ARKeyboardState learningModeWelcome;
-        public ARKeyboardState undoShortcutState;
         
         //welcome mode state
         public ARKeyboardState welcomeModeState;
@@ -90,9 +85,6 @@ namespace AR_Keyboard
                     case EKeyboardMode.AMBIENT_MODE:
                         AmbientMode();
                         break;
-                    case EKeyboardMode.LEARNING_MODE:
-                        LearningMode();
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -111,12 +103,6 @@ namespace AR_Keyboard
         {
             _ambientModeState = Instantiate(typingState, this.transform, true);
             _ambientModeState.Entry(this);
-        }
-
-        private void LearningMode()
-        {
-            _learningModeState = Instantiate(learningModeWelcome, this.transform, true);
-            _learningModeState.Entry(this);
         }
         
         
@@ -210,9 +196,7 @@ namespace AR_Keyboard
                 case EKeyboardMode.AMBIENT_MODE:
                     AmbientModeHandleInput(key);
                     break;
-                case EKeyboardMode.LEARNING_MODE:
-                    LearningModeHandleInput(key);
-                    break;
+                
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -226,34 +210,6 @@ namespace AR_Keyboard
             if (key.KeyName == "space" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 keyboardMode = EKeyboardMode.AMBIENT_MODE;
-            }
-            
-        }
-
-        private void LearningModeHandleInput(Key key)
-        {
-            
-            if (key.KeyName == "Q" && key.keyPressed == EKeyState.KEY_PRESSED)
-            {
-                _learningModeState.Exit(this);
-
-                var screenSpaceUI = GameObject.Find("ScreenSpaceUI");
-                if (screenSpaceUI != null)
-                {
-                    Destroy(screenSpaceUI.gameObject);
-                }
-                keyboardMode = EKeyboardMode.AMBIENT_MODE;
-            }
-
-            var state = _learningModeState.HandleInput(key, this);
-            if (state != null)
-            {
-                // _learningModeState.Exit(this);
-                Destroy(_learningModeState.gameObject);
-                _learningModeState = state;
-                _learningModeState.transform.SetParent(this.transform);
-                _learningModeState.Entry(this);
-                onLearningModeStateChanged(state);
             }
             
         }

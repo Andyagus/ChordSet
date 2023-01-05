@@ -13,8 +13,6 @@ public class ListSearch : MonoBehaviour
     private List<ShortcutListItem> _shortcutListItems;
     private ShortcutListInput _shortcutListInput;
     public Action onListItemUpdated;
-
-
     
     private void Awake()
     {
@@ -59,45 +57,5 @@ public class ListSearch : MonoBehaviour
         {
             onListItemUpdated();
         }
-}
-    //
-    // private void OnEnable()
-    // {
-    //     tmpInput.Select();
-    // }
-    //
-    // private void OnDisable()
-    // {
-    //     tmpInput.text = "";
-    // }
-    //
-    
-    // public void SearchList()
-    // {
-    //     // _shortcutListItem.
-    // }
-    
-    // public void SearchList()
-    // {
-    //     var searchText = tmpInput.text;
-    //     
-    //     foreach (var item in _shortcutListItems)
-    //     {
-    //         if (item.shortcutName.text.Length >= searchText.Length)
-    //         {
-    //             if (searchText.ToLower() == item.shortcutName.text.Substring(0, searchText.Length).ToLower())
-    //             {
-    //                 item.gameObject.SetActive(true);
-    //             }
-    //             else
-    //             {
-    //                 item.gameObject.SetActive(false);
-    //             }
-    //         }
-    //     }
-    //
-    //     onListItemChanged();
-    //
-    // }
-    
+    }   
 }
