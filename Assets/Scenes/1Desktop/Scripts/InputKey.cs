@@ -1,13 +1,18 @@
-using Enums;
+using System;
 using Interfaces;
 using UnityEngine;
 
-namespace Desktop
+namespace Scenes._1Desktop.Scripts
 {
+    /// <summary>
+    ///InputKey class is instanced in the Unity Scene - and they keep track of the keyboard keys being pressed
+    /// and then sends an event most importantly received by the the input manager.
+    /// </summary>
     public class InputKey : MonoBehaviour, IKey
     {
+        //TODO: CONSISTENCY - remove underscore from _keyName and _keyCode.  Will need to reserialize;
         [SerializeField] private string _keyName;
-        public Subject onKeyChanged;
+        public Action<InputKey> onKeyChanged;
 
         public string KeyName
         {
@@ -28,7 +33,6 @@ namespace Desktop
 
         private void Awake()
         {
-            onKeyChanged = new Subject();
             _prevState = keyState;
         }
 
@@ -45,7 +49,7 @@ namespace Desktop
             }
 
             if (_prevState == keyState) return;
-            onKeyChanged.Notify(this);
+            onKeyChanged(this);
             _prevState = keyState;
         }
     }

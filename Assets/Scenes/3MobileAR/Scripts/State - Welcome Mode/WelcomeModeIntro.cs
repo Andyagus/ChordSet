@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
 using DG.Tweening;
-using Enums;
+using Scenes._1Desktop.Scripts;
 using UnityEngine;
 
 public class WelcomeModeIntro : ARKeyboardState

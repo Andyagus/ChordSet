@@ -1,6 +1,6 @@
-using Enums;
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
+using Scenes._1Desktop.Scripts;
 
 [RealtimeModel]
 public partial class KeySyncModel
@@ -23,9 +23,9 @@ public partial class KeySyncModel : RealtimeModel {
         }
     }
     
-    public Enums.EKeyState keyState {
+    public EKeyState keyState {
         get {
-            return (Enums.EKeyState) _keyStateProperty.value;
+            return (EKeyState) _keyStateProperty.value;
         }
         set {
             if (_keyStateProperty.value == (uint) value) return;
@@ -37,7 +37,7 @@ public partial class KeySyncModel : RealtimeModel {
     
     public delegate void PropertyChangedHandler<in T>(KeySyncModel model, T value);
     public event PropertyChangedHandler<string> keyNameDidChange;
-    public event PropertyChangedHandler<Enums.EKeyState> keyStateDidChange;
+    public event PropertyChangedHandler<EKeyState> keyStateDidChange;
     
     public enum PropertyID : uint {
         KeyName = 1,
@@ -65,7 +65,7 @@ public partial class KeySyncModel : RealtimeModel {
         }
     }
     
-    private void FireKeyStateDidChange(Enums.EKeyState value) {
+    private void FireKeyStateDidChange(EKeyState value) {
         try {
             keyStateDidChange?.Invoke(this, value);
         } catch (System.Exception exception) {

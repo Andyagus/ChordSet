@@ -1,6 +1,6 @@
 using AR_Keyboard;
-using Enums;
 using Normal.Realtime;
+using Scenes._1Desktop.Scripts;
 using UnityEngine;
 
 public class KeySync : RealtimeComponent<KeySyncModel>

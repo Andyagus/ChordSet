@@ -2,39 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Interfaces;
+using Scenes._2Normcore.Scripts;
 using UnityEngine;
 
-
-namespace Desktop
+namespace Scenes._1Desktop.Scripts
 {
-    public class InputManager : MonoBehaviour, IObserver
+    /// <summary>
+    /// Input Manager receives key press from input key events and sends the
+    /// key to Normcore (network) to eventually be passed to AR Keyboard.
+    /// </summary>
+    
+    public class InputManager : MonoBehaviour
     {
         private List<InputKey> _inputKeys;
         private KeySyncDictionary _keySyncDictionary;
         
         private void Awake()
         {
-            _inputKeys = GetComponentsInChildren<InputKey>().ToList<InputKey>();
+            _inputKeys = GetComponentsInChildren<InputKey>().ToList();
         }
 
         private void Start()
         {
-            _keySyncDictionary = GameObject.FindObjectOfType<KeySyncDictionary>();
+            _keySyncDictionary = FindObjectOfType<KeySyncDictionary>();
             
-            
-
-            
-            //TODO this is not great.
+            //The Coroutine waits for the KeySyncDictionary to be initialized before adding the keys
             StartCoroutine(AddToDictionary());
             
             foreach (var key in _inputKeys)
             {
-                key.onKeyChanged.AddObserver(this);
+                key.onKeyChanged += OnKeyChanged;
             }
 
         }
         
-        public IEnumerator AddToDictionary()
+        private IEnumerator AddToDictionary()
         {
             yield return new WaitForSeconds(1);
             
@@ -44,9 +46,8 @@ namespace Desktop
             }  
         }
 
-        public void OnNotify(object entity)
+        private void OnKeyChanged(InputKey inputKey)
         {
-            var inputKey = (InputKey)entity;
             _keySyncDictionary.SetDictionary(inputKey);
         }
     }

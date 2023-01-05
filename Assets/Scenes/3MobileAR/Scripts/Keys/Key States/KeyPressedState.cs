@@ -1,6 +1,6 @@
 using AR_Keyboard;
 using DG.Tweening;
-using Enums;
+using Scenes._1Desktop.Scripts;
 using UnityEngine;
 
 public class KeyPressedState : MonoBehaviour

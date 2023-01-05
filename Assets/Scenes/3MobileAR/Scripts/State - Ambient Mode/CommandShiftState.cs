@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using AR_Keyboard;
 using AR_Keyboard.State;
-using Enums;
+using Scenes._1Desktop.Scripts;
 
 public class CommandShiftState : ARKeyboardState
 {

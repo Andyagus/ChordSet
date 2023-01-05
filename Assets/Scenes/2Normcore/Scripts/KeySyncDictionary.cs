@@ -1,73 +1,68 @@
 using AR_Keyboard;
-using Desktop;
-using UnityEngine;
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
 using Normcore;
+using Scenes._1Desktop.Scripts;
 
-public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
+namespace Scenes._2Normcore.Scripts
 {
-
-    public ARKeyboard _ARKeyboard;
-    // public Action<Dictionary<KeyCode, KeySyncModel>> OnKeyDictionaryChanged;
+    /// <summary>
+    /// The KeySync Dictionary receives keys and serializes it into a Normcore dictionary
+    /// And then passes to the AR Keyboard. 
+    /// </summary>
     
-    protected override void OnRealtimeModelReplaced(KeySyncDictionaryModel previousModel, KeySyncDictionaryModel currentModel)
+    public class KeySyncDictionary : RealtimeComponent<KeySyncDictionaryModel>
     {
-        // currentModel.realtimeDictionary.modelReplaced;
-        currentModel.realtimeDictionary.modelAdded += OnModelAdded;
-        currentModel.realtimeDictionary.modelReplaced += OnModelReplaced;
-    }
+        //Intentionally keeping naming of ARKeyboard <- Recognizing breaking naming convention but Emphasizing AR. 
+        private ARKeyboard _ARKeyboard;
 
-
-    private void OnModelAdded(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel keySyncModel, bool remote)
-    {
-        // Debug.Log("On model added");
-    }
-
-    private void OnModelReplaced(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel oldmodel, KeySyncModel newmodel, bool remote)
-    {
-        // #if !UNITY_EDITOR
-        _ARKeyboard = GameObject.FindObjectOfType<ARKeyboard>();
-        if (_ARKeyboard != null)
+        private void Start()
         {
-            _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);
+            _ARKeyboard = FindObjectOfType<ARKeyboard>();
         }
-        // #endif
         
-        // Debug.Log("On model replaced");
-    }
-    
-    private void Start()
-    {
-        _ARKeyboard = GameObject.FindObjectOfType<ARKeyboard>();
-    }
-
-    public void CreateDictionary(InputKey inputKey)
-    {
-        var key = new KeySyncModel
+        protected override void OnRealtimeModelReplaced(KeySyncDictionaryModel previousModel, KeySyncDictionaryModel currentModel)
         {
-            keyName = inputKey.KeyName,
-            keyState = inputKey.keyState
-        };
-        if (!model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
-        {
-            model.realtimeDictionary.Add((uint)inputKey.KeyCode, key);
+            currentModel.realtimeDictionary.modelReplaced += OnModelReplaced;
         }
-    }
-
-    public void SetDictionary(InputKey inputKey)
-    {
-        var key = new KeySyncModel
+        
+        //When the dictionary changes, passing it to AR Keyboard 
+        private void OnModelReplaced(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel oldmodel, KeySyncModel newmodel, bool remote)
         {
-            keyName = inputKey.KeyName,
-            keyState = inputKey.keyState
-        };
-
-        if (model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
+            if (_ARKeyboard != null)
+            {
+                _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);
+            }
+        }
+        
+        public void CreateDictionary(InputKey inputKey)
         {
-            model.realtimeDictionary[(uint)inputKey.KeyCode] = key;
+            var key = new KeySyncModel
+            {
+                keyName = inputKey.KeyName,
+                keyState = inputKey.keyState
+            };
+            if (!model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
+            {
+                model.realtimeDictionary.Add((uint)inputKey.KeyCode, key);
+            }
         }
 
-    }
+        //Updating Dictionary each time key is pressed
+        public void SetDictionary(InputKey inputKey)
+        {
+            var key = new KeySyncModel
+            {
+                keyName = inputKey.KeyName,
+                keyState = inputKey.keyState
+            };
+
+            if (model.realtimeDictionary.ContainsKey((uint)inputKey.KeyCode))
+            {
+                model.realtimeDictionary[(uint)inputKey.KeyCode] = key;
+            }
+
+        }
     
+    }
 }

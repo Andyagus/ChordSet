@@ -1,4 +1,4 @@
-namespace Enums
+namespace Scenes._1Desktop.Scripts
 {
     public enum EKeyState
     {
