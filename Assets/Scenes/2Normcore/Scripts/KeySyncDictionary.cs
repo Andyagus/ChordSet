@@ -1,8 +1,8 @@
-using AR_Keyboard;
 using Normal.Realtime;
 using Normal.Realtime.Serialization;
 using Normcore;
 using Scenes._1Desktop.Scripts;
+using Scenes._3MobileAR.Scripts.Keyboard;
 
 namespace Scenes._2Normcore.Scripts
 {
@@ -29,6 +29,7 @@ namespace Scenes._2Normcore.Scripts
         //When the dictionary changes, passing it to AR Keyboard 
         private void OnModelReplaced(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel oldmodel, KeySyncModel newmodel, bool remote)
         {
+            //TODO: Refactor - Make this an event instead of a direct call.
             if (_ARKeyboard != null)
             {
                 _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);

@@ -312,9 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548081bddc0a144ca818fdbe68cd97a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typingState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
-  welcomeModeState: {fileID: 6557350864230704250, guid: 41141d85277694230abbb944841a2795, type: 3}
-  ARScreen: {fileID: 1113842252}
+  ambientModeInitialState: {fileID: 0}
+  welcomeModeInitialState: {fileID: 0}
   keys: []
   modifierKeys: []
   primaryKeys: []
@@ -4408,17 +4407,6 @@ PrefabInstance:
     - {fileID: 4674755497063509872, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
     - {fileID: 6196134230893767029, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
---- !u!114 &1113842252 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5247682418632703342, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
-  m_PrefabInstance: {fileID: 5247682419742072610}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 840f05790a4644adf9730ea7a098646c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1552005701194958789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6726785394640328935, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}

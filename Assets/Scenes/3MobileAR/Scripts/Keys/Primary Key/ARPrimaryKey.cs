@@ -1,11 +1,14 @@
 using DG.Tweening;
-using TMPro;
+using Scenes._3MobileAR.Scripts.Keys;
 using UnityEngine;
 
 namespace AR_Keyboard
 {
     public class ARPrimaryKey : Key
     {
+        /// <summary>
+        /// ARKeyboard Primary Keys.  Have three additional visualization states to base. 
+        /// </summary>
         
         [Header("Primary Key Shortcut State")]
         public Shortcut currentShortcut;
@@ -18,7 +21,6 @@ namespace AR_Keyboard
         public TooltipState.ETooltip tooltipState;
         private TooltipState.ETooltip _prevTooltipState;
         private TooltipState _tooltipState;
-
 
         [Header("Primary Key Letter State")] 
         public KeyLetterState.EKeyLetter keyLetterState;

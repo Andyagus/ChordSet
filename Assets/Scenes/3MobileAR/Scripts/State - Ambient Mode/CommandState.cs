@@ -1,7 +1,11 @@
 using System.Collections.Generic;
+using AR_Keyboard;
 using Scenes._1Desktop.Scripts;
+using Scenes._3MobileAR.Scripts.Keyboard;
+using Scenes._3MobileAR.Scripts.Keys;
+using Scenes._3MobileAR.Scripts.Keys.Key_States;
 
-namespace AR_Keyboard.State
+namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
 {
     public class CommandState : ARKeyboardState
     {

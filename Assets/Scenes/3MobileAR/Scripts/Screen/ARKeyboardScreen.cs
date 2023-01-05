@@ -1,7 +1,5 @@
-using System;
 using AR_Keyboard;
-using AR_Keyboard.State;
-using DG.Tweening;
+using Scenes._3MobileAR.Scripts.Keyboard;
 using UnityEngine;
 using UnityEngine.UI;
 

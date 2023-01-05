@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using AR_Keyboard;
 using DG.Tweening;
 using Scenes._1Desktop.Scripts;
-using TMPro;
+using Scenes._3MobileAR.Scripts.Keyboard;
+using Scenes._3MobileAR.Scripts.Keys;
 using UnityEngine;
 
 public class ShortcutPreviewManager : MonoBehaviour

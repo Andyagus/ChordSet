@@ -1,77 +1,88 @@
-using System.Collections.Generic;
-using AR_Keyboard;
 using DG.Tweening;
+using Scenes._3MobileAR.Scripts.Keyboard;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyAvailabilityState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Key_States
 {
-    private ARKeyboard _keyboard;
-    private bool _welcomeState;
-
-    [SerializeField] private TextMeshProUGUI letterText;
-    [SerializeField] private TextMeshProUGUI secondaryText;
-    [SerializeField] private Image letterImage;
-
-    private float _fadeAmt = 0.25f;
-
-    public enum EKeyAvailability
+    
+    /// <summary>
+    /// This state is used to fade out the keys letter(s) and image,
+    /// based on the availability of the key.
+    /// Currently availability is set manually.
+    /// TODO: Make availability automatic by keeping track of progress of shortcuts
+    /// </summary>
+    public class KeyAvailabilityState : MonoBehaviour
     {
-        NONE,
-        AVAILABLE,
-        UNAVAILABLE,
-    }
+        private ARKeyboard _keyboard;
+        private bool _welcomeState;
 
-    public void SetKeyAvailability(EKeyAvailability state, Key key)
-    {
-        switch (state)
+        [SerializeField] private TextMeshProUGUI letterText;
+        [SerializeField] private TextMeshProUGUI secondaryText;
+        [SerializeField] private Image letterImage;
+
+        [Header("Controls")]
+        [SerializeField] private float fadeAmt = 0.25f;
+        [SerializeField] private float fadeTime = 0.973f;
+    
+        public enum EKeyAvailability
         {
-            case EKeyAvailability.AVAILABLE:
-                Available(key);
-                break;
-            case EKeyAvailability.UNAVAILABLE:
-                Unavailable(key);
-                break;
+            NONE,
+            AVAILABLE,
+            UNAVAILABLE,
         }
-    }
+
+        public void SetKeyAvailabilityState(EKeyAvailability state)
+        {
+            switch (state)
+            {
+                case EKeyAvailability.AVAILABLE:
+                    Available();
+                    break;
+                case EKeyAvailability.UNAVAILABLE:
+                    Unavailable();
+                    break;
+            }
+        }
 
  
-    private void Available(Key key)
-    {
-        if (letterText != null)
+        private void Available()
         {
-            letterText.DOFade(1, 0.973f);
-        }
+            if (letterText != null)
+            {
+                letterText.DOFade(1, fadeTime);
+            }
 
-        if (secondaryText != null)
-        {
-            secondaryText.DOFade(1, 0.973f);
-        }
+            if (secondaryText != null)
+            {
+                secondaryText.DOFade(1, fadeTime);
+            }
 
-        if (letterImage != null)
-        {
-            letterImage.DOFade(1, 0.34f);
+            if (letterImage != null)
+            {
+                letterImage.DOFade(1, fadeTime/2);
+            }
         }
-    }
     
-    private void Unavailable(Key key)
-    {
-        if (letterText != null)
+        private void Unavailable()
         {
-            letterText.DOFade(_fadeAmt, 0.973f);
-        }
+            if (letterText != null)
+            {
+                letterText.DOFade(fadeAmt, fadeTime);
+            }
 
-        if (secondaryText != null)
-        {
-            secondaryText.DOFade(_fadeAmt, 0.973f);
-        }
+            if (secondaryText != null)
+            {
+                secondaryText.DOFade(fadeAmt, fadeTime);
+            }
 
-        if (letterImage != null)
-        {
-            letterImage.DOFade(_fadeAmt, 0.34f);
+            if (letterImage != null)
+            {
+                letterImage.DOFade(fadeAmt, fadeTime);
+            }
         }
-    }
     
 
+    }
 }

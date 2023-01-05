@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Scenes._1Desktop.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Key = Scenes._3MobileAR.Scripts.Keys.Key;
 
 public class ShortcutListInput : MonoBehaviour
 {

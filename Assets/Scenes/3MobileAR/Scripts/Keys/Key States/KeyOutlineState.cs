@@ -2,38 +2,48 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyOutlineState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Key_States
 {
-    
-    [SerializeField] private Image outline;
-    public enum EKeyOutline
+    /// <summary>
+    /// Sets outline on key for emphasis on required presses.
+    /// Tried implementing into learning mode, but now primarily for modifier key.
+    /// </summary>
+    public class KeyOutlineState : MonoBehaviour
     {
-        OUTLINE,
-        NO_OUTLINE
-    }
-
-    public void SetOutlineState(EKeyOutline state, Key key)
-    {
-        switch (state)
+        [SerializeField] private Image outline;
+        [SerializeField] private float fadeInAmt = 1;
+        [SerializeField] private float fadeOutAmt = 0;
+        [SerializeField] private float fadeTime;
+        
+        public enum EKeyOutline
         {
-            case EKeyOutline.OUTLINE:
-                Outline();
-                break;
-            case EKeyOutline.NO_OUTLINE:
-                NoOutline();
-                break;
+            OUTLINE,
+            NO_OUTLINE
         }
-    }
-    private void Outline()
-    {
-        outline.DOFade(1, 1.2f);
-    }
+
+        public void SetOutlineState(EKeyOutline state)
+        {
+            switch (state)
+            {
+                case EKeyOutline.OUTLINE:
+                    Outline();
+                    break;
+                case EKeyOutline.NO_OUTLINE:
+                    NoOutline();
+                    break;
+            }
+        }
+        private void Outline()
+        {
+            outline.DOFade(fadeInAmt, fadeTime);
+        }
     
-    private void NoOutline()
-    {
-        outline.DOFade(0, 1.2f);    
-    }
+        private void NoOutline()
+        {
+            outline.DOFade(fadeOutAmt, fadeTime);
+        }
 
     
+    }
 }
 

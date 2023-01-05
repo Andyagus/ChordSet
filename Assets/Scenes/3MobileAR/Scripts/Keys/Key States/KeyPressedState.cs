@@ -1,41 +1,43 @@
-using AR_Keyboard;
-using DG.Tweening;
 using Scenes._1Desktop.Scripts;
+using Scenes._3MobileAR.Scripts.Keyboard;
 using UnityEngine;
 
-public class KeyPressedState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Key_States
 {
-    private ARKeyboard _keyboard;
-    private bool _welcomeState;
+    /// <summary>
+    /// Keeps track of whether key is pressed or not, mirrors desktop scene input
+    /// would like to make state more integral to the overall architecture 
+    /// </summary>
     
-    
-    public void SetPressedState(EKeyState state, Key key)
+    public class KeyPressedState : MonoBehaviour
     {
-        switch (state)
-        {
-            case EKeyState.KEY_PRESSED:
-                Pressed(key);
-                break;
-            case EKeyState.KEY_UNPRESSED:
-                Unpressed(key);
-                break;
-        }
-    }
+        private ARKeyboard _keyboard;
+        private bool _welcomeState;
 
-    private void Pressed(Key key)
-    {
-        // var color = Color.white;
-        // if (_welcomeState)
-        // {
-        //     color = KeyColorManager.PickRandomColor();
-        // }
-        // var rend = key.GetComponentInChildren<MeshRenderer>();
-        // rend.material.DOColor(color, 0.524f);
-    }
+        //The related enum EKeyState lives in the Desktop scene.  
+        
+        public void SetPressedState(EKeyState state, Key key)
+        {
+            switch (state)
+            {
+                case EKeyState.KEY_PRESSED:
+                    Pressed(key);
+                    break;
+                case EKeyState.KEY_UNPRESSED:
+                    Unpressed(key);
+                    break;
+            }
+        }
+
+        //TODO: Refactor - Keypress is driving a lot of parts of this app, but architecturally not happy with it.
+        private void Pressed(Key key)
+        {
+            //Leaving open for future functionality
+        }
     
-    private void Unpressed(Key key)
-    {
-        // var rend = key.GetComponentInChildren<MeshRenderer>();
-        // rend.material.DOColor(Color.black, 0.524f);
+        private void Unpressed(Key key)
+        {
+            //Leaving open for future functionality
+        }
     }
 }
