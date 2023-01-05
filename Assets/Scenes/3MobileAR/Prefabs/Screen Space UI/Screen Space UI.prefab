@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1472310931677354308}
   m_Layer: 0
-  m_Name: ScreenSpaceUI
+  m_Name: Screen Space UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

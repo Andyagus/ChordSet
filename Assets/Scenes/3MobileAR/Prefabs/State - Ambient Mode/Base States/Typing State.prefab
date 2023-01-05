@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2364421300641954124}
   - component: {fileID: 2364421300641954131}
   m_Layer: 0
-  m_Name: TypingState
+  m_Name: Typing State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

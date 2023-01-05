@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 8064623756065646274}
   - component: {fileID: 4630373786909955791}
   m_Layer: 0
-  m_Name: ShortcutListItem
+  m_Name: Shortcut List Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

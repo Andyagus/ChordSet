@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &510705932057933062
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1892602537768808185}
-  - component: {fileID: 4086611960558951096}
-  m_Layer: 0
-  m_Name: Test ARKeyboard Input
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1892602537768808185
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510705932057933062}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.800003, y: 3.7073908, z: -27.078705}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8403880990647718867}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4086611960558951096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510705932057933062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d6798e696ea43fdaf1921913778d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2293837487326531503
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +275,7 @@ GameObject:
   - component: {fileID: 8403880990647718867}
   - component: {fileID: 7429294698044142268}
   m_Layer: 0
-  m_Name: AR_Keyboard
+  m_Name: AR Keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +294,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7273136951574884444}
-  - {fileID: 1892602537768808185}
   - {fileID: 6404771233233555277}
   - {fileID: 1967896249305095013}
   - {fileID: 1552005701194958789}
@@ -358,8 +313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typingState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
-  learningModeWelcome: {fileID: 8523045543048905708, guid: 01ad6f7606e4b4a73a751e30de72e8ab, type: 3}
-  undoShortcutState: {fileID: 5890930768839383548, guid: 6d6f081b86be740849fbcb7ee023bcdf, type: 3}
   welcomeModeState: {fileID: 6557350864230704250, guid: 41141d85277694230abbb944841a2795, type: 3}
   ARScreen: {fileID: 1113842252}
   keys: []
@@ -401,7 +354,7 @@ Transform:
   - {fileID: 4530673228657043403}
   - {fileID: 6041530783947840281}
   m_Father: {fileID: 8403880990647718867}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &75547039832919735
 PrefabInstance:
@@ -4409,7 +4362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6726785394640328935, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6726785394640328935, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4453,6 +4406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4674755497063509872, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
+    - {fileID: 6196134230893767029, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
 --- !u!114 &1113842252 stripped
 MonoBehaviour:
@@ -5091,7 +5045,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5121248943240929601, guid: e6b60ae770fb649128ec9a3e3f59be02, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5121248943240929601, guid: e6b60ae770fb649128ec9a3e3f59be02, type: 3}
       propertyPath: m_LocalPosition.x

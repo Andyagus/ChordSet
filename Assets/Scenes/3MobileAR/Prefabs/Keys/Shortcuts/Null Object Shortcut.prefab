@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4506223546258044787}
   - component: {fileID: 2170690387987534747}
   m_Layer: 0
-  m_Name: NullObjectShortcut
+  m_Name: Null Object Shortcut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

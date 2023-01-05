@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 3835958622104206550}
   - component: {fileID: -4403134284441364233}
   m_Layer: 0
-  m_Name: KeyboardPlacementReticle
+  m_Name: Keyboard Placement Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

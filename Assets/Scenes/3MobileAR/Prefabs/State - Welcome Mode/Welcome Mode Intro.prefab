@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6557350864230704251}
   - component: {fileID: 6557350864230704250}
   m_Layer: 0
-  m_Name: WelcomeModeIntro
+  m_Name: Welcome Mode Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
