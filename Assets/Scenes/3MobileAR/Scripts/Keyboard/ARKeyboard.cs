@@ -276,7 +276,7 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
         /// <summary>
         /// TODO: Would like to remove this coroutine, but requires larger app refactor
         /// This coroutine, allows other classes, to subscribe to the Shortcuts
-        /// made available through Ambient Mode States. 
+        /// that are made available when AmbientMode State Changes.
         /// </summary>
         private IEnumerator AmbientStateChangeCoroutine()
         {

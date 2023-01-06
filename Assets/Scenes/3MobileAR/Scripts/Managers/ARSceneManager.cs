@@ -1,10 +1,17 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ARSceneManager : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Managers
 {
-    private void Awake()
+    /// <summary>
+    /// Manages the additive load, so that both Normcore scene and the ARScene can be
+    /// loaded at the same time 
+    /// </summary>
+    public class ARSceneManager : MonoBehaviour
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        private void Awake()
+        {
+            SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        }
     }
 }
