@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Scenes._1Desktop.Scripts;
@@ -7,77 +6,75 @@ using Scenes._3MobileAR.Scripts.Keys;
 using Scenes._3MobileAR.Scripts.Keys.Shortcuts;
 using UnityEngine;
 
-public class ShortcutPreviewManager : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Managers
 {
-    private ARKeyboard _keyboard;
-    private List<Key> _sequenceKeys;
-    private ShortcutList _shortcutList;
-    public Action onPreviewComplete;
+    /// <summary>
+    /// This class displays shortcut previews that have been selected from the ScreenSpace UI List.
+    /// It works by taking the 'KeysToAccess' on a shortcut and displaying those keys in animation
+    /// TODO: Refactor - Would like this class to play more integral role to the app
+    /// </summary>
+    public class ShortcutPreviewManager : MonoBehaviour
+    {
+        private ARKeyboard _ARKeyboard;
+        private List<Key> _sequenceKeys;
+        private ShortcutList _shortcutList;
+
+        [SerializeField] private float appendAmt = 0.72f; 
     
-    private void Awake()
-    {
-        _sequenceKeys = new List<Key>();
-        _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
-        _keyboard = GetComponentInParent<ARKeyboard>();
-    }
-
-    private void Start()
-    {
-        _shortcutList.onListItemClicked += OnListItemClicked;
-    }
-
-    private void OnListItemClicked(Shortcut shortcut)
-    {
-        //conducting seperate loops so in order
-        foreach (var key in shortcut.keysToAccess)
+        private void Awake()
         {
-            if (_keyboard.modifierKeyDictionary.ContainsKey(key))
+            _sequenceKeys = new List<Key>();
+            _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
+            _ARKeyboard = GetComponentInParent<ARKeyboard>();
+        }
+
+        private void Start()
+        {
+            _shortcutList.onListItemClicked += OnListItemClicked;
+        }
+
+        private void OnListItemClicked(Shortcut shortcut)
+        {
+            //Accessing the KeysToAccess Putting them in order in a list (modifier first) 
+            foreach (var key in shortcut.keysToAccess)
             {
-                var modifierKey = _keyboard.modifierKeyDictionary[key];
-                _sequenceKeys.Add(modifierKey);
+                if (_ARKeyboard.modifierKeyDictionary.ContainsKey(key))
+                {
+                    var modifierKey = _ARKeyboard.modifierKeyDictionary[key];
+                    _sequenceKeys.Add(modifierKey);
+                }
             }
-        }
         
-        foreach (var key in shortcut.keysToAccess)
-        {
-            if (_keyboard.primaryKeyDictionary.ContainsKey(key))
+            foreach (var key in shortcut.keysToAccess)
             {
-                var primaryKey = _keyboard.primaryKeyDictionary[key];
-                _sequenceKeys.Add(primaryKey);
+                if (_ARKeyboard.primaryKeyDictionary.ContainsKey(key))
+                {
+                    var primaryKey = _ARKeyboard.primaryKeyDictionary[key];
+                    _sequenceKeys.Add(primaryKey);
+                }
             }
-        }
     
-        CreateSequence();
-    }
+            AnimateKeys();
+        }
 
-    private void CreateSequence()
-    {
-        var sequence = DOTween.Sequence();
-    
-        sequence.AppendInterval(0.72f);
-        foreach (var sequenceKey in _sequenceKeys)
+        private void AnimateKeys()
         {
-            sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_PRESSED);
-            sequence.AppendInterval(0.72f);
-        }
-        
-        
-        sequence.AppendInterval(0.72f);
-        
-        //TODO Add callback in future
-        //
-        // sequence.AppendCallback(() =>
-        // {
-        //     onPreviewComplete();
-        // });
-        //
-        
-        foreach (var sequenceKey in _sequenceKeys)
-        {
-            sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_UNPRESSED);
-        }
+            var sequence = DOTween.Sequence();
     
+            sequence.AppendInterval(appendAmt);
+            foreach (var sequenceKey in _sequenceKeys)
+            {
+                sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_PRESSED);
+                sequence.AppendInterval(appendAmt);
+            }
+
+            sequence.AppendInterval(appendAmt);
         
-        _sequenceKeys.Clear();
+            foreach (var sequenceKey in _sequenceKeys)
+            {
+                sequence.AppendCallback(() => sequenceKey.keyPressed = EKeyState.KEY_UNPRESSED);
+            }
+            _sequenceKeys.Clear();
+        }
     }
 }
