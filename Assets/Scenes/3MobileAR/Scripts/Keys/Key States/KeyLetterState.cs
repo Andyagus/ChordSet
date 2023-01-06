@@ -1,71 +1,83 @@
 using System;
-using AR_Keyboard;
 using DG.Tweening;
 using Scenes._3MobileAR.Scripts.Keys.Primary_Key;
 using UnityEngine;
 
-public class KeyLetterState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Key_States
 {
-    private string _originalLetter;
-
-    public enum EKeyLetter
+    /// <summary>
+    /// This state was primarily built to shift keys back and fourth
+    /// to and from "CHORD SET" in the intro 
+    /// TODO: Refactor - However, I believe this state
+    /// can play a larger role in the future for setting
+    /// up keys and their various letters, maybe be combined
+    /// with shortcuts and Availability State. 
+    /// </summary>
+    public class KeyLetterState : MonoBehaviour
     {
-        NONE,
-        C,
-        H,
-        O,
-        R,
-        D,
-        S,
-        E,
-        T
-    }
-
-    public void SetKeyLetterState(EKeyLetter state, ARPrimaryKey primaryKey)
-    {
-        switch (state)
+        [SerializeField] private float fadeTime = 0;
+        private string _originalLetter;
+            
+        public enum EKeyLetter
         {
-            case EKeyLetter.NONE:
-                RestoreLetter(primaryKey);
-                break;
-            case EKeyLetter.C:
-                ChangeLetter("C", primaryKey);
-                break;
-            case EKeyLetter.H:
-                ChangeLetter("H", primaryKey);
-                break;
-            case EKeyLetter.O:
-                ChangeLetter("O", primaryKey);                
-                break;
-            case EKeyLetter.R:
-                ChangeLetter("R", primaryKey);                
-                break;
-            case EKeyLetter.D:
-                ChangeLetter("D", primaryKey);
-                break;
-            case EKeyLetter.S:
-                ChangeLetter("S", primaryKey);
-                break;
-            case EKeyLetter.E:
-                ChangeLetter("E", primaryKey);
-                break;
-            case EKeyLetter.T:
-                ChangeLetter("T", primaryKey);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            NONE,
+            C,
+            H,
+            O,
+            R,
+            D,
+            S,
+            E,
+            T
         }
-    }
 
-
-    private void ChangeLetter(string text, ARPrimaryKey primaryKey)
-    {
-        _originalLetter = primaryKey.letterText.text;
-        primaryKey.letterText.DOText(text, 0f);
-    }
+        public void SetKeyLetterState(EKeyLetter state, ARPrimaryKey primaryKey)
+        {
+            switch (state)
+            {
+                case EKeyLetter.NONE:
+                    RestoreLetter(primaryKey);
+                    break;
+                case EKeyLetter.C:
+                    ChangeLetter("C", primaryKey);
+                    break;
+                case EKeyLetter.H:
+                    ChangeLetter("H", primaryKey);
+                    break;
+                case EKeyLetter.O:
+                    ChangeLetter("O", primaryKey);                
+                    break;
+                case EKeyLetter.R:
+                    ChangeLetter("R", primaryKey);                
+                    break;
+                case EKeyLetter.D:
+                    ChangeLetter("D", primaryKey);
+                    break;
+                case EKeyLetter.S:
+                    ChangeLetter("S", primaryKey);
+                    break;
+                case EKeyLetter.E:
+                    ChangeLetter("E", primaryKey);
+                    break;
+                case EKeyLetter.T:
+                    ChangeLetter("T", primaryKey);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+        }
+        
+        private void ChangeLetter(string text, ARPrimaryKey primaryKey)
+        {
+            //storing original letter before changing it.  (Nice to store fields in their 
+            //respective state machines)
+            _originalLetter = primaryKey.letterText.text;
+            primaryKey.letterText.DOText(text, fadeTime);
+        }
     
-    private void RestoreLetter(ARPrimaryKey primaryKey)
-    {
-        primaryKey.letterText.DOText(_originalLetter, 0f);
+        private void RestoreLetter(ARPrimaryKey primaryKey)
+        {
+            primaryKey.letterText.DOText(_originalLetter, fadeTime);
+        }
     }
 }

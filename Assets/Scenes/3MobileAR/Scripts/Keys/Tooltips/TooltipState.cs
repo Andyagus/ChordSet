@@ -18,9 +18,14 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
 
     public class TooltipState : MonoBehaviour
     {
-        //DOTween
+        //DOTween Sequence
         private Sequence _instantiateSequence;
         private Sequence _eraseSequence;
+        private readonly float _sequenceStartTime = 0f;
+        [SerializeField] private float fadeInAmt = 1f;
+        [SerializeField] private float fadeOutAmt = 0f;
+        [SerializeField] private float fadeTime = 1f;
+        
         private readonly Vector3 _placementOffset = new Vector3(0f, 0.0007f, 0f);
     
         private TextMeshProUGUI _tooltipText;
@@ -117,9 +122,9 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
             _tooltipText = primaryKey.currentTooltip.GetComponentInChildren<TextMeshProUGUI>();
             _tooltipImage = primaryKey.currentTooltip.GetComponentInChildren<Image>();
             //Bad: Getting letter text directly - but here getting text, in primary key was not even going for text.
-            if (primaryKey.letterText != null) _instantiateSequence.Append(primaryKey.letterText.DOFade(0, 1f));
-            if(_tooltipText!=null) _instantiateSequence.Insert(0, instantiatedTooltip.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 1f));
-            if(_tooltipImage!=null)_instantiateSequence.Insert(0, instantiatedTooltip.GetComponentInChildren<Image>().DOFade(1, 1f));
+            if (primaryKey.letterText != null) _instantiateSequence.Append(primaryKey.letterText.DOFade(fadeOutAmt, fadeTime));
+            if(_tooltipText!=null) _instantiateSequence.Insert(_sequenceStartTime, instantiatedTooltip.GetComponentInChildren<TextMeshProUGUI>().DOFade(fadeInAmt, fadeTime));
+            if(_tooltipImage!=null)_instantiateSequence.Insert(_sequenceStartTime, instantiatedTooltip.GetComponentInChildren<Image>().DOFade(fadeInAmt, fadeTime));
         }
         
         //TODO The none shortcut should remove letter keys, instead of the "available/unavailable" state. Shortcuts determine key availability
@@ -128,9 +133,9 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
             _instantiateSequence.Kill();
             _eraseSequence = DOTween.Sequence();
             //Fade in letter text, fade out tooltip. 
-            if (primaryKey.letterText != null) _eraseSequence.Append(primaryKey.letterText.DOFade(1, 1f));
-            if(_tooltipText!=null) _eraseSequence.Insert(0, _tooltipText.DOFade(0, 1f));
-            if(_tooltipImage!=null) _eraseSequence.Insert(0, _tooltipImage.DOFade(0, 1f));
+            if (primaryKey.letterText != null) _eraseSequence.Append(primaryKey.letterText.DOFade(fadeInAmt, fadeTime));
+            if(_tooltipText!=null) _eraseSequence.Insert(_sequenceStartTime, _tooltipText.DOFade(fadeOutAmt, fadeTime));
+            if(_tooltipImage!=null) _eraseSequence.Insert(_sequenceStartTime, _tooltipImage.DOFade(fadeOutAmt, fadeTime));
 
             _eraseSequence.OnKill(() =>
             {
