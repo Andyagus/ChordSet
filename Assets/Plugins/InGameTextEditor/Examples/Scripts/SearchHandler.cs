@@ -17,7 +17,7 @@ public class SearchHandler : MonoBehaviour
     public InputField inputField = null;
 
     // indicates if the search field is active
-    bool searchFieldActive = false;
+    private bool searchFieldActive = false;
 
 
     /// <summary>
@@ -60,7 +60,7 @@ public class SearchHandler : MonoBehaviour
     }
 
     // update
-    void Update()
+    private void Update()
     {
         if (searchFieldActive)
         {

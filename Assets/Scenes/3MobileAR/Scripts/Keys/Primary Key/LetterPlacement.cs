@@ -1,31 +1,31 @@
-using AR_Keyboard;
-using Scenes._3MobileAR.Scripts.Keys.Primary_Key;
 using TMPro;
 using UnityEngine;
 
-public class LetterPlacement : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
 {
-    private TextMeshProUGUI _textMesh;
-    private ARPrimaryKey _primaryKey;
-    
-    private void Awake()
+    /// <summary>
+    /// Placement for all of the main primary keys (A,B,C, etc…), setting their GameObject Keyboard Key
+    /// to the name of the primary key.
+    /// TODO: Refactor - not great if primary key name is different than what you want to display on key 
+    /// </summary>
+    public class LetterPlacement : MonoBehaviour
     {
-        _textMesh = GetComponentInChildren<TextMeshProUGUI>();
-        _primaryKey = GetComponent<ARPrimaryKey>();
-    }
+        private TextMeshProUGUI _textMesh;
+        private ARPrimaryKey _primaryKey;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (_textMesh != null)
+        private void Awake()
         {
-            _textMesh.text = _primaryKey.KeyName;
+            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
+            _primaryKey = GetComponent<ARPrimaryKey>();
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            if (_textMesh != null)
+            {
+                _textMesh.text = _primaryKey.KeyName;
+            }
+        }
+
     }
 }

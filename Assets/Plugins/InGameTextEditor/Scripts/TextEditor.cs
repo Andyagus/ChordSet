@@ -493,141 +493,141 @@ namespace InGameTextEditor
         public Text tooltipText;
 
         // list of lines, each representing one line of text in the editor
-        List<Line> lines = new List<Line>();
+        private List<Line> lines = new List<Line>();
 
         // width of longest line
-        float longestLineWidth = 0f;
+        private float longestLineWidth = 0f;
 
         // vertical space required to display entire text including top and bottom margin
-        float verticalSpaceRequired = 0f;
+        private float verticalSpaceRequired = 0f;
 
         // vertical space available (based on size of main panel)
-        float verticalSpaceAvailable = 0f;
+        private float verticalSpaceAvailable = 0f;
 
         // horizontal space required to display longest text row including left and right margin
-        float horizontalSpaceRequired = 0f;
+        private float horizontalSpaceRequired = 0f;
 
         // horizontal space available (base on size of main panel)
-        float horizontalSpaceAvailable = 0f;
+        private float horizontalSpaceAvailable = 0f;
 
         // vertical offset used for vertical scrolling (mainContent is shifted verticalOffset units to the top)
-        float verticalOffset = 0f;
+        private float verticalOffset = 0f;
 
         // horizontal offset used for horizontal scrolling (mainContent is shifted horizontalOffset units to the left)
-        float horizontalOffset = 0f;
+        private float horizontalOffset = 0f;
 
         // width (in units) of a single character
         [SerializeField]
         [HideInInspector]
-        float characterWidth;
+        private float characterWidth;
 
         // height (in units) of a single character multiplied by lineSpacing
         [SerializeField]
         [HideInInspector]
-        float characterHeight;
+        private float characterHeight;
 
         // indicates if the text editor has been resized
-        bool resize = false;
+        private bool resize = false;
 
         // time the editor window has been resized
-        float resizeTime = 0f;
+        private float resizeTime = 0f;
 
         // caret position
-        TextPosition caretTextPosition = null;
+        private TextPosition caretTextPosition = null;
 
         // drag start position
-        TextPosition dragStartTextPosition = null;
+        private TextPosition dragStartTextPosition = null;
 
         // the last time (in seconds since the application start) the visiblility of the caret was changed
-        float caretBlinkTime = 0f;
+        private float caretBlinkTime = 0f;
 
         // current visibility state of the caret
-        bool caretVisible = false;
+        private bool caretVisible = false;
 
         // row index of caret's position (caretRow == 0 means the caret is in the first row)
-        float preferredCaretX = 0;
+        private float preferredCaretX = 0;
 
         // last time (in seconds since the application start) the left mouse button was clicked (set to -1000 initially in order not to trigger a double click on the first click occurs too soon after the application start)
-        float clickTime = -1000f;
+        private float clickTime = -1000f;
 
         // number of consecutive clicks (where the interval between clicks is below doubleClickInterval) 
-        int clicks = 0;
+        private int clicks = 0;
 
         // mouse position of last click (double or triple clicks are only triggered when the mouse position has not changed between the clicks)
-        Vector2 clickPoint = Vector2.zero;
+        private Vector2 clickPoint = Vector2.zero;
 
         // indicates whether the current click is a double click
-        bool doubleClick = false;
+        private bool doubleClick = false;
 
         // indicates whether the current click is a triple click
-        bool tripleClick = false;
+        private bool tripleClick = false;
 
         // current selection
-        Selection selection = null;
+        private Selection selection = null;
 
         // game objects (rectangular images) used to render current selection
-        List<GameObject> selectionRects = new List<GameObject>();
+        private List<GameObject> selectionRects = new List<GameObject>();
 
         // scale factor used when canvas size is dynamically adjusted
-        float canvasScale = 1f;
+        private float canvasScale = 1f;
 
         // control or command key used for keyboard shortcuts
-        bool ctrlOrCmdPressed = false;
+        private bool ctrlOrCmdPressed = false;
 
         // most recently pressed key
-        KeyCode keyHold;
+        private KeyCode keyHold;
 
         // indicates whether keyHold is currently held down
-        bool keyHoldDown = false;
+        private bool keyHoldDown = false;
 
         // the time (since application start) keyHold was pressed
-        float keyHoldTime = 0f;
+        private float keyHoldTime = 0f;
 
         // the time (sice application start) keyHold was repeated
-        float keyRepeatTime = 0f;
+        private float keyRepeatTime = 0f;
 
         // indicates whether the editor is active (the editor set active upon a mouse click inside the editor, it is set inactive upon a mouse click outside of the editor or when the application loses its focus)
-        bool editorActive = false;
+        private bool editorActive = false;
 
         // counts the number of frames the edit has been active
-        int editorActiveFrames = 0;
+        private int editorActiveFrames = 0;
 
         // indicates whether the mouse pointer is hovering over the editor (including line number panel and scrollbars)
-        bool mouseHoverEditor = false;
+        private bool mouseHoverEditor = false;
 
         // indicates whether the mouse pointer is hovering over the main panel
-        bool mouseHoverMainPanel = false;
+        private bool mouseHoverMainPanel = false;
 
         // indicates whether the mouse pointer is hovering over the line numbers panel
-        bool mouseHoverLineNumberPanel = false;
+        private bool mouseHoverLineNumberPanel = false;
 
         // indicates whether the current drag movement is dragging the contents of the editor
-        bool draggingEditor = false;
+        private bool draggingEditor = false;
 
         // tooltip visibility
-        float tooltipVisibility = 0f;
-        float tooltipActivationTime = 0f;
+        private float tooltipVisibility = 0f;
+        private float tooltipActivationTime = 0f;
 
         // operations queue
-        Queue<IOperation> operations = new Queue<IOperation>();
+        private Queue<IOperation> operations = new Queue<IOperation>();
 
         // max time in seconds operations are allowed to use during one frame
-        float maxOperationTimePerFrame = 0.01f;
+        private float maxOperationTimePerFrame = 0.01f;
 
         // max time in seconds text formatting is allowed to use during one frame
-        float maxFormatTimePerFrame = 0.01f;
+        private float maxFormatTimePerFrame = 0.01f;
 
         // stopwatch to measure execution time of queued operations
-        System.Diagnostics.Stopwatch operationsStopWatch = new System.Diagnostics.Stopwatch();
+        private System.Diagnostics.Stopwatch operationsStopWatch = new System.Diagnostics.Stopwatch();
 
         // current event in the editor history
-        History.Event currentEvent = null;
+        private History.Event currentEvent = null;
 
         // pointer to line in editor that is currently being formatted. After each operation, all lines before textFormatLinePointer have the correct format.
-        int textFormatLinePointer = 0;
+        private int textFormatLinePointer = 0;
 
         // hash set representation of wordDelimiters list (for lookup performance)
-        readonly HashSet<char> wordDelimitersHashSet = new HashSet<char>();
+        private readonly HashSet<char> wordDelimitersHashSet = new HashSet<char>();
 
         /// <summary>
         /// Gets or sets the text. Setting the text using this property enqueues
@@ -1321,7 +1321,7 @@ namespace InGameTextEditor
         }
 
         // initializes editor on application start
-        void Start()
+        private void Start()
         {
             // do not execute these steps in edit mode
             if (!Application.isPlaying)
@@ -1367,7 +1367,7 @@ namespace InGameTextEditor
         }
 
         // update editor (each frame)
-        void Update()
+        private void Update()
         {
             if (!Application.isPlaying)
             {
@@ -1806,7 +1806,7 @@ namespace InGameTextEditor
         }
 
         // fixed update (fixed timestep as defined in TimeManager) 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             // do not execute in edit mode
             if (!Application.isPlaying)
@@ -1822,7 +1822,7 @@ namespace InGameTextEditor
 
         // update editor appereance whenever a value has changed
         // is only executed in Unity Editor
-        void OnValidate()
+        private void OnValidate()
         {
             // force min font size of 1
             fontSize = Mathf.Max(fontSize, 1);
@@ -1904,7 +1904,7 @@ namespace InGameTextEditor
         }
 
         // invoked when the application gains or loses focus
-        void OnApplicationFocus(bool focus)
+        private void OnApplicationFocus(bool focus)
         {
             // deactivate editor on lost focus
             if (!focus && deactivateOnLostApplicationFocus)
@@ -1913,7 +1913,7 @@ namespace InGameTextEditor
 
         // handles key stroke of given key
         // is invoked on keydown event or every (1 / keyRepeatRate) seconds when a key is held down for more than keyRepeatThreshold seconds
-        void HandleKeyStroke(KeyCode keyCode, bool repeatedStroke = false)
+        private void HandleKeyStroke(KeyCode keyCode, bool repeatedStroke = false)
         {
             // handle arrow keys
             bool select = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -1992,7 +1992,7 @@ namespace InGameTextEditor
         }
 
         // mouse click at mousePosition coordinates (relative to top left corner of main content)
-        void Click(Vector2 mousePosition)
+        private void Click(Vector2 mousePosition)
         {
             // get text position for mouse coordinates
             TextPosition textPosition = GetTextPositionForCoordinates(mousePosition);
@@ -2053,7 +2053,7 @@ namespace InGameTextEditor
         }
 
         // drag (to mousePosition)
-        void Drag(Vector2 mousePosition)
+        private void Drag(Vector2 mousePosition)
         {
             // clamp mouse position to visible text area
             Vector2 clampedMousePosition = new Vector2(Mathf.Clamp(mousePosition.x, -horizontalOffset - mainMarginLeft - characterWidth, -horizontalOffset + horizontalSpaceAvailable + mainMarginRight + characterWidth), Mathf.Clamp(mousePosition.y, -verticalOffset - verticalSpaceAvailable - mainMarginBottom - characterHeight, -verticalOffset + mainMarginTop + characterHeight));
@@ -2136,7 +2136,7 @@ namespace InGameTextEditor
 
         // inserts the given character at the current caret position
         // if an active selection exists, the selected text is deleted and the character c is inserted at its place
-        void InsertCharacter(char c, bool immediately = false)
+        private void InsertCharacter(char c, bool immediately = false)
         {
             // abort if c is a non-printable character (exception for tab)
             if (!Util.IsPrintableCharacter(c) && c != '\t')
@@ -2161,7 +2161,7 @@ namespace InGameTextEditor
         }
 
         // deletes selected text (if selection is active) or single character directly before or after the caret
-        void Delete(bool forward, bool immediately = false)
+        private void Delete(bool forward, bool immediately = false)
         {
             if (!disableInput)
             {
@@ -2182,7 +2182,7 @@ namespace InGameTextEditor
         }
 
         // increases or decreases indent of the selected lines
-        void ModifyIndent(bool increase, bool immediately = false)
+        private void ModifyIndent(bool increase, bool immediately = false)
         {
             if (!disableInput)
             {
@@ -2203,7 +2203,7 @@ namespace InGameTextEditor
         }
 
         // places the caret at the given text position
-        void PlaceCaret(TextPosition textPosition, bool immediately = false)
+        private void PlaceCaret(TextPosition textPosition, bool immediately = false)
         {
             // create operation
             PlaceCaretOperation op = new PlaceCaretOperation(textPosition);
@@ -2222,7 +2222,7 @@ namespace InGameTextEditor
 
         // scrolls content to position where caret or selection end is visible
         // must be invoked whenever the caret position or selection has changed
-        void FollowCaret()
+        private void FollowCaret()
         {
             if (selection != null)
             {
@@ -2273,7 +2273,7 @@ namespace InGameTextEditor
 
 
         // sets the selection
-        void SetSelection(Selection textSelection, bool immediately = false)
+        private void SetSelection(Selection textSelection, bool immediately = false)
         {
             // check if selection is valid
             if (textSelection == null || !textSelection.IsValid)
@@ -2295,7 +2295,7 @@ namespace InGameTextEditor
         }
 
         // creates a new selection rect from topLeft to bottomRight
-        void AddSelectionRect(Vector2 topLeft, Vector2 bottomRight)
+        private void AddSelectionRect(Vector2 topLeft, Vector2 bottomRight)
         {
             // create selection background
             GameObject selectionRect = new GameObject("Selection");
@@ -2316,7 +2316,7 @@ namespace InGameTextEditor
         }
 
         // rebuilds all text lines
-        void RebuildLines(bool immediately = false)
+        private void RebuildLines(bool immediately = false)
         {
             // creation operation
             RebuildLinesOperation op = new RebuildLinesOperation();
@@ -2334,7 +2334,7 @@ namespace InGameTextEditor
         }
 
         // gets closest text position for given mouse coordinates
-        TextPosition GetTextPositionForCoordinates(Vector2 coordinates)
+        private TextPosition GetTextPositionForCoordinates(Vector2 coordinates)
         {
             if (coordinates.y > 0f)
             {
@@ -2369,7 +2369,7 @@ namespace InGameTextEditor
 
         // updates caret and selection marking
         // must be invoked whenever the selection has changed
-        void UpdateSelectionAndCaret()
+        private void UpdateSelectionAndCaret()
         {
             // remove all selection rects
             foreach (GameObject selectionRect in selectionRects)
@@ -2424,7 +2424,7 @@ namespace InGameTextEditor
 
         // moves the scrollable content
         // must be invoked whenever the content is scrolled (vertically or horizontally)
-        void UpdateScrollableContent()
+        private void UpdateScrollableContent()
         {
             verticalOffset = Mathf.Max(0f, Mathf.Min(verticalOffset, verticalSpaceRequired - verticalSpaceAvailable));
             horizontalOffset = Mathf.Min(0f, Mathf.Max(horizontalOffset, horizontalSpaceAvailable - horizontalSpaceRequired));
@@ -2436,7 +2436,7 @@ namespace InGameTextEditor
 
         // updates the scrollbars
         // must be invoked whenever the content is scrolled (vertically or horizontally)
-        void UpdateScrollbars()
+        private void UpdateScrollbars()
         {
             // vertical scrollbar
             if (verticalSpaceRequired <= verticalSpaceAvailable)
@@ -2468,13 +2468,13 @@ namespace InGameTextEditor
         }
 
         // gets current editor state
-        State GetEditorState()
+        private State GetEditorState()
         {
             return new State(caretTextPosition, selection);
         }
 
         // applies a given editor state
-        void ApplyEditorState(State state)
+        private void ApplyEditorState(State state)
         {
             caretTextPosition = state.caretTextPosition.Clone();
             selection = state.selection != null ? state.selection.Clone() : null;
@@ -2482,7 +2482,7 @@ namespace InGameTextEditor
         }
 
         // adds editor event to history
-        void AddEventToHistory(History.Event newEvent)
+        private void AddEventToHistory(History.Event newEvent)
         {
             // abort if history is disabled
             if (!enableHistory)
@@ -2500,7 +2500,7 @@ namespace InGameTextEditor
 
         // adds milestone event to history
         // only if most current entry is not already a milestone
-        void AddMilestoneToHistory()
+        private void AddMilestoneToHistory()
         {
             if (!enableHistory)
                 return;
@@ -2539,7 +2539,7 @@ namespace InGameTextEditor
         }
 
         // executes a given operation and returns true if it has completed
-        bool ExecuteOperation(IOperation op)
+        private bool ExecuteOperation(IOperation op)
         {
             // invoke method based on operation type
             if (op is CopyOperation)
@@ -2581,7 +2581,7 @@ namespace InGameTextEditor
         }
 
         // executes set text operation
-        bool ExecuteSetTextOperation(SetTextOperation op)
+        private bool ExecuteSetTextOperation(SetTextOperation op)
         {
             if (op.state == SetTextOperation.State.DELETING)
             {
@@ -2667,7 +2667,7 @@ namespace InGameTextEditor
         }
 
         // executes insert text operation
-        bool ExecuteInsertTextOperation(InsertTextOperation op)
+        private bool ExecuteInsertTextOperation(InsertTextOperation op)
         {
             if (op.state == InsertTextOperation.State.START)
             {
@@ -2840,7 +2840,7 @@ namespace InGameTextEditor
         }
 
         // executes insert character operation
-        bool ExecuteInsertCharacterOperation(InsertCharacterOperation op)
+        private bool ExecuteInsertCharacterOperation(InsertCharacterOperation op)
         {
             if (op.state == InsertCharacterOperation.State.START)
             {
@@ -2907,7 +2907,7 @@ namespace InGameTextEditor
         }
 
         // executes delete text operation
-        bool ExecuteDeleteTextOperation(DeleteTextOperation op)
+        private bool ExecuteDeleteTextOperation(DeleteTextOperation op)
         {
             if (op.state == DeleteTextOperation.State.START)
             {
@@ -3061,7 +3061,7 @@ namespace InGameTextEditor
         }
 
         // executes delete operation
-        bool ExecuteDeleteOperation(DeleteOperation op)
+        private bool ExecuteDeleteOperation(DeleteOperation op)
         {
             // add milestone to history before deleting text
             AddMilestoneToHistory();
@@ -3145,7 +3145,7 @@ namespace InGameTextEditor
         }
 
         // executes increase indent operation
-        bool ExecuteModifyIndentOperation(ModifyIndentOperation op)
+        private bool ExecuteModifyIndentOperation(ModifyIndentOperation op)
         {
             if (op.state == ModifyIndentOperation.State.START)
             {
@@ -3218,7 +3218,7 @@ namespace InGameTextEditor
         }
 
         // executes rebuild lines operation
-        bool ExecuteRebuildLinesOperation(RebuildLinesOperation op)
+        private bool ExecuteRebuildLinesOperation(RebuildLinesOperation op)
         {
             if (op.state == RebuildLinesOperation.State.START)
             {
@@ -3263,7 +3263,7 @@ namespace InGameTextEditor
         }
 
         // executes move caret operation
-        bool ExecuteMoveCaretOperation(MoveCaretOperation op)
+        private bool ExecuteMoveCaretOperation(MoveCaretOperation op)
         {
             // add milestone
             AddMilestoneToHistory();
@@ -3505,7 +3505,7 @@ namespace InGameTextEditor
         }
 
         // executes place caret operation
-        bool ExecutePlaceCaretOperation(PlaceCaretOperation op)
+        private bool ExecutePlaceCaretOperation(PlaceCaretOperation op)
         {
             // remove selection
             selection = null;
@@ -3520,7 +3520,7 @@ namespace InGameTextEditor
         }
 
         // executes set selection operation
-        bool ExecuteSetSelectionOperation(SetSelectionOperation op)
+        private bool ExecuteSetSelectionOperation(SetSelectionOperation op)
         {
             // apply selection
             selection = op.selection;
@@ -3534,7 +3534,7 @@ namespace InGameTextEditor
         }
 
         // executes select all operation
-        bool ExecuteSelectAllOperation(SelectAllOperation op)
+        private bool ExecuteSelectAllOperation(SelectAllOperation op)
         {
             // do nothing if document is empty
             if (lines.Count == 1 && lines[0].Text.Length == 0)
@@ -3548,7 +3548,7 @@ namespace InGameTextEditor
         }
 
         // executes copy operation
-        bool ExecuteCopyOperation(CopyOperation op)
+        private bool ExecuteCopyOperation(CopyOperation op)
         {
             // get selected text and copy it to the system clipboard
             if (selection != null && selection.IsValid)
@@ -3559,7 +3559,7 @@ namespace InGameTextEditor
         }
 
         // executes cut operation
-        bool ExecuteCutOperation(CutOperation op)
+        private bool ExecuteCutOperation(CutOperation op)
         {
             if (op.state == CutOperation.State.START)
             {
@@ -3608,7 +3608,7 @@ namespace InGameTextEditor
         }
 
         // executes paste operation
-        bool ExecutePasteOperation(PasteOperation op)
+        private bool ExecutePasteOperation(PasteOperation op)
         {
             if (op.state == PasteOperation.State.START)
             {
@@ -3699,7 +3699,7 @@ namespace InGameTextEditor
         }
 
         // executes undo operation
-        bool ExecuteUndoOperation(UndoOperation op)
+        private bool ExecuteUndoOperation(UndoOperation op)
         {
             if (op.state == UndoOperation.State.START)
             {
@@ -3799,7 +3799,7 @@ namespace InGameTextEditor
         }
 
         // executes redo operation
-        bool ExecuteRedoOperation(RedoOperation op)
+        private bool ExecuteRedoOperation(RedoOperation op)
         {
             if (op.state == RedoOperation.State.START)
             {
@@ -3900,7 +3900,7 @@ namespace InGameTextEditor
         }
 
         // executes find operation
-        bool ExecuteFindOperation(FindOperation op)
+        private bool ExecuteFindOperation(FindOperation op)
         {
             // abort if search string is null or empty
             if (string.IsNullOrEmpty(op.searchString))

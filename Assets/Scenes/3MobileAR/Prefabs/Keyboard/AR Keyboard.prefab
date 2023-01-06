@@ -312,12 +312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548081bddc0a144ca818fdbe68cd97a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambientModeInitialState: {fileID: 0}
-  welcomeModeInitialState: {fileID: 0}
+  keyboardMode: 0
+  ambientModeInitialState: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
+  welcomeModeInitialState: {fileID: 6557350864230704250, guid: 41141d85277694230abbb944841a2795, type: 3}
   keys: []
   modifierKeys: []
   primaryKeys: []
-  keyboardMode: 0
 --- !u!1 &9163093158649743870
 GameObject:
   m_ObjectHideFlags: 0

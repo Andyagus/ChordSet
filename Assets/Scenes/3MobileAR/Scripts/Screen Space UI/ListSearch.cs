@@ -27,7 +27,7 @@ public class ListSearch : MonoBehaviour
         _shortcutListItems = GetComponentsInChildren<ShortcutListItem>().ToList();
     }
 
-    void Start()
+    private void Start()
     {
         // _shortcutListItems = content.GetComponentsInChildren<ShortcutListItem>().ToList();
         // onListItemChanged();

@@ -427,17 +427,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &763738077 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 596600753602355376, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-  m_PrefabInstance: {fileID: 1728722160}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1434146077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,10 +481,6 @@ PrefabInstance:
     - target: {fileID: 1472310931677354311, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
       propertyPath: m_Name
       value: ScreenSpaceUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5603994416050337416, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22.086884
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
@@ -590,18 +575,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 368148077423814142, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: secondaryText
-      value: 
-      objectReference: {fileID: 763738077}
-    - target: {fileID: 7429294698044142268, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: ambientModeInitialState
-      value: 
-      objectReference: {fileID: 2364421300641954131, guid: 1e5a4a43b5a904d13b067d9c814699f4, type: 3}
-    - target: {fileID: 7429294698044142268, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
-      propertyPath: welcomeModeInitialState
-      value: 
-      objectReference: {fileID: 6557350864230704250, guid: 41141d85277694230abbb944841a2795, type: 3}
     - target: {fileID: 8403880990647718866, guid: d38e6b4e58f85417ab2f506f3d32a2dd, type: 3}
       propertyPath: m_Name
       value: AR Keyboard

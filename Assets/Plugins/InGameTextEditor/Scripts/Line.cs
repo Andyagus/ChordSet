@@ -149,7 +149,7 @@ namespace InGameTextEditor
         }
 
         // text block rendering part of the line's text
-        class TextBlock
+        private class TextBlock
         {
             // text line
             public readonly Line line;
@@ -204,67 +204,67 @@ namespace InGameTextEditor
 
         // maximum number of characters that can be rendered in a single UI.Text component
         // if the text is too long, it will be split up into multiple blocks
-        readonly int maxCharactersPerBlock = 10000;
+        private readonly int maxCharactersPerBlock = 10000;
 
         // line number
-        int lineNumber;
+        private int lineNumber;
 
         // text to be displayed
-        string text;
+        private string text;
 
         // vertical offset
-        float verticalOffset;
+        private float verticalOffset;
 
         // text editor to which this line belongs
-        TextEditor textEditor;
+        private TextEditor textEditor;
 
         // text blocks
-        List<TextBlock> textBlocks = new List<TextBlock>();
+        private List<TextBlock> textBlocks = new List<TextBlock>();
 
         // game object with text component to display line number
-        GameObject lineNumberGameObject;
+        private GameObject lineNumberGameObject;
 
         // labels
-        List<Label> labels = new List<Label>();
+        private List<Label> labels = new List<Label>();
 
         // line fragments (if a line is wrapped it consists of multiple line fragments)
-        List<string> lineFragments = new List<string>();
+        private List<string> lineFragments = new List<string>();
 
         // the number of characters this line is indented
-        int lineIndent = 0;
+        private int lineIndent = 0;
 
         // the number of characters the wrapped line segments are indented
-        int wrappedLineIndent = 0;
+        private int wrappedLineIndent = 0;
 
         // contains the width of the given character
-        List<float> characterWidth = new List<float>();
+        private List<float> characterWidth = new List<float>();
 
         // contains the offset of the given character
-        List<Vector2> characterOffset = new List<Vector2>();
+        private List<Vector2> characterOffset = new List<Vector2>();
 
         // maps index of the rendered character to index of the original character
-        List<int> indexMap = new List<int>();
+        private List<int> indexMap = new List<int>();
 
         // maps index of the character to start index of the corresponding rendered character(s)
-        List<int> reverseStartIndexMap = new List<int>();
+        private List<int> reverseStartIndexMap = new List<int>();
 
         // maps index of the character to end index of the corresponding rendered character(s)
-        List<int> reverseEndIndexMap = new List<int>();
+        private List<int> reverseEndIndexMap = new List<int>();
 
         // the width of the entire line
-        float lineWidth = 0f;
+        private float lineWidth = 0f;
 
         // text format groups
-        List<TextFormatGroup> textFormat = new List<TextFormatGroup>();
+        private List<TextFormatGroup> textFormat = new List<TextFormatGroup>();
 
         // text format groups with indices adjusted to match indices of rendered characters
-        List<TextFormatGroup> adjustedTextFormat = new List<TextFormatGroup>();
+        private List<TextFormatGroup> adjustedTextFormat = new List<TextFormatGroup>();
 
         // indicates whether this line is visible or not
-        bool visible = false;
+        private bool visible = false;
 
         // properties of this line
-        Dictionary<string, object> properties = new Dictionary<string, object>();
+        private Dictionary<string, object> properties = new Dictionary<string, object>();
 
         /// <summary>
         /// Creates a new line with a given line number and text.
@@ -822,7 +822,7 @@ namespace InGameTextEditor
         }
 
         // removes and redoes all labels attached to this line.
-        void RedoLabels(bool thisLineChanged, bool previousLineChanged, bool nextLineChanged)
+        private void RedoLabels(bool thisLineChanged, bool previousLineChanged, bool nextLineChanged)
         {
             int labelCount = labels.Count;
             for (int i = 0; i < labelCount; i++)
@@ -853,7 +853,7 @@ namespace InGameTextEditor
         }
 
         // creates a new label rect from topLeft to bottomRight using the defined background and color
-        GameObject AddLabelRect(Vector2 topLeft, Vector2 bottomRight, Sprite sprite, Color color)
+        private GameObject AddLabelRect(Vector2 topLeft, Vector2 bottomRight, Sprite sprite, Color color)
         {
             // create label rect
             GameObject labelRect = new GameObject("Label");
@@ -893,7 +893,7 @@ namespace InGameTextEditor
         }
 
         // creates new game object displaying the label's icon
-        GameObject AddLabelIcon(Sprite iconSprite, Color iconColor, float positionY)
+        private GameObject AddLabelIcon(Sprite iconSprite, Color iconColor, float positionY)
         {
             // create icon
             GameObject icon = new GameObject("Icon");
@@ -974,7 +974,7 @@ namespace InGameTextEditor
         }
 
         // creates all text blocks required to render this line's text.
-        void CreateTextBlocks()
+        private void CreateTextBlocks()
         {
             // remove old blocks
             foreach (TextBlock textBlock in textBlocks)
@@ -1136,7 +1136,7 @@ namespace InGameTextEditor
         }
 
         // creates text blocks required for rendering one line (or part of a line if wrapped)
-        void CreateTextBlocksForLine(int startIndex, int endIndex, string lineText, Vector2 lineOffset)
+        private void CreateTextBlocksForLine(int startIndex, int endIndex, string lineText, Vector2 lineOffset)
         {
             if (lineText.Length <= maxCharactersPerBlock)
                 textBlocks.Add(new TextBlock(this, startIndex, endIndex, lineOffset, lineText));
@@ -1158,7 +1158,7 @@ namespace InGameTextEditor
         }
 
         // creates a game object displaying the given text block
-        GameObject CreateTextBlockGameObject(TextBlock textBlock)
+        private GameObject CreateTextBlockGameObject(TextBlock textBlock)
         {
             // replace tab by white space and '<' by escape character
             string blockText = textBlock.text.Replace('\t', ' ').Replace('<', '\u001B');
@@ -1233,7 +1233,7 @@ namespace InGameTextEditor
         }
 
         // creates a game object displaying the line number
-        GameObject CreateLineNumberGameObject()
+        private GameObject CreateLineNumberGameObject()
         {
             // create new game object and attach it to the editor's line number panel
             GameObject go = new GameObject("Line Number");

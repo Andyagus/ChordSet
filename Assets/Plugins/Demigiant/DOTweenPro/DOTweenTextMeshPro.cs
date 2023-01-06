@@ -191,14 +191,14 @@ namespace DG.Tweening
     /// </summary>
     public class DOTweenTMPAnimator : IDisposable
     {
-        static readonly Dictionary<TMP_Text,DOTweenTMPAnimator> _targetToAnimator = new Dictionary<TMP_Text,DOTweenTMPAnimator>();
+        private static readonly Dictionary<TMP_Text,DOTweenTMPAnimator> _targetToAnimator = new Dictionary<TMP_Text,DOTweenTMPAnimator>();
 
         /// <summary><see cref="TMP_Text"/> that this animator is linked to</summary>
         public TMP_Text target { get; private set; }
         public TMP_TextInfo textInfo { get; private set; }
-        readonly List<CharTransform> _charTransforms = new List<CharTransform>();
-        TMP_MeshInfo[] _cachedMeshInfos;
-        bool _ignoreTextChangedEvent;
+        private readonly List<CharTransform> _charTransforms = new List<CharTransform>();
+        private TMP_MeshInfo[] _cachedMeshInfos;
+        private bool _ignoreTextChangedEvent;
 
         /// <summary>
         /// Creates a new instance of the <see cref="DOTweenTMPAnimator"/>, which is necessary to animate <see cref="TMP_Text"/> by single characters.<para/>
@@ -294,13 +294,13 @@ namespace DG.Tweening
             for (int i = 0; i < totCurrent; ++i) _charTransforms[i].ResetAll(target, textInfo.meshInfo, _cachedMeshInfos);
         }
 
-        void OnTextChanged(Object obj)
+        private void OnTextChanged(Object obj)
         {
             if (_ignoreTextChangedEvent || target == null || obj != target) return;
             Refresh();
         }
 
-        bool ValidateChar(int charIndex, bool isTween = true)
+        private bool ValidateChar(int charIndex, bool isTween = true)
         {
             if (textInfo.characterCount <= charIndex) {
                 Debugger.LogError(string.Format("CharIndex {0} doesn't exist", charIndex));
@@ -322,7 +322,7 @@ namespace DG.Tweening
             return true;
         }
 
-        bool ValidateSpan(int fromCharIndex, int toCharIndex, out int firstVisibleCharIndex, out int lastVisibleCharIndex)
+        private bool ValidateSpan(int fromCharIndex, int toCharIndex, out int firstVisibleCharIndex, out int lastVisibleCharIndex)
         {
             firstVisibleCharIndex = -1; // First visible/existing charIndex from given index
             lastVisibleCharIndex = -1; // Last visible/existing charIndex backwards from given index
@@ -852,7 +852,7 @@ namespace DG.Tweening
 
         // ███ INTERNAL CLASSES ████████████████████████████████████████████████████████████████████████████████████████████████
 
-        struct CharVertices
+        private struct CharVertices
         {
             public Vector3 bottomLeft, topLeft, topRight, bottomRight;
 
@@ -869,17 +869,17 @@ namespace DG.Tweening
 
         // Vertices of each character are:
         // 0 : bottom left, 1 : top left, 2 : top right, 3 : bottom right
-        struct CharTransform
+        private struct CharTransform
         {
             public int charIndex;
             public bool isVisible { get; private set; } // FALSE both if it's invisible or if it's a space
             public Vector3 offset;
             public Quaternion rotation;
             public Vector3 scale;
-            Vector3 _topLeftShift, _topRightShift, _bottomLeftShift, _bottomRightShift;
-            Vector3 _charMidBaselineOffset;
-            int _matIndex, _firstVertexIndex;
-            TMP_MeshInfo _meshInfo;
+            private Vector3 _topLeftShift, _topRightShift, _bottomLeftShift, _bottomRightShift;
+            private Vector3 _charMidBaselineOffset;
+            private int _matIndex, _firstVertexIndex;
+            private TMP_MeshInfo _meshInfo;
 
             public CharTransform(int charIndex, TMP_TextInfo textInfo, TMP_MeshInfo[] cachedMeshInfos) : this()
             {

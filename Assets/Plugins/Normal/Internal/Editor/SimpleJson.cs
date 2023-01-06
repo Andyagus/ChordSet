@@ -671,7 +671,7 @@ namespace Normal.Internal.SimpleJson
             return sb.ToString();
         }
 
-        static IDictionary<string, object> ParseObject(char[] json, ref int index, ref bool success)
+        private static IDictionary<string, object> ParseObject(char[] json, ref int index, ref bool success)
         {
             IDictionary<string, object> table = new JsonObject();
             int token;
@@ -724,7 +724,7 @@ namespace Normal.Internal.SimpleJson
             return table;
         }
 
-        static JsonArray ParseArray(char[] json, ref int index, ref bool success)
+        private static JsonArray ParseArray(char[] json, ref int index, ref bool success)
         {
             JsonArray array = new JsonArray();
 
@@ -758,7 +758,7 @@ namespace Normal.Internal.SimpleJson
             return array;
         }
 
-        static object ParseValue(char[] json, ref int index, ref bool success)
+        private static object ParseValue(char[] json, ref int index, ref bool success)
         {
             switch (LookAhead(json, index))
             {
@@ -786,7 +786,7 @@ namespace Normal.Internal.SimpleJson
             return null;
         }
 
-        static string ParseString(char[] json, ref int index, ref bool success)
+        private static string ParseString(char[] json, ref int index, ref bool success)
         {
             StringBuilder s = new StringBuilder(BUILDER_CAPACITY);
             char c;
@@ -892,7 +892,7 @@ namespace Normal.Internal.SimpleJson
             return new string(new char[] { (char)((utf32 >> 10) + 0xD800), (char)(utf32 % 0x0400 + 0xDC00) });
         }
 
-        static object ParseNumber(char[] json, ref int index, ref bool success)
+        private static object ParseNumber(char[] json, ref int index, ref bool success)
         {
             EatWhitespace(json, ref index);
             int lastIndex = GetLastIndexOfNumber(json, index);
@@ -915,7 +915,7 @@ namespace Normal.Internal.SimpleJson
             return returnNumber;
         }
 
-        static int GetLastIndexOfNumber(char[] json, int index)
+        private static int GetLastIndexOfNumber(char[] json, int index)
         {
             int lastIndex;
             for (lastIndex = index; lastIndex < json.Length; lastIndex++)
@@ -923,20 +923,20 @@ namespace Normal.Internal.SimpleJson
             return lastIndex - 1;
         }
 
-        static void EatWhitespace(char[] json, ref int index)
+        private static void EatWhitespace(char[] json, ref int index)
         {
             for (; index < json.Length; index++)
                 if (" \t\n\r\b\f".IndexOf(json[index]) == -1) break;
         }
 
-        static int LookAhead(char[] json, int index)
+        private static int LookAhead(char[] json, int index)
         {
             int saveIndex = index;
             return NextToken(json, ref saveIndex);
         }
 
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
-        static int NextToken(char[] json, ref int index)
+        private static int NextToken(char[] json, ref int index)
         {
             EatWhitespace(json, ref index);
             if (index == json.Length)
@@ -1004,7 +1004,7 @@ namespace Normal.Internal.SimpleJson
             return TOKEN_NONE;
         }
 
-        static bool SerializeValue(IJsonSerializerStrategy jsonSerializerStrategy, object value, StringBuilder builder)
+        private static bool SerializeValue(IJsonSerializerStrategy jsonSerializerStrategy, object value, StringBuilder builder)
         {
             bool success = true;
             string stringValue = value as string;
@@ -1048,7 +1048,7 @@ namespace Normal.Internal.SimpleJson
             return success;
         }
 
-        static bool SerializeObject(IJsonSerializerStrategy jsonSerializerStrategy, IEnumerable keys, IEnumerable values, StringBuilder builder)
+        private static bool SerializeObject(IJsonSerializerStrategy jsonSerializerStrategy, IEnumerable keys, IEnumerable values, StringBuilder builder)
         {
             builder.Append("{");
             IEnumerator ke = keys.GetEnumerator();
@@ -1074,7 +1074,7 @@ namespace Normal.Internal.SimpleJson
             return true;
         }
 
-        static bool SerializeArray(IJsonSerializerStrategy jsonSerializerStrategy, IEnumerable anArray, StringBuilder builder)
+        private static bool SerializeArray(IJsonSerializerStrategy jsonSerializerStrategy, IEnumerable anArray, StringBuilder builder)
         {
             builder.Append("[");
             bool first = true;
@@ -1090,7 +1090,7 @@ namespace Normal.Internal.SimpleJson
             return true;
         }
 
-        static bool SerializeString(string aString, StringBuilder builder)
+        private static bool SerializeString(string aString, StringBuilder builder)
         {
             // Happy path if there's nothing to be escaped. IndexOfAny is highly optimized (and unmanaged)
             if (aString.IndexOfAny(EscapeCharacters) == -1)
@@ -1139,7 +1139,7 @@ namespace Normal.Internal.SimpleJson
             return true;
         }
 
-        static bool SerializeNumber(object number, StringBuilder builder)
+        private static bool SerializeNumber(object number, StringBuilder builder)
         {
             if (number is long)
                 builder.Append(((long)number).ToString(CultureInfo.InvariantCulture));
@@ -1162,7 +1162,7 @@ namespace Normal.Internal.SimpleJson
         /// Determines if a given object is numeric in any way
         /// (can be integer, double, null, etc).
         /// </summary>
-        static bool IsNumeric(object value)
+        private static bool IsNumeric(object value)
         {
             if (value is sbyte) return true;
             if (value is byte) return true;

@@ -1,24 +1,24 @@
 using TMPro;
 using UnityEngine;
 
-public class NumberKeyLayout : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
 {
-    public string symbol;
-    public string number;
-    
-    public TextMeshProUGUI topText;
-    public TextMeshProUGUI bottomText;
-    // Start is called before the first frame update
-    
-    void Start()
+    /// <summary>
+    /// NumberKey Layout (1, 2, 3, 4, etc…)
+    /// </summary>
+    public class NumberKeyLayout : MonoBehaviour
     {
-        topText.text = symbol;
-        bottomText.text = number;
-    }
+        public string symbol;
+        public string number;
+    
+        public TextMeshProUGUI topText;
+        public TextMeshProUGUI bottomText;
+    
+        private void Start()
+        {
+            topText.text = symbol;
+            bottomText.text = number;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

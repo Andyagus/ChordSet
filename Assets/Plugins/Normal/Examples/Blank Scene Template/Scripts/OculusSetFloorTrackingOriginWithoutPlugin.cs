@@ -18,8 +18,8 @@ namespace Normal.Realtime.Utility {
         private static extern Bool ovrp_SetTrackingOriginType(TrackingOrigin originType);
     
         private static bool __stopTryingToSetTrackingOrigin = false;
-    
-        void Update() {
+
+        private void Update() {
             if (__stopTryingToSetTrackingOrigin)
                 return;
     

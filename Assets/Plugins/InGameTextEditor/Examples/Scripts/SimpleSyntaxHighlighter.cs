@@ -31,10 +31,10 @@ namespace InGameTextEditor.Format
         public TextStyle textStyleNumber = new TextStyle(FontStyle.Bold);
 
         // indicates if the text formatter has been initialized
-        bool initialized = false;
+        private bool initialized = false;
 
         // regex to match the text
-        Regex regex = null;
+        private Regex regex = null;
 
         /// <summary>
         /// Indicates whether this text formatter has been initialized.

@@ -2,19 +2,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MacShortcutLayout : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
 {
-    public Sprite placementImage;
-    public string functionName;
-
-    public Image imageField;
-    public TextMeshProUGUI functionField;
-    
-    // Start is called before the first frame update
-    private void Start()
+    /// <summary>
+    /// Layout for function keys
+    /// TODO: rename class to FunctionKeyLayout
+    /// </summary>
+    public class MacShortcutLayout : MonoBehaviour
     {
-        imageField.sprite = placementImage;
-        functionField.text = functionName;
-    }
+        public Sprite placementImage;
+        public string functionName;
 
+        public Image imageField;
+        public TextMeshProUGUI functionField;
+        
+        private void Start()
+        {
+            imageField.sprite = placementImage;
+            functionField.text = functionName;
+        }
+
+    }
 }
