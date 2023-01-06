@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 4508229824510381357}
   - component: {fileID: 1661324247914059222}
   - component: {fileID: 3322152442307778638}
-  - component: {fileID: 6196134230893767029}
   m_Layer: 0
   m_Name: Positioning Area
   m_TagString: Untagged
@@ -142,18 +141,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6196134230893767029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753542038368976373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f125ebdf64cb044e9a9de5af543536d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4227602811959104288
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -491,9 +478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundPanelState: 0
-  positioningAreaState: 0
-  videoState: 0
-  shortcutSuccessPanelState: 0
+  positioningAreaState: 1
+  videoState: 1
+  shortcutSuccessPanelState: 1
 --- !u!114 &5334481892539142840
 MonoBehaviour:
   m_ObjectHideFlags: 0

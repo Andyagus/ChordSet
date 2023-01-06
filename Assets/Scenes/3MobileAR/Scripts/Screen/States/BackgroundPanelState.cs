@@ -3,38 +3,47 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BackgroundPanelState : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Screen.States
 {
-    [SerializeField] private Image backgroundPanel;
-    
-    public enum EBackgroundPanel
+    /// <summary>
+    /// Background Panel State fades the screen out (almost to black) and back to regular 
+    /// </summary>
+    public class BackgroundPanelState : MonoBehaviour
     {
-        INACTIVE,
-        ACTIVE
-    }
-
-    public void SetBackgroundPanel(EBackgroundPanel state)
-    {
-        switch (state)
+        [SerializeField] private Image backgroundPanel;
+        [SerializeField] private float fadeTime = 1;
+        [SerializeField] private float fadeInAmt = 0.4f;
+        [SerializeField] private float fadeOutAmt = 0f;
+        
+        public enum EBackgroundPanel
         {
-            case EBackgroundPanel.INACTIVE:
-                Inactive();
-                break;
-            case EBackgroundPanel.ACTIVE:
-                Active();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            INACTIVE,
+            ACTIVE
         }
-    }
+
+        public void SetBackgroundPanel(EBackgroundPanel state)
+        {
+            switch (state)
+            {
+                case EBackgroundPanel.INACTIVE:
+                    Inactive();
+                    break;
+                case EBackgroundPanel.ACTIVE:
+                    Active();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(state), state, null);
+            }
+        }
     
-    private void Active()
-    {
-        backgroundPanel.DOFade(0.4f, 1f);
-    }
+        private void Active()
+        {
+            backgroundPanel.DOFade(fadeInAmt, fadeTime);
+        }
     
-    private void Inactive()
-    {
-        backgroundPanel.DOFade(0, 1f);
+        private void Inactive()
+        {
+            backgroundPanel.DOFade(fadeOutAmt, fadeTime);
+        }
     }
 }
