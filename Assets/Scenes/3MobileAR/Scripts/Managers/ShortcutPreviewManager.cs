@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Scenes._3MobileAR.Scripts.Managers
 {
     /// <summary>
-    /// This class displays shortcut previews that have been selected from the ScreenSpace UI List.
+    /// Displays shortcut previews that have been selected from the ScreenSpace UI List.
     /// It works by taking the 'KeysToAccess' on a shortcut and displaying those keys in animation
     /// TODO: Refactor - Would like this class to play more integral role to the app
     /// </summary>
