@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Handle Tooltip Activity.
+/// TODO: Refactor - Similar to Shortcut Class
+/// </summary>
 public class TooltipActivityState : MonoBehaviour
 {
     public enum ETooltipActivity
@@ -9,7 +13,7 @@ public class TooltipActivityState : MonoBehaviour
         INACTIVE
     }
 
-    public void SetShortcutActivity(ETooltipActivity state, Tooltip tooltip)
+    public void SetTooltipActivity(ETooltipActivity state, Tooltip tooltip)
     {
         switch (state)
         {

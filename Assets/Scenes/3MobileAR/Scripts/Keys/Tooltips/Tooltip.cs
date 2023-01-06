@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Base tooltip class, all GameObjects currently use this class
+/// TODO: Refactor - Similar to Shortcut Class
+/// </summary>
 public class Tooltip : MonoBehaviour
 {
     public TooltipActivityState.ETooltipActivity tooltipActivityState;
@@ -15,7 +19,7 @@ public class Tooltip : MonoBehaviour
     {
         if (tooltipActivityState != _previousTooltipActivityState)
         {
-            _tooltipActivityState.SetShortcutActivity(tooltipActivityState, this);
+            _tooltipActivityState.SetTooltipActivity(tooltipActivityState, this);
             _previousTooltipActivityState = tooltipActivityState;
         }
     }

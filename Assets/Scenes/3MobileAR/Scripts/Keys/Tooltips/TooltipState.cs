@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
 {
-    
     /// <summary>
     /// ToolTips are similar to shortcuts but instead of effecting
     /// an external app (ie text editor) they provide in app
@@ -19,13 +18,15 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
 
     public class TooltipState : MonoBehaviour
     {
+        //DOTween
         private Sequence _instantiateSequence;
-        private Sequence _destroySequence;
+        private Sequence _eraseSequence;
         private readonly Vector3 _placementOffset = new Vector3(0f, 0.0007f, 0f);
     
-        private TextMeshProUGUI _primaryKeyText;
-        private Image _primaryKeyImage;
+        private TextMeshProUGUI _tooltipText;
+        private Image _tooltipImage;
     
+        //Tooltip GameObjects are attached to PrimaryKey Variants
         [Header("Welcome Mode State")]
         public Tooltip startTooltip;
 
@@ -40,9 +41,7 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
         public Tooltip nextShortcutTooltip;
         public Tooltip previousShortcutTooltip;
         public Tooltip favoriteTooltip;
-    
-
-
+        
         public enum ETooltip
         {
             NONE,
@@ -56,14 +55,12 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
             PREVIOUS_SHORTCUT,
             FAVORITE
         }
-
+        
+        //Passed in state calls Instantiate Tooltip with key and proper tooltip
         public void SetTooltipState(ETooltip state, ARPrimaryKey primaryKey)
         {
             switch (state)
             {
-                case ETooltip.NONE:
-                    EraseTooltip(primaryKey);
-                    break;
                 case ETooltip.START:
                     InstantiateTooltip(primaryKey, startTooltip);
                     break;
@@ -91,51 +88,55 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
                 case ETooltip.FAVORITE:
                     InstantiateTooltip(primaryKey, favoriteTooltip);
                     break;
+                case ETooltip.NONE:
+                    EraseTooltip(primaryKey);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
 
-
-        //TODO Combine instantiate and erase into one method 
-    
         private void InstantiateTooltip(ARPrimaryKey primaryKey, Tooltip tooltip)
         {
+            //If there is a current tooltip erase it before creating a new one.
             if (primaryKey.currentTooltip != null)
             {
                 EraseTooltip(primaryKey);
             }
         
-            _destroySequence.Kill();
+            _eraseSequence.Kill();
             _instantiateSequence = DOTween.Sequence();
-        
-            var newTooltip = Instantiate(tooltip, primaryKey.transform);
-            primaryKey.currentTooltip = newTooltip;
 
-            newTooltip.transform.position = primaryKey.transform.position + _placementOffset;
-        
-            _primaryKeyText = primaryKey.currentTooltip.GetComponentInChildren<TextMeshProUGUI>();
-            _primaryKeyImage = primaryKey.currentTooltip.GetComponentInChildren<Image>();
+            //Personal note: what is going on here? 
+            var instantiatedTooltip = Instantiate(tooltip, primaryKey.transform);
+            primaryKey.currentTooltip = instantiatedTooltip;
 
+            instantiatedTooltip.transform.position = primaryKey.transform.position + _placementOffset;
+        
+            //TODO: Get rid of these GetComponents - Clean these few lines up.
+            _tooltipText = primaryKey.currentTooltip.GetComponentInChildren<TextMeshProUGUI>();
+            _tooltipImage = primaryKey.currentTooltip.GetComponentInChildren<Image>();
+            //Bad: Getting letter text directly - but here getting text, in primary key was not even going for text.
             if (primaryKey.letterText != null) _instantiateSequence.Append(primaryKey.letterText.DOFade(0, 1f));
-            if(_primaryKeyText!=null) _instantiateSequence.Insert(0, newTooltip.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 1f));
-            if(_primaryKeyImage!=null)_instantiateSequence.Insert(0, newTooltip.GetComponentInChildren<Image>().DOFade(1, 1f));
+            if(_tooltipText!=null) _instantiateSequence.Insert(0, instantiatedTooltip.GetComponentInChildren<TextMeshProUGUI>().DOFade(1, 1f));
+            if(_tooltipImage!=null)_instantiateSequence.Insert(0, instantiatedTooltip.GetComponentInChildren<Image>().DOFade(1, 1f));
         }
-
-    
+        
         //TODO The none shortcut should remove letter keys, instead of the "available/unavailable" state. Shortcuts determine key availability
         private void EraseTooltip(ARPrimaryKey primaryKey)
         {
             _instantiateSequence.Kill();
-            _destroySequence = DOTween.Sequence();
+            _eraseSequence = DOTween.Sequence();
+            //Fade in letter text, fade out tooltip. 
+            if (primaryKey.letterText != null) _eraseSequence.Append(primaryKey.letterText.DOFade(1, 1f));
+            if(_tooltipText!=null) _eraseSequence.Insert(0, _tooltipText.DOFade(0, 1f));
+            if(_tooltipImage!=null) _eraseSequence.Insert(0, _tooltipImage.DOFade(0, 1f));
 
-            if (primaryKey.letterText != null) _destroySequence.Append(primaryKey.letterText.DOFade(1, 1f));
-            if(_primaryKeyText!=null) _destroySequence.Insert(0, _primaryKeyText.DOFade(0, 1f));
-            if(_primaryKeyImage!=null) _destroySequence.Insert(0, _primaryKeyImage.DOFade(0, 1f));
-
-            _destroySequence.OnKill(() =>
+            _eraseSequence.OnKill(() =>
             {
+                //Destroy tooltip 
                 Destroy(primaryKey.currentTooltip.gameObject);
+                primaryKey.currentTooltip = null;
             });
         }
   
