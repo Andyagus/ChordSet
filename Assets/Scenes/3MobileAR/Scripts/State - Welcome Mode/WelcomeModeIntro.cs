@@ -5,15 +5,21 @@ using Scenes._1Desktop.Scripts;
 using Scenes._3MobileAR.Scripts.Keyboard;
 using Scenes._3MobileAR.Scripts.Keys;
 using Scenes._3MobileAR.Scripts.Keys.Key_States;
+using UnityEngine;
 
 namespace Scenes._3MobileAR.Scripts.State___Welcome_Mode
 {
+    /// <summary>
+    /// Welcome Animation, activated when app starts.
+    /// TODO: WelcomeMode does not need to be state machine.
+    /// TODO: Improve animation to be quicker.  Less than 0.5f 
+    /// </summary>
     public class WelcomeModeIntro : ARKeyboardState
     {
-        private Sequence _sequence;
         private List<Key> _selectedKeys;
-        private float _appendInterval = 0.35f;
-
+        [SerializeField] private float selectedKeyInterval = 0.06743f;
+        [SerializeField] private float outlineLetterInterval = 0.35f;
+        [SerializeField] private float textSwapInterval = 0.045f;
         public Action onWelcomeSequenceComplete;
     
         private void Awake()
@@ -21,12 +27,18 @@ namespace Scenes._3MobileAR.Scripts.State___Welcome_Mode
             _selectedKeys = new List<Key>();
         }
 
+        /// <summary>
+        /// Sequentially calling sequences.  When one sequence is complete, OnComplete calls next local sequence.  
+        /// </summary>
         public override void Entry(ARKeyboard keyboard)
         {
             LightUpKeys(keyboard);
-            // OutlineLetters(keyboard);
         }
-
+        
+        /// <summary>
+        ///Setting all keys to pressed (highlighted) with a small interval
+        /// between each highlight and adds to list. 
+        /// </summary>
         private void LightUpKeys(ARKeyboard keyboard)
         {
             var localSequence = DOTween.Sequence();
@@ -45,18 +57,22 @@ namespace Scenes._3MobileAR.Scripts.State___Welcome_Mode
                         selectedKey.keyPressed = EKeyState.KEY_PRESSED;
                         _selectedKeys.Add(selectedKey);
                     });
-                    localSequence.AppendInterval(0.06743f);
+                    localSequence.AppendInterval(selectedKeyInterval);
                 }   
                 index++;
             }
 
             localSequence.Play();
+            //Move to next local DOTween Sequence.
             localSequence.OnComplete(() =>
             {
                 DimKeys(keyboard);
             });
         }
 
+        /// <summary>
+        /// Unhighlight all keys in the list and set to inactive. 
+        /// </summary>
         private void DimKeys(ARKeyboard keyboard)
         {
             var localSequence = DOTween.Sequence();
@@ -79,61 +95,51 @@ namespace Scenes._3MobileAR.Scripts.State___Welcome_Mode
             });
         }
 
+        /// <summary>
+        /// Using the KeyLetterState to swap the Keyboard letters out to say app name "ChordSet"
+        /// </summary>
         private void OutlineLetters(ARKeyboard keyboard)
         {
             var localSequence = DOTween.Sequence();
             localSequence.Pause();
-
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "Q", KeyLetterState.EKeyLetter.C));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "W", KeyLetterState.EKeyLetter.H));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "E", KeyLetterState.EKeyLetter.O));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "R", KeyLetterState.EKeyLetter.R));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "T", KeyLetterState.EKeyLetter.D));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "A", KeyLetterState.EKeyLetter.S));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "S", KeyLetterState.EKeyLetter.E));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.AppendCallback(() => TextSwapSequence(keyboard, "D", KeyLetterState.EKeyLetter.T));
-            localSequence.AppendInterval(_appendInterval);
+            localSequence.AppendInterval(outlineLetterInterval);
             localSequence.Play();
             localSequence.OnComplete(() =>
-            {
-                DisplayStartButton(keyboard);
-            });
-        }
-
-        private void TextSwapSequence(ARKeyboard keyboard, string letter, KeyLetterState.EKeyLetter state)
-        {
-            var innerSequence = DOTween.Sequence();
-            innerSequence.Pause();
-            var innerKey = keyboard.primaryKeyDictionary[letter];
-            innerSequence.AppendCallback(() => innerKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE);
-            innerSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_PRESSED);
-            innerSequence.AppendInterval(0.045f);
-            innerSequence.AppendCallback(() => innerKey.keyLetterState = state);
-            innerSequence.AppendInterval(0.045f);
-            innerSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_UNPRESSED);
-            innerSequence.Play();
-        }
-
-        private void DisplayStartButton(ARKeyboard keyboard)
-        {
-            var localSequence = DOTween.Sequence();
-            localSequence.AppendCallback(() =>
             {
                 onWelcomeSequenceComplete();
             });
         }
-    
-        public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
+        
+        //Nested sequence for setting a new KeyLetterState on a particular key, called from OutlineLetters().        
+        private void TextSwapSequence(ARKeyboard keyboard, string letter, KeyLetterState.EKeyLetter keyLetterState)
         {
-            return null;
+            var nestedSequence = DOTween.Sequence();
+            nestedSequence.Pause();
+            var innerKey = keyboard.primaryKeyDictionary[letter];
+            nestedSequence.AppendCallback(() => innerKey.keyAvailability = KeyAvailabilityState.EKeyAvailability.AVAILABLE);
+            nestedSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_PRESSED);
+            nestedSequence.AppendInterval(textSwapInterval);
+            nestedSequence.AppendCallback(() => innerKey.keyLetterState = keyLetterState);
+            nestedSequence.AppendInterval(textSwapInterval);
+            nestedSequence.AppendCallback(() => innerKey.keyPressed = EKeyState.KEY_UNPRESSED);
+            nestedSequence.Play();
         }
+        
     }
 }

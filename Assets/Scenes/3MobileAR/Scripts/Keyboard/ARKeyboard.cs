@@ -57,10 +57,10 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             DOTween.SetTweensCapacity(500, 125);
             
             //Setting initial state machine to welcome mode.  
-            // keyboardMode = EKeyboardMode.WELCOME_MODE;
+            keyboardMode = EKeyboardMode.WELCOME_MODE;
             
             //TEMP
-            keyboardMode = EKeyboardMode.AMBIENT_MODE;
+            // keyboardMode = EKeyboardMode.AMBIENT_MODE;
             
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
