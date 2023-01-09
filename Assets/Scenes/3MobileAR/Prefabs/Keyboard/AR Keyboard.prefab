@@ -4348,6 +4348,10 @@ PrefabInstance:
       value: Video - Raw Image
       objectReference: {fileID: 0}
     - target: {fileID: 5247682418632703342, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
+      propertyPath: videoState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5247682418632703342, guid: 754d99bc0c28c47a08c2db80f38101e3, type: 3}
       propertyPath: positioningAreaState
       value: 1
       objectReference: {fileID: 0}
