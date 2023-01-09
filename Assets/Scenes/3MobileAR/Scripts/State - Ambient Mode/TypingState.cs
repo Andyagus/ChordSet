@@ -7,13 +7,19 @@ using Scenes._3MobileAR.Scripts.Keys.Tooltips;
 namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
 {
     /// <summary>
-    /// This is the initial state of ambient mode, where all primary keys
-    /// are active and transitions to next state based on input based in.
+    /// This is the initial state of ambient mode, all primary keys
+    /// are active and transitions to next state from Command key input.
+    /// Could transition to multiple different states here as outlined
+    /// in the state-machine.  Currently only transitioning to command
+    /// for testing purposes.  Would like to explore further. 
     /// </summary>
     public class TypingState : ARKeyboardState
     {
         public ARKeyboardState commandState;
         
+        /// <summary>
+        /// Entry sets up the visual state of the keyboard
+        /// </summary>
         public override void Entry(ARKeyboard keyboard)
         {
             foreach (var kvp in keyboard.modifierKeyDictionary)
@@ -49,14 +55,17 @@ namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
         
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
+            //TODO: Consistent conditionals throughout, first check KeyPressed then check KeyName
             if (key.KeyName == "command-left" || key.KeyName == "command-right" )
             {
                 if (key.keyPressed == EKeyState.KEY_PRESSED)
                 {
+                    //Setting and transitioning into the new state in ARKeyboard.AmbientModeHandleInput()
                     var state = Instantiate(commandState);
                     return state;
                 }
             }
+            //TODO: Design - because command-shift is a state. Should shift also be available here? 
             return null;
         }
     }

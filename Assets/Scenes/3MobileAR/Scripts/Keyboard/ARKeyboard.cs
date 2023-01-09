@@ -244,6 +244,7 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             }
             
             //Activate and Deactivate shortcut list for quickly finding required shortcut
+            //TODO: Consider other ways to architect the UI List (own state machine?)
             if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 ToggleShortcutList();

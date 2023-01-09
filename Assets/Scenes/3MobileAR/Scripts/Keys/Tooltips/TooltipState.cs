@@ -112,7 +112,6 @@ namespace Scenes._3MobileAR.Scripts.Keys.Tooltips
             _eraseSequence.Kill();
             _instantiateSequence = DOTween.Sequence();
 
-            //Personal note: what is going on here? 
             var instantiatedTooltip = Instantiate(tooltip, primaryKey.transform);
             primaryKey.currentTooltip = instantiatedTooltip;
 

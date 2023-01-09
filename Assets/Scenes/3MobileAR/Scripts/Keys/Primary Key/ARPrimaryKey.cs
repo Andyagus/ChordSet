@@ -65,6 +65,11 @@ namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
             base.Update();
         }
 
+        /// <summary>
+        /// Resetting primary key back to original state.  Base State handles most states.
+        /// Here also removing tooltips and shortcuts.
+        /// KeyLetterState is primarily used for WelcomeModeStateIntro. 
+        /// </summary>
         public override void ResetAllState()
         {
             tooltipState = TooltipState.ETooltip.NONE;
