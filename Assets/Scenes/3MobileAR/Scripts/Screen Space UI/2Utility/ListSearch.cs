@@ -4,56 +4,48 @@ using System.Linq;
 using Scenes._3MobileAR.Scripts.Screen_Space_UI._1Main;
 using UnityEngine;
 
-public class ListSearch : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Screen_Space_UI._2Utility
 {
+    public class ListSearch : MonoBehaviour
+    {
 
-    private ShortcutList _shortcutList;
-    private List<ShortcutListItem> _shortcutListItems;
-    private ShortcutListInput _shortcutListInput;
-    public Action onListItemUpdated;
+        private ShortcutList _shortcutList;
+        private List<ShortcutListItem> _shortcutListItems;
+        private ShortcutListInput _shortcutListInput;
+        public Action onListItemUpdated;
     
-    private void Awake()
-    {
-        _shortcutList = GetComponentInParent<ShortcutList>();
-        // _shortcutListItems = GetComponent<ShortcutListItem>();
-        _shortcutListInput = GetComponentInParent<ShortcutListInput>();
+        private void Awake()
+        {
+            _shortcutList = GetComponentInParent<ShortcutList>();
+            _shortcutList.onListPopulated += OnListPopulated;
+            _shortcutListInput = GetComponentInParent<ShortcutListInput>();
+            _shortcutListInput.onKeySearchChanged += ValidateListItem;
+        }
 
-        _shortcutList.onListPopulated += OnListPopulated;
-        _shortcutListInput.onKeySearchChanged += ValidateListItem;
-        // _shortcutListInput.onKeySearchChanged += SearchList;
-    }
-
-    private void OnListPopulated()
-    {
-        _shortcutListItems = GetComponentsInChildren<ShortcutListItem>().ToList();
-    }
-
-    private void Start()
-    {
-        // _shortcutListItems = content.GetComponentsInChildren<ShortcutListItem>().ToList();
-        // onListItemChanged();
-
-    }
-    
-    private void ValidateListItem(string currentSearchString)
-    {
-        foreach(var shortcut in _shortcutListItems){
-            if (shortcut.shortcutName.text.Length >= currentSearchString.Length)
-            {
-                if (currentSearchString.ToLower() == shortcut.shortcutName.text.Substring(0, currentSearchString.Length).ToLower())
+        private void OnListPopulated()
+        {
+            _shortcutListItems = GetComponentsInChildren<ShortcutListItem>().ToList();
+        }
+        
+        /// <summary>
+        /// Called when a new key is inputted in ShortcutListInput. Compares each shortcut
+        /// to the passed in string and sets gameObject to active or inactive accordingly 
+        /// </summary>
+        private void ValidateListItem(string currentSearchString)
+        {
+            foreach(var shortcut in _shortcutListItems){
+                if (shortcut.shortcutName.text.Length >= currentSearchString.Length)
                 {
-                    gameObject.SetActive(true);
-                }
-                else
-                {
-                    gameObject.SetActive(false);
+                    gameObject.SetActive(currentSearchString.ToLower() ==
+                                         shortcut.shortcutName.text.Substring(0, currentSearchString.Length).ToLower());
                 }
             }
-        }
 
-        if (onListItemUpdated != null)
-        {
-            onListItemUpdated();
-        }
-    }   
+            //When search is updated onListItemUpdated is called for ShortcutListInput to refresh its current list
+            if (onListItemUpdated != null)
+            {
+                onListItemUpdated();
+            }
+        }   
+    }
 }
