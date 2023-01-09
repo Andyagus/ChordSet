@@ -10,6 +10,7 @@ namespace Scenes._3MobileAR.Scripts.Screen_Space_UI._3PopUp
     /// </summary>
     public class ShortcutPopUpState : MonoBehaviour
     {
+        //TODO: Refactor - accessing fields that are already defined in the prefab
         [SerializeField] private Image popUpBackground;
         [SerializeField] private TextMeshProUGUI popUpText;
         [SerializeField] private Image popUpImage;
