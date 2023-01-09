@@ -56,13 +56,13 @@ namespace Scenes._3MobileAR.Scripts.Screen.States
             uiImage.sprite = sprite;
             textMeshPro.text = text;
             
-            //Fade the shortcut success in and after 0.1 seconds fade it back out. 
-            var availableSequence = DOTween.Sequence();
-            availableSequence.Insert(insertTime, background.DOFade(fadeInAmt/2, fadeTime))
+            //Fade the shortcut success in and after 0.1 seconds fade it back out.  
+            var availabilitySequence = DOTween.Sequence();
+            availabilitySequence.Insert(insertTime, background.DOFade(fadeInAmt/2, fadeTime))
                 .Insert(insertTime, uiImage.DOFade(fadeInAmt, fadeTime))
                 .Insert(insertTime, textMeshPro.DOFade(fadeInAmt, fadeTime));
-            availableSequence.AppendInterval(insertTime/10f);
-            availableSequence.AppendCallback(Unavailable);
+            availabilitySequence.AppendInterval(insertTime/10f);
+            availabilitySequence.AppendCallback(Unavailable);
         }
     
         private void Unavailable()

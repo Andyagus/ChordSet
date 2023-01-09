@@ -44,23 +44,6 @@ namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
 
         public override ARKeyboardState HandleInput(Key key, ARKeyboard keyboard)
         {
-            //TODO: Look into passing primary key to method instead of getting component
-            if (key.GetComponentInChildren<ARPrimaryKey>() != null)
-            {
-                var primaryKey = key.GetComponentInChildren<ARPrimaryKey>();
-                if (primaryKey.currentShortcut != null)
-                {
-                    if (primaryKey.keyPressed == EKeyState.KEY_PRESSED)
-                    {
-                        primaryKey.currentShortcut.shortcutActivity = ShortcutActivityState.EShortcutActivity.ACTIVE;
-                    }
-                    if (primaryKey.keyPressed == EKeyState.KEY_UNPRESSED)
-                    {
-                        primaryKey.currentShortcut.shortcutActivity = ShortcutActivityState.EShortcutActivity.INACTIVE;
-                    }
-                }
-            }
-            
             if (key.KeyName == "command-left" && key.keyPressed == EKeyState.KEY_UNPRESSED)
             {
                 return Instantiate(typingState);
@@ -71,6 +54,7 @@ namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
             }
             else
             {
+                //Base Class sets available shortcut state to active
                 return base.HandleInput(key, keyboard);
             }
         }

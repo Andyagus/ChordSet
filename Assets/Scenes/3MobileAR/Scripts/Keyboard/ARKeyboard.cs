@@ -56,7 +56,10 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             DOTween.SetTweensCapacity(500, 125);
             
             //Setting initial state machine to welcome mode.  
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
+            // keyboardMode = EKeyboardMode.WELCOME_MODE;
+            
+            //TEMP
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
             
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
@@ -227,7 +230,6 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
 
         private void AmbientModeHandleInput(Key key)
         {
-
             var state = _ambientModeState.HandleInput(key, this);
             
             if (state != null)
@@ -237,10 +239,10 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
                 _ambientModeState = state;
                 _ambientModeState.transform.SetParent(this.transform);
                 _ambientModeState.Entry(this);
-                
                 StartCoroutine(AmbientStateChangeCoroutine());
             }
             
+            //Activate and Deactivate shortcut list for quickly finding required shortcut
             if (key.KeyName == "back-quote" && key.keyPressed == EKeyState.KEY_PRESSED)
             {
                 ToggleShortcutList();
@@ -250,14 +252,13 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             {
                 if (key.KeyName != "back-quote")
                 {
-                    //Sending Input to InputField on the ShortcutList PopUp.
+                    //Sending keyboard input to search or navigate through list of shortcuts. 
                     _shortcutListInput.HandleInput(key);
                 }
             }
             
         }
 
-        //TODO: Put into list state machine
         private void ToggleShortcutList()
         {
             switch (_shortcutList.gameObject.activeSelf)
