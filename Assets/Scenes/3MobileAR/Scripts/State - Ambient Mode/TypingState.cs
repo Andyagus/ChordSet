@@ -61,11 +61,11 @@ namespace Scenes._3MobileAR.Scripts.State___Ambient_Mode
                 if (key.keyPressed == EKeyState.KEY_PRESSED)
                 {
                     //Setting and transitioning into the new state in ARKeyboard.AmbientModeHandleInput()
-                    var state = Instantiate(commandState);
-                    return state;
+                    var instantiatedState = Instantiate(commandState);
+                    return instantiatedState;
                 }
             }
-            //TODO: Design - because command-shift is a state. Should shift also be available here? 
+            //TODO: Design - because command-shift is a state. Should shift also be available here? (Also look at command shift state)  
             return null;
         }
     }
