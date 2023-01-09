@@ -2,307 +2,183 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scenes._1Desktop.Scripts;
+using Scenes._3MobileAR.Scripts.Keys;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Key = Scenes._3MobileAR.Scripts.Keys.Key;
 
-public class ShortcutListInput : MonoBehaviour
+namespace Scenes._3MobileAR.Scripts.Screen_Space_UI._1Main
 {
-   // private ShortcutList _shortcutList;
-   // private ScrollRect _scrollRect;
-   //
-   //
-   // public Selectable inputSelectable;
-   // public TextMeshProUGUI inputText; 
-   //
-   // private TMP_InputField _searchBar;
-   //
-   // private ListSearch _listSearch;
-   // [SerializeField] private List<ShortcutListItem> currentListItems;
-   //
-   // [SerializeField] private List<GameObject> listItems;
-   // private List<ShortcutListItem> _shortcutListItems;
-   // [SerializeField] private int itemIndex = 0;
-   //
-   // private void Awake()
-   // {
-   //    InputSystem.DisableDevice(Keyboard.current);
-   //    //
-   //    // _shortcutList = GetComponent<ShortcutList>();
-   //    // _listSearch = GetComponentInChildren<ListSearch>();
-   //    // _scrollRect = GetComponentInChildren<ScrollRect>();
-   //    // _searchBar = GetComponentInChildren<TMP_InputField>(true);
-   //    //
-   //    // listItems = new List<GameObject>();
-   //    // listItems.Add(_searchBar.gameObject);
-   //    // _listSearch.onListItemChanged += OnListItemChanged;
-   // }
-   //
-   // private void OnListItemChanged()
-   // {
-   //    // currentListItems = GetComponentsInChildren<ShortcutListItem>(false).ToList();
-   //    // listItems.Clear();
-   //    // listItems.Add(_searchBar.gameObject);
-   //    //
-   //    // foreach (var item in currentListItems)
-   //    // {
-   //    //    listItems.Add(item.gameObject);
-   //    // }
-   //    //
-   //    // Debug.Log("Current List Items count: " +  currentListItems.Count);
-   //    //
-   // }
-   //
-   // private void Start()
-   // {
-   //    // _searchBar.Select();
-   //    // _shortcutListItems = _scrollRect.GetComponentsInChildren<ShortcutListItem>().ToList();
-   //
-   //    // listItems = new List<GameObject>();
-   //    // listItems.Add(_searchBar.gameObject);
-   //    //
-   //    // foreach (var item in _shortcutListItems)
-   //    // {
-   //    //    listItems.Add(item.gameObject);
-   //    // }
-   //    
-   // }
-   // //
-   // //
-   // // private void OnEnable()
-   // // {
-   // //    TouchScreenKeyboard.hideInput = true;
-   // //    _searchBar.Select();
-   // //    _searchBar.ActivateInputField();
-   // // }
-   // //
-   // // private void OnDisable()
-   // // {
-   // //    itemIndex = 0;
-   // // }
-   //
-   // public void HandleInput(Key key)
-   // {
-   //    
-   //    if (EventSystem.current.currentSelectedGameObject == inputSelectable.gameObject)
-   //    {
-   //       inputText.text = (inputText.text + key.KeyName);
-   //    } 
-   //    // if (key.KeyName == "Arrow-Down" && key.keyPressed == EKeyState.KEY_PRESSED)
-   //    // {
-   //    //
-   //    //    if (itemIndex < listItems.Count-1)
-   //    //    {
-   //    //       itemIndex++;
-   //    //    }
-   //    // }
-   //    //
-   //    // if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
-   //    // {
-   //    //    if (itemIndex > 0)
-   //    //    {
-   //    //       itemIndex--;
-   //    //    }
-   //    // }
-   //
-   //    // var currentItem = listItems[itemIndex];
-   //    //
-   //    // if (currentItem.GetComponent<TMP_InputField>() != null)
-   //    // {
-   //    //    var searchBar =currentItem.GetComponent<TMP_InputField>(); 
-   //    //    searchBar.Select();
-   //    //    searchBar.ActivateInputField();
-   //    //
-   //    //    if (searchBar.isFocused)
-   //    //    {
-   //    //       if (key.keyPressed == EKeyState.KEY_PRESSED)
-   //    //       {
-   //    //          if(key.KeyName == "Delete")
-   //    //          {
-   //    //             searchBar.text = searchBar.text.Remove(searchBar.text.Length - 1, 1);
-   //    //          }
-   //    //          else if (key.KeyName == "Arrow-Down" || key.KeyName == "Arrow-Up")
-   //    //          {
-   //    //             return;
-   //    //          }
-   //    //          else if (key.KeyName == "space")
-   //    //          {
-   //    //             searchBar.text = searchBar.text + " ";
-   //    //          }
-   //    //          else
-   //    //          {
-   //    //             searchBar.text = searchBar.text + key.KeyName;
-   //    //             searchBar.MoveTextEnd(false);
-   //    //          }
-   //    //       }
-   //    //    }
-   //    //    
-   //    // }else if (currentItem.GetComponent<Button>() != null)
-   //    // {
-   //    //    var listButton = currentItem.GetComponent<Button>();
-   //    //    listButton.Select();
-   //    // }
-   //    //
-   //    // if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
-   //    // {
-   //    //    if (listItems[itemIndex].GetComponent<Button>() != null)
-   //    //    {
-   //    //       listItems[itemIndex].GetComponent<Button>().onClick.Invoke();
-   //    //    }
-   //    // }
-   // }
-
-   private ShortcutList _shortcutList;
-   private ListSearch _listSearch;
-   [SerializeField] private TextMeshProUGUI searchBarPlaceholder;
-   [SerializeField] private TextMeshProUGUI searchBarText;
-   [SerializeField] private Selectable searchBarSelectable;
-
-   private List<ShortcutListItem> _initialListItems;
-   private List<GameObject> _currentListItems;
-
-   private int _selectionIndex = 0;
-   
-   
-   public Action<string> onKeySearchChanged;
-
-   private void Awake()
+   /// <summary>
+   /// Class handles input between Normcore and the UIList.  Handles ability to enter text in text field
+   /// and traverse through shortcutList items in the list. 
+   /// </summary>
+   public class ShortcutListInput : MonoBehaviour
    {
-      _shortcutList = GetComponent<ShortcutList>();
-      _listSearch = GetComponentInChildren<ListSearch>(true);
-      _listSearch.onListItemUpdated += OnListItemUpdated;
-      _currentListItems = new List<GameObject>();
-      _initialListItems = GetComponentsInChildren<ShortcutListItem>(true).ToList();
-      InitializeCurrentListItems();
-   }
+      [Header("Searchbar")]
+      private ListSearch _listSearch;
+      [SerializeField] private TextMeshProUGUI searchBarPlaceholder;
+      [SerializeField] private TextMeshProUGUI searchBarText;
+      [SerializeField] private Selectable searchBarSelectable;
 
-   private void InitializeCurrentListItems()
-   {
-      _currentListItems.Add(searchBarSelectable.gameObject);
-      foreach (var item in _initialListItems)
-      {
-         _currentListItems.Add(item.gameObject);
-      }
-   }
-   
+      //Access to all shortcuts on the list
+      private List<ShortcutListItem> _initialListItems;
+      //CurrentListItems holds dynamically updated list items.  Type is gameobject, because it holds both searchbar (always 
+      //1st item in list) and the current available list items from search.
+      private List<GameObject> _currentListItems;
 
-   private void OnListItemUpdated()
-   {
-      _currentListItems.Clear();
+      //SelectionIndex used to find/select list items.
+      private int _selectionIndex;
       
-      var tempList = GetComponentsInChildren<ShortcutListItem>(false).ToList();
-      
-      _currentListItems.Add(searchBarSelectable.gameObject);
-      foreach(var item in tempList)
+      //When key is 'inputted' OnKeySearchChanged sends current text to ListSearch.
+      public Action<string> onKeySearchChanged;
+
+      private void Awake()
       {
-         _currentListItems.Add(item.gameObject);
+         _listSearch = GetComponentInChildren<ListSearch>(true);
+         _listSearch.onListItemUpdated += OnListItemUpdated;
+         _initialListItems = GetComponentsInChildren<ShortcutListItem>(true).ToList();
+         _currentListItems = new List<GameObject>();
+         InitializeCurrentListItems();
       }
 
-      Debug.Log(_currentListItems.Count);
-   }
-
-   private void OnDisable()
-   {
-      onKeySearchChanged(string.Empty);
-   }
-
-   private void OnEnable()
-   {
-      _selectionIndex = 0;
-      searchBarSelectable.Select();
-      searchBarText.text = string.Empty;
-      if (!searchBarPlaceholder.gameObject.activeSelf)
+      /// <summary>
+      /// Adding all items to current list (this is before any search)
+      /// first item in list is the search bar.  SearchBar can be traversed
+      /// like ShortcutListItems
+      /// </summary>
+      private void InitializeCurrentListItems()
       {
-         searchBarPlaceholder.gameObject.SetActive(true);
-      }
-   }
-   
-   public void HandleInput(Key key)
-   {
-      Search(key);
-      Select(key);
-   }
-
-   private void Select(Key key)
-   {
-      // var itemType = Getcom
-      
-      if (key.KeyName == "Arrow-Down" && key.keyPressed == EKeyState.KEY_PRESSED)
-      {
-         if (_selectionIndex < _currentListItems.Count - 1)
+         _currentListItems.Add(searchBarSelectable.gameObject);
+         foreach (var item in _initialListItems)
          {
-            _selectionIndex++;
+            _currentListItems.Add(item.gameObject);
          }
       }
-      if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
+   
+      /// <summary>
+      /// OnListItemUpdated is called when ListSearch changes.
+      /// Since ListSearch sets Shortcut List Items that dont match
+      /// the search query to SetActive(false). The method finds only
+      /// active child game objects and adds them to current list..
+      /// TODO: Can improve get components in children call here.
+      /// </summary>
+      private void OnListItemUpdated()
       {
-         if (_selectionIndex > 0)
+         _currentListItems.Clear();
+      
+         var tempList = GetComponentsInChildren<ShortcutListItem>(false).ToList();
+      
+         _currentListItems.Add(searchBarSelectable.gameObject);
+         foreach(var item in tempList)
          {
-            _selectionIndex--;
+            _currentListItems.Add(item.gameObject);
          }
       }
 
-      var selectedItem = _currentListItems[_selectionIndex];
-      
-      if (selectedItem.GetComponent<Button>() != null)
+      private void OnEnable()
       {
-         selectedItem.GetComponent<Button>().Select();
-      }
-      else
-      {
+         _selectionIndex = 0;
+         //Always start list by selecting the SearchBar
          searchBarSelectable.Select();
-      }
-      
-      if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
-      {
-         if (selectedItem.GetComponent<Button>() != null)
-         {
-            selectedItem.GetComponent<Button>().onClick.Invoke();
-         }
-      }
-      
-      // if (_currentListItems[_selectionIndex].GetComponent<Button>() != null)
-      // {
-      //    
-      // }
-      
-   }
-
-   private void Search(Key key)
-   {
-      if (EventSystem.current.currentSelectedGameObject == searchBarSelectable.gameObject)
-      {
-         if (key.keyPressed == EKeyState.KEY_PRESSED)
-         {
-            if (key.KeyName == "space")
-            {
-               searchBarText.text = searchBarText.text + " ";   
-            }else if (key.KeyName == "Delete")
-            {
-               if (searchBarText.text.Length > 0)
-               {
-                  searchBarText.text = searchBarText.text.Remove(searchBarText.text.Length - 1, 1);
-               }
-            }else if (key.KeyName == "Arrow-Up" || key.KeyName == "Arrow-Down")
-            {
-               return;
-            }
-            else
-            {
-               searchBarPlaceholder.gameObject.SetActive(false);
-               searchBarText.text = searchBarText.text + key.KeyName;
-            }
-
-            var currentText = searchBarText.text;
-            onKeySearchChanged(currentText);
-         }
-
-         if (searchBarText.text.Length == 0)
+         searchBarText.text = string.Empty;
+         if (!searchBarPlaceholder.gameObject.activeSelf)
          {
             searchBarPlaceholder.gameObject.SetActive(true);
          }
-      }   
+      }
+      
+      private void OnDisable()
+      {
+         //Tell the list search to search for nothing (clearing results) and resetting currentList.
+         onKeySearchChanged(string.Empty);
+      }
+
+   
+      //Input being received from ARKeyboard.HandleInput()
+      public void HandleInput(Key key)
+      {
+         Select(key);
+         Search(key);
+      }
+
+      private void Select(Key key)
+      {
+         //Scroll through the items in the UIList with Arrow Keys
+         if (key.KeyName == "Arrow-Down" && key.keyPressed == EKeyState.KEY_PRESSED)
+         {
+            if (_selectionIndex < _currentListItems.Count - 1)
+            {
+               _selectionIndex++;
+            }
+         }
+         if (key.KeyName == "Arrow-Up" && key.keyPressed == EKeyState.KEY_PRESSED)
+         {
+            if (_selectionIndex > 0)
+            {
+               _selectionIndex--;
+            }
+         }
+
+         //If item at currently selected index is a button, select it, otherwise select the searchbar.
+         var selectedItem = _currentListItems[_selectionIndex];
+         if (selectedItem.GetComponent<Button>() != null)
+         {
+            selectedItem.GetComponent<Button>().Select();
+         }
+         else
+         {
+            searchBarSelectable.Select();
+         }
+      
+         //When Return key is pressed on the button, invoke the buttons OnClick event. 
+         //This calls OnListItem clicked on ShortcutList class.
+         if (key.KeyName == "Return" && key.keyPressed == EKeyState.KEY_PRESSED)
+         {
+            if (selectedItem.GetComponent<Button>() != null)
+            {
+               selectedItem.GetComponent<Button>().onClick.Invoke();
+            }
+         }
+      }
+
+      private void Search(Key key)
+      {
+         if (EventSystem.current.currentSelectedGameObject == searchBarSelectable.gameObject)
+         {
+            if (key.keyPressed == EKeyState.KEY_PRESSED)
+            {
+               if (key.KeyName == "space")
+               {
+                  searchBarText.text = searchBarText.text + " ";   
+               }else if (key.KeyName == "Delete")
+               {
+                  if (searchBarText.text.Length > 0)
+                  {
+                     searchBarText.text = searchBarText.text.Remove(searchBarText.text.Length - 1, 1);
+                  }
+               }else if (key.KeyName == "Arrow-Up" || key.KeyName == "Arrow-Down")
+               {
+                  return;
+               }
+               else
+               {
+                  //Set the search bar text to the currently inputted text. And call OnKeySearchChanged 
+                  //with current search string
+                  searchBarPlaceholder.gameObject.SetActive(false);
+                  searchBarText.text = searchBarText.text + key.KeyName;
+               }
+
+               var currentText = searchBarText.text;
+               onKeySearchChanged(currentText);
+            }
+
+            if (searchBarText.text.Length == 0)
+            {
+               searchBarPlaceholder.gameObject.SetActive(true);
+            }
+         }   
+      }
    }
 }
