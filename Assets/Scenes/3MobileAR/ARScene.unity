@@ -601,6 +601,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen Space UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1472310931677354311, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576454210535871128, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5603994416050337416, guid: 8f2d77096c166405a857047d43c8524a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -22.086914
