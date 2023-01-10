@@ -54,7 +54,6 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
         
         private void Awake()
         {
-            DOTween.SetTweensCapacity(500, 125);
             
             //Setting initial state machine to welcome mode.  
             keyboardMode = EKeyboardMode.WELCOME_MODE;
@@ -67,7 +66,7 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             
             //TODO: Clean up how this is accessed within the awake method, and GO.Find
-            _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
+            _shortcutList = GameObject.Find("Screen Space UI").GetComponentInChildren<ShortcutList>(true);
             _shortcutListInput = _shortcutList.gameObject.GetComponent<ShortcutListInput>();
 
             InitializeDictionary();

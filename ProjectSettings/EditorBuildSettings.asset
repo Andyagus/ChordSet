@@ -5,21 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/3MobileAR/ARScene.unity
     guid: 33b11c82e36174a919eb80c38d9faa70
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/1Desktop/DesktopScene.unity
     guid: c092f40dffc664421a21d3e558938f70
   - enabled: 1
     path: Assets/Scenes/2Normcore/NormcoreCommonScene.unity
     guid: f8bee401a16414d5d91fbe012a0f56ae
   m_configObjects:
-    AR Foundation RemoteARFoundationRemoteLoaderSettings: {fileID: 11400000, guid: 6ee8623258bc94713b1fe1d84767dd92, type: 2}
-    AR Foundation RemoteARFoundationRemoteSessionRecordsData: {fileID: 11400000, guid: 6fa4771eab365469ab7852080c9049d1, type: 2}
-    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 9e62da970586d49479f23562ec92efa5, type: 2}
-    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: cf110879396d14e46924de692395555a, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 852beb6c9013845e6a2ff1b508e4755b, type: 2}
+    AR Foundation RemoteARFoundationRemoteLoaderSettings: {fileID: 11400000, guid: 75c5660fcc7974d94805aea29ab150dd, type: 2}
+    AR Foundation RemoteARFoundationRemoteSessionRecordsData: {fileID: 11400000, guid: 2d05ed4993489465c8a56db448120e09, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 611152100fc04486e9989d4722d05504, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: e460fb1100d774e7da3e1df2ff894247, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1888313455aad4442a0c9da3786349e0, type: 2}

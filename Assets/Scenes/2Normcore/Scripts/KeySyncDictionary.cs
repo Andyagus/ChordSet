@@ -24,16 +24,20 @@ namespace Scenes._2Normcore.Scripts
         protected override void OnRealtimeModelReplaced(KeySyncDictionaryModel previousModel, KeySyncDictionaryModel currentModel)
         {
             currentModel.realtimeDictionary.modelReplaced += OnModelReplaced;
+           
         }
         
         //When the dictionary changes, passing it to AR Keyboard 
         private void OnModelReplaced(RealtimeDictionary<KeySyncModel> dictionary, uint key, KeySyncModel oldmodel, KeySyncModel newmodel, bool remote)
         {
-            //TODO: Refactor - Make this an event instead of a direct call.
-            if (_ARKeyboard != null)
+            //Need to access keyboard again here, because in AR it is instantiated after this Start() is called.
+            if (_ARKeyboard == null)
             {
-                _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);
+                _ARKeyboard = FindObjectOfType<ARKeyboard>();
             }
+            
+            //TODO: Refactor - Make this an event instead of a direct call.
+            _ARKeyboard.OnKeyDictionaryReceived(model.realtimeDictionary);
         }
         
         public void CreateDictionary(InputKey inputKey)

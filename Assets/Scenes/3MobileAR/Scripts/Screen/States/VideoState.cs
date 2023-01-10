@@ -61,7 +61,7 @@ namespace Scenes._3MobileAR.Scripts.Screen.States
          //TODO not a great check to see if it's faded out - use a bool 
          if (rawImage.color.a == 0)
          {
-            rawImage.DOFade(fadeInAmt, fadeOutTime);
+            rawImage.DOFade(fadeInAmt, fadeInTime);
          }
          rawImage.texture = renderTexture;
          videoPlayer.targetTexture = renderTexture;
