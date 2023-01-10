@@ -100,6 +100,12 @@ namespace Scenes._3MobileAR.Scripts.Keys.Key_States
         private void InstantiateShortcut(ARPrimaryKey primaryKey, Shortcut shortcut)
         {
             //TODO: Organize when key text (KeyAvailability) is faded in our out, may need to be more aligned with shortcut
+
+            if (shortcut.shortcutName == "null object")
+            {
+                Debug.LogWarning("Shortcut Not Yet Implemented");
+                return;
+            }
             
             //If the erase shortcut sequence is happening, make sure to kill the sequence
             _eraseSequence.Kill();

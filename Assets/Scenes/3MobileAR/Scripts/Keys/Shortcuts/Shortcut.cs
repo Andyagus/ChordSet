@@ -15,6 +15,7 @@ namespace Scenes._3MobileAR.Scripts.Keys.Shortcuts
         public Action<Shortcut> onShortcutExecuted;
         
         //Enum used when shortcut received from observers to have shortcut specific methods 
+        //TODO: Complete setup for EShortcuts and pass through to all subscribers
         public enum EShortcuts
         {
             UNDO,
