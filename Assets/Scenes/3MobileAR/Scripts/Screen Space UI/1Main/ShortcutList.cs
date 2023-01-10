@@ -9,6 +9,7 @@ namespace Scenes._3MobileAR.Scripts.Screen_Space_UI._1Main
 {
     /// <summary>
     /// Managing the shortcuts in the ScrollView list. Also handling the individual buttons OnClick events.
+    /// TODO: Update the ShortcutList prefab to be responsive between different Screen Sizes. 
     /// </summary>
     public class ShortcutList : MonoBehaviour
     {
