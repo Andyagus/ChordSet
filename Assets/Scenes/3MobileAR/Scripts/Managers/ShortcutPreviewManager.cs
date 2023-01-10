@@ -25,7 +25,7 @@ namespace Scenes._3MobileAR.Scripts.Managers
         private void Awake()
         {
             _sequenceKeys = new List<Key>();
-            _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
+            _shortcutList = GameObject.Find("Screen Space UI").GetComponentInChildren<ShortcutList>(true);
             _ARKeyboard = GetComponentInParent<ARKeyboard>();
         }
 

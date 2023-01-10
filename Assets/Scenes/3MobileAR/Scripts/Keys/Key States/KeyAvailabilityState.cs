@@ -23,7 +23,8 @@ namespace Scenes._3MobileAR.Scripts.Keys.Key_States
         [SerializeField] private Image letterImage;
 
         [Header("Controls")]
-        [SerializeField] private float fadeAmt = 0.25f;
+        [SerializeField] private float fadeInAmt = 1f;
+        [SerializeField] private float fadeOutAmt = 0.25f;
         [SerializeField] private float fadeTime = 0.973f;
     
         public enum EKeyAvailability
@@ -51,17 +52,17 @@ namespace Scenes._3MobileAR.Scripts.Keys.Key_States
         {
             if (letterText != null)
             {
-                letterText.DOFade(1, fadeTime);
+                letterText.DOFade(fadeInAmt, fadeTime);
             }
 
             if (secondaryText != null)
             {
-                secondaryText.DOFade(1, fadeTime);
+                secondaryText.DOFade(fadeInAmt, fadeTime);
             }
 
             if (letterImage != null)
             {
-                letterImage.DOFade(1, fadeTime/2);
+                letterImage.DOFade(fadeInAmt, fadeTime/2);
             }
         }
     
@@ -69,17 +70,17 @@ namespace Scenes._3MobileAR.Scripts.Keys.Key_States
         {
             if (letterText != null)
             {
-                letterText.DOFade(fadeAmt, fadeTime);
+                letterText.DOFade(fadeOutAmt, fadeTime);
             }
 
             if (secondaryText != null)
             {
-                secondaryText.DOFade(fadeAmt, fadeTime);
+                secondaryText.DOFade(fadeOutAmt, fadeTime);
             }
 
             if (letterImage != null)
             {
-                letterImage.DOFade(fadeAmt, fadeTime);
+                letterImage.DOFade(fadeOutAmt, fadeTime);
             }
         }
     

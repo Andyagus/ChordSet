@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Scenes._3MobileAR.Scripts.Keys.Shortcuts;
 using Scenes._3MobileAR.Scripts.Screen_Space_UI._1Main;
 using UnityEngine;

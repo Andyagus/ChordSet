@@ -54,25 +54,27 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
         
         private void Awake()
         {
-            DOTween.SetTweensCapacity(500, 125);
             
-            //Setting initial state machine to welcome mode.  
+            //TODO: Look into - Having an odd issue with DOTween where set capacity needs to be automatically set. 
+            //Attempting to set DOTween to 500 Tweens 50 Sequences before moving to welcome mode.
+            //It is being automatically set so not effecting performance, but DOTween is logging an error.
+            //Tried creating a seperate DOTween Manager Class, which clears all tweens, but not issue.
+            //Documentation on Tween Capacity: http://dotween.demigiant.com/documentation.php?api=SetTweensCapacity 
+            //limited as far as my current issue. Reached out to Demigiant on issue and will update accordingly. 
+            DOTween.SetTweensCapacity(500, 50);
             keyboardMode = EKeyboardMode.WELCOME_MODE;
-            
-            //TEMP
-            // keyboardMode = EKeyboardMode.AMBIENT_MODE;
             
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
             primaryKeys = GetComponentsInChildren<ARPrimaryKey>().ToList();
             
             //TODO: Clean up how this is accessed within the awake method, and GO.Find
-            _shortcutList = GameObject.Find("ScreenSpaceUI").GetComponentInChildren<ShortcutList>(true);
+            _shortcutList = GameObject.Find("Screen Space UI").GetComponentInChildren<ShortcutList>(true);
             _shortcutListInput = _shortcutList.gameObject.GetComponent<ShortcutListInput>();
 
             InitializeDictionary();
         }
-
+        
         //TODO: Work with both primary key and modifier keys at same time. 
         private void InitializeDictionary()
         {
