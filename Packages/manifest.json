@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.kyrylokuzyk.arfoundationremote": "file:../Assets/Plugins/ARFoundationRemoteInstaller/com.kyrylokuzyk.arfoundationremote.tgz",
     "com.normalvr.normcore": "2.4.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.17.1",
