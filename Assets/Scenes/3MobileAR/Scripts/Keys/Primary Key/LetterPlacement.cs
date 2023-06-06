@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -10,22 +11,98 @@ namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
     /// </summary>
     public class LetterPlacement : MonoBehaviour
     {
-        private TextMeshProUGUI _textMesh;
-        private ARPrimaryKey _primaryKey;
 
+        public bool hasEffect;
+        public GameObject canvas1;
+        public GameObject canvas2;
+        private GameObject currentCanvas;
+
+        public GameObject backgroundCube;
+        private Material _cubeMat;
+        
+        public Color black;
+        public Color blue;
+        public Color orange;
+        public Color purple;
+        public Color pink;
+        public Color yellow;
+        public Color red;
+
+        public enum MyColors
+        {
+            BLACK,
+            BLUE,
+            ORANGE,
+            PURPLE,
+            PINK,
+            YELLOW,
+            RED
+        }
+
+        public MyColors currentColor; 
+        
         private void Awake()
         {
-            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
-            _primaryKey = GetComponent<ARPrimaryKey>();
+            _cubeMat = backgroundCube.GetComponent<MeshRenderer>().material;
         }
 
-        private void Start()
+        private void Update()
         {
-            if (_textMesh != null)
+            switch (currentColor)
             {
-                _textMesh.text = _primaryKey.KeyName;
+                case MyColors.BLACK:
+                    _cubeMat.color = black;
+                    break;
+                case MyColors.BLUE:
+                    _cubeMat.color = blue;
+                    break;
+                case MyColors.ORANGE:
+                    _cubeMat.color = orange;
+                    break;
+                case MyColors.PURPLE:
+                    _cubeMat.color = purple;
+                    break;
+                case MyColors.PINK:
+                    _cubeMat.color = pink;
+                    break;
+                case MyColors.YELLOW:
+                    _cubeMat.color = yellow;
+                    break;
+                case MyColors.RED:
+                    _cubeMat.color = red;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            if (hasEffect)
+            {
+                canvas1.SetActive(true);
+                canvas2.SetActive(false);
+            }
+            else
+            {
+                canvas2.SetActive(true);
+                canvas1.SetActive(false);
             }
         }
+
+        // private TextMeshProUGUI _textMesh;
+        // private ARPrimaryKey _primaryKey;
+        //
+        // private void Awake()
+        // {
+        //     _textMesh = GetComponentInChildren<TextMeshProUGUI>();
+        //     _primaryKey = GetComponent<ARPrimaryKey>();
+        // }
+        //
+        // private void Start()
+        // {
+        //     if (_textMesh != null)
+        //     {
+        //         _textMesh.text = _primaryKey.KeyName;
+        //     }
+        // }
 
     }
 }

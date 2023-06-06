@@ -62,7 +62,7 @@ namespace Scenes._3MobileAR.Scripts.Keyboard
             //Documentation on Tween Capacity: http://dotween.demigiant.com/documentation.php?api=SetTweensCapacity 
             //limited as far as my current issue. Reached out to Demigiant on issue and will update accordingly. 
             DOTween.SetTweensCapacity(500, 50);
-            keyboardMode = EKeyboardMode.WELCOME_MODE;
+            keyboardMode = EKeyboardMode.AMBIENT_MODE;
             
             keys = GetComponentsInChildren<Key>().ToList();
             modifierKeys = GetComponentsInChildren<ARModifierKey>().ToList();
