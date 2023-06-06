@@ -39,16 +39,38 @@ namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
             RED
         }
 
-        public MyColors currentColor; 
-        
+        public MyColors preferredColor;
+        private MyColors _currentColor;
+
         private void Awake()
         {
             _cubeMat = backgroundCube.GetComponent<MeshRenderer>().material;
+            // _currentColor = preferredColor;
         }
 
         private void Update()
         {
-            switch (currentColor)
+            
+            if (hasEffect)
+            {
+                canvas1.SetActive(true);
+                canvas2.SetActive(false);
+                
+                SwitchColor(preferredColor);
+            }
+            else
+            {
+                canvas2.SetActive(true);
+                canvas1.SetActive(false);
+                
+                SwitchColor(MyColors.BLACK);
+                
+            }
+        }
+
+        private void SwitchColor(MyColors color)
+        {
+            switch (color)
             {
                 case MyColors.BLACK:
                     _cubeMat.color = black;
@@ -74,35 +96,8 @@ namespace Scenes._3MobileAR.Scripts.Keys.Primary_Key
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
-            if (hasEffect)
-            {
-                canvas1.SetActive(true);
-                canvas2.SetActive(false);
-            }
-            else
-            {
-                canvas2.SetActive(true);
-                canvas1.SetActive(false);
-            }
         }
-
-        // private TextMeshProUGUI _textMesh;
-        // private ARPrimaryKey _primaryKey;
-        //
-        // private void Awake()
-        // {
-        //     _textMesh = GetComponentInChildren<TextMeshProUGUI>();
-        //     _primaryKey = GetComponent<ARPrimaryKey>();
-        // }
-        //
-        // private void Start()
-        // {
-        //     if (_textMesh != null)
-        //     {
-        //         _textMesh.text = _primaryKey.KeyName;
-        //     }
-        // }
+        
 
     }
 }
